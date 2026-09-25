@@ -1,6 +1,6 @@
-# Kryptonix Tattoo Studio — Landing Page
+#xingTattoo Studio — Landing Page
 
-A modern, responsive landing page for **Kryptonix Tattoo Studio**, built with [Lovable](https://lovable.dev).
+A modern, responsive landing page for **xing Tattoo Studio**, built with [Lovable](https://lovable.dev).
 
 ## Live Preview
 
