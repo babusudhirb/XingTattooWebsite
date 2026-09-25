@@ -1,11 +1,6 @@
-# Kryptonix Tattoo Studio — Landing Page
+# XING TATTOO STUDIO
 
-A modern, responsive landing page for **Kryptonix Tattoo Studio**, built with [Lovable](https://lovable.dev).
-
-## Live Preview
-
-- **Preview URL**: https://id-preview--5adf0425-4b90-4f9b-8ba9-a34b1918323f.lovable.app
-- **Published URL**: https://clonecraft-hero.lovable.app
+A modern, responsive website for **XING Tattoo Studio** in Brookefield, Bengaluru.
 
 ## Features
 
@@ -18,28 +13,15 @@ A modern, responsive landing page for **Kryptonix Tattoo Studio**, built with [L
 - Floating social dock (Instagram, WhatsApp, Call) with scroll-triggered transition
 - FAQ section and smooth-scroll navigation
 
-## Connect to GitHub
-
-To sync this project with a GitHub repository:
-
-1. Open the Lovable editor.
-2. Click the **Plus (+)** menu in the chat input.
-3. Choose **GitHub → Connect project**.
-4. Authorize the Lovable GitHub App.
-5. Select the GitHub account/organization where the repository should live.
-6. Click **Create Repository** to push your project code.
-
-Once connected, every change made in Lovable is committed to GitHub automatically, and changes pushed to GitHub sync back into Lovable.
-
 ## Local Development
 
-Prefer working locally? You need Node.js and a package manager (npm/bun):
+You need Node.js and a package manager (npm or Bun):
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-bun install   # or npm install
-bun run dev   # or npm run dev
+git clone https://github.com/altafs45/XING-TATTOO-STUDIO.git
+cd XING-TATTOO-STUDIO
+npm install   # or bun install
+npm run dev   # or bun run dev
 ```
 
 The dev server starts at `http://localhost:8080`.
