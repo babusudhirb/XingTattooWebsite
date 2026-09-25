@@ -22,6 +22,8 @@
   --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Dancing Script", cursive;
+  /* Artist signature only — loaded as a 5-glyph subset ("Peace") in __root.tsx */
+  --font-signature: "Mrs Saint Delafield", "Dancing Script", cursive;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -154,10 +156,20 @@
     border-color: var(--color-border);
   }
 
+  html,
+  body {
+    /* clip (not hidden) blocks sideways scroll without creating a scroll
+       container, so position: sticky on the header keeps working */
+    max-width: 100vw;
+    overflow-x: clip;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
   }
 
   h1,
@@ -165,6 +177,15 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    /* Long words wrap instead of overflowing narrow screens */
+    overflow-wrap: break-word;
+  }
+
+  /* Phones: room for the fixed bottom action bar (MobileActionBar) + home indicator */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+    }
   }
 }
 
@@ -242,7 +263,30 @@
   display: flex;
   width: max-content;
   animation: marquee-left 34s linear infinite;
-  &:hover {
+  &:hover,
+  &:focus-within {
     animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* Slow drift for decorative flash art; each piece sets its own --r rotation. */
+@keyframes flash-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(calc(var(--r, 0deg) + 4deg));
+  }
+}
+
+@utility flash-drift {
+  animation: flash-drift 9s ease-in-out infinite;
+  transform: rotate(var(--r, 0deg));
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 }

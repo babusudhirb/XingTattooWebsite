@@ -1,50 +1,70 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
-  CalendarDays,
-  Diamond,
-  Instagram,
-  Mail,
-  MapPin,
+  CrownIcon,
   MessageCircle,
   PenTool,
-  Phone,
   ShieldCheck,
-  Sparkles,
-  Star,
-  Users,
+  Shuffle,
   X,
-  Youtube,
 } from "lucide-react";
 
-import heroArm from "@/assets/hero-arm.jpg";
-import styleRealism from "@/assets/style-realism.jpg";
-import styleGeometric from "@/assets/style-geometric.jpg";
-import stylePortrait from "@/assets/style-portrait.jpg";
-import styleTraditional from "@/assets/style-traditional.jpg";
-import styleMinimalist from "@/assets/style-minimalist.jpg";
-import styleBlackGrey from "@/assets/style-blackgrey.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import ctaMachine from "@/assets/cta-machine.jpg";
-import artistPhoto from "@/assets/artist-photo.png.asset.json";
-import offerArm from "@/assets/offer-arm.png.asset.json";
+import heroArt from "@/assets/hero-fineline-art.png";
+import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.jpg";
+import offer1 from "@/assets/offers/offer-1.jpg";
+import offer2 from "@/assets/offers/offer-2.jpg";
+
+import { WHATSAPP_URL } from "@/data/site";
+import { SERVICE_SLUGS, services } from "@/data/services";
+import {
+  gallery,
+  galleryFilters,
+  loadGallerySeen,
+  mixGallery,
+  saveGallerySeen,
+} from "@/data/gallery";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SocialDock } from "@/components/site/SocialDock";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { GalleryLightbox } from "@/components/site/GalleryLightbox";
+import { ReviewsSection } from "@/components/site/ReviewsSection";
+import { BookingCTA } from "@/components/site/BookingCTA";
+import { StudioHighlights } from "@/components/site/StudioHighlights";
+import { reviewsSchema } from "@/data/reviews";
+import { faqById, faqs, homeFaqIds } from "@/data/faqs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { openBookingModal } from "@/components/site/BookingContext";
+import { TattooFlash, type FlashName } from "@/components/site/TattooFlash";
+
+const GALLERY_PAGE_SIZE = 24;
+const GALLERY_PAGE_SIZE_PHONE = 12;
+
+/** Client-only: how many photos to show per page on this screen. */
+function galleryPageSizeForScreen() {
+  return window.matchMedia("(max-width: 639px)").matches
+    ? GALLERY_PAGE_SIZE_PHONE
+    : GALLERY_PAGE_SIZE;
+}
+
+const homeFaqs = homeFaqIds.map((id) => faqById.get(id)!);
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kryptonix Tattoo Studio | Custom Tattoos in Bangalore" },
+      { title: "XING Tattoo Studio | Custom Tattoo Studio in Brookefield, Bengaluru" },
       {
         name: "description",
         content:
-          "Art you wear, for life. Custom tattoo designs, premium hygiene and 5+ years of artistry at Kryptonix Tattoo Studio, Bangalore.",
+          "Custom tattoo studio in Brookefield, Bengaluru. Artist Peace (15+ yrs) designs every piece from scratch. 4.9★ on Google, single-use needles. Free consultation.",
       },
-      { property: "og:title", content: "Kryptonix Tattoo Studio | Art You Wear" },
+      { property: "og:title", content: "XING Tattoo Studio | Art You Wear" },
       {
         property: "og:description",
         content:
@@ -53,207 +73,55 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(reviewsSchema()) }],
   }),
   component: Index,
 });
 
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-];
-
-const faqs = [
-  [
-    "Does getting a tattoo hurt?",
-    "There is some discomfort, but we use premium needles and take breaks so every session stays manageable.",
-  ],
-  [
-    "How do I book a session?",
-    "Send us your idea on WhatsApp or book a free consultation — we sketch a custom design before your appointment.",
-  ],
-  [
-    "Is the studio hygienic?",
-    "100%. Single-use needles, sealed inks and a fully sterilised workstation for every client.",
-  ],
-  [
-    "How much does a tattoo cost?",
-    "Pricing depends on size, detail and placement. We share an exact quote after the design consultation.",
-  ],
-];
-
 const features = [
   { icon: PenTool, title: "Custom Designs", text: "Personalized just for you" },
   { icon: ShieldCheck, title: "Safe & Hygienic", text: "100% sterile & safe" },
-  { icon: Diamond, title: "Premium Quality", text: "Top inks & equipment" },
+  { icon: CrownIcon, title: "Premium Quality", text: "Premium inks & equipment" },
 ];
 
-const stats = [
-  { icon: Users, value: "1000+", label: "Happy Clients" },
-  { icon: Sparkles, value: "1500+", label: "Tattoos Completed" },
-  { icon: ShieldCheck, value: "5+", label: "Years Experience" },
-  { icon: Star, value: "4.9/5", label: "Google Rating" },
-];
-
-const styles = [
-  { img: styleRealism, name: "Realism", text: "Detailed. Realistic. Timeless." },
-  { img: styleGeometric, name: "Geometric", text: "Symmetry. Patterns. Perfection." },
-  { img: stylePortrait, name: "Portrait", text: "Faces. Memories. Forever." },
-  { img: styleTraditional, name: "Traditional", text: "Bold Lines. Classic Vibes." },
-  { img: styleMinimalist, name: "Minimalist", text: "Simple. Elegant. Meaningful." },
-  { img: styleBlackGrey, name: "Black & Grey", text: "Shades. Depth. Emotion." },
-];
-
-const galleryFilters = [
-  "All",
-  "Realism",
-  "Minimalist",
-  "Black & Grey",
-  "Geometric",
-  "Traditional",
-];
-
-const gallery = [
-  { img: gallery1, tag: "Black & Grey", alt: "Floral back tattoo" },
-  { img: gallery2, tag: "Geometric", alt: "Compass and clock tattoo" },
-  { img: gallery3, tag: "Realism", alt: "Goddess portrait tattoo" },
-  { img: gallery4, tag: "Realism", alt: "Crowned lion tattoo" },
-  { img: gallery5, tag: "Black & Grey", alt: "Warrior sleeve tattoo" },
-  { img: gallery6, tag: "Minimalist", alt: "Fine line mountain tattoo" },
-];
-
-const reviews = [
+const offerImages = [
+  { src: offer1, alt: "Festival offer — any tattoo up to 10 sq. inch for ₹2,499" },
   {
-    quote:
-      "Absolutely amazing experience! The artist understood my idea perfectly and the outcome was beyond my expectations.",
-    name: "Rohan S.",
-  },
-  {
-    quote:
-      "Super professional and the hygiene standards are top-notch. Highly recommended Kryptonix!",
-    name: "Anjali M.",
-  },
-  {
-    quote:
-      "Best tattoo studio in town! The detailing and finishing is just perfect. Will definitely come back for more.",
-    name: "Vikram D.",
-  },
-  {
-    quote:
-      "Loved the whole process, from sketch to final ink. They took their time to get every line right.",
-    name: "Neha K.",
-  },
-  {
-    quote:
-      "Clean studio, friendly artists and a design that I get compliments on every single day.",
-    name: "Arjun P.",
-  },
-  {
-    quote:
-      "They turned a rough idea on my phone into the best piece of art I own. Worth every rupee.",
-    name: "Sana R.",
+    src: offer2,
+    alt: "Festival offer — 50% off tattoos, black & grey ₹399 or colour ₹499 per sq. inch",
   },
 ];
 
-function Logo({ className = "" }: { className?: string }) {
-  return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      <span className="font-display text-3xl font-extrabold leading-none tracking-tighter">
-        K
-      </span>
-      <span className="leading-none">
-        <span className="block font-display text-lg font-bold tracking-wide">
-          KRYPTONIX
-        </span>
-        <span className="block text-[0.6rem] tracking-[0.3em] text-muted-foreground">
-          TATTOO STUDIO
-        </span>
-      </span>
-    </div>
-  );
-}
-
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
-  return (
-    <div className="text-center">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-2 text-2xl font-semibold tracking-wide uppercase sm:text-3xl">
-        {title}
-      </h2>
-      <div className="mt-3 flex items-center justify-center gap-2 text-muted-foreground">
-        <span className="h-px w-8 bg-border" />
-        <PenTool className="h-3.5 w-3.5" />
-        <span className="h-px w-8 bg-border" />
-      </div>
-    </div>
-  );
-}
-
-const socials = [
+/** Background flash art for the offer popup: position, tilt and drift offset. */
+const OFFER_FLASH: {
+  name: FlashName;
+  className: string;
+  rotate: number;
+  delay: number;
+}[] = [
+  { name: "compass", className: "-top-6 -left-6 h-32 w-32", rotate: -12, delay: 0 },
   {
-    icon: Instagram,
-    label: "Instagram",
-    href: "https://instagram.com",
-    style: { background: "var(--gradient-instagram)" },
+    name: "heart",
+    className: "top-16 right-10 hidden h-20 w-20 sm:block",
+    rotate: 8,
+    delay: 1.5,
   },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    href: "https://wa.me/917770012345",
-    style: { background: "var(--brand-whatsapp)" },
-  },
-  {
-    icon: Phone,
-    label: "Call Us",
-    href: "tel:+917770012345",
-    style: { background: "var(--brand-call)" },
-  },
+  { name: "dagger", className: "top-1/3 -right-4 h-28 w-28", rotate: 24, delay: 3 },
+  { name: "rose", className: "bottom-10 -left-4 h-28 w-28", rotate: -8, delay: 2 },
+  { name: "moon", className: "-bottom-4 right-8 h-24 w-24", rotate: 10, delay: 4 },
+  { name: "sparkle", className: "top-1/2 left-6 hidden h-8 w-8 sm:block", rotate: 0, delay: 1 },
 ];
 
-function SocialDock() {
-  const [docked, setDocked] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setDocked(window.scrollY > 420);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <div
-      className={`fixed z-50 flex transition-all duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
-        docked
-          ? "bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 translate-y-0 flex-row gap-3 rounded-full border border-border bg-card/90 px-4 py-2.5 shadow-[var(--shadow-soft)] backdrop-blur sm:gap-4 sm:px-5 sm:py-3"
-          : "top-1/2 right-3 -translate-y-1/2 flex-col gap-3 rounded-full border border-transparent px-2 py-2 sm:right-5 sm:gap-5"
-      }`}
-    >
-      {socials.map(({ icon: Icon, label, href, style }, i) => (
-        <a
-          key={label}
-          href={href}
-          target={href.startsWith("http") ? "_blank" : undefined}
-          rel="noreferrer"
-          aria-label={label}
-          className="group auto-pop relative flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground shadow-[var(--shadow-card)] transition-transform duration-300 hover:scale-125 focus-visible:ring-2 focus-visible:ring-foreground focus-visible:outline-none sm:h-11 sm:w-11"
-          style={{ ...style, animationDelay: `${i * 0.35}s` }}
-        >
-          <Icon className="h-5 w-5" strokeWidth={1.8} />
-          <span
-            className={`pointer-events-none absolute hidden font-display text-[0.6rem] tracking-[0.14em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block ${
-              docked ? "-top-7" : "right-14"
-            }`}
-          >
-            {label}
-          </span>
-        </a>
-      ))}
-    </div>
-  );
-}
+/** Small pieces that fit the "any tattoo up to 10 sq. inch" offer; style pre-fills booking. */
+const OFFER_IDEAS: { label: string; style: string; icon: FlashName }[] = [
+  { label: "Fine-line rose", style: "Minimalist", icon: "rose" },
+  { label: "Mini compass", style: "Geometric", icon: "compass" },
+  { label: "Moon & stars", style: "Minimalist", icon: "moon" },
+  { label: "Heart & name banner", style: "Minimalist", icon: "heart" },
+  { label: "Name or date script", style: "Minimalist", icon: "sparkle" },
+  { label: "Om or Trishul", style: "Traditional", icon: "sparkle" },
+  { label: "Mini dagger", style: "Black & Grey", icon: "dagger" },
+];
 
 function OfferModal({ onClose }: { onClose: () => void }) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -282,9 +150,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
       );
       if (!nodes || nodes.length === 0) return;
-      const list: HTMLElement[] = Array.from(nodes).filter(
-        (n) => n.offsetParent !== null,
-      );
+      const list: HTMLElement[] = Array.from(nodes).filter((n) => n.offsetParent !== null);
       if (list.length === 0) return;
       const first = list[0]!;
       const last = list[list.length - 1]!;
@@ -316,170 +182,129 @@ function OfferModal({ onClose }: { onClose: () => void }) {
       className="fixed inset-0 z-[60] flex items-center justify-center p-2 sm:p-6"
     >
       <div
-        className={`absolute inset-0 bg-primary/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-300 ${
           closing ? "opacity-0" : "animate-fade-in opacity-100"
         }`}
         onClick={requestClose}
       />
       <div
         ref={panelRef}
-        className={`relative z-10 max-h-[94vh] w-full max-w-5xl overflow-y-auto rounded-sm border border-amber-700/30 bg-background shadow-[var(--shadow-soft)] transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
+        className={`relative z-10 max-h-[94vh] w-full max-w-3xl overflow-x-hidden overflow-y-auto rounded-sm border border-amber-400/30 bg-[#0b0a08] text-stone-100 shadow-[0_0_60px_-15px_rgba(245,158,11,0.35)] transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
           closing ? "scale-95 opacity-0" : "animate-scale-in scale-100 opacity-100"
         }`}
       >
+        {/* Decoration: gold glow + drifting flash-sheet line art, all behind content */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.18),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(250,204,21,0.08),transparent_50%)]" />
+          <div className="absolute inset-3 rounded-sm border border-amber-400/10" />
+          {OFFER_FLASH.map(({ name, className, rotate, delay }) => (
+            <TattooFlash
+              key={name}
+              name={name}
+              className={`flash-drift absolute text-amber-300/20 ${className}`}
+              style={{ "--r": `${rotate}deg`, animationDelay: `${delay}s` } as React.CSSProperties}
+            />
+          ))}
+        </div>
+
         <button
           ref={closeRef}
           onClick={requestClose}
           aria-label="Close offer"
-          className="absolute top-3 right-3 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/95 shadow-[var(--shadow-card)] transition-transform duration-300 hover:scale-110 hover:bg-accent focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none sm:top-4 sm:right-4"
+          className="absolute top-3 right-3 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-amber-400/30 bg-black/60 text-amber-100 backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-black focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none sm:top-4 sm:right-4"
         >
           <X className="h-4 w-4" />
         </button>
 
-        <div className="grid lg:grid-cols-[1.05fr_1fr]">
-          {/* Copy */}
-          <div className="flex gap-5 p-5 pt-14 sm:p-10 sm:pt-12">
-            <div className="hidden shrink-0 flex-col items-center gap-4 lg:flex">
-              <span className="font-display text-xl font-bold text-amber-700">✕</span>
-              <span className="h-14 w-px bg-border" />
-              <span
-                className="eyebrow whitespace-nowrap"
-                style={{ writingMode: "vertical-rl" }}
+        <div className="relative p-4 pt-16 sm:p-8">
+          <header className="text-center">
+            <p className="font-display text-[0.65rem] font-semibold tracking-[0.3em] text-amber-400 uppercase">
+              Festival Offer · Valid Until Oct 30
+            </p>
+            <h2
+              id="offer-title"
+              className="mt-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text font-display text-2xl font-bold tracking-wide text-transparent uppercase sm:text-3xl"
+            >
+              Stories On Skin, For Less
+            </h2>
+            <div className="mt-3 flex items-center justify-center gap-2 text-amber-400/60">
+              <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-400/60" />
+              <TattooFlash name="sparkle" className="h-3 w-3" />
+              <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-400/60" />
+            </div>
+          </header>
+
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {offerImages.map((offer) => (
+              <div
+                key={offer.alt}
+                className="group flex flex-col overflow-hidden rounded-sm border border-amber-400/25 bg-black shadow-[0_10px_30px_-12px_rgba(0,0,0,0.8)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-[0_14px_40px_-12px_rgba(245,158,11,0.35)]"
               >
-                Follow Kryptonix
-              </span>
-              <span className="h-10 w-px bg-border" />
-              {socials.map(({ icon: Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-amber-700"
+                <button
+                  onClick={() => {
+                    requestClose();
+                    openBookingModal();
+                  }}
+                  aria-label={offer.alt}
+                  className="block w-full cursor-pointer overflow-hidden"
                 >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-
-            <div>
-              <p className="eyebrow text-amber-700">Limited Time Offer</p>
-              <h2
-                id="offer-title"
-                className="mt-3 font-display text-3xl leading-[0.95] font-medium tracking-tight sm:text-5xl"
-              >
-                Exclusive
-                <span className="mt-1 block font-script text-4xl text-amber-700 sm:text-6xl">
-                  Ink Offer
-                </span>
-              </h2>
-              <p className="mt-5 text-sm text-muted-foreground">
-                Premium tattoos. Exclusive savings.
-                <br />
-                Book your story today.
-              </p>
-
-              <div className="mt-6 flex items-stretch gap-5 border border-amber-700/40 p-5">
-                <div>
-                  <p className="eyebrow text-amber-700">Upto</p>
-                  <p className="font-display text-5xl font-bold leading-none">
-                    20<span className="text-amber-700">%</span>
-                  </p>
-                  <p className="font-display text-sm font-semibold tracking-[0.18em] text-amber-700 uppercase">
-                    Off
-                  </p>
-                </div>
-                <span className="w-px bg-amber-700/30" />
-                <div className="self-center">
-                  <p className="text-xs tracking-wide text-muted-foreground uppercase">
-                    On all
-                  </p>
-                  <p className="font-display text-xl font-bold tracking-[0.1em] text-amber-700 uppercase">
-                    Custom
-                    <br />
-                    Tattoos
-                  </p>
-                </div>
+                  <img
+                    src={offer.src}
+                    alt={offer.alt}
+                    className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </button>
+                <button
+                  onClick={() => {
+                    requestClose();
+                    openBookingModal();
+                  }}
+                  className="flex items-center justify-center gap-2 bg-yellow-400 px-4 py-3 font-display text-xs font-bold tracking-[0.14em] text-black uppercase transition-colors hover:bg-yellow-300"
+                >
+                  Claim This Offer <ArrowRight className="h-4 w-4" />
+                </button>
               </div>
-              <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-                Offer valid for a limited time only.
-                <br />
-                Don't miss your chance to get inked.
-              </p>
-
-              <div className="mt-6 grid gap-4 border-t border-border pt-5 sm:grid-cols-2">
-                {[
-                  [ShieldCheck, "100% Safe & Hygienic", "Your safety is our priority."],
-                  [PenTool, "Custom Designs", "Unique tattoos designed for you."],
-                  [Star, "Experienced Artist", "Skilled. Creative. Passionate."],
-                  [Diamond, "Premium Equipment", "Industry standard tools."],
-                ].map(([Icon, title, text]) => {
-                  const I = Icon as typeof ShieldCheck;
-                  return (
-                    <div
-                      key={title as string}
-                      className="flex items-start gap-3 transition-transform duration-300 hover:-translate-y-0.5"
-                    >
-                      <I className="mt-0.5 h-5 w-5 text-amber-700" strokeWidth={1.4} />
-                      <div>
-                        <p className="font-display text-xs font-semibold tracking-[0.1em] uppercase">
-                          {title as string}
-                        </p>
-                        <p className="text-xs text-muted-foreground">{text as string}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <button
-                onClick={requestClose}
-                className="mt-7 inline-flex items-center gap-2 rounded-sm border border-border px-5 py-3 font-display text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none"
-              >
-                ← Back To Home
-              </button>
-            </div>
+            ))}
           </div>
 
-          {/* Visual */}
-          <div className="relative min-h-[240px] bg-background">
-            <img
-              src={offerArm.url}
-              alt="Statue sleeve tattoo being inked with a tattoo machine"
-              className="blend-image h-56 w-full object-cover sm:h-72 lg:h-full"
-            />
-            <div className="absolute top-4 right-4 flex h-24 w-24 flex-col items-center justify-center rounded-full border border-amber-700/40 bg-background/90 text-center backdrop-blur sm:top-16 sm:right-6 sm:h-32 sm:w-32">
-              <p className="text-[0.55rem] tracking-[0.18em] text-muted-foreground uppercase">
-                Offer ends in
-              </p>
-              <p className="font-display text-base font-bold sm:text-xl">05 : 12 : 47</p>
-              <p className="text-[0.5rem] tracking-[0.16em] text-muted-foreground uppercase">
-                Days Hrs Mins
-              </p>
-            </div>
+          {/* Small ideas that fit the "up to 10 sq. inch" offer; each opens booking with a style */}
+          <div className="mt-7">
+            <p className="text-center font-display text-[0.65rem] font-semibold tracking-[0.2em] text-amber-400/90 uppercase">
+              Need an idea? These fit the 10 sq. inch offer
+            </p>
+            <ul className="mt-3 flex flex-wrap justify-center gap-2">
+              {OFFER_IDEAS.map((idea) => (
+                <li key={idea.label}>
+                  <button
+                    onClick={() => {
+                      requestClose();
+                      openBookingModal(idea.style);
+                    }}
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber-400/25 bg-white/[0.03] px-3 py-1.5 text-xs sm:min-h-0 text-stone-200 transition-colors hover:border-amber-400/70 hover:bg-amber-400/10 hover:text-amber-100 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"
+                  >
+                    <TattooFlash name={idea.icon} className="h-3.5 w-3.5 text-amber-400" />
+                    {idea.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="mx-5 mb-5 space-y-3 rounded-sm border border-amber-700/40 bg-primary p-4 sm:p-5 lg:absolute lg:inset-x-5 lg:bottom-5 lg:mx-0 lg:mb-0">
-              <p className="flex items-center gap-2 font-display text-[0.65rem] tracking-[0.14em] text-primary-foreground uppercase">
-                <CalendarDays className="h-4 w-4 text-amber-500" /> Book your appointment now
-              </p>
-              <a
-                href="#book"
-                onClick={requestClose}
-                className="flex items-center justify-center gap-2 bg-amber-600 px-4 py-3 font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
-              >
-                Book A Consultation <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="https://wa.me/917770012345"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2 border border-amber-600/60 px-4 py-3 font-display text-[0.7rem] font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
-              >
-                <MessageCircle className="h-4 w-4" /> Chat On WhatsApp
-              </a>
-              <p className="flex items-center justify-center gap-2 border-t border-amber-600/30 pt-3 text-[0.65rem] tracking-[0.12em] text-primary-foreground/80 uppercase">
-                <ShieldCheck className="h-4 w-4 text-amber-500" /> 100% safe &amp; hygienic studio
-              </p>
-            </div>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-sm border border-amber-400/60 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-amber-100 uppercase transition-colors hover:bg-amber-400/10"
+            >
+              <MessageCircle className="h-4 w-4" /> Chat On WhatsApp
+            </a>
+            <button
+              onClick={requestClose}
+              className="font-display text-xs font-semibold tracking-[0.14em] text-stone-400 uppercase underline-offset-4 transition-colors hover:text-stone-100 hover:underline"
+            >
+              Maybe Later
+            </button>
           </div>
         </div>
       </div>
@@ -490,462 +315,529 @@ function OfferModal({ onClose }: { onClose: () => void }) {
 function Index() {
   const [filter, setFilter] = useState("All");
   const [offerOpen, setOfferOpen] = useState(false);
+  const [galleryPageSize, setGalleryPageSize] = useState(GALLERY_PAGE_SIZE);
+  const [galleryVisibleCount, setGalleryVisibleCount] = useState(GALLERY_PAGE_SIZE);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [galleryAutoLoad, setGalleryAutoLoad] = useState(false);
+  const galleryEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const t = window.setTimeout(() => setOfferOpen(true), 10000);
     return () => window.clearTimeout(t);
   }, []);
 
+  // Jumping in via the "Gallery" nav link (or any direct #gallery link) means
+  // the visitor wants to browse the whole thing — switch to auto-load-on-scroll.
+  useEffect(() => {
+    const checkHash = () => {
+      if (window.location.hash === "#gallery") setGalleryAutoLoad(true);
+    };
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, []);
+
+  // Server renders the stored order; the browser reshuffles after mount so each
+  // visit shows a different, style-mixed set (shuffling during render would make
+  // the server and client HTML disagree). The gallery is below the fold, so the
+  // swap isn't visible. Photos this visitor saw on earlier visits go to the back,
+  // so each visit (and each Shuffle click) leads with photos they haven't seen.
+  const [mixedGallery, setMixedGallery] = useState(gallery);
+  const nextGalleryMix = useCallback(() => {
+    const pageSize = galleryPageSizeForScreen();
+    const { visit, seen } = loadGallerySeen();
+    const mixed = mixGallery(gallery, Math.random, seen);
+    // Only what's actually on screen counts as "seen"
+    saveGallerySeen(visit + 1, seen, mixed.slice(0, pageSize));
+    setMixedGallery(mixed);
+    setGalleryPageSize(pageSize);
+    setGalleryVisibleCount(pageSize);
+  }, []);
+  useEffect(nextGalleryMix, [nextGalleryMix]);
+  const reshuffleGallery = () => nextGalleryMix();
+
   const visibleGallery =
-    filter === "All" ? gallery : gallery.filter((g) => g.tag === filter);
+    filter === "All" ? mixedGallery : mixedGallery.filter((g) => g.tag === filter);
+  const shownGallery = visibleGallery.slice(0, galleryVisibleCount);
+  const hasMoreGallery = galleryVisibleCount < visibleGallery.length;
+
+  useEffect(() => {
+    setGalleryVisibleCount(galleryPageSize);
+  }, [filter, galleryPageSize]);
+
+  useEffect(() => {
+    if (!galleryAutoLoad || !hasMoreGallery) return;
+    const el = galleryEndRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setGalleryVisibleCount((c) => Math.min(c + galleryPageSize, visibleGallery.length));
+        }
+      },
+      { rootMargin: "600px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [
+    galleryAutoLoad,
+    hasMoreGallery,
+    galleryVisibleCount,
+    visibleGallery.length,
+    galleryPageSize,
+  ]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SocialDock />
       {offerOpen && <OfferModal onClose={() => setOfferOpen(false)} />}
-      {/* Nav */}
-      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
-          <Logo />
-          <nav className="hidden items-center gap-7 text-sm lg:flex">
-            {navLinks.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="relative text-muted-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:text-foreground hover:after:w-full"
-              >
-                {label}
-              </a>
-            ))}
-            <button
-              onClick={() => setOfferOpen(true)}
-              className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-transform duration-300 hover:-translate-y-0.5"
-            >
-              Offer
-            </button>
-          </nav>
-          <div className="flex items-center gap-4">
-            <a
-              href="tel:+917770012345"
-              className="hidden items-center gap-2 text-sm font-medium sm:flex"
-            >
-              <Phone className="h-4 w-4" />
-              +91 77700 12345
-            </a>
-            <a
-              href="#book"
-              className="rounded-sm bg-primary px-5 py-3 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-            >
-              Book Consultation
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader onOfferClick={() => setOfferOpen(true)} />
 
-      {/* Hero */}
+      {/* Hero — fine-line artwork. Its white background is multiplied into the
+          page colour, so the lines look drawn straight onto the page (no box).
+          Phones: centred above the text, sized so art + text fit one screen.
+          From lg: tall in the right-hand column. */}
       <section id="home" className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 lg:grid-cols-2 lg:py-16">
-          <div>
+        <div className="mx-auto grid max-w-7xl lg:grid-cols-2 lg:items-center lg:gap-10 lg:px-5 lg:py-16">
+          <div className="relative flex justify-center pt-6 sm:pt-10 lg:order-last lg:pt-0">
+            {/* Soft warm glow behind the drawing */}
+            <div
+              className="pointer-events-none absolute top-1/2 left-1/2 h-[80%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(245,158,11,0.10),transparent)] lg:w-[60%]"
+              aria-hidden="true"
+            />
+            <img
+              src={heroArt}
+              alt="Fine-line floral tattoo design of a woman's face intertwined with flowering vines"
+              width={315}
+              height={1039}
+              fetchPriority="high"
+              className="relative block h-[32svh] max-h-[24rem] min-h-[14rem] w-auto mix-blend-multiply sm:h-[42svh] sm:max-h-[28rem] lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
+            />
+          </div>
+
+          <div className="relative z-10 px-5 pt-6 pb-8 sm:pt-8 sm:pb-12 lg:px-0 lg:pt-0 lg:pb-0">
             <div className="flex items-center gap-3">
               <PenTool className="h-4 w-4 -rotate-45" />
               <p className="eyebrow">Ink Your Story</p>
             </div>
-            <h1 className="mt-5 font-display text-5xl leading-[0.95] font-medium tracking-tight uppercase sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-display text-[2.6rem] leading-[0.95] font-medium tracking-tight uppercase sm:mt-5 sm:text-6xl lg:text-7xl">
               Art you wear.
               <span className="mt-1 block font-extrabold">For life.</span>
             </h1>
-            <p className="mt-6 max-w-md text-muted-foreground">
+            <p className="mt-4 max-w-[19rem] text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:max-w-md sm:text-base">
               Custom tattoos. Premium hygiene. Unmatched artistry.
-              <br />
+              <span className="hidden sm:inline">
+                <br />
+              </span>{" "}
               We turn your ideas into timeless ink.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#book"
-                className="inline-flex items-center gap-3 rounded-sm bg-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
+              <button
+                onClick={() => openBookingModal()}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-4 font-display text-xs font-semibold tracking-[0.12em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:gap-3 sm:px-7 sm:py-4 sm:tracking-[0.14em]"
               >
-                Book Consultation <ArrowRight className="h-4 w-4" />
-              </a>
+                <span className="sm:hidden">Book Now</span>
+                <span className="hidden sm:inline">Book Consultation</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
               <a
                 href="#gallery"
-                className="inline-flex items-center gap-3 rounded-sm border border-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-primary bg-background px-4 font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-7 sm:py-4 sm:tracking-[0.14em]"
               >
-                Explore Work
+                <span className="sm:hidden">Our Work</span>
+                <span className="hidden sm:inline">Explore Work</span>
               </a>
             </div>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            <div className="mt-7 grid grid-cols-3 gap-3 border-t border-border pt-5 sm:mt-12 sm:gap-6 sm:border-0 sm:pt-0">
               {features.map(({ icon: Icon, title, text }) => (
-                <div key={title} className="flex items-start gap-3">
-                  <Icon className="mt-0.5 h-6 w-6" strokeWidth={1.4} />
+                <div key={title} className="flex flex-col items-start gap-2 sm:flex-row sm:gap-3">
+                  <Icon className="h-5 w-5 sm:mt-0.5 sm:h-6 sm:w-6" strokeWidth={1.4} />
                   <div>
-                    <p className="font-display text-sm font-semibold">{title}</p>
-                    <p className="text-xs text-muted-foreground">{text}</p>
+                    <p className="font-display text-[0.7rem] leading-tight font-semibold sm:text-sm">
+                      {title}
+                    </p>
+                    <p className="hidden text-xs text-muted-foreground sm:block">{text}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
-          <div className="relative">
-            <span className="pointer-events-none absolute -top-10 left-0 font-display text-[12rem] leading-none font-extrabold text-accent select-none">
-              1
-            </span>
-            <img
-              src={heroArm}
-              alt="Black and grey realism statue tattoo on an upper arm"
-              width={1024}
-              height={1536}
-              className="blend-image relative mx-auto max-h-[600px] w-full -scale-x-100 object-cover"
-            />
-          </div>
         </div>
       </section>
 
-      {/* About + stats */}
-      <section id="about" className="mx-auto max-w-7xl px-5 pb-16">
-        <div className="grid gap-8 rounded-sm border border-border bg-card p-8 shadow-[var(--shadow-card)] lg:grid-cols-[1fr_2.4fr]">
-          <div className="lg:border-r lg:border-border lg:pr-8">
-            <p className="eyebrow">About Us</p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Kryptonix Tattoo Studio is where creativity meets precision. Our
-              artists specialise in custom designs that reflect your story and
-              style.
-            </p>
-            <p className="mt-5 font-script text-2xl">Kryptonix Team</p>
-          </div>
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-            {stats.map(({ icon: Icon, value, label }) => (
-              <div key={label} className="text-center">
-                <Icon className="mx-auto h-7 w-7" strokeWidth={1.3} />
-                <p className="mt-4 font-display text-3xl font-semibold">{value}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{label}</p>
-              </div>
-            ))}
-          </div>
+      {/* About — short teaser; the full story lives on /about */}
+      <section id="about" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
+        <SectionHeading
+          eyebrow="About XING Tattoo Studio"
+          title="Custom Tattoo Studio in Brookefield, Bengaluru"
+        />
+        <p className="mx-auto mt-4 max-w-xs text-center font-script text-xl text-amber-700 sm:mt-5 sm:max-w-sm sm:text-2xl">
+          We make forever look easy.
+        </p>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+          A custom tattoo studio in AECS Layout, Brookefield — right above D-Mart. Since 2021, every
+          design has been drawn from scratch and inked by one artist, with single-use needles opened
+          in front of you. Trusted by clients from Whitefield, Marathahalli and across East
+          Bengaluru.
+        </p>
+
+        <StudioHighlights />
+
+        <div className="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+          <Link
+            to="/about"
+            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+          >
+            Read Our Story <ArrowRight className="h-4 w-4" />
+          </Link>
+          <button
+            onClick={() => openBookingModal()}
+            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm bg-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+          >
+            Book Free Consultation <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="mx-auto max-w-7xl px-5 pb-16">
+      <section id="services" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading eyebrow="Our Services" title="Tattoo Styles We Specialize In" />
-        <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
-          {styles.map(({ img, name, text }) => (
-            <article
-              key={name}
-              className="group media-hover rounded-sm border border-border bg-card shadow-[var(--shadow-card)]"
-            >
-              <img
-                src={img}
-                alt={`${name} tattoo example`}
-                width={640}
-                height={768}
-                loading="lazy"
-                className="h-44 w-full object-cover"
-              />
-              <div className="relative px-3 py-4 text-center">
-                <h3 className="font-display text-xs font-semibold tracking-[0.12em] uppercase">
-                  {name}
-                </h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  {text}
-                </p>
-                <span className="mx-auto mt-3 block h-px w-0 bg-primary transition-all duration-500 group-hover:w-10" />
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <a
-            href="#book"
-            className="inline-flex rounded-sm bg-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+        {/* Box-free style cards: photo, then a numbered label on a hairline that fills amber on hover */}
+        <ul className="mt-6 grid grid-cols-2 gap-x-3 gap-y-7 sm:mt-8 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-9 lg:grid-cols-6">
+          {SERVICE_SLUGS.map((slug, i) => {
+            const s = services[slug];
+            return (
+              <li key={slug}>
+                <Link to="/services/$slug" params={{ slug }} className="group block">
+                  <span className="block overflow-hidden rounded-sm bg-muted">
+                    <img
+                      src={s.heroImage}
+                      alt={s.heroImageAlt}
+                      width={640}
+                      height={800}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    />
+                  </span>
+                  <div className="relative mt-3 pt-3">
+                    <span
+                      className="absolute top-0 left-0 h-px w-full bg-border"
+                      aria-hidden="true"
+                    />
+                    <span
+                      className="absolute top-0 left-0 h-px w-6 bg-amber-700 transition-all duration-500 group-hover:w-full"
+                      aria-hidden="true"
+                    />
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-display text-[0.65rem] font-semibold text-amber-700 tabular-nums">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors group-hover:text-amber-700 sm:text-[0.8rem]">
+                          {s.shortName}
+                        </h3>
+                      </div>
+                      <ArrowRight
+                        className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-amber-700"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <span className="mt-1.5 block text-xs leading-relaxed text-muted-foreground">
+                      {s.tagline}
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="mt-10 text-center">
+          <Link
+            to="/services"
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-sm bg-primary px-7 py-3.5 sm:w-auto font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
           >
             View All Services
-          </a>
+          </Link>
         </div>
       </section>
 
-      {/* Artist */}
-      <section id="artist" className="relative mx-auto max-w-7xl overflow-hidden px-5 py-16">
-        <div className="relative grid gap-12 lg:grid-cols-[0.9fr_1fr]">
-          {/* Left rail + portrait */}
-          <div className="flex gap-6">
-            <div className="hidden shrink-0 flex-col items-center gap-6 pt-2 lg:flex">
-              <span className="font-display text-2xl font-bold tracking-tight text-[color:var(--color-brand-gold,theme(colors.amber.700))]">
-                ✕
-              </span>
-              <span className="h-24 w-px bg-border" />
-              <span
-                className="eyebrow whitespace-nowrap"
-                style={{ writingMode: "vertical-rl" }}
-              >
-                Kryptonix Tattoo Studio
-              </span>
-            </div>
+      {/* Artist — short teaser; the full profile lives on /tattoo-artist */}
+      <section
+        id="artist"
+        aria-labelledby="artist-title"
+        className="relative mx-auto max-w-7xl overflow-hidden px-5 py-12 sm:py-16"
+      >
+        <div className="relative grid items-center gap-6 sm:gap-10 lg:grid-cols-[0.95fr_1fr] lg:gap-14">
+          {/* Portrait — white backdrop multiplies into the page colour, no hard box */}
+          <figure className="group relative mx-auto w-full max-w-[20rem] sm:max-w-[520px]">
+            <img
+              src={artistPortrait}
+              alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, arms crossed showing tattooed forearms at XING Tattoo Studio"
+              width={1200}
+              height={1350}
+              loading="lazy"
+              className="w-full mix-blend-multiply transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+            <figcaption className="sr-only">
+              Peace, lead tattoo artist at XING Tattoo Studio, Brookefield
+            </figcaption>
+          </figure>
 
-            <div className="w-full">
-              <div className="group relative overflow-hidden bg-primary shadow-[var(--shadow-card)]">
-                <img
-                  src={artistPhoto.url}
-                  alt="Xing, founder and tattoo artist, arms crossed with full sleeve tattoos"
-                  width={980}
-                  height={1130}
-                  loading="lazy"
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:pt-4">
+          <div>
             <p className="eyebrow flex items-center gap-3">
-              <span className="h-px w-8 bg-amber-700" /> The Artist
+              <span className="h-px w-8 bg-amber-700" /> Meet The Artist
             </p>
-            <h3 className="mt-6 font-display text-4xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
+            <h2
+              id="artist-title"
+              className="mt-5 font-display text-[2rem] leading-[1.1] font-medium tracking-tight sm:mt-6 sm:text-5xl"
+            >
               One hand behind
               <br />
-              <span className="font-script text-5xl text-amber-700 sm:text-6xl">
-                every
-              </span>{" "}
-              piece in this studio.
-            </h3>
-            <div className="mt-6 h-px w-full bg-border" />
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-              No handoffs, no rotating chairs — every consultation, every stencil
-              and every session at Kryptonix is done by the same person. That's
-              the whole model: fewer tattoos, more attention to each one.
+              every{" "}
+              <span className="font-script text-[2.6rem] text-amber-700 sm:text-6xl">piece</span> in
+              this studio.
+            </h2>
+            <p className="mt-4 font-display text-sm font-semibold tracking-wide text-foreground/80">
+              Peace (Chingri Awungshi) — Lead Tattoo Artist, Brookefield, Bengaluru
+            </p>
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+              15+ years, 1800+ tattoos and a 4.9★ Google rating. Every consultation, stencil and
+              session at XING is done by Peace personally — from realism and portraits to fine-line
+              and Indian traditional work.
             </p>
 
-            <dl className="mt-8 divide-y divide-border border-y border-border text-sm">
-              {[
-                ["Studio Since", "2022"],
-                ["Working Styles", "Black & grey, fine line, illustrative, colour"],
-                ["Approach", "Custom design, appointment only"],
-                ["Languages", "English, हिन्दी, ಕನ್ನಡ"],
-              ].map(([label, value]) => (
-                <div
-                  key={label}
-                  className="grid gap-1 py-3 transition-colors hover:bg-accent sm:grid-cols-[180px_1fr]"
+            <div className="mt-7 flex flex-col gap-6 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-8">
+              {/* Signature */}
+              <div className="relative pr-4">
+                <p
+                  className="font-signature -rotate-3 text-5xl leading-none text-foreground sm:text-7xl"
+                  aria-label="Signed, Peace"
                 >
-                  <dt className="eyebrow">{label}</dt>
-                  <dd className="text-muted-foreground">{value}</dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="mt-8 flex flex-wrap items-center gap-8">
-              <div>
-                <p className="font-script text-3xl">Kryptonix</p>
-                <p className="eyebrow mt-1">Founder &amp; Artist</p>
+                  Peace
+                </p>
+                <svg
+                  viewBox="0 0 200 24"
+                  className="-mt-2 h-5 w-44 text-amber-700"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 16C50 8 110 5 196 9c-40 2-78 6-112 12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <p className="eyebrow mt-1">Chingri Awungshi · Lead Artist</p>
               </div>
-              <a
-                href="#book"
-                className="inline-flex items-center gap-3 rounded-sm bg-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
-              >
-                Discuss Your Idea <ArrowRight className="h-4 w-4" />
-              </a>
+              <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+                <button
+                  onClick={() => openBookingModal()}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-4 py-4 sm:gap-3 sm:px-7 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                >
+                  <span className="sm:hidden">Book Now</span>
+                  <span className="hidden sm:inline">Book With Peace</span>
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </button>
+                <Link
+                  to="/tattoo-artist"
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-primary px-4 py-4 sm:px-7 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                >
+                  Meet Peace
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Gallery */}
-      <section id="gallery" className="mx-auto max-w-7xl px-5 pb-16">
+      <section id="gallery" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading eyebrow="Our Work" title="Tattoo Gallery" />
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
+          {gallery.length}+ real tattoos from the chair — no stock photos. Tap any style to filter,
+          tap any photo to see it up close.
+        </p>
+        {/* Phones: one swipeable row (bleeds to the screen edges); wraps and centres from sm */}
+        <div className="-mx-5 mt-5 flex snap-x gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0">
           {galleryFilters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-sm px-4 py-2 text-xs font-medium transition-colors ${
+              className={`min-h-11 shrink-0 snap-start rounded-sm px-4 py-2 text-xs font-medium whitespace-nowrap transition-all duration-300 ${
                 filter === f
                   ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-muted-foreground hover:-translate-y-0.5 hover:text-foreground"
               }`}
             >
               {f}
             </button>
           ))}
+          <button
+            onClick={reshuffleGallery}
+            aria-label="Shuffle gallery photos"
+            className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 rounded-sm border border-border px-4 py-2 text-xs font-medium whitespace-nowrap text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-700 hover:text-foreground"
+          >
+            <Shuffle className="h-3.5 w-3.5" /> Shuffle
+          </button>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
-          {visibleGallery.map(({ img, alt, tag }) => (
-            <figure key={alt} className="group media-hover rounded-sm">
+        <div className="mt-5 columns-2 gap-3 sm:mt-6 sm:columns-3 sm:gap-4 lg:columns-4 xl:columns-5">
+          {shownGallery.map(({ img, alt, tag }, i) => (
+            <button
+              key={`${filter}-${tag}-${alt}-${i}`}
+              onClick={() => setLightboxIndex(i)}
+              aria-label={`View ${alt}`}
+              className="animate-fade-in group media-hover mb-3 block w-full sm:mb-4 appearance-none break-inside-avoid rounded-sm border-0 bg-transparent p-0 text-left focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none"
+              style={{
+                animationDelay: `${(i % galleryPageSize) * 0.05}s`,
+                animationFillMode: "backwards",
+              }}
+            >
               <img
                 src={img}
                 alt={alt}
                 width={640}
                 height={768}
                 loading="lazy"
-                className="h-56 w-full object-cover"
+                className="block h-auto w-full cursor-zoom-in"
               />
-              <figcaption className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/85 via-primary/20 to-transparent p-3 opacity-100 transition-opacity duration-500 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
+              <span className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/85 via-primary/20 to-transparent p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
                 <span className="font-display text-[0.6rem] tracking-[0.16em] text-primary-foreground uppercase">
                   {tag}
                 </span>
                 <span className="mt-1 text-xs text-primary-foreground/80">{alt}</span>
-              </figcaption>
-            </figure>
+              </span>
+            </button>
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <a
-            href="#book"
-            className="inline-flex items-center gap-3 rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
-          >
-            View Full Gallery <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section id="reviews" className="mx-auto max-w-7xl px-5 pb-16">
-        <SectionHeading eyebrow="Client Love" title="What Our Clients Say" />
-        <div className="relative mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
-          <div className="marquee-track gap-5">
-            {[...reviews, ...reviews].map(({ quote, name }, i) => (
-              <figure
-                key={`${name}-${i}`}
-                className="w-[300px] shrink-0 rounded-sm border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-soft)] sm:w-[360px]"
-              >
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
-                <blockquote className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  “{quote}”
-                </blockquote>
-                <figcaption className="mt-5 font-display text-sm font-semibold">
-                  — {name}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section id="faq" className="mx-auto max-w-7xl px-5 pb-16">
-        <SectionHeading eyebrow="Good To Know" title="Frequently Asked Questions" />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {faqs.map(([q, a]) => (
-            <div
-              key={q}
-              className="rounded-sm border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
+        <div className="mt-8 flex flex-col items-center gap-4">
+          {hasMoreGallery && galleryAutoLoad && (
+            <p
+              ref={galleryEndRef}
+              className="animate-pulse text-xs tracking-wide text-muted-foreground uppercase"
             >
-              <p className="font-display text-sm font-semibold">{q}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="book" className="mx-auto max-w-7xl px-5 pb-16">
-        <div className="grid overflow-hidden rounded-sm border border-border bg-card shadow-[var(--shadow-soft)] lg:grid-cols-[0.35fr_1fr]">
-          <img
-            src={ctaMachine}
-            alt="Tattoo artist holding a tattoo machine"
-            width={768}
-            height={640}
-            loading="lazy"
-            className="h-full max-h-56 w-full object-cover"
-          />
-          <div className="flex flex-wrap items-center justify-between gap-6 p-8">
-            <div>
-              <p className="eyebrow">Ready To Get Inked?</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-wide uppercase">
-                Book Your Consultation
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Let's bring your vision to life. Schedule your free consultation
-                today!
-              </p>
-            </div>
-            <div className="flex flex-col items-start gap-3">
-              <a
-                href="tel:+917770012345"
-                className="inline-flex items-center gap-3 rounded-sm bg-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-              >
-                Book Now <ArrowRight className="h-4 w-4" />
-              </a>
-              <p className="text-xs text-muted-foreground">500+ designs inked</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-2 lg:grid-cols-5">
-          <div>
-            <Logo />
-            <p className="mt-4 text-xs text-muted-foreground">
-              Custom tattoos. Premium hygiene. Unmatched artistry.
+              Loading more tattoos…
             </p>
-            <div className="mt-5 flex gap-4 text-muted-foreground">
-              <Instagram className="h-4 w-4" />
-              <MessageCircle className="h-4 w-4" />
-              <Youtube className="h-4 w-4" />
-              <Mail className="h-4 w-4" />
+          )}
+          {hasMoreGallery && !galleryAutoLoad && (
+            <button
+              onClick={() => setGalleryVisibleCount((c) => c + galleryPageSize)}
+              className="inline-flex min-h-12 w-full items-center justify-center gap-3 sm:w-auto rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent"
+            >
+              Load More Tattoos ({visibleGallery.length - galleryVisibleCount} more)
+            </button>
+          )}
+          <button
+            onClick={() => openBookingModal()}
+            className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-sm bg-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:w-auto"
+          >
+            <span className="sm:hidden">Book Your Consultation</span>
+            <span className="hidden sm:inline">Love What You See? Book Your Consultation</span>
+            <ArrowRight className="h-4 w-4 shrink-0" />
+          </button>
+        </div>
+      </section>
+
+      <GalleryLightbox
+        items={visibleGallery}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
+
+      <ReviewsSection />
+
+      {/* FAQ — the five most-asked questions; the full set lives on /faq */}
+      <section
+        id="faq"
+        aria-labelledby="home-faq-title"
+        className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16"
+      >
+        <div className="grid gap-7 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="h-px w-8 bg-amber-700" /> Good To Know
+            </p>
+            <h2
+              id="home-faq-title"
+              className="mt-4 font-display text-[1.75rem] leading-[1.1] font-medium tracking-tight sm:mt-5 sm:text-4xl"
+            >
+              Tattoo questions,{" "}
+              <span className="font-script text-[2.2rem] text-amber-700 sm:text-5xl">answered</span>
+            </h2>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              The five things people ask us most before a session. Cost, pain, hygiene, first
+              tattoos and aftercare — plus {faqs.length - homeFaqs.length} more answers on our FAQ
+              page.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+              <Link
+                to="/faq"
+                className="inline-flex min-h-12 items-center justify-center gap-2 sm:gap-3 rounded-sm bg-primary px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+              >
+                <span className="sm:hidden">All {faqs.length} FAQs</span>
+                <span className="hidden sm:inline">View All {faqs.length} FAQs</span>
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-primary px-3 py-3.5 font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-6 sm:tracking-[0.14em]"
+              >
+                <MessageCircle className="h-4 w-4 shrink-0" />
+                <span className="sm:hidden">Ask Us</span>
+                <span className="hidden sm:inline">Ask Your Question</span>
+              </a>
             </div>
           </div>
-          <div>
-            <p className="eyebrow">Quick Links</p>
-            <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
-              {navLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <a href={href} className="transition-colors hover:text-foreground">
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow">Our Services</p>
-            <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
-              {[
-                "Custom Tattoos",
-                "Cover Up Tattoos",
-                "Portrait Tattoos",
-                "Minimalist Tattoos",
-                "Geometric Tattoos",
-                "Black & Grey Tattoos",
-              ].map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow">Contact Us</p>
-            <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <Phone className="h-3.5 w-3.5" /> +91 77700 12345
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-3.5 w-3.5" /> ink@kryptonix.com
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5" /> Bangalore, India
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow">Working Hours</p>
-            <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
-              <li>Mon – Sat: 11:00 AM – 9:00 PM</li>
-              <li>Sunday: 12:00 PM – 8:00 PM</li>
-            </ul>
-          </div>
+
+          <Accordion type="single" collapsible defaultValue={homeFaqIds[0]!} className="space-y-3">
+            {homeFaqs.map((faq, i) => (
+              <AccordionItem
+                key={faq.id}
+                value={faq.id}
+                className="rounded-sm border border-border bg-card px-4 shadow-[var(--shadow-card)] transition-colors data-[state=open]:border-amber-700/40 sm:px-5"
+              >
+                <AccordionTrigger className="gap-3 py-4 font-display text-sm font-semibold hover:no-underline sm:gap-4 sm:py-5 sm:text-base">
+                  <span className="flex items-center gap-4 text-left">
+                    <span className="font-display text-xs font-bold text-amber-700 tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {faq.question}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent
+                  forceMount
+                  className="pb-5 text-sm leading-relaxed text-muted-foreground sm:pl-9"
+                >
+                  <p>{faq.answer}</p>
+                  <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                    <span className="font-semibold tracking-wide text-foreground/70 uppercase">
+                      People also ask:
+                    </span>
+                    {faq.related.slice(0, 2).map((rid) => (
+                      <Link
+                        key={rid}
+                        to="/faq"
+                        hash={rid}
+                        className="text-amber-700 underline decoration-amber-700/30 underline-offset-4 hover:decoration-amber-700"
+                      >
+                        {faqById.get(rid)?.question}
+                      </Link>
+                    ))}
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 border-t border-border px-5 py-5 text-xs text-muted-foreground">
-          <p>© 2026 Kryptonix Tattoo Studio. All Rights Reserved.</p>
-          <p className="flex gap-4">
-            <span>Privacy Policy</span>
-            <span>Terms & Conditions</span>
-          </p>
-        </div>
-      </footer>
+      </section>
+
+      <BookingCTA />
+
+      <SiteFooter />
     </main>
   );
 }
