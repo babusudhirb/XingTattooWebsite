@@ -10,9 +10,9 @@ import {
   Phone,
 } from "lucide-react";
 
-import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.jpg";
+import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import { aboutFaqs, aboutValues, hygieneStandards, visitLandmarks } from "@/data/about";
-import { ARTIST } from "@/data/artist";
+import { ARTIST, tattoosForClients } from "@/data/artist";
 import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
 import {
   Accordion,
@@ -20,11 +20,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SocialDock } from "@/components/site/SocialDock";
-import { openBookingModal } from "@/components/site/BookingContext";
-import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/site/Origami";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SocialDock } from "@/components/layout/SocialDock";
+import { openBookingModal } from "@/components/booking/BookingContext";
+import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/sections/Origami";
 
 const TITLE = "About XING Tattoo Studio | Custom Tattoo Studio in Brookefield, Bengaluru";
 const DESCRIPTION =
@@ -194,8 +194,7 @@ function AboutPage() {
           <AccordionFold
             items={[
               { value: ARTIST.studioSince, label: "Studio opened" },
-              { value: ARTIST.happyClients, label: "Happy clients" },
-              { value: ARTIST.tattoosCompleted, label: "Tattoos completed" },
+              tattoosForClients,
               { value: `${ARTIST.googleRating}★`, label: "Google rating" },
             ]}
           />

@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { getService } from "@/data/services";
-import { ServiceTemplate } from "@/components/site/ServiceTemplate";
+import { ServiceTemplate } from "@/components/services/ServiceTemplate";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {

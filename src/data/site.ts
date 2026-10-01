@@ -13,13 +13,13 @@ export const GOOGLE_REVIEWS_URL =
   "https://www.google.com/maps/search/?api=1&query=XING+Tattoo+Studio+AECS+Layout+Brookefield+Bengaluru";
 export const ADDRESS_LINE = "AECS Layout, Brookefield (60 Feet Rd, above DMART), Bengaluru";
 
+/** Header order: Home, Tattoo Designs (dropdown), the rest of these, then Offers. */
 export const navLinks = [
   { label: "Home", href: "/#home" },
-  { label: "About Us", href: "/about" },
   { label: "Artist", href: "/tattoo-artist" },
   { label: "Gallery", href: "/#gallery" },
-  { label: "Reviews", href: "/#reviews" },
   { label: "FAQ", href: "/faq" },
+  { label: "About Us", href: "/about" },
 ];
 
 export const socials = [

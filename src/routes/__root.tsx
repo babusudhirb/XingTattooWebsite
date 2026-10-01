@@ -1,17 +1,18 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
-import { BookingModal } from "../components/site/BookingModal";
-import artistPortrait from "../assets/artist/peace-tattoo-artist-xing-brookefield.jpg";
+import appCss from "@/styles/global.css?url";
+import archivoFont from "@/assets/fonts/archivo-latin.woff2?url";
+import karlaFont from "@/assets/fonts/karla-latin.woff2?url";
+import { BookingModalLoader } from "@/components/booking/BookingModalLoader";
+import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 
 /** Site-wide LocalBusiness schema — hours must match the booking modal (closed Tuesdays). */
 const localBusinessSchema = {
@@ -128,11 +129,14 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover",
+      },
       { name: "theme-color", content: "#faf9f7" },
       { title: "XING Tattoo Studio | Custom Tattoos in Brookefield, Bengaluru" },
       {
@@ -154,21 +158,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(localBusinessSchema) }],
     links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Karla:wght@400;500;600&family=Dancing+Script:wght@600&display=swap",
-      },
-      {
-        // Signature font subset to just the glyphs in "Peace" — a few KB
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&text=Peace&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      // Fonts are self-hosted (src/styles/fonts.css); preload the two used above the fold.
+      ...[archivoFont, karlaFont].map((href) => ({
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href,
+        crossOrigin: "anonymous" as const,
+      })),
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
     ],
@@ -194,13 +192,11 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <BookingModal />
-    </QueryClientProvider>
+      <BookingModalLoader />
+    </>
   );
 }

@@ -10,12 +10,11 @@ import {
   X,
 } from "lucide-react";
 
-import heroArt from "@/assets/hero-fineline-art.png";
-import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.jpg";
-import offer1 from "@/assets/offers/offer-1.jpg";
-import offer2 from "@/assets/offers/offer-2.jpg";
+import heroArt from "@/assets/hero-fineline-art.webp";
+import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 
 import { WHATSAPP_URL } from "@/data/site";
+import { OFFER_ENDS_LABEL, OFFER_IDEAS, OFFER_LABEL, offerImages } from "@/data/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import {
   gallery,
@@ -24,14 +23,14 @@ import {
   mixGallery,
   saveGallerySeen,
 } from "@/data/gallery";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SocialDock } from "@/components/site/SocialDock";
-import { SectionHeading } from "@/components/site/SectionHeading";
-import { GalleryLightbox } from "@/components/site/GalleryLightbox";
-import { ReviewsSection } from "@/components/site/ReviewsSection";
-import { BookingCTA } from "@/components/site/BookingCTA";
-import { StudioHighlights } from "@/components/site/StudioHighlights";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SocialDock } from "@/components/layout/SocialDock";
+import { SectionHeading } from "@/components/sections/SectionHeading";
+import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
+import { ReviewsSection } from "@/components/sections/ReviewsSection";
+import { BookingCTA } from "@/components/booking/BookingCTA";
+import { StudioHighlights } from "@/components/sections/StudioHighlights";
 import { reviewsSchema } from "@/data/reviews";
 import { faqById, faqs, homeFaqIds } from "@/data/faqs";
 import {
@@ -40,8 +39,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { openBookingModal } from "@/components/site/BookingContext";
-import { TattooFlash, type FlashName } from "@/components/site/TattooFlash";
+import { openBookingModal } from "@/components/booking/BookingContext";
+import { TattooFlash, type FlashName } from "@/components/sections/TattooFlash";
 
 const GALLERY_PAGE_SIZE = 24;
 const GALLERY_PAGE_SIZE_PHONE = 12;
@@ -84,14 +83,6 @@ const features = [
   { icon: CrownIcon, title: "Premium Quality", text: "Premium inks & equipment" },
 ];
 
-const offerImages = [
-  { src: offer1, alt: "Festival offer — any tattoo up to 10 sq. inch for ₹2,499" },
-  {
-    src: offer2,
-    alt: "Festival offer — 50% off tattoos, black & grey ₹399 or colour ₹499 per sq. inch",
-  },
-];
-
 /** Background flash art for the offer popup: position, tilt and drift offset. */
 const OFFER_FLASH: {
   name: FlashName;
@@ -110,17 +101,6 @@ const OFFER_FLASH: {
   { name: "rose", className: "bottom-10 -left-4 h-28 w-28", rotate: -8, delay: 2 },
   { name: "moon", className: "-bottom-4 right-8 h-24 w-24", rotate: 10, delay: 4 },
   { name: "sparkle", className: "top-1/2 left-6 hidden h-8 w-8 sm:block", rotate: 0, delay: 1 },
-];
-
-/** Small pieces that fit the "any tattoo up to 10 sq. inch" offer; style pre-fills booking. */
-const OFFER_IDEAS: { label: string; style: string; icon: FlashName }[] = [
-  { label: "Fine-line rose", style: "Minimalist", icon: "rose" },
-  { label: "Mini compass", style: "Geometric", icon: "compass" },
-  { label: "Moon & stars", style: "Minimalist", icon: "moon" },
-  { label: "Heart & name banner", style: "Minimalist", icon: "heart" },
-  { label: "Name or date script", style: "Minimalist", icon: "sparkle" },
-  { label: "Om or Trishul", style: "Traditional", icon: "sparkle" },
-  { label: "Mini dagger", style: "Black & Grey", icon: "dagger" },
 ];
 
 function OfferModal({ onClose }: { onClose: () => void }) {
@@ -219,13 +199,13 @@ function OfferModal({ onClose }: { onClose: () => void }) {
         <div className="relative p-4 pt-16 sm:p-8">
           <header className="text-center">
             <p className="font-display text-[0.65rem] font-semibold tracking-[0.3em] text-amber-400 uppercase">
-              Festival Offer · Valid Until Oct 30
+              {OFFER_LABEL} · Valid Until {OFFER_ENDS_LABEL}
             </p>
             <h2
               id="offer-title"
               className="mt-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text font-display text-2xl font-bold tracking-wide text-transparent uppercase sm:text-3xl"
             >
-              Stories On Skin, For Less
+              More Art. More You.
             </h2>
             <div className="mt-3 flex items-center justify-center gap-2 text-amber-400/60">
               <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-400/60" />
@@ -234,7 +214,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
             </div>
           </header>
 
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {offerImages.map((offer) => (
               <div
                 key={offer.alt}
@@ -299,6 +279,13 @@ function OfferModal({ onClose }: { onClose: () => void }) {
             >
               <MessageCircle className="h-4 w-4" /> Chat On WhatsApp
             </a>
+            <Link
+              to="/offer"
+              onClick={requestClose}
+              className="inline-flex items-center gap-2 px-2 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-amber-200 uppercase underline-offset-4 transition-colors hover:text-amber-100 hover:underline"
+            >
+              Full Offer Details <ArrowRight className="h-4 w-4" />
+            </Link>
             <button
               onClick={requestClose}
               className="font-display text-xs font-semibold tracking-[0.14em] text-stone-400 uppercase underline-offset-4 transition-colors hover:text-stone-100 hover:underline"
@@ -391,18 +378,19 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       <SocialDock />
       {offerOpen && <OfferModal onClose={() => setOfferOpen(false)} />}
-      <SiteHeader onOfferClick={() => setOfferOpen(true)} />
+      <SiteHeader />
 
       {/* Hero — fine-line artwork. Its white background is multiplied into the
           page colour, so the lines look drawn straight onto the page (no box).
-          Phones: centred above the text, sized so art + text fit one screen.
-          From lg: tall in the right-hand column. */}
+          Below lg: the drawing sits beside the headline (same row), with the
+          buttons and features full-width underneath. From lg: tall in the
+          right-hand column, text centred beside it. */}
       <section id="home" className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl lg:grid-cols-2 lg:items-center lg:gap-10 lg:px-5 lg:py-16">
-          <div className="relative flex justify-center pt-6 sm:pt-10 lg:order-last lg:pt-0">
+        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 px-5 pt-6 pb-8 sm:gap-x-8 sm:pt-10 sm:pb-12 lg:grid-cols-2 lg:gap-x-10 lg:py-16">
+          <div className="relative col-start-2 row-start-1 flex justify-center lg:row-span-2">
             {/* Soft warm glow behind the drawing */}
             <div
-              className="pointer-events-none absolute top-1/2 left-1/2 h-[80%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(245,158,11,0.10),transparent)] lg:w-[60%]"
+              className="pointer-events-none absolute top-1/2 left-1/2 h-[80%] w-[180%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(245,158,11,0.10),transparent)] lg:w-[60%]"
               aria-hidden="true"
             />
             <img
@@ -411,16 +399,16 @@ function Index() {
               width={315}
               height={1039}
               fetchPriority="high"
-              className="relative block h-[32svh] max-h-[24rem] min-h-[14rem] w-auto mix-blend-multiply sm:h-[42svh] sm:max-h-[28rem] lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
+              className="relative block h-60 w-auto mix-blend-multiply sm:h-72 lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
             />
           </div>
 
-          <div className="relative z-10 px-5 pt-6 pb-8 sm:pt-8 sm:pb-12 lg:px-0 lg:pt-0 lg:pb-0">
+          <div className="relative z-10 col-start-1 row-start-1 lg:self-end">
             <div className="flex items-center gap-3">
               <PenTool className="h-4 w-4 -rotate-45" />
               <p className="eyebrow">Ink Your Story</p>
             </div>
-            <h1 className="mt-4 font-display text-[2.6rem] leading-[0.95] font-medium tracking-tight uppercase sm:mt-5 sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-display text-[clamp(2rem,9.5vw,2.6rem)] leading-[0.95] font-medium tracking-tight uppercase sm:mt-5 sm:text-6xl lg:text-7xl">
               Art you wear.
               <span className="mt-1 block font-extrabold">For life.</span>
             </h1>
@@ -431,10 +419,13 @@ function Index() {
               </span>{" "}
               We turn your ideas into timeless ink.
             </p>
+          </div>
+
+          <div className="relative z-10 col-span-2 row-start-2 lg:col-span-1 lg:col-start-1 lg:self-start">
             <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-4 font-display text-xs font-semibold tracking-[0.12em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:gap-3 sm:px-7 sm:py-4 sm:tracking-[0.14em]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-3 font-display text-xs font-semibold tracking-[0.12em] whitespace-nowrap text-primary-foreground uppercase transition-opacity hover:opacity-90 min-[360px]:px-4 sm:gap-3 sm:px-7 sm:py-4 sm:tracking-[0.14em]"
               >
                 <span className="sm:hidden">Book Now</span>
                 <span className="hidden sm:inline">Book Consultation</span>
@@ -822,7 +813,7 @@ function Index() {
                         key={rid}
                         to="/faq"
                         hash={rid}
-                        className="text-amber-700 underline decoration-amber-700/30 underline-offset-4 hover:decoration-amber-700"
+                        className="inline-flex min-h-11 items-center text-amber-700 underline decoration-amber-700/30 underline-offset-4 hover:decoration-amber-700"
                       >
                         {faqById.get(rid)?.question}
                       </Link>

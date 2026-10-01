@@ -12,10 +12,16 @@ export const ARTIST = {
   googleRating: "4.9",
 };
 
+/** Tattoos and clients shown together everywhere: "1800+ tattoos for 1200+ happy clients". */
+export const tattoosForClients = {
+  value: ARTIST.tattoosCompleted,
+  label: `Tattoos for ${ARTIST.happyClients} happy clients`,
+  wide: true,
+};
+
 export const artistMilestones = [
   { value: `${ARTIST.yearsExperience} yrs`, label: "Behind the machine" },
-  { value: ARTIST.tattoosCompleted, label: "Tattoos completed" },
-  { value: ARTIST.happyClients, label: "Happy clients" },
+  tattoosForClients,
   { value: `${ARTIST.googleRating}★`, label: "Google rating" },
   { value: ARTIST.studioSince, label: "Opened XING" },
 ];

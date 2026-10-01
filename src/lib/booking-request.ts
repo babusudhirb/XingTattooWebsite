@@ -55,6 +55,65 @@ export const sendBookingRequest = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
+const offerClaimSchema = z.object({
+  name: z.string().trim().min(2).max(80),
+  phone: bookingSchema.shape.phone,
+  offer: z.string().trim().min(1).max(80),
+  idea: z.string().trim().max(600).optional(),
+  /** Honeypot — real users never see or fill this field. */
+  company: z.string().max(0).optional(),
+});
+
+export type OfferClaimRequest = z.input<typeof offerClaimSchema>;
+
+/** Lead from the /offer page's "Claim your tattoo offer" popup. */
+export const sendOfferClaim = createServerFn({ method: "POST" })
+  .validator(offerClaimSchema)
+  .handler(async ({ data }) => {
+    const wa = whatsappNumber(data.phone);
+    const rows: [string, string][] = [
+      ["Name", data.name],
+      ["Phone / WhatsApp", data.phone],
+      ["Offer", data.offer],
+      ["Idea", data.idea || "—"],
+    ];
+    const text = [
+      "New tattoo offer claim from the website",
+      "",
+      ...rows.map(([k, v]) => `${k}: ${v}`),
+      "",
+      `Call: tel:+${wa}`,
+      `WhatsApp: https://wa.me/${wa}`,
+    ].join("\n");
+    const html = `<!doctype html><html><body style="margin:0;background:#f6f5f2;font-family:Arial,Helvetica,sans-serif;color:#111">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="padding:24px 12px"><tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#fff;border:1px solid #e5e2dc">
+<tr><td style="padding:24px 24px 8px">
+<p style="margin:0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b45309">New Offer Claim</p>
+<h1 style="margin:8px 0 0;font-size:22px">${escapeHtml(data.name)}</h1>
+<p style="margin:6px 0 0;font-size:14px;color:#555">${escapeHtml(data.offer)}</p>
+</td></tr>
+<tr><td style="padding:16px 24px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px">
+${rows
+  .map(
+    ([k, v]) =>
+      `<tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:#777;width:40%">${k}</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:bold">${escapeHtml(v)}</td></tr>`,
+  )
+  .join("\n")}
+</table></td></tr>
+<tr><td style="padding:8px 24px 24px">
+<a href="https://wa.me/${wa}" style="display:inline-block;background:#059669;color:#fff;text-decoration:none;padding:12px 18px;font-size:13px;font-weight:bold;margin:0 8px 8px 0">WhatsApp client</a>
+<a href="tel:+${wa}" style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:12px 18px;font-size:13px;font-weight:bold;margin:0 0 8px">Call client</a>
+</td></tr>
+</table>
+<p style="font-size:11px;color:#999">Sent from the ${STUDIO_NAME} website offer page.</p>
+</td></tr></table></body></html>`;
+
+    await sendGmail({ subject: `Offer claim: ${data.name} · ${data.offer}`, text, html });
+    return { ok: true as const };
+  });
+
 function whatsappNumber(phone: string) {
   const digits = phone.replace(/\D/g, "");
   return digits.length === 10 ? `91${digits}` : digits;

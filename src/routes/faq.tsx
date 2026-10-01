@@ -10,11 +10,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SocialDock } from "@/components/site/SocialDock";
-import { openBookingModal } from "@/components/site/BookingContext";
-import { CreaseLines, SectionNav } from "@/components/site/Origami";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SocialDock } from "@/components/layout/SocialDock";
+import { openBookingModal } from "@/components/booking/BookingContext";
+import { CreaseLines, SectionNav } from "@/components/sections/Origami";
 
 const TITLE = "Tattoo FAQs | Cost, Pain, Aftercare & Booking | XING Tattoo Studio Brookefield";
 const DESCRIPTION =

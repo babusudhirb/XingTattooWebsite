@@ -1,0 +1,2211 @@
+/*
+ * Offer landing page (/offer). Colours and fonts follow the XING site theme
+ * (tokens from src/styles/global.css). Everything is scoped under .olp.
+ */
+
+html:has(.olp) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+.olp {
+  --bg: var(--background);
+  --panel: var(--card);
+  --text: var(--foreground);
+  --muted: var(--muted-foreground);
+  --gold: #b45309; /* site accent: amber-700 */
+  --line: var(--border);
+  --ink: #0b0a08; /* site dark offer panels */
+  --yellow: #facc15; /* site offer buttons: yellow-400 */
+  --display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --script: "Dancing Script", cursive;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: clip;
+}
+.olp * {
+  box-sizing: border-box;
+}
+.olp a {
+  color: inherit;
+  text-decoration: none;
+}
+.olp :is(a, button, summary, input, select, textarea):focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+.olp img {
+  display: block;
+  max-width: 100%;
+}
+.olp button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.olp :is(h1, h2, h3, p, figure, blockquote, dl, dd) {
+  margin: 0;
+}
+.olp :is(h1, h2) {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+.olp h1 {
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  text-transform: uppercase;
+}
+.olp h2 {
+  font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+}
+.olp h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.olp p {
+  color: var(--muted);
+}
+.olp em {
+  font-family: var(--script);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.12em;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--gold);
+}
+.olp .wrap {
+  width: min(1160px, calc(100% - 96px));
+  margin: auto;
+}
+.olp .section {
+  padding: 64px 0;
+}
+.olp .eyebrow {
+  display: block;
+  color: var(--gold);
+  font-family: var(--display);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.olp .stars {
+  color: #f59e0b;
+  letter-spacing: 0.08em;
+}
+
+/* Buttons — site style: square, uppercase display type */
+.olp .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 14px 26px;
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  border-radius: 2px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  text-align: center;
+  transition:
+    opacity 0.18s,
+    transform 0.18s,
+    background 0.18s;
+}
+.olp .btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+.olp .btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+.olp .btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.olp .btn.outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
+.olp .btn.outline:hover {
+  opacity: 1;
+  background: var(--accent);
+}
+.olp .btn.gold {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: #000;
+}
+.olp .btn.gold:hover {
+  opacity: 1;
+  background: #fde047;
+}
+.olp .btn.whatsapp {
+  background: #059669;
+  border-color: #059669;
+  color: #fff;
+}
+.olp .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 0.9375rem;
+  border-bottom: 1px solid var(--line);
+  transition:
+    color 0.18s,
+    border-color 0.18s;
+}
+.olp .text-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.olp .skip {
+  position: fixed;
+  top: -90px;
+  left: 20px;
+  z-index: 100;
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px;
+}
+.olp .skip:focus {
+  top: 12px;
+}
+.olp .micro {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+/* Top offer bar */
+.olp .top-offer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 10px 16px;
+  border: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(245, 158, 11, 0.22), transparent 70%), var(--ink);
+  color: #f5f5f4;
+  font-family: var(--display);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.olp .top-offer strong {
+  color: var(--yellow);
+  font-weight: 700;
+}
+.olp .top-offer-tag {
+  background: var(--yellow);
+  color: #000;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.olp .top-offer-cta {
+  color: #fcd34d;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.olp .top-offer:hover .top-offer-cta {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Header */
+.olp .site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.olp .header-inner {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.olp .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.olp .brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.olp .brand-name {
+  line-height: 1;
+}
+.olp .brand-name strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.125rem;
+  letter-spacing: 0.04em;
+}
+.olp .brand-name span {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+.olp .nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 0.875rem;
+}
+.olp .nav > a {
+  color: var(--muted);
+  transition: color 0.18s;
+}
+.olp .nav > a:hover {
+  color: var(--text);
+}
+.olp .nav .btn {
+  min-height: 44px;
+  padding: 10px 20px;
+}
+
+/* Hero */
+.olp .hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  padding-top: 36px;
+  padding-bottom: 44px;
+  align-items: center;
+}
+.olp .hero h1 {
+  margin-bottom: 22px;
+}
+.olp .h1-accent {
+  color: var(--gold);
+  white-space: nowrap;
+}
+.olp .hero .intro {
+  font-size: 1.0625rem;
+  max-width: 470px;
+  line-height: 1.7;
+}
+.olp .hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.olp .hero-actions .btn {
+  min-height: 56px;
+  padding-inline: 30px;
+  font-size: 0.8125rem;
+}
+.olp .hero-proof {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.olp .hero-proof li + li {
+  border-left: 1px solid var(--line);
+  padding-left: 18px;
+}
+.olp .hero-proof strong {
+  color: var(--text);
+  font-family: var(--display);
+}
+.olp .hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 640px;
+  justify-self: end;
+  width: 100%;
+  max-width: 512px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
+}
+.olp .hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.olp .hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent 45%);
+  pointer-events: none;
+}
+.olp .hero-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: #000;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-family: var(--display);
+  text-transform: uppercase;
+  line-height: 1;
+  transform: rotate(-8deg);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+.olp .hero-badge span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.olp .hero-badge strong {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 2px 0;
+}
+.olp .hero-card {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  background: rgba(11, 10, 8, 0.82);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 2px;
+  color: #f5f5f4;
+}
+.olp .hero-card span {
+  font-size: 0.75rem;
+  color: #d6d3d1;
+}
+.olp .hero-card strong {
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--yellow);
+  line-height: 1.1;
+}
+.olp .hero-card em {
+  font-family: var(--display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fcd34d;
+  margin-top: 4px;
+}
+
+/* Section heading */
+.olp .section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+.olp .section-heading .eyebrow {
+  margin-bottom: 14px;
+}
+.olp .section-heading > p {
+  max-width: 340px;
+  font-size: 0.9375rem;
+}
+.olp .section-heading.center {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+.olp .section-heading.center > p {
+  max-width: 520px;
+  margin-top: 14px;
+}
+
+/* Offers */
+.olp .offers-section {
+  background: var(--panel);
+  border-block: 1px solid var(--line);
+  padding: 96px 0;
+}
+/* The offers are the page's main event — wider and roomier than other sections */
+.olp .offers-section > .wrap {
+  width: min(1320px, calc(100% - 96px));
+}
+.olp .offers-section .section-heading {
+  margin-bottom: 44px;
+}
+.olp .offers-section h2 {
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+}
+.olp .offers-section .section-heading > p {
+  font-size: 1rem;
+  max-width: 600px;
+}
+.olp .offers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+.olp .offer-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+.olp .offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.35);
+}
+.olp .offer-card.featured {
+  background: var(--ink);
+  border-color: rgba(251, 191, 36, 0.55);
+  color: #f5f5f4;
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.35),
+    0 24px 44px -22px rgba(0, 0, 0, 0.6);
+}
+.olp .offer-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  background: var(--ink);
+  overflow: hidden;
+  text-align: left;
+}
+.olp .offer-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.olp .offer-photo:hover img {
+  transform: scale(1.05);
+}
+.olp .offer-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.45) 38%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+.olp .offer-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  padding: 5px 10px;
+  border-radius: 2px;
+  background: rgba(11, 10, 8, 0.8);
+  color: #f5f5f4;
+  font-family: var(--display);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.olp .featured .offer-badge {
+  background: var(--yellow);
+  color: #000;
+}
+.olp .offer-overlay {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.olp .offer-kicker {
+  font-family: var(--display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e7e5e4;
+}
+.olp .offer-price {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 2.7vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--yellow);
+  margin-top: 4px;
+}
+.olp .offer-price small {
+  display: block;
+  font-size: 0.4em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fde68a;
+  margin-bottom: 2px;
+}
+.olp .offer-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  color: #e7e5e4;
+}
+.olp .offer-tiers b {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 800;
+  color: var(--yellow);
+  letter-spacing: -0.02em;
+}
+.olp .offer-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 18px 20px;
+}
+.olp .offer-body h3 {
+  font-size: 1.15rem;
+}
+.olp .offer-body p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 6px 0 16px;
+}
+.olp .featured .offer-body p {
+  color: #d6d3d1;
+}
+.olp .offer-body .btn {
+  margin-top: auto;
+  min-height: 50px;
+  padding: 10px 14px;
+  width: 100%;
+}
+.olp .featured .btn.gold {
+  box-shadow: 0 10px 24px -12px rgba(250, 204, 21, 0.7);
+}
+.olp .price-note {
+  font-size: 0.8125rem;
+  margin: 20px auto 0;
+  max-width: 680px;
+  text-align: center;
+}
+
+/* Why XING */
+.olp .why-section {
+  background:
+    radial-gradient(ellipse at top, rgba(245, 158, 11, 0.16), transparent 60%), var(--ink);
+  color: #f5f5f4;
+  padding: 56px 0;
+}
+.olp .why-section .eyebrow {
+  color: #fbbf24;
+}
+.olp .why-section h2 em {
+  color: #fcd34d;
+}
+.olp .why-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.olp .why-grid li {
+  background: var(--ink);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.olp .why-icon {
+  width: 30px;
+  height: 30px;
+  color: #fbbf24;
+  margin-bottom: 12px;
+}
+.olp .why-value {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--yellow);
+}
+.olp .why-grid h3 {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  color: #f5f5f4;
+}
+.olp .why-grid p {
+  font-size: 0.875rem;
+  margin-top: 6px;
+  color: #a8a29e;
+}
+
+/* Our work */
+.olp .work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.olp .work-grid figure {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--secondary);
+}
+.olp .work-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.olp .work-grid figure:hover img {
+  transform: scale(1.05);
+}
+.olp .work-cta {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.olp .work-cta p {
+  font-family: var(--display);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Artist */
+.olp .artist-section {
+  background: var(--panel);
+  border-block: 1px solid var(--line);
+}
+.olp .artist-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+.olp .artist-photo {
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+.olp .artist-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  mix-blend-mode: multiply;
+}
+.olp .artist-tag {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  padding: 12px 20px;
+  background: var(--bg);
+  font-size: 0.75rem;
+  color: var(--muted);
+  box-shadow: var(--shadow-card);
+}
+.olp .artist-tag strong {
+  display: block;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.olp .artist-copy h2 {
+  margin-bottom: 22px;
+}
+.olp .artist-copy > p {
+  max-width: 540px;
+}
+.olp .artist-copy .artist-role {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text);
+  opacity: 0.8;
+  margin: -8px 0 16px;
+}
+.olp .artist-facts {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.olp .artist-facts li {
+  background: linear-gradient(90deg, #fffbeb, #fef3c7);
+  color: #78350f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 7px 18px 7px 14px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+}
+
+/* Path to ink */
+.olp .stages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  counter-reset: none;
+}
+.olp .stages > li {
+  position: relative;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.olp .stages > li::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+}
+.olp .stage-num {
+  display: block;
+  font-family: var(--display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+  margin-bottom: 10px;
+}
+.olp .stages h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+.olp .stages p {
+  font-size: 0.9375rem;
+}
+.olp .guide {
+  margin-top: 14px;
+}
+.olp .guide summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-family: var(--display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid currentColor;
+}
+.olp .guide summary::-webkit-details-marker {
+  display: none;
+}
+.olp .guide summary span {
+  transition: transform 0.2s;
+}
+.olp .guide[open] summary span {
+  transform: rotate(90deg);
+}
+.olp .guide ul {
+  margin: 14px 0 0;
+  padding: 14px 16px 14px 32px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.olp .guide li + li {
+  margin-top: 6px;
+}
+
+/* First tattoo */
+.olp .first-section {
+  background: linear-gradient(135deg, #fffbeb, var(--panel) 60%);
+  border-block: 1px solid var(--line);
+  padding: 60px 0;
+}
+.olp .first-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.olp .first-grid h2 {
+  margin-bottom: 20px;
+}
+.olp .first-grid > div > p {
+  max-width: 460px;
+  font-size: 1rem;
+}
+.olp .first-quote {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--gold);
+  background: var(--bg);
+  max-width: 460px;
+  box-shadow: var(--shadow-card);
+}
+.olp .first-quote blockquote {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--text);
+}
+.olp .first-quote figcaption {
+  margin-top: 8px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.olp .first-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+}
+.olp .first-points li {
+  display: flex;
+  gap: 15px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.olp .first-points li:first-child {
+  padding-top: 0;
+}
+.olp .check {
+  flex-shrink: 0;
+  display: grid;
+  place-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.olp .first-points strong {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.olp .first-points p {
+  font-size: 0.875rem;
+  margin-top: 2px;
+}
+
+/* Reviews */
+.olp .reviews-section {
+  background: var(--panel);
+  border-block: 1px solid var(--line);
+}
+.olp .reviews-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+.olp .rating-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  box-shadow: var(--shadow-card);
+}
+.olp .rating-box > strong {
+  font-family: var(--display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.olp .rating-box div {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.olp .rating-box .stars {
+  font-size: 1.1rem;
+}
+/* Auto-sliding row: the track holds the reviews twice and slides half its width */
+.olp .reviews {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.olp .reviews-track {
+  display: flex;
+  width: max-content;
+  animation: olp-slide 48s linear infinite;
+}
+.olp .reviews:hover .reviews-track,
+.olp .reviews:active .reviews-track {
+  animation-play-state: paused;
+}
+@keyframes olp-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.olp .review {
+  flex: 0 0 auto;
+  width: 360px;
+  margin-right: 18px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  box-shadow: var(--shadow-card);
+}
+.olp .review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.olp .review-tag {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #78350f;
+  background: #fef3c7;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.olp .review blockquote {
+  margin: 12px 0 14px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.olp .review figcaption {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.olp .review figcaption strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 0.875rem;
+  color: var(--text);
+}
+.olp .avatar {
+  display: grid;
+  place-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--yellow);
+  font-family: var(--display);
+  font-weight: 700;
+}
+.olp .reviews-cta {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+/* Design your tattoos — the site's dark gold panel */
+.olp .quote-section {
+  background:
+    radial-gradient(ellipse at top left, rgba(245, 158, 11, 0.16), transparent 55%), var(--ink);
+  color: #f5f5f4;
+  padding: 60px 0;
+}
+.olp .quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.olp .quote-section .eyebrow {
+  color: #fbbf24;
+  letter-spacing: 0.3em;
+}
+.olp .quote-section h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-bottom: 22px;
+}
+.olp .quote-section h2 i {
+  font-family: var(--script);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.12em;
+  letter-spacing: 0;
+  color: #fcd34d;
+}
+.olp .quote-section p {
+  color: #d6d3d1;
+}
+.olp .quote-section .contact-note {
+  font-size: 0.875rem;
+  margin-top: 22px;
+  color: #a8a29e;
+}
+.olp .quote-section .contact-note a {
+  border-bottom: 1px solid;
+  color: #fde68a;
+}
+.olp .quote-form {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  border-radius: 2px;
+  color: #f5f5f4;
+}
+.olp .quote-form label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #d6d3d1;
+  margin-bottom: 8px;
+}
+.olp .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+.olp .quote-form :is(select, textarea) {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5f5f4;
+  padding: 12px;
+  font: inherit;
+  font-size: 1rem;
+}
+.olp .quote-form option {
+  background: var(--ink);
+}
+.olp .quote-form textarea {
+  height: 96px;
+  resize: vertical;
+  min-height: 70px;
+}
+.olp .quote-form textarea::placeholder {
+  color: #78716c;
+}
+.olp .quote-form label span {
+  font-weight: 400;
+  color: #78716c;
+}
+.olp .quote-form .btn {
+  background: #059669;
+  border-color: #059669;
+  color: #fff;
+  width: 100%;
+  margin-top: 16px;
+}
+.olp .quote-form .btn:hover {
+  opacity: 1;
+  background: #047857;
+}
+.olp .quote-form .micro {
+  font-size: 0.75rem;
+  margin-top: 12px;
+  color: #a8a29e;
+}
+
+/* Location */
+.olp .location {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.olp .location h2 {
+  margin-bottom: 20px;
+}
+.olp .location address {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.olp .location address strong {
+  display: block;
+  color: var(--text);
+  font-family: var(--display);
+}
+.olp .location-info {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 20px 28px;
+  margin: 20px 0 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.olp .location-info dt {
+  font-family: var(--display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.olp .location-info dd {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.olp .location-info dd a {
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+}
+.olp .location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.olp .map {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--secondary);
+  box-shadow: var(--shadow-card);
+}
+.olp .map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Footer */
+.olp .footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 28px;
+}
+.olp .footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.olp .footer p,
+.olp .footer button {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.olp .footer button {
+  min-height: 44px;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.olp .footer button:hover {
+  color: var(--text);
+}
+.olp .mobile-cta {
+  display: none;
+}
+
+/* Dialogs */
+.olp dialog {
+  margin: auto;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+}
+.olp dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+.olp .privacy-dialog {
+  max-width: 550px;
+  width: calc(100% - 32px);
+  padding: 32px;
+}
+.olp .privacy-dialog h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.olp .privacy-dialog p {
+  margin-bottom: 18px;
+  font-size: 0.9375rem;
+}
+.olp .privacy-dialog p a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.olp .claim-dialog {
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.olp .claim-dialog[open] {
+  animation: olp-pop 0.28s var(--ease);
+}
+@keyframes olp-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+.olp .dialog-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  margin: 0;
+  z-index: 1;
+}
+.olp .dialog-close button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--muted);
+}
+.olp .dialog-close button:hover {
+  color: var(--text);
+}
+.olp .claim-form,
+.olp .claim-done {
+  padding: 24px 24px 20px;
+}
+.olp .claim-form .eyebrow {
+  margin-bottom: 8px;
+}
+.olp .claim-form h2,
+.olp .claim-done h2 {
+  font-size: 1.5rem;
+  padding-right: 36px;
+}
+.olp .claim-sub {
+  font-size: 0.8125rem;
+  margin: 4px 0 14px;
+}
+.olp .claim-form fieldset {
+  border: 0;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.olp .claim-form legend,
+.olp .claim-form > label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.olp .claim-form > label span {
+  font-weight: 400;
+  color: var(--muted);
+}
+.olp .claim-offers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.olp .claim-offers label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--bg);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.olp .claim-offers label:has(input:focus-visible) {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.olp .claim-offers input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.olp .claim-offers strong {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.olp .claim-offers span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.olp .claim-offers label.active {
+  border-color: var(--gold);
+  background: #fffbeb;
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+.olp .claim-offers label.active strong {
+  color: var(--gold);
+}
+.olp .claim-form :is(input:not([type="radio"]), textarea) {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+.olp .claim-form textarea {
+  height: 60px;
+  resize: vertical;
+}
+.olp .claim-form [aria-invalid="true"] {
+  border-color: #dc2626;
+  margin-bottom: 4px;
+}
+.olp .field-error {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-bottom: 12px;
+}
+.olp .claim-form .btn {
+  width: 100%;
+  margin-top: 4px;
+  min-height: 48px;
+  font-size: 0.8125rem;
+}
+.olp .claim-form .micro {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.75rem;
+}
+.olp .link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--muted);
+  font-size: inherit;
+}
+.olp .hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.olp .claim-done {
+  text-align: center;
+}
+.olp .claim-tick {
+  display: inline-grid;
+  place-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(5, 150, 105, 0.14);
+  color: #047857;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.olp .claim-done h2 {
+  padding: 0;
+}
+.olp .claim-done p {
+  margin: 10px 0 22px;
+  font-size: 0.9375rem;
+}
+.olp .claim-done .btn {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .olp .wrap {
+    width: calc(100% - 64px);
+  }
+  .olp .hero {
+    gap: 40px;
+  }
+  .olp .nav {
+    gap: 20px;
+  }
+  .olp .offers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 860px;
+    margin-inline: auto;
+  }
+  .olp .why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .olp .stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 28px;
+  }
+  .olp :is(.artist-grid, .first-grid, .quote-grid) {
+    gap: 44px;
+  }
+  .olp .reviews {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .olp .location {
+    gap: 40px;
+  }
+  .olp .location-info {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .olp .nav > a {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .olp .wrap {
+    width: calc(100% - 32px);
+  }
+  .olp .section {
+    padding: 44px 0;
+  }
+  .olp .eyebrow {
+    margin-bottom: 12px;
+    font-size: 0.65rem;
+  }
+  .olp .top-offer {
+    font-size: 0.75rem;
+    padding: 9px 12px;
+  }
+  .olp .top-offer-extra,
+  .olp .top-offer-cta {
+    display: none;
+  }
+  .olp .header-inner {
+    height: 68px;
+    gap: 10px;
+  }
+  .olp .brand img {
+    width: 34px;
+    height: 34px;
+  }
+  .olp .nav .btn {
+    font-size: 0.6875rem;
+    padding: 10px 14px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Hero: text first, compact photo, then straight into the offers */
+  .olp .hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-top: 22px;
+    padding-bottom: 28px;
+  }
+  .olp .hero h1 {
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+    margin-bottom: 14px;
+  }
+  .olp .hero .intro {
+    font-size: 1rem;
+  }
+  .olp .hero-actions {
+    margin-top: 22px;
+    gap: 10px 20px;
+  }
+  .olp .hero-actions .btn {
+    width: 100%;
+  }
+  .olp .hero-actions .text-link {
+    margin-inline: auto;
+  }
+  .olp .hero-proof {
+    justify-content: center;
+    margin-top: 18px;
+    gap: 6px 12px;
+    font-size: 0.8125rem;
+  }
+  .olp .hero-proof li + li {
+    padding-left: 12px;
+  }
+  .olp .hero-proof li:last-child {
+    display: none;
+  }
+  .olp .hero-visual {
+    aspect-ratio: 4 / 4.2;
+    max-height: none;
+    max-width: none;
+    justify-self: stretch;
+  }
+  .olp .hero-badge {
+    width: 92px;
+    height: 92px;
+    top: 14px;
+    right: 14px;
+  }
+  .olp .hero-badge strong {
+    font-size: 1.8rem;
+  }
+  .olp .hero-badge span {
+    font-size: 0.6rem;
+  }
+  .olp .hero-card {
+    left: 14px;
+    bottom: 14px;
+    padding: 10px 14px;
+  }
+  .olp .hero-card strong {
+    font-size: 1.5rem;
+  }
+
+  .olp .section-heading {
+    display: block;
+    margin-bottom: 26px;
+  }
+  .olp .section-heading > p {
+    margin-top: 12px;
+  }
+  .olp .section-heading.center {
+    display: flex;
+  }
+
+  /* Offers: one full-width card at a time, stacked; each sized to fit one screen */
+  .olp .offers-section {
+    padding: 52px 0;
+  }
+  .olp .offers-section > .wrap {
+    width: calc(100% - 32px);
+  }
+  .olp .offers-section .section-heading {
+    margin-bottom: 26px;
+  }
+  .olp .offers-section h2 {
+    font-size: clamp(1.5rem, 7.4vw, 2rem);
+    white-space: nowrap;
+  }
+  .olp .offers-section .section-heading > p {
+    font-size: 0.9375rem;
+  }
+  .olp .offers {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 460px;
+  }
+  .olp .offer-card:hover {
+    transform: none;
+  }
+  .olp .offer-photo {
+    aspect-ratio: 1;
+    max-height: calc(100svh - 300px);
+    min-height: 240px;
+  }
+  .olp .offer-price {
+    font-size: 2.4rem;
+  }
+  .olp .offer-tiers b {
+    font-size: 1.6rem;
+  }
+  .olp .price-note {
+    font-size: 0.75rem;
+    margin-top: 18px;
+  }
+
+  .olp .why-section {
+    padding: 40px 0;
+  }
+  .olp .why-grid li {
+    padding: 20px 16px;
+  }
+  .olp .why-icon {
+    width: 26px;
+    height: 26px;
+    margin-bottom: 12px;
+  }
+  .olp .why-value {
+    font-size: 1.45rem;
+  }
+  .olp .why-grid h3 {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+  }
+  .olp .why-grid p {
+    font-size: 0.8125rem;
+  }
+
+  .olp .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .olp .work-cta {
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .olp .work-cta .btn {
+    width: 100%;
+  }
+
+  .olp .artist-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .olp .artist-photo {
+    height: 300px;
+  }
+
+  .olp .stages {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .olp .stages > li {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    column-gap: 12px;
+    padding: 14px 0;
+  }
+  .olp .stages > li::before {
+    width: 32px;
+  }
+  .olp .stage-num {
+    grid-row: span 3;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  .olp .stages h3 {
+    font-size: 1.1rem;
+  }
+  .olp .guide {
+    margin-top: 6px;
+  }
+
+  .olp .first-section {
+    padding: 40px 0;
+  }
+  .olp .first-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .olp .first-grid .btn {
+    width: 100%;
+  }
+
+  .olp .reviews-head {
+    display: block;
+    margin-bottom: 22px;
+  }
+  .olp .rating-box {
+    margin-top: 18px;
+    display: inline-flex;
+  }
+  .olp .reviews {
+    margin-inline: -16px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .olp .reviews-track {
+    animation-duration: 36s;
+  }
+  .olp .review {
+    width: min(80vw, 320px);
+    margin-right: 12px;
+    padding: 20px;
+  }
+  .olp .reviews-cta {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .olp .reviews-cta .btn {
+    width: 100%;
+  }
+
+  .olp .quote-section {
+    padding: 40px 0;
+  }
+  .olp .quote-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .olp .quote-form {
+    padding: 20px;
+  }
+
+  .olp .location {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 40px;
+    padding-bottom: 36px;
+  }
+  .olp .location-info {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .olp .location-info > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .olp .location-actions .btn {
+    flex: 1 1 100%;
+  }
+  .olp .map {
+    aspect-ratio: 1 / 0.85;
+  }
+
+  .olp .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  /* body already reserves room for the fixed bar (global.css) */
+  .olp .mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    z-index: 30;
+    background: color-mix(in oklch, var(--bg) 95%, transparent);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px -12px rgba(0, 0, 0, 0.18);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+  .olp .mobile-cta .btn {
+    min-height: 50px;
+    font-size: 0.75rem;
+    padding: 10px 14px;
+  }
+  .olp .mobile-cta .icon-only {
+    width: 50px;
+    padding: 0;
+    color: #059669;
+    border-color: #059669;
+  }
+  .olp .mobile-cta .icon-only svg {
+    width: 22px;
+    height: 22px;
+  }
+  .olp .mobile-cta .icon-only.call {
+    color: var(--text);
+    border-color: var(--text);
+  }
+
+  /* Claim popup becomes a bottom sheet */
+  .olp .claim-dialog {
+    width: 100%;
+    max-width: none;
+    max-height: 92dvh;
+    margin: auto 0 0;
+    border-radius: 16px 16px 0 0;
+    border-bottom: 0;
+  }
+  .olp .claim-dialog[open] {
+    animation: olp-sheet 0.3s var(--ease);
+  }
+  .olp .claim-form,
+  .olp .claim-done {
+    padding: 22px 18px calc(16px + env(safe-area-inset-bottom));
+  }
+  .olp .claim-form h2,
+  .olp .claim-done h2 {
+    font-size: 1.35rem;
+  }
+}
+@keyframes olp-sheet {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* ── Desktop hero: offer-first structure (phones keep their own layout below) ── */
+.olp .hero-picks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 26px;
+  max-width: 580px;
+}
+.olp .hero-pick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 14px 12px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  text-align: left;
+  transition:
+    border-color 0.18s,
+    transform 0.18s,
+    box-shadow 0.18s;
+}
+.olp .hero-pick:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -16px rgba(0, 0, 0, 0.35);
+}
+.olp .hero-pick strong {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.olp .hero-pick > span:last-child {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.olp .hero-pick.popular {
+  background: var(--ink);
+  border-color: rgba(251, 191, 36, 0.6);
+  color: #f5f5f4;
+  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.35);
+}
+.olp .hero-pick.popular strong {
+  color: var(--yellow);
+}
+.olp .hero-pick.popular > span:last-child {
+  color: #d6d3d1;
+}
+.olp .hero-pick-tag {
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  padding: 2px 7px;
+  background: var(--yellow);
+  color: #000;
+  border-radius: 2px;
+  font-family: var(--display);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.olp .hero-assure {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin: 14px 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.olp .hero-assure li {
+  white-space: nowrap;
+}
+.olp .hero-assure li::before {
+  content: "✓";
+  margin-right: 6px;
+  color: #059669;
+  font-weight: 700;
+}
+
+@media (min-width: 761px) {
+  .olp .hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 56px;
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+  .olp .hero h1 {
+    font-size: clamp(2.1rem, 3.4vw, 3.3rem);
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+  .olp .hero h1 .h1-line {
+    display: block;
+  }
+  .olp .hero h1 .h1-accent {
+    display: block;
+    font-size: 1.8em;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    margin: 6px 0 4px;
+  }
+  .olp .hero-actions {
+    margin-top: 22px;
+  }
+  .olp .hero-proof {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    max-width: 580px;
+  }
+  /* Photo sized to the viewport so the whole offer sits above the fold */
+  .olp .hero-visual {
+    width: auto;
+    height: clamp(460px, calc(100vh - 170px), 640px);
+    max-height: none;
+    max-width: none;
+  }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .olp .hero {
+    gap: 32px;
+  }
+  .olp .hero-picks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+  .olp .hero-visual {
+    height: clamp(400px, 52vw, 520px);
+  }
+}
+
+/* ── Mobile structure: one centred axis for headings, copy and CTAs ── */
+@media (max-width: 760px) {
+  .olp .hero-picks,
+  .olp .hero-assure {
+    display: none;
+  }
+  /* Hero — headline set as three deliberate lines, with the offer as the hero line */
+  .olp .hero-copy {
+    text-align: center;
+  }
+  .olp .hero h1 {
+    font-size: clamp(1.9rem, 9.2vw, 2.6rem);
+    line-height: 1;
+  }
+  .olp .hero h1 .h1-line {
+    display: block;
+  }
+  .olp .hero h1 .h1-accent {
+    display: block;
+    font-size: 1.75em;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    margin: 6px 0 4px;
+  }
+  .olp .hero .intro {
+    max-width: 340px;
+    margin-inline: auto;
+  }
+  .olp .hero-actions {
+    flex-direction: column;
+  }
+
+  /* Every section heading centred, body copy width kept readable */
+  .olp .section-heading,
+  .olp .reviews-head,
+  .olp .artist-copy,
+  .olp .first-grid > div:first-child,
+  .olp .quote-grid > div:first-child,
+  .olp .location-copy {
+    text-align: center;
+  }
+  .olp .section-heading > p,
+  .olp .first-grid > div:first-child > p,
+  .olp .quote-grid > div:first-child > p {
+    margin-inline: auto;
+    max-width: 340px;
+  }
+
+  /* Offers */
+  .olp .offer-body {
+    text-align: left;
+  }
+
+  /* Why XING — centred tiles */
+  .olp .why-grid li {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Artist */
+  .olp .artist-photo {
+    height: 320px;
+  }
+  .olp .artist-photo img {
+    object-position: center bottom;
+  }
+  .olp .artist-tag {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 12px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .olp .artist-copy > p {
+    margin-inline: auto;
+    text-align: left;
+  }
+  .olp .artist-copy > .artist-role {
+    margin-top: -10px;
+    text-align: center;
+    max-width: 300px;
+  }
+  .olp .artist-facts {
+    justify-content: center;
+  }
+
+  /* Path to ink */
+  .olp .stages {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  /* First tattoo */
+  .olp .first-quote {
+    text-align: left;
+    margin-inline: auto;
+  }
+
+  /* Reviews */
+  .olp .rating-box {
+    margin-inline: auto;
+    text-align: left;
+  }
+  .olp .review blockquote {
+    text-align: left;
+  }
+
+  /* Design your tattoos */
+  .olp .quote-section .contact-note {
+    margin-top: 14px;
+  }
+
+  /* Location */
+  .olp .location address {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+  .olp .location-info {
+    text-align: center;
+  }
+
+  /* Footer */
+  .olp .footer-inner {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .olp .wrap {
+    width: calc(100% - 24px);
+  }
+  .olp .reviews {
+    margin-inline: -12px;
+  }
+  .olp .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.olp) {
+    scroll-behavior: auto;
+  }
+  .olp *,
+  .olp *::before,
+  .olp *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .olp .reviews {
+    overflow-x: auto;
+  }
+}

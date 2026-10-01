@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, MessageCircle, Quote } from "lucide-react";
 
-import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.jpg";
+import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import {
   ARTIST,
   artistBookingSteps,
@@ -20,18 +20,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SocialDock } from "@/components/site/SocialDock";
-import { GalleryLightbox } from "@/components/site/GalleryLightbox";
-import { openBookingModal } from "@/components/site/BookingContext";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SocialDock } from "@/components/layout/SocialDock";
+import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
+import { openBookingModal } from "@/components/booking/BookingContext";
 import {
   AccordionFold,
   CreaseLines,
   FoldCard,
   OrigamiFrame,
   SectionNav,
-} from "@/components/site/Origami";
+} from "@/components/sections/Origami";
 
 const TITLE = "Peace — Best Tattoo Artist in Brookefield, Bengaluru | XING Tattoo Studio";
 const DESCRIPTION =

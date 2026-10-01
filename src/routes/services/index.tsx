@@ -2,9 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
 import { SERVICE_SLUGS, services } from "@/data/services";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { SocialDock } from "@/components/site/SocialDock";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SocialDock } from "@/components/layout/SocialDock";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({

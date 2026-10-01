@@ -1,5 +1,5 @@
-import blackGreyStock1 from "@/assets/gallery-1.jpg";
-import blackGreyStock2 from "@/assets/gallery-5.jpg";
+import blackGreyStock1 from "@/assets/gallery-1.webp";
+import blackGreyStock2 from "@/assets/gallery-5.webp";
 
 import { SERVICE_SLUGS, services } from "./services";
 import { studioPhotos } from "./studio-photos";

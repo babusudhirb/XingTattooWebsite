@@ -1,56 +1,63 @@
-import styleBlackGrey from "@/assets/style-blackgrey.jpg";
+import styleBlackGrey from "@/assets/style-blackgrey.webp";
 
-import realismHero from "@/assets/services/realism/hero.jpg";
-import realismGallery1 from "@/assets/services/realism/gallery-1.jpg";
-import realismGallery2 from "@/assets/services/realism/gallery-2.jpg";
-import realismGallery3 from "@/assets/services/realism/gallery-3.jpg";
-import realismGallery4 from "@/assets/services/realism/gallery-4.jpg";
-import realismGallery5 from "@/assets/services/realism/gallery-5.jpg";
+import realismHero from "@/assets/services/realism/hero.webp";
+import realismGallery1 from "@/assets/services/realism/gallery-1.webp";
+import realismGallery2 from "@/assets/services/realism/gallery-2.webp";
+import realismGallery3 from "@/assets/services/realism/gallery-3.webp";
+import realismGallery4 from "@/assets/services/realism/gallery-4.webp";
+import realismGallery5 from "@/assets/services/realism/gallery-5.webp";
 
-import portraitHero from "@/assets/services/portrait/hero.jpg";
-import portraitGallery1 from "@/assets/services/portrait/gallery-1.jpg";
-import portraitGallery2 from "@/assets/services/portrait/gallery-2.jpg";
-import portraitGallery3 from "@/assets/services/portrait/gallery-3.jpg";
-import portraitGallery4 from "@/assets/services/portrait/gallery-4.jpg";
-import portraitGallery5 from "@/assets/services/portrait/gallery-5.jpg";
-import portraitGallery6 from "@/assets/services/portrait/gallery-6.jpg";
+import portraitHero from "@/assets/services/portrait/hero.webp";
+import portraitGallery1 from "@/assets/services/portrait/gallery-1.webp";
+import portraitGallery2 from "@/assets/services/portrait/gallery-2.webp";
+import portraitGallery3 from "@/assets/services/portrait/gallery-3.webp";
+import portraitGallery4 from "@/assets/services/portrait/gallery-4.webp";
+import portraitGallery5 from "@/assets/services/portrait/gallery-5.webp";
+import portraitGallery6 from "@/assets/services/portrait/gallery-6.webp";
 
-import geometricHero from "@/assets/services/geometric/hero.jpg";
-import geometricGallery1 from "@/assets/services/geometric/gallery-1.jpg";
-import geometricGallery2 from "@/assets/services/geometric/gallery-2.jpg";
-import geometricGallery3 from "@/assets/services/geometric/gallery-3.jpg";
-import geometricGallery4 from "@/assets/services/geometric/gallery-4.jpg";
-import geometricGallery5 from "@/assets/services/geometric/gallery-5.jpg";
-import geometricGallery6 from "@/assets/services/geometric/gallery-6.jpg";
-import geometricGallery7 from "@/assets/services/geometric/gallery-7.jpg";
+import geometricHero from "@/assets/services/geometric/hero.webp";
+import geometricGallery1 from "@/assets/services/geometric/gallery-1.webp";
+import geometricGallery2 from "@/assets/services/geometric/gallery-2.webp";
+import geometricGallery3 from "@/assets/services/geometric/gallery-3.webp";
+import geometricGallery4 from "@/assets/services/geometric/gallery-4.webp";
+import geometricGallery5 from "@/assets/services/geometric/gallery-5.webp";
+import geometricGallery6 from "@/assets/services/geometric/gallery-6.webp";
+import geometricGallery7 from "@/assets/services/geometric/gallery-7.webp";
 
-import traditionalHero from "@/assets/services/traditional/hero.jpg";
-import traditionalGallery1 from "@/assets/services/traditional/gallery-1.jpg";
-import traditionalGallery2 from "@/assets/services/traditional/gallery-2.jpg";
-import traditionalGallery3 from "@/assets/services/traditional/gallery-3.jpg";
+import traditionalHero from "@/assets/services/traditional/hero.webp";
+import traditionalGallery1 from "@/assets/services/traditional/gallery-1.webp";
+import traditionalGallery2 from "@/assets/services/traditional/gallery-2.webp";
+import traditionalGallery3 from "@/assets/services/traditional/gallery-3.webp";
 
-import minimalistHero from "@/assets/services/minimalist/hero.jpg";
-import minimalistGallery1 from "@/assets/services/minimalist/gallery-1.jpg";
-import minimalistGallery2 from "@/assets/services/minimalist/gallery-2.jpg";
-import minimalistGallery3 from "@/assets/services/minimalist/gallery-3.jpg";
-import minimalistGallery4 from "@/assets/services/minimalist/gallery-4.jpg";
-import minimalistGallery5 from "@/assets/services/minimalist/gallery-5.jpg";
-import minimalistGallery6 from "@/assets/services/minimalist/gallery-6.jpg";
-import minimalistGallery7 from "@/assets/services/minimalist/gallery-7.jpg";
-import minimalistGallery8 from "@/assets/services/minimalist/gallery-8.jpg";
-import minimalistGallery9 from "@/assets/services/minimalist/gallery-9.jpg";
-import minimalistGallery10 from "@/assets/services/minimalist/gallery-10.jpg";
-import minimalistGallery11 from "@/assets/services/minimalist/gallery-11.jpg";
-import minimalistGallery12 from "@/assets/services/minimalist/gallery-12.jpg";
-import minimalistGallery13 from "@/assets/services/minimalist/gallery-13.jpg";
-import minimalistGallery14 from "@/assets/services/minimalist/gallery-14.jpg";
-import minimalistGallery15 from "@/assets/services/minimalist/gallery-15.jpg";
-import minimalistGallery16 from "@/assets/services/minimalist/gallery-16.jpg";
-import minimalistGallery17 from "@/assets/services/minimalist/gallery-17.jpg";
-import minimalistGallery18 from "@/assets/services/minimalist/gallery-18.jpg";
-import minimalistGallery19 from "@/assets/services/minimalist/gallery-19.jpg";
-import minimalistGallery20 from "@/assets/services/minimalist/gallery-20.jpg";
-import minimalistGallery21 from "@/assets/services/minimalist/gallery-21.jpg";
+import minimalistHero from "@/assets/services/minimalist/hero.webp";
+import minimalistGallery1 from "@/assets/services/minimalist/gallery-1.webp";
+import minimalistGallery2 from "@/assets/services/minimalist/gallery-2.webp";
+import minimalistGallery3 from "@/assets/services/minimalist/gallery-3.webp";
+import minimalistGallery4 from "@/assets/services/minimalist/gallery-4.webp";
+import minimalistGallery5 from "@/assets/services/minimalist/gallery-5.webp";
+import minimalistGallery6 from "@/assets/services/minimalist/gallery-6.webp";
+import minimalistGallery7 from "@/assets/services/minimalist/gallery-7.webp";
+import minimalistGallery8 from "@/assets/services/minimalist/gallery-8.webp";
+import minimalistGallery9 from "@/assets/services/minimalist/gallery-9.webp";
+import minimalistGallery10 from "@/assets/services/minimalist/gallery-10.webp";
+import minimalistGallery11 from "@/assets/services/minimalist/gallery-11.webp";
+import minimalistGallery12 from "@/assets/services/minimalist/gallery-12.webp";
+import minimalistGallery13 from "@/assets/services/minimalist/gallery-13.webp";
+import minimalistGallery14 from "@/assets/services/minimalist/gallery-14.webp";
+import minimalistGallery15 from "@/assets/services/minimalist/gallery-15.webp";
+import minimalistGallery16 from "@/assets/services/minimalist/gallery-16.webp";
+import minimalistGallery17 from "@/assets/services/minimalist/gallery-17.webp";
+import minimalistGallery18 from "@/assets/services/minimalist/gallery-18.webp";
+import minimalistGallery19 from "@/assets/services/minimalist/gallery-19.webp";
+import minimalistGallery20 from "@/assets/services/minimalist/gallery-20.webp";
+import minimalistGallery21 from "@/assets/services/minimalist/gallery-21.webp";
+
+import realismThumb from "@/assets/services/realism/thumb.webp";
+import portraitThumb from "@/assets/services/portrait/thumb.webp";
+import blackGreyThumb from "@/assets/services/black-grey/thumb.webp";
+import geometricThumb from "@/assets/services/geometric/thumb.webp";
+import traditionalThumb from "@/assets/services/traditional/thumb.webp";
+import minimalistThumb from "@/assets/services/minimalist/thumb.webp";
 
 export const SERVICE_SLUGS = [
   "realism",
@@ -115,6 +122,8 @@ export interface ServiceContent {
   metaTitle: string;
   metaDescription: string;
   heroImage: string;
+  /** 96px square crop of the hero, for menus — keeps the full photo off every page. */
+  thumbImage: string;
   heroImageAlt: string;
   galleryImages: GalleryImage[];
   galleryTag?: string;
@@ -173,6 +182,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     heroSummary:
       "Transform memories, portraits, and bold concepts into lifelike skin art at Xing Tattoo Studio (Brookefield, Bengaluru). Realism requires master-level shading, precise contrast, and technical depth. Whether you want a hyper-realistic pet portrait, a classic Roman statue, or custom bio-mechanical art, our studio crafts high-detail realism tattoos designed to heal cleanly and last a lifetime.",
     heroImage: realismHero,
+    thumbImage: realismThumb,
     heroImageAlt: "Realistic angel wings tattoo on forearm with fine feather detailing",
     galleryImages: [
       {
@@ -355,6 +365,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     heroSummary:
       "Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.",
     heroImage: portraitHero,
+    thumbImage: portraitThumb,
     heroImageAlt: '"Queen" eyes portrait tattoo on chest with fine realistic shading',
     galleryImages: [
       {
@@ -543,6 +554,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     heroSummary:
       "Experience the power of classic monochrome ink at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.",
     heroImage: styleBlackGrey,
+    thumbImage: blackGreyThumb,
     heroImageAlt:
       "Black and grey warrior sleeve tattoo with smooth charcoal shading at XING Tattoo Studio, Bengaluru",
     galleryImages: [],
@@ -723,6 +735,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     heroSummary:
       "Experience mathematical symmetry and spiritual balance at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.",
     heroImage: geometricHero,
+    thumbImage: geometricThumb,
     heroImageAlt:
       "Geometric compass and wave tattoo on forearm with precise fine-line symmetry at XING Tattoo Studio, Bengaluru",
     galleryImages: [
@@ -909,6 +922,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     heroSummary:
       "Carry your faith, heritage and family story in ink at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.",
     heroImage: traditionalHero,
+    thumbImage: traditionalThumb,
     heroImageAlt:
       "Bold ornamental face tattoo on the back of the hand at XING Tattoo Studio, Bengaluru",
     galleryImages: [
@@ -1114,6 +1128,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       "AECS Layout, 60 Feet Rd, Brookefield (near D-Mart)",
     ],
     heroImage: minimalistHero,
+    thumbImage: minimalistThumb,
     heroImageAlt:
       "Fine-line sun, moon and script minimalist tattoo along the spine at XING Tattoo Studio, Brookefield, Bengaluru",
     galleryImages: [
