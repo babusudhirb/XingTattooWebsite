@@ -198,4 +198,4 @@ The best tattoo placement depends on you: how visible you want it, how much pain
 
 If you're unsure where your tattoo should go and you're near Brookefield, Whitefield or Marathahalli in Bengaluru, bring your design for a free placement consultation. You can also browse our [tattoo services](/services) or read the [FAQ](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

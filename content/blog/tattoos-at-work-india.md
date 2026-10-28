@@ -175,4 +175,4 @@ Tattoos at work are widely accepted in many Indian workplaces, especially in tec
 
 If you work around Whitefield, Marathahalli or Brookefield in Bengaluru, drop in after work for a free consultation. You can also read our [FAQ page](/faq) or browse our [tattoo services](/services).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

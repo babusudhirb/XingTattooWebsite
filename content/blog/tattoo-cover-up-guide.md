@@ -169,4 +169,4 @@ Most old tattoos can be covered with the right plan. Expect the new design to be
 
 If you're looking for a cover up tattoo in Bengaluru — around Brookefield, Whitefield or Marathahalli — send us a daylight photo of your old tattoo or come in for a free consultation. You can also see our [tattoo services](/services) or read the [FAQ](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

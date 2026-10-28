@@ -179,4 +179,4 @@ A pet portrait tattoo is a beautiful way to celebrate the animals who share our 
 
 If you're a dog or cat parent around Brookefield, Marathahalli or Whitefield in Bengaluru, bring your favourite photos and let's plan it together. You can also browse our [fine-line minimalist tattoo ideas](/blog/minimalist-tattoo-ideas) for smaller options.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

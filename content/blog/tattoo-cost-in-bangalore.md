@@ -228,4 +228,4 @@ Once you understand them, you can describe your idea clearly and compare quotes 
 
 If you're in Brookefield, Whitefield or Marathahalli, you're a short ride from our studio on 60 Feet Road. Browse our [tattoo gallery](/#gallery) for real work, or read the [FAQ page](/faq) for quick answers.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

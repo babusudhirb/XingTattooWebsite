@@ -267,4 +267,4 @@ Your first tattoo should feel exciting, not stressful. Choose a design you love,
 
 If you're getting a tattoo in Bengaluru for the first time and live around Brookefield, Whitefield or Marathahalli, we'd love to help you plan it. Take a look at our [fine-line and minimalist tattoo work](/services/minimalist), or read our [tattoo FAQ](/faq) for quick answers.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -1,4 +1,4 @@
-import { COUNTS, GOOGLE_RATING, RATING_LABEL, SHORT_ADDRESS } from "@/data/business";
+import { ADDRESS, COUNTS, GOOGLE_RATING, RATING_LABEL, SHORT_ADDRESS } from "@/data/business";
 import styleBlackGrey from "@/assets/style-blackgrey.webp";
 
 import realismHero from "@/assets/services/realism/hero.webp";
@@ -360,7 +360,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Where can I get a realism tattoo near Whitefield or Marathahalli?",
         answer:
-          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every realism tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
+          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every realism tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["black-grey", "portrait"],
@@ -555,7 +555,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Where can I get a portrait tattoo near Whitefield or Marathahalli?",
         answer:
-          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every portrait tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
+          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every portrait tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["realism", "black-grey"],
@@ -732,7 +732,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Where can I get a black & grey tattoo near Whitefield or Marathahalli?",
         answer:
-          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every black & grey tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
+          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every black & grey tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["realism", "portrait", "minimalist"],
@@ -915,7 +915,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Where can I get a geometric or mandala tattoo near Whitefield or Marathahalli?",
         answer:
-          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every geometric or mandala tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
+          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every geometric or mandala tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["minimalist", "black-grey", "traditional"],
@@ -1111,7 +1111,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Where can I get an Indian traditional tattoo near Whitefield or Marathahalli?",
         answer:
-          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every Indian traditional tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
+          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every Indian traditional tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["realism", "black-grey", "geometric"],
@@ -1340,7 +1340,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Where can I get a minimalist tattoo near Whitefield or Marathahalli?",
         answer:
-          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every minimalist tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
+          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every minimalist tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["geometric", "traditional"],

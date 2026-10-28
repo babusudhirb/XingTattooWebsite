@@ -295,4 +295,4 @@ Tattoo aftercare isn't complicated. Wash gently, moisturise lightly, don't pick,
 
 If you're planning a tattoo in Brookefield or anywhere in East Bengaluru, choose a studio that explains aftercare properly before you leave. Read our [FAQ page](/faq) for more quick answers, or browse our [tattoo services](/services).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

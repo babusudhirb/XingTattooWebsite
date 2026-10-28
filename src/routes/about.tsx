@@ -33,7 +33,7 @@ import { breadcrumbSchema } from "@/lib/blog";
 
 const TITLE = pageTitle("About Us: Tattoo Studio in AECS Layout");
 const DESCRIPTION =
-  "Our custom tattoo studio above DMART Ready, AECS Layout, Brookefield: hygiene, process, hours and directions. Serving Whitefield and Marathahalli.";
+  `Custom tattoo studio ${ADDRESS.landmark}: hygiene, process, opening hours and directions.`;
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -128,8 +128,7 @@ function AboutPage() {
               fact.
             </p>
             <p>
-              Xing opened in {ARTIST.studioSince} on the 1st floor of SV Plaza, 60 Feet Road — right
-              above DMART Ready in AECS Layout, Brookefield. The idea was simple: a custom tattoo
+              Xing opened in {ARTIST.studioSince} {ADDRESS.landmark}. The idea was simple: a custom tattoo
               studio for East Bengaluru where every design is drawn from scratch, every session is
               unhurried, and hygiene is treated like a clinic, not an afterthought.
             </p>

@@ -39,7 +39,7 @@ export const hygieneStandards = [
 
 export const visitLandmarks = [
   ADDRESS.landmark,
-  "In AECS Layout, Brookefield",
+  "On 60 Feet Road",
   "About 3 km from Marathahalli",
   "Easy reach from Whitefield and ITPL",
 ];
@@ -48,7 +48,7 @@ export const aboutFaqs = [
   {
     question: "What landmark helps me find Xing Premium Tattoo Studio?",
     answer:
-      `Look for DMART Ready on 60 Feet Road in AECS Layout, Brookefield: the studio is right above it, in SV Plaza. The full address is ${ADDRESS.full}. Tap Get Directions on this page for a Google Maps route to the door.`,
+      `The studio is ${ADDRESS.landmark}, on 60 Feet Road; the DMART Ready store front is the easiest sign to spot. The full address is ${ADDRESS.full}. Tap Get Directions on this page for a Google Maps route to the door.`,
   },
   {
     question: "When is Xing Premium Tattoo Studio open?",

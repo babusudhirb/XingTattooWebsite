@@ -186,4 +186,4 @@ Knowing how to prepare for a tattoo turns a nervous visit into a calm, comfortab
 
 If you have an appointment coming up or you're planning one in Bengaluru — around Brookefield, Whitefield or Marathahalli — message us with any questions. You can also read our [FAQ page](/faq) for quick answers.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

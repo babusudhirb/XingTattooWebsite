@@ -26,7 +26,7 @@ def fill(text):
     return re.sub(r"\{\{(\w+)\}\}", lambda m: TOKENS[m.group(1)], text)
 
 
-CLOSING = "Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield"
+CLOSING = "Ready to talk about your idea? Book a free consultation at Xing {{landmark}}"
 
 
 def city(s):

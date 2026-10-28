@@ -200,4 +200,4 @@ A custom sleeve tattoo takes several sessions and a few months — and that's a 
 
 Have more questions? Visit our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

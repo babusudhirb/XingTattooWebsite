@@ -265,4 +265,4 @@ A beautiful design means nothing if it's done unsafely. Before you book anywhere
 
 If you're looking for a safe tattoo studio in Brookefield, AECS Layout or nearby Whitefield and Marathahalli, you're welcome to visit us and see our setup for yourself. Read our [FAQ page](/faq) or see our [tattoo services](/services) before you come.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

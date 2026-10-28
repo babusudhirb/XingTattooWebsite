@@ -166,4 +166,4 @@ Choose tattoo removal if you want clear skin, choose a cover-up if you want a ne
 
 If you have a tattoo you'd like to change and you're near Brookefield, Whitefield or Marathahalli in Bengaluru, send us a daylight photo or come in for a free consultation. You can also read our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

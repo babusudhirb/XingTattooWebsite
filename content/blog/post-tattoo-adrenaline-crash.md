@@ -211,4 +211,4 @@ The post-tattoo crash — tiredness, shivers, a low mood or early doubts — is 
 
 For more quick answers, visit our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

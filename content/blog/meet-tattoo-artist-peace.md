@@ -102,7 +102,7 @@ If you'd like to see work in a particular style, ask at your consultation. Peace
 
 ## Book with Peace
 
-Peace works at Xing, on 60 Feet Road above DMART Ready in AECS Layout, Brookefield — an easy ride from Whitefield, ITPL and Marathahalli.
+Peace works at Xing, {{landmark}} — an easy ride from Whitefield, ITPL and Marathahalli.
 
 Studio hours: {{hours}}. Consultations are free, and you can start on WhatsApp.
 
@@ -150,4 +150,4 @@ Visit the [artist page](/tattoo-artist) for more, or browse the [tattoo gallery]
 
 If you'd like to see more of his work first, browse the gallery on our home page before you book.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

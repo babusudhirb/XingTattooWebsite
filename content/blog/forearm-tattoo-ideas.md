@@ -186,4 +186,4 @@ A forearm tattoo is a great choice for almost any design — realism, lettering,
 
 If you're planning forearm tattoo designs in Bengaluru — whether you're in Brookefield, AECS Layout or Whitefield — bring your ideas for a free consultation. Browse our [tattoo gallery](/#gallery) for real forearm work.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

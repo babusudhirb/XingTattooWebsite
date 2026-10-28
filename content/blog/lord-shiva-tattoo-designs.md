@@ -182,4 +182,4 @@ A Shiva tattoo can be a powerful reminder of strength, transformation and faith.
 
 If you're planning a Mahadev tattoo design in Bengaluru — whether you're in Brookefield, AECS Layout or Whitefield — bring your ideas for a free consultation.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -188,4 +188,4 @@ A chest tattoo or back piece gives a design the space it deserves. Plan the them
 
 If you're planning a large piece in Bengaluru — from Brookefield to Marathahalli — bring your references for a free consultation. You can also see our [tattoo services](/services) or browse the [tattoo gallery](/#gallery).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -149,4 +149,4 @@ You can usually donate blood after a tattoo in India once the deferral period ha
 
 If you're a donor planning a tattoo in Bengaluru — around Brookefield, Whitefield or Marathahalli — talk to us about timing at a free consultation. You can also read our [tattoo appointment prep checklist](/blog/tattoo-appointment-prep) or our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -196,4 +196,4 @@ A zodiac tattoo is a personal way to celebrate who you are. Choose a glyph for s
 
 If you're planning a zodiac sign tattoo in Bengaluru — around Brookefield, AECS Layout or Marathahalli — bring your idea for a free consultation.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

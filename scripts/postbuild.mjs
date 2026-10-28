@@ -210,9 +210,13 @@ fs.writeFileSync(
 
 - Address: ${biz.ADDRESS.full}
 - Phone / WhatsApp: ${biz.PHONE_DISPLAY}
+- Email: ${biz.EMAIL}
 - Hours: ${biz.HOURS_TEXT}
+- Google Maps: ${biz.MAPS_PLACE_URL}
 - Google rating: ${biz.RATING_LABEL}
 - Lead Artist: ${biz.LEAD_ARTIST.fullName}
+- Areas served: ${biz.SERVICE_AREAS.join(", ")}
+- Services: ${biz.SERVICE_PAGES.map((s) => s.name).join(", ")}; custom designs drawn from scratch; free consultation
 
 ## Pages
 ${otherPages.map((p) => `- [${pageTitle(p.urlPath)}](${p.canonical})`).join("\n")}

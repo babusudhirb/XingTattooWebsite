@@ -162,4 +162,4 @@ A name tattoo or lettering piece can say a lot in a few words. Pick a font that 
 
 If you're planning a lettering tattoo in Bengaluru, whether you're in Brookefield, AECS Layout or Marathahalli, bring your words and references for a free consultation. You can also read about [memorial tattoo ideas](/blog/memorial-tattoo-ideas) that combine names and dates.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -191,4 +191,4 @@ The best memorial tattoo ideas come from the person you're remembering — their
 
 If you're thinking about a remembrance tattoo in Bengaluru, around Brookefield or Whitefield, we're here to listen. You can also read about [pet portrait tattoos](/blog/pet-portrait-tattoos) or browse our [tattoo gallery](/#gallery).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

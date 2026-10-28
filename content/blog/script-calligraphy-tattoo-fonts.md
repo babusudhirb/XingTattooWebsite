@@ -208,4 +208,4 @@ A calligraphy tattoo lasts when the font, size and placement work together. Give
 
 For more quick answers, visit our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

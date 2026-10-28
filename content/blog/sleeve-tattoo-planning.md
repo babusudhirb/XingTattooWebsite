@@ -170,4 +170,4 @@ A great sleeve tattoo starts with a clear theme, a design planned for your arm, 
 
 If you're planning a full sleeve tattoo in Bengaluru — from Brookefield to Whitefield — bring your ideas for a free consultation. You can also browse our [tattoo gallery](/#gallery) for large-scale work.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -167,4 +167,4 @@ An Om tattoo or trishul tattoo can be a beautiful, lifelong expression of faith.
 
 If you're planning a spiritual tattoo in Bengaluru — around Brookefield, AECS Layout or Marathahalli — bring your idea and your text for a free consultation. Read our guide to [Indian traditional tattoos](/blog/indian-traditional-tattoos) for more designs.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

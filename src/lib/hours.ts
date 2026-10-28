@@ -4,7 +4,7 @@ import { CLOSE_TIME, HOURS, OPEN_LABEL, OPEN_TIME } from "@/data/business";
 
 const hour12 = (hhmm: string) => {
   const h = Number(hhmm.slice(0, 2));
-  return `${h % 12 || 12} ${h < 12 ? "AM" : "PM"}`;
+  return `${h % 12 || 12}:${hhmm.slice(3, 5)} ${h < 12 ? "AM" : "PM"}`;
 };
 const OPENS = hour12(OPEN_TIME);
 const CLOSES = hour12(CLOSE_TIME);
@@ -28,9 +28,9 @@ const dayName = (day: number) => HOURS.find((h) => h.day === day)!.long;
 
 export interface TodayHours {
   open: boolean;
-  /** Drawer line: "Open now · closes 9 PM", "Closed today (Tuesday)", … */
+  /** Drawer line: "Open now · closes 9:00 PM", "Closed today (Tuesday)", … */
   status: string;
-  /** Header line: "Open today 10 AM – 9 PM" or "Closed today". */
+  /** Header line: "Open today <OPEN_LABEL>" or "Closed today". */
   today: string;
 }
 

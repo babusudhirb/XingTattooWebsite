@@ -164,4 +164,4 @@ Tattoo pain is real, but manageable. Choose a placement that matches your comfor
 
 If you're nervous about pain and live around Brookefield or Whitefield in Bengaluru, come and talk to us before you decide. You can also browse our [tattoo services](/services) or read the [FAQ](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

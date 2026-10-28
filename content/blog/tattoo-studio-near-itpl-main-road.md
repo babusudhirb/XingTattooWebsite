@@ -17,7 +17,7 @@ relatedService: "/services/geometric"
 answer: "If you work on ITPL Main Road, Xing Premium Tattoo Studio in AECS Layout, Brookefield, is a convenient tattoo studio near ITPL. You can start with a free WhatsApp consultation during the day, visit after work, and choose clean geometric or symbol designs that heal with a simple, low-maintenance routine."
 takeaways:
   - "Start the conversation on WhatsApp during work hours, then visit for a free consultation in the evening."
-  - "Xing is above DMART Ready on 60 Feet Road, AECS Layout, Brookefield — easy to reach from ITPL and Whitefield."
+  - "Xing is {{landmark}} — easy to reach from ITPL and Whitefield."
   - "Geometric, sacred geometry and symbol tattoos suit people who love logic, patterns and precision."
   - "Keep code and symbol tattoos simple and large enough that lines don't blur together over time."
   - "Aftercare is low effort: wash, pat dry, thin layer of product, loose sleeves and no picking."
@@ -36,7 +36,7 @@ faqs:
     a: "Usually yes. Wear loose sleeves, keep the tattoo clean, avoid resting it on the desk edge and follow the aftercare guidance you're given."
 ---
 
-If your workday starts and ends on ITPL Main Road, you already know how precious evenings are. The good news: finding a tattoo studio near ITPL doesn't mean losing a whole weekend to travel. Xing is in AECS Layout, Brookefield — above DMART Ready on 60 Feet Road — and easy to reach after work.
+If your workday starts and ends on ITPL Main Road, you already know how precious evenings are. The good news: finding a tattoo studio near ITPL doesn't mean losing a whole weekend to travel. Xing is {{landmark}}, on 60 Feet Road, and easy to reach after work.
 
 This guide is for techies who want convenient ink: quick consultations around work hours, design ideas that suit people who think in patterns and logic, and aftercare that fits a desk job.
 
@@ -187,4 +187,4 @@ A good tattoo studio near ITPL should make the process easy: quick conversations
 
 Have more questions? Our [FAQ page](/faq) covers booking, pain and aftercare.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -184,4 +184,4 @@ A realism tattoo that lasts comes down to contrast, size, placement, a strong re
 
 If you're planning a realistic tattoo in Bengaluru — from Brookefield to Whitefield — bring your reference photos and let's talk through what will work. Read our guide to [meeting Peace](/blog/meet-tattoo-artist-peace) or see our [tattoo gallery](/#gallery).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

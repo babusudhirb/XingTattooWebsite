@@ -16,20 +16,20 @@ publishAt: 2027-01-11
 featured: false
 relatedService: "/services"
 takeaways:
-  - "Xing Premium Tattoo Studio is in AECS Layout, Brookefield, above DMART Ready on 60 Feet Road — an easy reach from Whitefield and ITPL."
+  - "Xing Premium Tattoo Studio is {{landmark}} — an easy reach from Whitefield and ITPL."
   - "Studio hours are {{hours}}, so evening and weekend visits work well."
   - "Consultations are free and can start on WhatsApp before you visit."
   - "Every tattoo is designed and done by Peace, with single-use needles opened in front of you."
 faqs:
   - q: "Is there a tattoo studio close to ITPL?"
-    a: "Xing is in AECS Layout, Brookefield, above DMART Ready on 60 Feet Road — an easy reach from Whitefield and ITPL. Use the Google Maps directions link for the best route from your office or home, as traffic varies through the day."
+    a: "Xing is {{landmark}} — an easy reach from Whitefield and ITPL. Use the Google Maps directions link for the best route from your office or home, as traffic varies through the day."
   - q: "Can I visit the studio after work?"
     a: "Yes. Studio hours are {{hours}}, so many clients from Whitefield's tech parks visit after work. Message on WhatsApp first if you'd like to share your idea before coming in."
   - q: "Do I need an appointment for a consultation?"
     a: "Consultations are free. You can drop in during opening hours, but messaging first on WhatsApp helps — you can share references and placement photos, and the studio can let you know a good time to visit."
 ---
 
-If you're looking for a tattoo studio near Whitefield, Xing is in AECS Layout, Brookefield — above DMART Ready on 60 Feet Road, and an easy reach from Whitefield and ITPL. Our hours are {{hours}}, so you can visit after work or on weekends.
+If you're looking for a tattoo studio near Whitefield, Xing is {{landmark}}, and an easy reach from Whitefield and ITPL. Our hours are {{hours}}, so you can visit after work or on weekends.
 
 Many of our clients work in the tech parks around Whitefield, ITPL and the Outer Ring Road. This guide explains how to find us, when to visit and what to expect.
 
@@ -114,7 +114,7 @@ A tattoo is permanent. Choosing the right studio matters more than choosing the 
 
 ## Directions checklist
 
-- [ ] Saved the address: SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout.
+- [ ] Saved the address: {{address}}.
 - [ ] Opened the Google Maps directions link.
 - [ ] Checked opening hours ({{hours}}).
 - [ ] Messaged the studio on WhatsApp.
@@ -165,4 +165,4 @@ If you're searching for a tattoo studio near Whitefield, Xing in AECS Layout, Br
 
 You can also read about the studio's artist in [meet Peace](/blog/meet-tattoo-artist-peace), or browse our [tattoo services](/services).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

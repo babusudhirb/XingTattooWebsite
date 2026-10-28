@@ -146,7 +146,7 @@ Our [tattoo aftercare guide](/blog/tattoo-aftercare-guide) walks you through all
 
 ## Visiting the studio
 
-We're on 60 Feet Road, above DMART Ready, in AECS Layout, Brookefield. Our hours: {{hours}}. You can message us on WhatsApp before visiting.
+We're {{landmark}}, on 60 Feet Road. Our hours: {{hours}}. You can message us on WhatsApp before visiting.
 
 ## Large pieces and multi-session designs
 
@@ -177,4 +177,4 @@ The custom tattoo design process at Xing is simple and transparent: talk, sketch
 
 If you're ready to start your own design in Bengaluru — whether you're in Brookefield, Whitefield or Marathahalli — book your free consultation. You can also read our [FAQ page](/faq) first.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

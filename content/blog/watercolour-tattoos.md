@@ -184,4 +184,4 @@ A watercolour tattoo can be stunning, but it needs smart design and care. Choose
 
 If you're dreaming of a watercolour piece in Bengaluru — whether you're in Brookefield, Whitefield or Marathahalli — bring your references for a free consultation. You can also browse our [tattoo gallery](/#gallery) for colour work.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

@@ -174,4 +174,4 @@ A scar cover up tattoo can transform how you feel about your skin. Get medical c
 
 If you're considering a tattoo over a scar in Bengaluru — around Brookefield, AECS Layout or Whitefield — book a private, free consultation. You can also read our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

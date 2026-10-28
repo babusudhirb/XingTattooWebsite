@@ -20,7 +20,7 @@ takeaways:
   - "Placement decides visibility at work — upper arm, back and ribs are easy to cover; forearms and hands are not."
   - "Small fine-line pieces take about 30 minutes to 1.5 hours; realism or portraits take 3–7 hours per sitting."
   - "Sleeves are done over several sessions with healing time between, so they fit around project cycles."
-  - "Xing is above DMART Ready in AECS Layout, Brookefield, and easy to reach from Whitefield, ITPL and Marathahalli."
+  - "Xing is {{landmark}}, and easy to reach from Whitefield, ITPL and Marathahalli."
 faqs:
   - q: "When is the best day to get a tattoo if I work in IT?"
     a: "A Friday evening or a weekend slot works well. The first two or three days are when a tattoo is most tender and needs the most cleaning, so it helps if those fall on your days off."
@@ -208,4 +208,4 @@ The best tattoo artists in East Bengaluru for busy professionals combine strong 
 
 Got more questions? Our [FAQ page](/faq) has quick answers on booking, pain and aftercare.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

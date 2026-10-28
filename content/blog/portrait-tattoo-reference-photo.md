@@ -178,4 +178,4 @@ A great portrait tattoo starts with a great photo: sharp, well lit, high resolut
 
 If you're planning a portrait tattoo in Bengaluru, from Brookefield or nearby Marathahalli, bring your photos for a free review. You can also read about [pet portrait tattoos](/blog/pet-portrait-tattoos) or browse our [tattoo gallery](/#gallery).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

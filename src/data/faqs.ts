@@ -272,7 +272,7 @@ export const faqs: Faq[] = [
     category: "studio",
     question: "Where is Xing Premium Tattoo Studio located?",
     answer:
-      `${ADDRESS.full}. Look for SV Plaza on 60 Feet Road: the studio is right above DMART Ready in AECS Layout, about 3 km from Marathahalli and easy to reach from Whitefield, ITPL and Kundalahalli. Use Get Directions on this site for a Google Maps route.`,
+      `${ADDRESS.full}. The studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield. Use Get Directions on this site for a Google Maps route.`,
     related: ["opening-hours", "how-to-book"],
     link: { label: "Map & directions", to: "/about#visit" },
   },

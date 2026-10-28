@@ -164,4 +164,4 @@ We couldn't verify a single national tattoo age limit in India, so we don't clai
 
 If you're 18 or older and planning a tattoo in Bengaluru — around Brookefield, Whitefield or Marathahalli — book a free consultation.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

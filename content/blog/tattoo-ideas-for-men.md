@@ -197,4 +197,4 @@ Tattoos for men can be bold, meaningful and built to last. Realism, portraits, b
 
 If you're planning a bold tattoo in Bengaluru — from Brookefield and AECS Layout to Whitefield — bring your idea for a free consultation. Browse our [tattoo gallery](/#gallery) for real work.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

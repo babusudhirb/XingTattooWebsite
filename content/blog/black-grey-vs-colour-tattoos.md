@@ -175,4 +175,4 @@ A black and grey tattoo is usually the safest choice for long-term ageing and su
 
 If you're torn between the two, bring your idea to our studio in Brookefield — just a short ride from Whitefield — and we'll show you both options. You can also read about [realism tattoos](/blog/realism-tattoos-guide) or browse our [tattoo gallery](/#gallery).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

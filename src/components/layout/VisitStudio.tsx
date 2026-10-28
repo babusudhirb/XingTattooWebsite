@@ -81,7 +81,7 @@ export function VisitStudio() {
           </a>
         </address>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          Landmark: right {ADDRESS.landmark} — about 3 km from
+          Landmark: {ADDRESS.landmark} — about 3 km from
           Marathahalli, easy reach from Whitefield &amp; ITPL.
         </p>
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">

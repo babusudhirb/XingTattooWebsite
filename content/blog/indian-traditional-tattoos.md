@@ -180,4 +180,4 @@ Indian tattoo designs carry centuries of meaning. Whether you choose Lord Shiva,
 
 If you're looking for spiritual tattoos in Bengaluru — from Brookefield and AECS Layout to Whitefield — we'd be honoured to help. You can also read about [realism tattoos](/blog/realism-tattoos-guide) for detailed deity portraits.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

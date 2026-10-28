@@ -172,4 +172,4 @@ A custom tattoo gives you a unique, meaningful design made for your body. Flash 
 
 If you're deciding between custom and flash in Bengaluru — around Brookefield, AECS Layout or Whitefield — bring your ideas for a free consultation. Our [minimalist tattoo ideas](/blog/minimalist-tattoo-ideas) are a good place to start.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

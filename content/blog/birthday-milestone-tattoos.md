@@ -221,4 +221,4 @@ Milestone tattoos celebrate the moments that shaped you. Pair a date with a symb
 
 For more quick answers, visit our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

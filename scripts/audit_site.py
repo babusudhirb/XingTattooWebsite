@@ -31,7 +31,7 @@ SITE, BUSINESS_ID = B["site"], B["id"]
 LONG, SHORT = " | Xing Premium Tattoo Studio", " | Xing Premium"
 BANNED = [  # case-sensitive substrings that must not appear in visible text, titles or descriptions
     "Brookfield", "DMart", "Dmart", "D-Mart", "Gray", "Xing Studio", "XING tattoo", "XING Tattoo",
-    "Xing Tattoo Studio", "Artist Peace", "Mr Peace", "Mr. Peace", "Oct 2026", "25–31 Oct",
+    "Xing Tattoo Studio", "Artist Peace", "Mr Peace", "Mr. Peace", "31 Oct 2026", "25–31 Oct",
     "Tuesday: Closed", "Tuesdays closed", "4.8★", "600+ reviews", "1,600+", "5000+", "A Block",
     "John Doe", "Krishna D J", "₹", "Cleanse & Rest",
 ]

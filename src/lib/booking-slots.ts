@@ -86,7 +86,7 @@ function scheduleFor(dateKey: string) {
   );
   const worked = durations.reduce((a, b) => a + b, 0);
   // Free time is shared across the 7 breaks, so the first slot opens at
-  // 10:00 AM and the last one ends at 9:00 PM.
+  // opening time (OPEN_TIME) and the last one ends at closing time (CLOSE_TIME).
   const gap = (CLOSE_MINUTES - OPEN_MINUTES - worked) / (SLOT_COUNT - 1);
 
   const busyTarget = 2 + Math.floor(rng() * 2);

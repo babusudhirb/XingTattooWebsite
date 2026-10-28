@@ -183,4 +183,4 @@ A fine line tattoo is a beautiful choice for anyone who loves delicate, refined 
 
 If you're looking for a fine line tattoo in Bengaluru — whether you're in Brookefield, AECS Layout or nearby Whitefield — bring your idea for a free consultation. You can also browse our [tattoo gallery](/#gallery) for real fine-line work.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

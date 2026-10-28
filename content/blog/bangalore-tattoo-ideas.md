@@ -184,4 +184,4 @@ Bengaluru tattoo ideas can be as simple as a set of coordinates or as detailed a
 
 If you're planning a city tattoo in Bengaluru, from Brookefield to Whitefield or Marathahalli, bring your idea for a free consultation. Our list of [30 minimalist tattoo ideas](/blog/minimalist-tattoo-ideas) has more inspiration.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

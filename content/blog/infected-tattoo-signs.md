@@ -185,4 +185,4 @@ Most tattoos heal smoothly, but knowing the infected tattoo signs helps you act 
 
 If you're planning a tattoo in Bengaluru — around Brookefield, Whitefield or Marathahalli — choose a studio that takes hygiene seriously. You're welcome to visit ours and see our setup, or read the [FAQ page](/faq) first.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

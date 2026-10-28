@@ -66,7 +66,7 @@ export interface QuickAnswer {
 export const homeQuickAnswer: QuickAnswer = {
   question: "Looking for a tattoo studio near Whitefield or Marathahalli?",
   paragraphs: [
-    `Xing Premium Tattoo Studio is in AECS Layout, Brookefield, right above DMART Ready on 60 Feet Road, Bengaluru, Karnataka. Look for SV Plaza: the studio is on the floor above the store.`,
+    `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, Bengaluru, Karnataka. Look for the DMART Ready store: the studio is on the floor above it.`,
     `Every tattoo is designed and done by Peace (Chingri Awungshi), who has ${COUNTS.years} years of experience, and the studio is rated ${GOOGLE_RATING}★ on Google. It's open ${HOURS_LONG}.`,
     `Consultations are free, so you can talk through your idea, size and placement before booking anything.`,
   ],
@@ -87,7 +87,7 @@ export const aboutQuickAnswer: QuickAnswer = {
   question: "Where exactly is Xing Premium Tattoo Studio?",
   paragraphs: [
     `Xing Premium Tattoo Studio is at ${ADDRESS.full}.`,
-    `Look for SV Plaza on 60 Feet Road in AECS Layout, Brookefield: the studio is right above DMART Ready, the easiest landmark to spot. It's about 3 km from Marathahalli and an easy trip from Whitefield.`,
+    `The studio is ${ADDRESS.landmark}, on 60 Feet Road; the DMART Ready store front is the easiest landmark to spot. It's about 3 km from Marathahalli and an easy trip from Whitefield.`,
     `The studio is open ${HOURS_LONG}. Tap Get Directions for a Google Maps route, or message us on WhatsApp if you need help finding the entrance.`,
   ],
 };
@@ -139,7 +139,7 @@ export function serviceQuickAnswer(slug: string): QuickAnswer | undefined {
   return {
     question: `How long does ${a} ${s.style} tattoo take?`,
     paragraphs: [
-      `${a === "an" ? "An" : "A"} ${s.style} tattoo at Xing Premium Tattoo Studio in Brookefield, Bangalore, ${s.time}, depending on size, detail and placement.`,
+      `${a === "an" ? "An" : "A"} ${s.style} tattoo at Xing Premium Tattoo Studio in Brookefield, Bengaluru, ${s.time}, depending on size, detail and placement.`,
       s.detail,
       `Peace (Chingri Awungshi) gives you a time estimate at your free consultation. Breaks are built in, and you can pause whenever you need to. Eat a proper meal beforehand and keep the day free so nothing feels rushed.`,
     ],

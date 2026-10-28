@@ -160,4 +160,4 @@ A tattoo touch up is often all it takes to bring a tattoo back to life. Understa
 
 If you have a faded tattoo and live around Brookefield, Whitefield or Marathahalli in Bengaluru, send us a daylight photo or come in for a free consultation. You can also see our [tattoo services](/services) or read our [FAQ](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

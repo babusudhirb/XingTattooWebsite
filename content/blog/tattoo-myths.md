@@ -158,4 +158,4 @@ Most tattoo myths come from outdated ideas or half-truths. The facts are simpler
 
 If you've heard something that's putting you off getting tattooed in Bengaluru, come and ask us. We're in Brookefield, close to Whitefield and Marathahalli. You can also read our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

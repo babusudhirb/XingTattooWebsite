@@ -14,16 +14,16 @@ author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
 dateModified: 2026-10-28
 relatedService: "/services/black-grey"
-answer: "Near Kundalahalli Gate, look for a tattoo studio with a varied portfolio of healed work, needles opened in front of you, a clear quote before you commit and a free consultation. Xing Premium Tattoo Studio, above DMART Ready on 60 Feet Road in AECS Layout, Brookefield, ticks those boxes and is open in the evenings."
+answer: "Near Kundalahalli Gate, look for a tattoo studio with a varied portfolio of healed work, needles opened in front of you, a clear quote before you commit and a free consultation. Xing Premium Tattoo Studio, {{landmark}}, ticks those boxes and is open in the evenings."
 takeaways:
   - "Judge a studio on portfolio variety, visible hygiene and clear pricing — not just distance."
-  - "Xing is above DMART Ready, 60 Feet Road, AECS Layout, Brookefield — close to the Kundalahalli Gate stretch."
+  - "Xing is {{landmark}} — close to the Kundalahalli Gate stretch."
   - "Evening consultations work well for Marathahalli–ITPL commuters; the studio's hours are {{hours}}."
   - "You get a clear quote at a free consultation before you pay anything."
   - "A relaxed studio matters: you should feel comfortable asking questions and taking breaks."
 faqs:
   - q: "How do I get to Xing from Kundalahalli Gate?"
-    a: "Head towards AECS Layout and 60 Feet Road, then look for DMART Ready. Xing is at SV Plaza, 267, on the floor above DMART Ready. Use the Google Maps link on our site for live directions from wherever you are."
+    a: "Head towards AECS Layout and 60 Feet Road, then look for DMART Ready. Xing is {{landmark}}. Use the Google Maps link on our site for live directions from wherever you are."
   - q: "Can I book a consultation after work?"
     a: "Yes. Studio hours: {{hours}}. Many commuters message us on WhatsApp during the day and drop in for a free consultation in the evening."
   - q: "Will I get a price before I commit?"
@@ -36,7 +36,7 @@ faqs:
 
 Commuting between Marathahalli and ITPL means you pass Kundalahalli Gate almost every day. So when you finally decide on a tattoo, it makes sense to look for a tattoo studio near Kundalahalli Gate — somewhere you can reach after work without a long detour.
 
-Distance is only the start, though. This guide gives you a quick checklist to judge any studio in the area, then explains how to find Xing, above DMART Ready on 60 Feet Road in AECS Layout, Brookefield.
+Distance is only the start, though. This guide gives you a quick checklist to judge any studio in the area, then explains how to find Xing, {{landmark}}.
 
 ## What should I look for in a tattoo studio near Kundalahalli Gate?
 
@@ -124,7 +124,7 @@ A good vibe looks like:
 
 ## How do I get to Xing from Kundalahalli Gate?
 
-Head for AECS Layout and 60 Feet Road, then look for DMART Ready. Xing is at SV Plaza, 267, on the floor above it.
+Head for AECS Layout and 60 Feet Road, then look for DMART Ready. Xing is {{landmark}}.
 
 A few practical tips for commuters:
 
@@ -201,6 +201,6 @@ Every design and session is handled by Peace personally — you can read about h
 
 A tattoo studio near Kundalahalli Gate saves you time, but the checklist matters more than the distance. Look for real variety, visible hygiene, an honest quote and a studio where you feel at ease.
 
-If that sounds like what you want, Xing is just off your daily route, above DMART Ready in AECS Layout. Read our [FAQ page](/faq) for more quick answers.
+If that sounds like what you want, Xing is just off your daily route, {{landmark}}. Read our [FAQ page](/faq) for more quick answers.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

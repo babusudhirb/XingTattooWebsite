@@ -71,7 +71,7 @@ const homeFaqs = homeFaqIds.map((id) => faqById.get(id)!);
 const homeGuides = sectionPosts(HOME_GUIDES);
 
 const HOME_TITLE = pageTitle("Tattoo Studio in Brookefield, Bangalore");
-const HOME_DESCRIPTION = `Custom tattoos by Peace (${COUNTS.years} yrs) at Xing Premium Tattoo Studio, AECS Layout, Brookefield, above DMART Ready. ${GOOGLE_RATING}★ on Google. Book a free consultation.`;
+const HOME_DESCRIPTION = `Custom tattoos by Peace, ${ADDRESS.landmark}. Rated ${GOOGLE_RATING}★ on Google. Book a free consultation.`;
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -473,7 +473,7 @@ function Index() {
           We make forever look easy.
         </p>
         <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A premium tattoo studio in AECS Layout, Brookefield — right {ADDRESS.landmark}. Every
+          A premium tattoo studio in AECS Layout, Brookefield — {ADDRESS.landmark}. Every
           design at Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri Awungshi),
           our Lead Artist, with single-use needles opened in front of you. Trusted by clients from
           Brookefield, Marathahalli, Whitefield and across East Bengaluru.

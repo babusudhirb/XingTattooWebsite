@@ -186,4 +186,4 @@ The best wrist tattoo ideas are simple, personal and designed to last. Choose in
 
 If you're planning a small wrist tattoo in Bengaluru — from Brookefield or AECS Layout to Whitefield — come in for a free consultation and we'll find the right size and line weight for you.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

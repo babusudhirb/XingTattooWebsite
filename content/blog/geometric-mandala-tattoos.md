@@ -182,4 +182,4 @@ A geometric tattoo or mandala can be a powerful mix of beauty, balance and meani
 
 If you're planning geometric work in Bengaluru — whether you're in Brookefield, Whitefield or near Marathahalli — bring your references to a free consultation. You can also browse our [tattoo gallery](/#gallery) for real geometric pieces.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

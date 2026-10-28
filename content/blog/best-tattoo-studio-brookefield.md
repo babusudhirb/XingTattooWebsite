@@ -185,7 +185,7 @@ Trust your instinct. If something feels off, it probably is.
 
 If you're comparing studios around Brookefield and AECS Layout, here's what to expect when you visit us.
 
-We're on 60 Feet Road, above DMART Ready, in AECS Layout. It's an easy ride from Whitefield, ITPL and Marathahalli.
+We're {{landmark}}, on 60 Feet Road. It's an easy ride from Whitefield, ITPL and Marathahalli.
 
 When you walk in, you can see the studio, meet Peace and talk about your idea without any obligation. The consultation is free.
 
@@ -272,4 +272,4 @@ Take your time. Visit a couple of studios, ask the same questions at each, and s
 
 If you're in Bengaluru's eastern suburbs, we'd be glad to be one of the studios you visit. See our [tattoo styles and services](/services) or read the [FAQ page](/faq) before you come.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

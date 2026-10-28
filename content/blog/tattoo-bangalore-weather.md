@@ -169,4 +169,4 @@ Getting a tattoo in monsoon, summer or winter in Bengaluru is completely fine wi
 
 If you're planning a tattoo in Brookefield, Whitefield or Marathahalli and wondering about timing, message us or come in for a free consultation. You can also read our [FAQ page](/faq) for quick answers.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

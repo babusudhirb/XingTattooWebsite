@@ -186,4 +186,4 @@ Tattoos for women can be delicate or bold, tiny or large. Choose a design that m
 
 If you're planning a tattoo in Bengaluru — around Brookefield, Whitefield or Marathahalli — come in for a free consultation and let's design it together.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

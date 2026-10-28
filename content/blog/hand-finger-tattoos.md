@@ -174,4 +174,4 @@ A finger tattoo or hand tattoo can look striking, but hands fade fast. Choose bo
 
 If you're considering a hand tattoo in Bengaluru — around Brookefield, AECS Layout or Marathahalli — come in for a free consultation and honest advice.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

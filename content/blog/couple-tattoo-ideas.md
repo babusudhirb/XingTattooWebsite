@@ -184,4 +184,4 @@ The best couple tattoo ideas reflect your relationship — a shared symbol, a me
 
 If you and your partner are planning matching tattoos in Bengaluru — from Brookefield to Whitefield — come in together for a free consultation. You can also read about [name and lettering tattoos](/blog/name-lettering-tattoos) if you'd like words in your design.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

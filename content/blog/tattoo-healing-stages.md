@@ -191,4 +191,4 @@ Tattoo healing stages follow a predictable path: oozing, peeling and itching, a 
 
 If you have questions about healing and you're near Brookefield, AECS Layout or Whitefield in Bengaluru, we're happy to help. You can also read our [FAQ page](/faq).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

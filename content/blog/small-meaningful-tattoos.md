@@ -201,4 +201,4 @@ If you're planning a small symbol tattoo in Bengaluru — from Brookefield to Wh
 
 Take your time choosing: a symbol you've loved for years usually means more than one you found yesterday.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

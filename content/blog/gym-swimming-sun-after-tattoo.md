@@ -184,4 +184,4 @@ A workout after tattoo healing is fine — just give your skin time. Rest for a 
 
 If you're an active person planning a tattoo in Bengaluru — around Brookefield, Whitefield or Marathahalli — talk to us about timing at a free consultation. Our [tattoo aftercare guide](/blog/tattoo-aftercare-guide) covers the full routine.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

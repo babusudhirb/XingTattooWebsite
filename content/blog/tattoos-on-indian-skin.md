@@ -162,4 +162,4 @@ A tattoo on brown skin can be bold, beautiful and long-lasting. Choose strong co
 
 If you're in Brookefield, Whitefield or Marathahalli and want honest advice for your skin tone, come in for a free consultation. You can also see our [black and grey tattoo work](/services/black-grey) or browse the [tattoo gallery](/#gallery).
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

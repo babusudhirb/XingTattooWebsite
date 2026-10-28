@@ -187,4 +187,4 @@ These 30 minimalist tattoo ideas are a starting point. The best small tattoo ide
 
 If you're planning your first minimal tattoo in Bengaluru, from Brookefield to Marathahalli, bring your shortlist and let's choose the right size and placement together.
 
-Ready to talk about your idea? Book a free consultation at Xing, {{landmark}}, Brookefield — or [WhatsApp us]({{whatsapp}}).
+Ready to talk about your idea? Book a free consultation at Xing {{landmark}} — or [WhatsApp us]({{whatsapp}}).

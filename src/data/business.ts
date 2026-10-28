@@ -12,7 +12,7 @@ export const BUSINESS_NAME = "Xing Premium Tattoo Studio - Brookefield, Bangalor
 export const BRAND_NAME = "Xing Premium Tattoo Studio";
 export const SHORT_NAME = BRAND_NAME;
 /** Home-screen / app name. */
-export const APP_NAME = "Xing Tattoo";
+export const APP_NAME = "Xing Premium";
 export const GBP_CATEGORY = "Tattoo Shop";
 
 export const SITE_URL = "https://www.xingtattoo.in";
@@ -22,18 +22,19 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const ADDRESS = {
   /** Display line, verbatim from the GBP. */
   /** Display line, character for character as on the GBP (which spells the locality "Brookfield"). */
-  full: "SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout, Brookfield, Bengaluru, Karnataka 560037, India",
+  full: "First Floor, SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout, Brookfield, Bengaluru, Karnataka 560037, India",
   /** Schema streetAddress (the GBP street line). */
-  street: "SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout",
+  street: "First Floor, SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout",
   sublocality: "Brookfield",
   locality: "Bengaluru",
   region: "Karnataka",
   postalCode: "560037",
   country: "IN",
-  landmark: "above DMART Ready on 60 Feet Road, AECS Layout",
+  /** The one prose phrasing of where the studio is ("…tattoo studio {landmark}"). */
+  landmark: "on the First Floor of SV Plaza, above DMART Ready, AECS Layout, Brookefield",
 };
 /** Short address for compact UI (eyebrows, trust points, booking notes). */
-export const SHORT_ADDRESS = "Above DMART Ready, AECS Layout, Brookefield";
+export const SHORT_ADDRESS = "First Floor, SV Plaza, Above DMART Ready, AECS Layout, Brookefield";
 
 export const GEO = { lat: 12.9634586, lng: 77.7090884 };
 
@@ -55,8 +56,10 @@ export const DIRECTIONS_URL =
 export const MAP_EMBED_URL = `https://maps.google.com/maps?q=${GEO.lat},${GEO.lng}&z=17&output=embed`;
 
 export const GOOGLE_RATING = 4.9;
-/** Update when the GBP count changes. */
-export const REVIEW_COUNT = 211;
+/** Exact GBP count on 28 Oct 2026 — for reference only, never displayed (it changes weekly). */
+export const REVIEW_COUNT_EXACT = 212;
+/** Displayed review count: a floor that stays true as the count grows. */
+export const REVIEW_COUNT = "200+";
 /** The one rating format used on every page. */
 export const RATING_LABEL = `${GOOGLE_RATING}★ · ${REVIEW_COUNT} Google reviews`;
 
@@ -109,7 +112,7 @@ export const KNOWS_ABOUT = [
 /** Opening hours, Monday-first. Day numbers match Date.getDay(). */
 export const OPEN_TIME = "10:00";
 export const CLOSE_TIME = "21:00";
-export const OPEN_LABEL = "10 AM – 9 PM";
+export const OPEN_LABEL = "10:00 AM – 9:00 PM";
 /** Hours as text — the one format used on every page (and matched by the schema below). */
 export const HOURS_TEXT = `Monday ${OPEN_LABEL} · Tuesday Closed · Wednesday–Sunday ${OPEN_LABEL}`;
 export const HOURS_SHORT = HOURS_TEXT;
@@ -160,7 +163,7 @@ export const isOfferActive = (now = new Date()) => {
 
 /** The one attributes line shown on the site. */
 export const ATTRIBUTES_LABEL =
-  "Wheelchair accessible · Free Wi-Fi · Gender-neutral restroom · LGBTQ+ friendly · Cards & Google Pay";
+  "Wheelchair-accessible seating · Free Wi-Fi · Gender-neutral restroom · LGBTQ+ friendly · Credit cards, Debit cards, Google Pay";
 
 /** GBP attributes (schema amenityFeature). */
 export const ATTRIBUTES = {
