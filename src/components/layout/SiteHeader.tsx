@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
-import { isActiveHref, navLinks, PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
+import { HOURS_OPEN_DAYS, MAPS_PLACE_URL, OPEN_LABEL, SHORT_ADDRESS } from "@/data/business";
+import { isActiveHref, navLinks } from "@/data/site";
 import { useOfferActive } from "@/lib/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
-import { openBookingModal } from "@/components/booking/BookingContext";
+import { BookCTA, CallCTA } from "@/components/cta";
+import { useTodayHours } from "@/lib/hours";
 import { Logo } from "@/components/layout/Logo";
 import { MobileMenu } from "@/components/layout/MobileNav";
 
@@ -16,6 +18,7 @@ export function SiteHeader() {
   const headerRef = useRef<HTMLElement>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const offerActive = useOfferActive();
+  const hours = useTodayHours();
 
   // Publish the real header height (it changes with breakpoint, wrapping and the
   // iPhone notch inset) so sticky elements below it can sit flush: --header-h.
@@ -51,6 +54,26 @@ export function SiteHeader() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
+      {/* Desktop NAP bar: call · today's hours · address (phones get it in the drawer + sticky bar) */}
+      <div className="hidden border-b border-border/60 lg:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-end gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] text-xs text-muted-foreground">
+          <a
+            href={MAPS_PLACE_URL}
+            target="_blank"
+            rel="noopener"
+            className="mr-auto py-1.5 hover:text-foreground"
+          >
+            {SHORT_ADDRESS}
+          </a>
+          <CallCTA
+            location="header"
+            variant="plain"
+            className="min-h-8 px-0 text-xs font-semibold tracking-normal text-foreground normal-case md:min-h-8 [@media(hover:hover)]:hover:underline"
+          />
+          <span aria-hidden="true">·</span>
+          <span className="min-w-36">{hours?.today ?? `Open ${HOURS_OPEN_DAYS} ${OPEN_LABEL}`}</span>
+        </div>
+      </div>
       <div className="site-header-inner mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] sm:gap-4">
         <Logo />
         <nav className="hidden items-center gap-5 text-sm whitespace-nowrap lg:flex xl:gap-7">
@@ -130,6 +153,8 @@ export function SiteHeader() {
           {offerActive && (
             <Link
               to="/offer"
+              data-track="click_offer"
+              data-location="header"
               className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-transform duration-300 hover:-translate-y-0.5"
             >
               Offers
@@ -137,21 +162,13 @@ export function SiteHeader() {
           )}
         </nav>
         <div className="flex items-center gap-2 sm:gap-4">
-          <a
-            href={PHONE_TEL}
-            className="hidden items-center gap-2 text-sm font-medium whitespace-nowrap sm:flex lg:hidden xl:flex"
-          >
-            <Phone className="h-4 w-4" />
-            {PHONE_DISPLAY}
-          </a>
           {/* Below 400px the sticky bottom bar carries the booking button */}
-          <button
-            onClick={() => openBookingModal()}
-            className="hidden min-h-12 items-center rounded-full bg-primary px-4 font-display whitespace-nowrap text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 min-[400px]:flex sm:px-5"
-          >
-            <span className="sm:hidden">Book</span>
-            <span className="hidden sm:inline">Book Consultation</span>
-          </button>
+          <BookCTA
+            location="header"
+            shortBelow="sm"
+            icon={false}
+            className="hidden px-4 min-[400px]:inline-flex sm:px-5"
+          />
           <MobileMenu />
         </div>
       </div>

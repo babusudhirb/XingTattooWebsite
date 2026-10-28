@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, CalendarCheck, Home, Images } from "lucide-react";
 
+import { BookCTA } from "@/components/cta";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -41,14 +42,7 @@ export function NotFoundPage() {
               </Link>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={() => openBookingModal()}
-                className={`${LINK} w-full border-primary bg-primary text-primary-foreground hover:bg-primary/90 sm:w-auto`}
-              >
-                <CalendarCheck className="h-4 w-4" aria-hidden="true" /> Book consultation
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </button>
+              <BookCTA location="404" className="w-full sm:w-auto" />
             </li>
           </ul>
         </nav>

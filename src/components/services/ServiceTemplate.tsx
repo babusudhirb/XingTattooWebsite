@@ -12,6 +12,7 @@ import {
   Timer,
 } from "lucide-react";
 
+import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import {
   Accordion,
   AccordionContent,
@@ -109,20 +110,8 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               </p>
             )}
             <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                onClick={() => openBookingModal(service.shortName)}
-                className="inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-              >
-                Book Consultation <ArrowRight className="h-4 w-4" />
-              </button>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp Us
-              </a>
+              <BookCTA location="service_hero" style={service.shortName} />
+              <WhatsAppCTA location="service_hero" />
             </div>
             {service.heroTrustPoints && (
               <ul className="mt-6 grid max-w-lg gap-x-5 gap-y-2 sm:grid-cols-2">
@@ -566,21 +555,15 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => openBookingModal(service.shortName)}
-              className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)] focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
-            >
-              {service.ctaPrimaryLabel ?? "Book Consultation"} <ArrowRight className="h-4 w-4" />
-            </button>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors duration-300 hover:bg-primary-foreground/10 focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
-            >
-              <MessageCircle className="h-4 w-4" />{" "}
-              {service.ctaSecondaryLabel ?? "Chat On WhatsApp"}
-            </a>
+            <BookCTA
+              location="service_end"
+              style={service.shortName}
+              className="bg-amber-700 text-white"
+            />
+            <WhatsAppCTA
+              location="service_end"
+              className="border-primary-foreground/30 text-primary-foreground [@media(hover:hover)]:hover:bg-primary-foreground/10"
+            />
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } fro
 import { CalendarDays, Check, Clock, MessageCircle, X } from "lucide-react";
 import { format } from "date-fns";
 
+import { track } from "@/lib/track";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Select,
@@ -240,6 +241,7 @@ export function BookingModal() {
         },
       });
       setEmailSent(true);
+      track("generate_lead", { location: "booking_form", style: form.style });
     } catch (err) {
       // Still show the confirmation — the WhatsApp button carries the booking.
       console.error("Booking email failed", err);

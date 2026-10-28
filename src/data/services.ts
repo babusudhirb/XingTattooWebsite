@@ -165,8 +165,6 @@ export interface ServiceContent {
   studioDifference?: FeatureBlock[];
   ctaHeadline?: string;
   ctaSubcopy?: string;
-  ctaPrimaryLabel?: string;
-  ctaSecondaryLabel?: string;
   /** Short proof points shown under the hero buttons. */
   heroTrustPoints?: string[];
   /** Interactive "is this right for you?" cards; replace whyChoosePoints when set. */
@@ -1263,8 +1261,6 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     ctaHeadline: "Ready for Your First or Next Subtle Piece?",
     ctaSubcopy: "Tell us your idea — we'll size it, stencil it and quote it, no pressure.",
-    ctaPrimaryLabel: "Book Free Consult",
-    ctaSecondaryLabel: `WhatsApp Us Directly (${PHONE_DISPLAY})`,
     quickFacts: {
       sessionTime: "30 min – 1.5 hrs",
       painScore: 2,

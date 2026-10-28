@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, MessageCircle, Quote } from "lucide-react";
 
+import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import {
   ARTIST,
@@ -189,20 +190,8 @@ function TattooArtistPage() {
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
-              >
-                Book With Peace <ArrowRight className="h-4 w-4" />
-              </button>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
+              <BookCTA location="artist_hero" label="Book with Peace" />
+              <WhatsAppCTA location="artist_hero" />
             </div>
 
             <div className="mt-8">
@@ -425,12 +414,7 @@ function TattooArtistPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
-              >
-                Book Consultation <ArrowRight className="h-4 w-4" />
-              </button>
+              <BookCTA location="artist_end" className="bg-amber-700 text-white" />
               <Link
                 to="/about"
                 className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"

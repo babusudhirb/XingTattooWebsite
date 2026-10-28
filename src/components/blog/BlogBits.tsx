@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { CalendarCheck, ChevronRight, MessageCircle, Navigation, Phone } from "lucide-react";
 
 import type { Crumb } from "@/lib/blog";
-import { openBookingModal } from "@/components/booking/BookingContext";
+import { BookCTA, CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 
 import {
   ADDRESS,
@@ -71,32 +71,10 @@ export function VisitStrip() {
           </p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
-          <button
-            type="button"
-            onClick={() => openBookingModal()}
-            className={`${BTN} bg-primary text-primary-foreground hover:opacity-90`}
-          >
-            <CalendarCheck className="h-4 w-4" aria-hidden="true" /> Book Free Consultation
-          </button>
-          <a
-            href={DIRECTIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${BTN} border border-primary hover:bg-accent`}
-          >
-            <Navigation className="h-4 w-4" aria-hidden="true" /> Directions
-          </a>
-          <a href={PHONE_TEL} className={`${BTN} border border-primary hover:bg-accent`}>
-            <Phone className="h-4 w-4" aria-hidden="true" /> Call {PHONE_DISPLAY}
-          </a>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${BTN} border border-primary hover:bg-accent`}
-          >
-            <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
-          </a>
+          <BookCTA location="blog_end" icon={false} />
+          <DirectionsCTA location="blog_end" />
+          <CallCTA location="blog_end" />
+          <WhatsAppCTA location="blog_end" />
         </div>
       </div>
     </section>

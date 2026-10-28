@@ -1,6 +1,7 @@
 import { Fragment, useId, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowLeft, ArrowRight, Check, Crosshair, Feather, MapPin } from "lucide-react";
 
+import { BookCTA } from "@/components/cta";
 import type { BenefitCard, BenefitIcon, ProcessStep } from "@/data/services";
 import { openBookingModal } from "@/components/booking/BookingContext";
 
@@ -114,12 +115,7 @@ export function BenefitCards({ cards, styleName }: { cards: BenefitCard[]; style
                     )}
                   </ul>
                 </div>
-                <button
-                  onClick={() => openBookingModal(styleName)}
-                  className="inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-                >
-                  Sounds Like Me <ArrowRight className="h-4 w-4" />
-                </button>
+                <BookCTA location="style_quiz" style={styleName} className="shrink-0" />
               </div>
             </div>
           </Fragment>

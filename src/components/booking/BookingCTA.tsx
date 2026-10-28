@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { format, isToday, isTomorrow } from "date-fns";
-import { ArrowRight, CalendarClock, MessageCircle, Phone } from "lucide-react";
+import { ArrowRight, CalendarClock } from "lucide-react";
 
 import ctaMachine from "@/assets/cta-machine.webp";
-import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
 import { firstOpenDate, getSlotsForDate } from "@/lib/booking-slots";
 import { openBookingModal } from "@/components/booking/BookingContext";
+import { BookCTA, CallCTA, WhatsAppCTA } from "@/components/cta";
 import { TattooFlash } from "@/components/sections/TattooFlash";
 
 const STEPS = ["Share your idea", "Get your custom design", "Book your session"];
@@ -105,6 +105,9 @@ export function BookingCTA() {
 
           {/* Next open slot — live from the booking schedule */}
           <button
+            type="button"
+            data-track="click_book_consultation"
+            data-location="next_slot"
             onClick={() => openBookingModal()}
             className="group mt-7 flex w-full max-w-md items-center gap-3 rounded-sm border border-emerald-400/30 bg-emerald-400/[0.07] px-4 py-3 text-left transition-colors hover:border-emerald-400/60 hover:bg-emerald-400/[0.12]"
           >
@@ -123,26 +126,18 @@ export function BookingCTA() {
           </button>
 
           <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
-            <button
-              onClick={() => openBookingModal()}
-              className="col-span-2 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-yellow-400 px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-black uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-[0_12px_30px_-10px_rgba(250,204,21,0.6)]"
-            >
-              Book Free Consultation <ArrowRight className="h-4 w-4" />
-            </button>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-amber-400/50 px-4 py-4 sm:px-6 font-display text-xs font-bold tracking-[0.14em] text-amber-100 uppercase transition-colors hover:bg-amber-400/10"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp
-            </a>
-            <a
-              href={PHONE_TEL}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 px-2 py-4 text-sm font-bold text-stone-300 sm:justify-start sm:border-0 underline-offset-4 transition-colors hover:text-white hover:underline"
-            >
-              <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-            </a>
+            <BookCTA
+              location="booking_section"
+              className="col-span-2 bg-yellow-400 px-7 text-black [@media(hover:hover)]:hover:bg-yellow-300 [@media(hover:hover)]:hover:opacity-100"
+            />
+            <WhatsAppCTA
+              location="booking_section"
+              className="border-amber-400/50 px-4 text-amber-100 sm:px-6 [@media(hover:hover)]:hover:bg-amber-400/10"
+            />
+            <CallCTA
+              location="booking_section"
+              className="col-span-2 border-white/15 px-4 text-stone-200 sm:col-span-1 [@media(hover:hover)]:hover:bg-white/5"
+            />
           </div>
 
           <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-xs tracking-wide text-stone-400 uppercase">

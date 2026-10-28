@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 
+import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import heroArt from "@/assets/hero-fineline-art.webp";
 import heroArtSmall from "@/assets/hero-fineline-art-sm.webp";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
@@ -232,6 +233,9 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                 className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-700/50 hover:shadow-[var(--shadow-soft)]"
               >
                 <button
+                  type="button"
+                  data-track="click_book_consultation"
+                  data-location="offer_popup_poster"
                   onClick={() => {
                     requestClose();
                     openBookingModal();
@@ -247,15 +251,11 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                     className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </button>
-                <button
-                  onClick={() => {
-                    requestClose();
-                    openBookingModal();
-                  }}
-                  className="m-2.5 flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-                >
-                  Claim This Offer <ArrowRight className="h-4 w-4" />
-                </button>
+                <BookCTA
+                  location="offer_popup"
+                  onClick={requestClose}
+                  className="m-2.5 px-4"
+                />
               </div>
             ))}
           </div>
@@ -269,6 +269,9 @@ function OfferModal({ onClose }: { onClose: () => void }) {
               {OFFER_IDEAS.map((idea) => (
                 <li key={idea.label}>
                   <button
+                    type="button"
+                    data-track="click_book_consultation"
+                    data-location="offer_popup_idea"
                     onClick={() => {
                       requestClose();
                       openBookingModal(idea.style);
@@ -284,20 +287,15 @@ function OfferModal({ onClose }: { onClose: () => void }) {
           </div>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-primary bg-background px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-foreground uppercase transition-colors hover:bg-accent"
-            >
-              <MessageCircle className="h-4 w-4" /> Chat On WhatsApp
-            </a>
+            <WhatsAppCTA location="offer_popup" className="bg-background" />
             <Link
               to="/offer"
               onClick={requestClose}
+              data-track="click_offer"
+              data-location="offer_popup"
               className="inline-flex items-center gap-2 px-2 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase underline-offset-4 transition-colors hover:text-amber-800 hover:underline"
             >
-              Full Offer Details <ArrowRight className="h-4 w-4" />
+              View Offer <ArrowRight className="h-4 w-4" />
             </Link>
             <button
               onClick={requestClose}
@@ -418,19 +416,15 @@ function Index() {
           </div>
 
           <div className="relative z-10 col-start-1 row-start-1 lg:self-end">
-            {/* The keyword line is part of the H1, styled as the eyebrow */}
-            <h1 className="font-display text-[clamp(2rem,9.5vw,2.6rem)] leading-[0.95] font-medium tracking-tight uppercase sm:text-6xl lg:text-7xl">
-              <span className="eyebrow flex items-center gap-3 leading-snug">
-                <PenTool
-                  className="h-4 w-4 shrink-0 -rotate-45 text-foreground"
-                  aria-hidden="true"
-                />
-                Premium Tattoo Studio in Brookefield, Bangalore
-              </span>
-              <span className="sr-only"> — </span>
-              <span className="mt-4 block sm:mt-5">Art you wear.</span>
-              <span className="mt-1 block font-extrabold">For life.</span>
+            {/* The H1 is the keyword line (styled as the eyebrow); the big tagline is a <p> */}
+            <h1 className="eyebrow flex items-center gap-3 leading-snug text-balance">
+              <PenTool className="h-4 w-4 shrink-0 -rotate-45 text-foreground" aria-hidden="true" />
+              Premium Tattoo Studio in Brookefield, Bangalore
             </h1>
+            <p className="subtitle mt-4 font-display text-[clamp(2rem,9.5vw,2.6rem)] leading-[0.95] font-medium tracking-tight uppercase sm:mt-5 sm:text-6xl lg:text-7xl">
+              <span className="block">Art you wear.</span>{" "}
+              <span className="mt-1 block font-extrabold">For life.</span>
+            </p>
             <p className="mt-4 max-w-[19rem] text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:max-w-md sm:text-base">
               Custom tattoos. Premium hygiene. Unmatched artistry.
               <span className="hidden sm:inline">
@@ -442,20 +436,12 @@ function Index() {
 
           <div className="relative z-10 col-span-2 row-start-2 lg:col-span-1 lg:col-start-1 lg:self-start">
             <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
-              <button
-                onClick={() => openBookingModal()}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-3 font-display text-xs font-bold tracking-[0.12em] whitespace-nowrap text-primary-foreground uppercase transition-opacity hover:opacity-90 min-[360px]:px-4 sm:gap-3 sm:px-7 sm:py-4 sm:tracking-[0.14em]"
-              >
-                <span className="sm:hidden">Book Now</span>
-                <span className="hidden sm:inline">Book Consultation</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              <BookCTA location="hero" className="col-span-2 sm:px-7" />
               <a
                 href="#gallery"
-                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary bg-background px-4 font-display text-xs font-bold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-7 sm:py-4 sm:tracking-[0.14em]"
+                className="col-span-2 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary bg-background px-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-7 md:min-h-13 [@media(hover:hover)]:hover:bg-accent"
               >
-                <span className="sm:hidden">Our Work</span>
-                <span className="hidden sm:inline">Explore Work</span>
+                View Work
               </a>
             </div>
 
@@ -501,12 +487,7 @@ function Index() {
           >
             Read Our Story <ArrowRight className="h-4 w-4" />
           </Link>
-          <button
-            onClick={() => openBookingModal()}
-            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-          >
-            Book Free Consultation <ArrowRight className="h-4 w-4" />
-          </button>
+          <BookCTA location="home_about" className="px-7" />
         </div>
       </section>
 
@@ -642,14 +623,7 @@ function Index() {
                 <p className="eyebrow mt-1">Chingri Awungshi · Lead Artist</p>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
-                <button
-                  onClick={() => openBookingModal()}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-4 py-4 sm:gap-3 sm:px-7 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
-                >
-                  <span className="sm:hidden">Book Now</span>
-                  <span className="hidden sm:inline">Book With Peace</span>
-                  <ArrowRight className="h-4 w-4 shrink-0" />
-                </button>
+                <BookCTA location="home_artist" label="Book with Peace" className="col-span-2 sm:col-span-1" />
                 <Link
                   to="/tattoo-artist"
                   className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary px-4 py-4 sm:px-7 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
@@ -740,14 +714,7 @@ function Index() {
               Load More Tattoos ({visibleGallery.length - galleryVisibleCount} more)
             </button>
           )}
-          <button
-            onClick={() => openBookingModal()}
-            className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:w-auto"
-          >
-            <span className="sm:hidden">Book Your Consultation</span>
-            <span className="hidden sm:inline">Love What You See? Book Your Consultation</span>
-            <ArrowRight className="h-4 w-4 shrink-0" />
-          </button>
+          <BookCTA location="home_gallery" className="w-full px-7 sm:w-auto" />
         </div>
       </section>
 
@@ -796,20 +763,10 @@ function Index() {
                 to="/faq"
                 className="inline-flex min-h-12 items-center justify-center gap-2 sm:gap-3 rounded-full bg-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
               >
-                <span className="sm:hidden">All {faqs.length} FAQs</span>
-                <span className="hidden sm:inline">View All {faqs.length} FAQs</span>
+                All {faqs.length} FAQs
                 <ArrowRight className="h-4 w-4 shrink-0" />
               </Link>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary px-3 py-3.5 font-display text-xs font-bold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-6 sm:tracking-[0.14em]"
-              >
-                <MessageCircle className="h-4 w-4 shrink-0" />
-                <span className="sm:hidden">Ask Us</span>
-                <span className="hidden sm:inline">Ask Your Question</span>
-              </a>
+              <WhatsAppCTA location="home_faq" className="px-3 sm:px-6" />
             </div>
           </div>
 

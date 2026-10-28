@@ -1,21 +1,20 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowRight, Instagram, Menu, MessageCircle, Navigation, Phone, X } from "lucide-react";
+import { ArrowRight, Instagram, Menu, X } from "lucide-react";
 
 import {
-  DIRECTIONS_URL,
+  BUSINESS_NAME,
+  HOURS_TEXT,
   INSTAGRAM_URL,
-  isActiveHref,
-  navLinks,
-  PHONE_DISPLAY,
-  PHONE_TEL,
-  STUDIO_NAME,
-  WHATSAPP_URL,
-} from "@/data/site";
+  MAPS_PLACE_URL,
+  SHORT_ADDRESS,
+} from "@/data/business";
+import { isActiveHref, navLinks } from "@/data/site";
 import { SERVICE_SLUGS, services } from "@/data/services";
-import { openBookingModal } from "@/components/booking/BookingContext";
+import { BookCTA, CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 import { Logo } from "@/components/layout/Logo";
+import { useTodayHours } from "@/lib/hours";
 import { useOfferActive } from "@/lib/offer";
 
 const ROW =
@@ -29,6 +28,7 @@ export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hours = useTodayHours();
   const offerActive = useOfferActive();
 
   return (
@@ -89,14 +89,18 @@ export function MobileMenu() {
                 </li>
               ))}
             </ul>
-            <Link
-              to="/offer"
-              onClick={close}
-              className="mt-3 flex min-h-12 items-center justify-between rounded-full border border-amber-400/30 bg-[#0b0a08] px-4 font-display text-xs font-bold tracking-[0.14em] text-amber-200 uppercase"
-            >
-              Offers
-              <ArrowRight className="h-4 w-4 shrink-0" />
-            </Link>
+            {offerActive && (
+              <Link
+                to="/offer"
+                data-track="click_offer"
+                data-location="drawer"
+                onClick={close}
+                className="mt-3 flex min-h-12 items-center justify-between rounded-full border border-amber-400/30 bg-[#0b0a08] px-4 font-display text-xs font-bold tracking-[0.14em] text-amber-200 uppercase"
+              >
+                Offers
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </Link>
+            )}
 
             <p className="eyebrow mt-6">Tattoo Styles</p>
             <ul className="mt-2 grid grid-cols-2 gap-2">
@@ -123,46 +127,38 @@ export function MobileMenu() {
               ))}
             </ul>
 
-            <div className="mt-6 grid grid-cols-3 gap-2">
+            {/* NAP — same values as the footer and the GBP profile */}
+            <div className="mt-6 rounded-sm border border-border p-4 text-sm">
+              <p className="font-display font-semibold text-foreground">{BUSINESS_NAME}</p>
               <a
-                href={PHONE_TEL}
-                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-full border border-border text-xs font-bold"
-              >
-                <Phone className="h-4 w-4" /> Call
-              </a>
-              <a
-                href={WHATSAPP_URL}
+                href={MAPS_PLACE_URL}
                 target="_blank"
-                rel="noreferrer"
-                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-full border border-border text-xs font-bold"
+                rel="noopener"
+                className="mt-1 block text-muted-foreground underline-offset-4 hover:underline"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+                {SHORT_ADDRESS}
               </a>
+              <p className="mt-2 min-h-5 font-medium" aria-live="polite">
+                {hours?.status ?? HOURS_TEXT}
+              </p>
+              <CallCTA location="drawer" className="mt-3 w-full" />
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <WhatsAppCTA location="drawer" className="px-3" />
+                <DirectionsCTA location="drawer" className="px-3" />
+              </div>
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
-                rel="noreferrer"
-                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-full border border-border text-xs font-bold"
+                rel="noopener"
+                className="mt-3 inline-flex min-h-11 items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
               >
-                <Instagram className="h-4 w-4" /> Instagram
+                <Instagram className="h-4 w-4" aria-hidden="true" /> Instagram
               </a>
             </div>
-            <p className="mt-3 text-center text-xs text-muted-foreground">
-              <span className="block font-semibold text-foreground/80">{STUDIO_NAME}</span>
-              {PHONE_DISPLAY}
-            </p>
           </nav>
 
           <div className="border-t border-border p-5">
-            <button
-              onClick={() => {
-                close();
-                openBookingModal();
-              }}
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase"
-            >
-              Book Free Consultation <ArrowRight className="h-4 w-4" />
-            </button>
+            <BookCTA location="drawer" onClick={close} className="w-full" />
           </div>
         </Dialog.Content>
       </Dialog.Portal>
@@ -178,43 +174,18 @@ export function MobileActionBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.18)] backdrop-blur md:hidden">
       <div className="mx-auto flex max-w-md items-center gap-2">
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Chat on WhatsApp"
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white"
-          style={{ background: "var(--brand-whatsapp)" }}
-        >
-          <MessageCircle className="h-5 w-5" />
-        </a>
-        <a
-          href={PHONE_TEL}
-          aria-label={`Call ${PHONE_DISPLAY}`}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white"
-          style={{ background: "var(--brand-call)" }}
-        >
-          <Phone className="h-5 w-5" />
-        </a>
-        <a
-          href={DIRECTIONS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Get directions to the studio"
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground"
-        >
-          <Navigation className="h-5 w-5" />
-        </a>
-        <button
-          onClick={() => openBookingModal()}
-          className="flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-3 font-display text-xs font-bold tracking-[0.12em] text-primary-foreground uppercase"
-        >
-          <span className="truncate">
-            <span className="min-[400px]:hidden">Book Free</span>
-            <span className="hidden min-[400px]:inline">Book Free Consultation</span>
-          </span>
-          <ArrowRight className="h-4 w-4 shrink-0" />
-        </button>
+        <WhatsAppCTA
+          location="sticky_bar"
+          iconOnly
+          className="bg-[var(--brand-whatsapp)] text-white"
+        />
+        <CallCTA location="sticky_bar" iconOnly className="bg-[var(--brand-call)] text-white" />
+        <DirectionsCTA
+          location="sticky_bar"
+          iconOnly
+          className="border border-border bg-card text-foreground"
+        />
+        <BookCTA location="sticky_bar" shortBelow="400" className="min-w-0 flex-1 px-3" />
       </div>
     </div>
   );

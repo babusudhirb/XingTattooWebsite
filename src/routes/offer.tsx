@@ -8,11 +8,13 @@ import {
 } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { track } from "@/lib/track";
 import offerCss from "@/styles/offer-page.css?url";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import offerHeroSamurai from "@/assets/offers/page/offer-hero-samurai.webp";
 import {
   ADDRESS,
+  BRAND_NAME,
   BUSINESS_ID,
   BUSINESS_NAME,
   LOGO_HEIGHT,
@@ -51,13 +53,10 @@ const DESCRIPTION =
 
 const wa = (text: string) => `${WHATSAPP_URL}?text=${encodeURIComponent(text)}`;
 
-/* Intent events only. No advertising tags or conversion labels are fabricated.
-   Configure the site's consent-aware tag manager separately before Ads launch.
-   Never treat these clicks as confirmed bookings. No form text is tracked. */
+/* Intent events only (see lib/track.ts). Never treat these clicks as confirmed
+   bookings. No form text is tracked. */
 function trackIntent(event: string, placement?: string) {
-  const w = window as unknown as { dataLayer?: unknown[] };
-  w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push({ event, placement: placement || "page", page_variant: "xing_offer_v2" });
+  track(event, { location: placement || "offer_page", page_variant: "xing_offer_v2" });
 }
 
 /* ── Content ─────────────────────────────────────────────────────────── */
@@ -311,7 +310,8 @@ function T({
       href={href}
       aria-label={label}
       {...(external ? { target: "_blank", rel: "noopener" } : {})}
-      onClick={() => trackIntent(track, placement)}
+      data-track={track}
+      data-location={placement || "offer_page"}
     >
       {children}
     </a>
@@ -433,6 +433,7 @@ function OfferPage() {
         },
       });
       setClaimStatus("sent");
+      track("generate_lead", { location: "offer_claim" });
     } catch (err) {
       // The WhatsApp button on the next screen still carries the claim.
       console.error("Offer claim email failed", err);
@@ -869,7 +870,7 @@ function OfferPage() {
               <T
                 className="text-link"
                 href={GOOGLE_REVIEWS_URL}
-                track="reviews_click"
+                track="click_reviews"
                 placement="reviews"
               >
                 Read all reviews on Google <span aria-hidden="true">↗</span>
@@ -894,7 +895,7 @@ function OfferPage() {
               </p>
               <p className="contact-note">
                 Prefer a call?{" "}
-                <T href={PHONE_TEL} track="call_click" placement="ideas">
+                <T href={PHONE_TEL} track="click_call" placement="ideas">
                   {PHONE_DISPLAY}
                 </T>
               </p>
@@ -963,7 +964,7 @@ function OfferPage() {
               <div>
                 <dt>Call or WhatsApp</dt>
                 <dd>
-                  <T href={PHONE_TEL} track="call_click" placement="location">
+                  <T href={PHONE_TEL} track="click_call" placement="location">
                     {PHONE_DISPLAY}
                   </T>
                 </dd>
@@ -978,10 +979,10 @@ function OfferPage() {
               <T
                 className="btn outline"
                 href={DIRECTIONS_URL}
-                track="directions_click"
+                track="click_directions"
                 placement="location"
               >
-                Get directions <span aria-hidden="true">↗</span>
+                Get Directions
               </T>
             </div>
           </div>
@@ -1013,18 +1014,18 @@ function OfferPage() {
         <T
           className="btn outline icon-only"
           href={wa("Hi Xing! I'd like to know more about the tattoo offer.")}
-          track="whatsapp_click"
+          track="click_whatsapp"
           placement="mobile_sticky"
-          label="Chat on WhatsApp"
+          label={`WhatsApp ${BRAND_NAME}`}
         >
           <WhatsAppIcon />
         </T>
         <T
           className="btn outline icon-only call"
           href={PHONE_TEL}
-          track="call_click"
+          track="click_call"
           placement="mobile_sticky"
-          label={`Call ${PHONE_DISPLAY}`}
+          label={`Call ${BRAND_NAME}`}
         >
           <PhoneIcon />
         </T>
@@ -1054,7 +1055,7 @@ function OfferPage() {
             <T
               className="btn whatsapp"
               href={claimWhatsApp}
-              track="whatsapp_click"
+              track="click_whatsapp"
               placement="claim_done"
             >
               <WhatsAppIcon /> Send on WhatsApp

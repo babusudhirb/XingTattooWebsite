@@ -1,3 +1,4 @@
+import { BookCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -165,12 +166,7 @@ function AboutPage() {
               why a free touch-up is part of the deal if anything heals unevenly.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <button
-                onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
-              >
-                Book Free Consultation <ArrowRight className="h-4 w-4" />
-              </button>
+              <BookCTA location="about_story" />
             </div>
           </div>
         </div>
@@ -322,6 +318,8 @@ function AboutPage() {
                 <dd>
                   <a
                     href={PHONE_TEL}
+                    data-track="click_call"
+                    data-location="about_visit"
                     className="inline-flex min-h-11 items-center hover:text-amber-700"
                   >
                     {PHONE_DISPLAY}
@@ -341,22 +339,8 @@ function AboutPage() {
             <p className="eyebrow mt-6">At The Studio</p>
             <AttributeChips className="mt-3" />
             <div className="mt-6 grid grid-cols-2 gap-3">
-              <a
-                href={DIRECTIONS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 font-display text-xs font-bold tracking-[0.12em] text-primary-foreground uppercase hover:opacity-90"
-              >
-                <Navigation className="h-3.5 w-3.5" /> Directions
-              </a>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-primary px-4 py-3 font-display text-xs font-bold tracking-[0.12em] uppercase hover:bg-accent"
-              >
-                <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
-              </a>
+              <DirectionsCTA location="about_visit" variant="primary" className="px-3" />
+              <WhatsAppCTA location="about_visit" className="px-3" />
             </div>
           </FoldCard>
           <LazyMap className="min-h-[320px] h-full" />
@@ -399,12 +383,7 @@ function AboutPage() {
                 Free consultation. Custom design. No pressure — just good ink.
               </p>
             </div>
-            <button
-              onClick={() => openBookingModal()}
-              className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Book Free Consultation <ArrowRight className="h-4 w-4" />
-            </button>
+            <BookCTA location="about_end" className="bg-amber-700 text-white" />
           </div>
         </div>
       </section>

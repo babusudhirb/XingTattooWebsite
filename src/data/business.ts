@@ -41,6 +41,9 @@ export const PHONE_DISPLAY = "+91 89700 07818";
 export const PHONE_E164 = "+918970007818";
 export const PHONE_TEL = `tel:${PHONE_E164}`;
 export const WHATSAPP_URL = "https://wa.me/918970007818";
+/** The one WhatsApp CTA link: opens a chat with the consultation message filled in. */
+export const WHATSAPP_MESSAGE = "Hi Xing Premium Tattoo Studio, I'd like a free tattoo consultation.";
+export const WHATSAPP_CHAT_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 /** Not on the GBP — kept from the existing site. */
 export const EMAIL = "xingtattoo.aecs@gmail.com";
 export const INSTAGRAM_URL = "https://www.instagram.com/xingtattoo_blr/";

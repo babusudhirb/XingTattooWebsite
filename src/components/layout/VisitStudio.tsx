@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, Navigation, Phone } from "lucide-react";
 
+import { CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
 
 import {
@@ -91,25 +92,9 @@ export function VisitStudio() {
           Marathahalli, easy reach from Whitefield &amp; ITPL.
         </p>
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-          <a
-            href={DIRECTIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${ACTION} bg-primary text-primary-foreground hover:opacity-90`}
-          >
-            <Navigation className="h-4 w-4" aria-hidden="true" /> Get Directions
-          </a>
-          <a href={PHONE_TEL} className={`${ACTION} border border-primary hover:bg-accent`}>
-            <Phone className="h-4 w-4" aria-hidden="true" /> Call {PHONE_DISPLAY}
-          </a>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${ACTION} border border-primary hover:bg-accent`}
-          >
-            <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
-          </a>
+          <DirectionsCTA location="visit_studio" variant="primary" />
+          <CallCTA location="visit_studio" />
+          <WhatsAppCTA location="visit_studio" />
         </div>
       </div>
 

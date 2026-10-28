@@ -5,7 +5,7 @@ import { ArrowRight, Check, Clock, Link2, ListOrdered, MessageCircle } from "luc
 import { categoryLabel, formatPostDate, relatedPosts } from "@/data/blog";
 import { COUNTS, LEAD_ARTIST, SITE_URL, WHATSAPP_URL } from "@/data/business";
 import { services, type ServiceSlug } from "@/data/services";
-import { openBookingModal } from "@/components/booking/BookingContext";
+import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
@@ -31,21 +31,8 @@ function InlineCta() {
         aftercare before anything goes on skin.
       </p>
       <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-        <button
-          type="button"
-          onClick={() => openBookingModal()}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-display text-xs font-bold tracking-[0.12em] text-primary-foreground uppercase hover:opacity-90"
-        >
-          Book Free Consultation <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </button>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary px-6 font-display text-xs font-bold tracking-[0.12em] uppercase hover:bg-accent"
-        >
-          <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp Us
-        </a>
+        <BookCTA location="blog_inline" />
+        <WhatsAppCTA location="blog_inline" />
       </div>
     </aside>
   );

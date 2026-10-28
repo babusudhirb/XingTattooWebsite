@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, CornerDownRight, MessageCircle, Search, X } from "lucide-react";
 
+import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import { pageTitle } from "@/data/business";
 import { faqById, faqCategories, faqs, type Faq } from "@/data/faqs";
 import { WHATSAPP_URL } from "@/data/site";
@@ -231,14 +232,7 @@ function FaqPage() {
             <p className="mt-2 text-sm text-muted-foreground">
               Ask us directly on WhatsApp — happy to help.
             </p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary px-5 py-3 font-display text-xs font-bold tracking-[0.14em] uppercase hover:bg-accent"
-            >
-              <MessageCircle className="h-4 w-4" /> Ask On WhatsApp
-            </a>
+            <WhatsAppCTA location="faq_empty" className="mt-4" />
           </div>
         )}
       </div>
@@ -258,20 +252,11 @@ function FaqPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
-              >
-                Book Free Consultation <ArrowRight className="h-4 w-4" />
-              </button>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
+              <BookCTA location="faq_end" className="bg-amber-700 text-white" />
+              <WhatsAppCTA
+                location="faq_end"
+                className="border-primary-foreground/30 text-primary-foreground [@media(hover:hover)]:hover:bg-primary-foreground/10"
+              />
             </div>
           </div>
         </div>
