@@ -100,11 +100,14 @@ function FaqPage() {
         <div className="relative mx-auto max-w-3xl px-5 py-12 text-center lg:py-16">
           <p className="eyebrow">Good To Know</p>
           <h1 className="mt-4 font-display text-[2.1rem] leading-[1.05] font-medium tracking-tight sm:text-5xl">
-            Tattoo FAQs{" "}
-            <span className="mt-2 block text-xl font-normal tracking-normal text-muted-foreground sm:text-2xl">
-              Straight answers from Xing Premium Tattoo Studio, Brookefield
+            Tattoo FAQs:{" "}
+            <span className="mt-2 block text-xl font-normal tracking-normal text-balance text-muted-foreground sm:text-2xl">
+              Xing Premium Tattoo Studio, Brookefield
             </span>
           </h1>
+          <p className="subtitle mt-3 font-display text-base text-amber-700 sm:text-lg">
+            Straight answers from the studio
+          </p>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Cost, pain, hygiene, first tattoos and aftercare — {faqs.length} questions answered.
             Each answer links to the questions people usually ask next.

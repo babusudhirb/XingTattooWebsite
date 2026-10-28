@@ -95,14 +95,14 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-10 lg:grid-cols-2 lg:py-14">
           <div>
             <p className="eyebrow">Tattoo Style</p>
-            <h1 className="mt-4 font-display text-[1.9rem] leading-[1.05] font-medium tracking-tight text-balance uppercase sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-display text-[clamp(1.5rem,7.2vw,1.9rem)] leading-[1.05] font-medium tracking-tight text-balance uppercase sm:text-5xl lg:text-6xl">
               {headlineMain}
-              {headlineSub && (
-                <span className="mt-1 block text-xl normal-case text-amber-700 sm:text-2xl lg:text-3xl">
-                  {headlineSub}
-                </span>
-              )}
             </h1>
+            {headlineSub && (
+              <p className="subtitle mt-2 font-display text-xl text-amber-700 sm:text-2xl lg:text-3xl">
+                {headlineSub}
+              </p>
+            )}
             <p className="mt-4 max-w-md font-script text-2xl text-amber-700">{service.tagline}</p>
             {service.heroSummary && (
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">

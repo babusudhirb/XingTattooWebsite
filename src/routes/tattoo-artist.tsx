@@ -159,10 +159,13 @@ function TattooArtistPage() {
               className="mt-5 font-display text-[2.75rem] leading-[1] font-medium tracking-tight sm:text-6xl"
             >
               Peace{" "}
-              <span className="mt-2 block text-xl font-normal tracking-normal text-muted-foreground sm:text-2xl">
-                {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio, Brookefield
+              <span className="mt-2 block text-xl font-normal tracking-normal text-balance text-muted-foreground sm:text-2xl">
+                ({ARTIST.fullName}), Tattoo Artist in Brookefield, Bangalore
               </span>
             </h1>
+            <p className="subtitle mt-2 text-sm text-muted-foreground sm:text-base">
+              {ARTIST.role} at Xing Premium Tattoo Studio
+            </p>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               With {ARTIST.yearsExperience} years behind the machine and {ARTIST.tattoosCompleted}{" "}
               tattoos completed, Peace is the one hand behind every piece at Xing Premium Tattoo

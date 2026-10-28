@@ -185,7 +185,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Realism Tattoos in Bangalore",
     metaDescription:
       "Photo-real and 3D realism tattoos drawn from scratch by Peace at Xing Premium Tattoo Studio, Brookefield. Built to heal clean. Book a free consultation.",
-    heroHeadline: "Realism Tattoos in Bangalore | Custom Micro & Photo-Realistic Ink",
+    heroHeadline: "Realism Tattoos in Brookefield, Bangalore | Custom Micro & Photo-Realistic Ink",
     heroSummary:
       "Transform memories, portraits, and bold concepts into lifelike skin art at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Realism requires master-level shading, precise contrast, and technical depth. Whether you want a hyper-realistic pet portrait, a classic Roman statue, or custom bio-mechanical art, our studio crafts high-detail realism tattoos designed to heal cleanly and last a lifetime.",
     heroImage: realismHero,
@@ -369,7 +369,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Portrait Tattoos in Bangalore",
     metaDescription:
       `Lifelike human, pet and memorial portrait tattoos in Brookefield, Bengaluru. Expert shading by Peace (${COUNTS.years} yrs). Book your free consultation today.`,
-    heroHeadline: "Custom Portrait Tattoos in Bangalore | Lifelike Human & Pet Ink",
+    heroHeadline: "Portrait Tattoos in Brookefield, Bangalore | Lifelike Human & Pet Ink",
     heroSummary:
       `Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.`,
     heroImage: portraitHero,
@@ -559,7 +559,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Black & Grey Tattoos in Bangalore",
     metaDescription:
       `Smooth Black & Grey shading, sleeves and blackwork at Xing Premium Tattoo Studio, AECS Layout, Brookefield. ${GOOGLE_RATING}★ on Google. Book a free consultation.`,
-    heroHeadline: "Custom Black & Grey Tattoos in Bangalore | Timeless Shading & Depth",
+    heroHeadline: "Black & Grey Tattoos in Brookefield, Bangalore | Timeless Shading & Depth",
     heroSummary:
       `Experience the power of classic monochrome ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.`,
     heroImage: styleBlackGrey,
@@ -741,7 +741,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Geometric & Mandala Tattoos in Bangalore",
     metaDescription:
       "Sacred geometry, mandala and dotwork tattoos mapped to your body in Brookefield, Bengaluru. Custom designs by Peace. Book a free consultation today.",
-    heroHeadline: "Custom Geometric & Sacred Geometry Tattoos in Bangalore",
+    heroHeadline: "Geometric & Mandala Tattoos in Brookefield, Bangalore | Sacred Geometry & Dotwork",
     heroSummary:
       `Experience mathematical symmetry and spiritual balance at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.`,
     heroImage: geometricHero,
@@ -929,7 +929,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Indian Traditional Tattoos in Bangalore",
     metaDescription:
       "Shiva, Hanuman, Om, Trishul and Sanskrit script tattoos drawn respectfully by Peace in Brookefield, Bengaluru. Book your free consultation today.",
-    heroHeadline: "Custom Indian Traditional Tattoos in Bangalore | Spiritual & Cultural Ink",
+    heroHeadline: "Indian Traditional Tattoos in Brookefield, Bangalore | Spiritual & Cultural Ink",
     heroSummary:
       `Carry your faith, heritage and family story in ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.`,
     heroImage: traditionalHero,
@@ -1130,7 +1130,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Fine Line & Minimalist Tattoos in Bangalore",
     metaDescription:
       "Delicate fine-line, micro and minimalist tattoos that heal crisp, at Xing Premium Tattoo Studio, Brookefield. Ideal first tattoos. Free consultation.",
-    heroHeadline: "Custom Minimalist & Fine-Line Tattoos in Bangalore",
+    heroHeadline: "Minimalist & Fine-Line Tattoos in Brookefield, Bangalore",
     heroSummary:
       "Minimalist tattoos prove that simplicity speaks loudest. At Xing Premium Tattoo Studio in Brookefield, we specialize in needle-thin linework, single-needle micro tattoos, botanical art, delicate typography, and subtle geometric symbols. Guided by lead artist Peace, every fine-line piece is crafted to look clean, elegant, and perfectly balanced on your skin.",
     heroTrustPoints: [

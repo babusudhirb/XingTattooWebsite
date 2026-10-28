@@ -512,8 +512,8 @@ function OfferPage() {
           <div className="hero-copy">
             <span className="eyebrow">Tattoo offer · Brookefield, Bangalore</span>
             <h1 id="hero-title">
-              <span className="h1-line">Get up to</span> <span className="h1-accent">50% off</span>{" "}
-              <span className="h1-line">on tattoos in Brookefield</span>
+              <span className="h1-line">Tattoo Offer in Brookefield, Bangalore:</span>{" "}
+              <span className="h1-accent">Up to 50% Off</span>
             </h1>
             <p className="intro">
               A tattoo on your skin is your bold story — crafted with precision, hygiene and care at
