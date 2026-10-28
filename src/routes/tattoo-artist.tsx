@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, MessageCircle, Quote } from "lucide-react";
 
+import { PERSON_ID } from "@/data/business";
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import {
@@ -38,7 +39,6 @@ import { absolute, faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
 
 const TITLE = pageTitle("Peace, Tattoo Artist, Brookefield, Bangalore");
-const PERSON_ID = `${SITE_URL}/tattoo-artist#peace`;
 const DESCRIPTION =
   `Meet Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio: ${COUNTS.years} years of realism, portrait and fine-line work in Brookefield. Book a consult.`;
 

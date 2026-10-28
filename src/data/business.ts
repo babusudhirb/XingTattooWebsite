@@ -78,7 +78,32 @@ export const SERVICE_AREAS = [
   "AECS Layout",
   "Marathahalli",
   "Whitefield",
-  "Bengaluru",
+  "East Bengaluru",
+];
+
+/** Lead artist's schema @id — the Person node lives on /tattoo-artist. */
+export const PERSON_ID = `${SITE_URL}/tattoo-artist#peace`;
+
+/** The six service pages (schema makesOffer; names match each page's H1 style). */
+export const SERVICE_PAGES = [
+  { slug: "realism", name: "Realism Tattoos" },
+  { slug: "portrait", name: "Portrait Tattoos" },
+  { slug: "black-grey", name: "Black & Grey Tattoos" },
+  { slug: "geometric", name: "Geometric & Mandala Tattoos" },
+  { slug: "traditional", name: "Indian Traditional Tattoos" },
+  { slug: "minimalist", name: "Minimalist & Fine-Line Tattoos" },
+] as const;
+
+/** Schema knowsAbout — the styles the studio is known for. */
+export const KNOWS_ABOUT = [
+  "Realism tattoos",
+  "Portrait tattoos",
+  "Black and grey tattoos",
+  "Geometric tattoos",
+  "Mandala tattoos",
+  "Indian traditional tattoos",
+  "Fine line tattoos",
+  "Cover-up tattoos",
 ];
 
 /** Opening hours, Monday-first. Day numbers match Date.getDay(). */
@@ -281,13 +306,23 @@ export const businessSchema = {
       closes: CLOSE_TIME,
     },
   ],
-  areaServed: SERVICE_AREAS,
+  areaServed: SERVICE_AREAS.map((name) => ({ "@type": "Place", name })),
+  knowsAbout: KNOWS_ABOUT,
   paymentAccepted: "Credit Card, Debit Card, Google Pay",
   amenityFeature: [...ATTRIBUTES.accessibility, ...ATTRIBUTES.amenities, ...ATTRIBUTES.crowd].map(
     (name) => ({ "@type": "LocationFeatureSpecification", name, value: true }),
   ),
   foundingDate: COUNTS.since,
-  founder: { "@type": "Person", name: LEAD_ARTIST.fullName, jobTitle: LEAD_ARTIST.role },
+  founder: { "@type": "Person", "@id": PERSON_ID, name: LEAD_ARTIST.fullName },
+  employee: { "@id": PERSON_ID },
+  makesOffer: SERVICE_PAGES.map(({ slug, name }) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: `${name} in Brookefield, Bangalore`,
+      url: `${SITE_URL}/services/${slug}`,
+    },
+  })),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Tattoo services",

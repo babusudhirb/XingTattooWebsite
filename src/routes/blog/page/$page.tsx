@@ -26,6 +26,7 @@ export const Route = createFileRoute("/blog/page/$page")({
       title: pageTitle(`Tattoo Blog – Page ${page}`),
       description: `More tattoo guides, ideas and aftercare advice from Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Page ${page} of ${pageCount}. Book a free consult.`,
       pageType: "CollectionPage",
+      noindex: true,
       graph: [blogItemList(postsForPage(page)), breadcrumbSchema(crumbs)],
     });
   },

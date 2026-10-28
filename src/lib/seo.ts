@@ -9,6 +9,15 @@ import {
   WEBSITE_ID,
 } from "@/data/business";
 
+/**
+ * The one canonical URL builder: https://www.xingtattoo.in + path, no query, no hash,
+ * no trailing slash (the home page is "/").
+ */
+export const canonical = (path: string) => {
+  const clean = path.split(/[?#]/)[0]!.replace(/\/+$/, "");
+  return `${SITE_URL}${clean || "/"}`;
+};
+
 /** Absolute URL for a site path or an already-absolute URL. */
 export const absolute = (u: string) => (/^https?:\/\//.test(u) ? u : `${SITE_URL}${u}`);
 
@@ -48,7 +57,10 @@ export interface SeoInput {
   imageWidth?: number;
   imageHeight?: number;
   type?: "website" | "article" | "profile";
+  /** robots noindex,follow (pagination, expired offer). The self-canonical stays. */
   noindex?: boolean;
+  /** false drops the canonical link (the 404 page only). */
+  canonical?: false;
   /** schema.org type of the page node (AboutPage, ProfilePage, CollectionPage…), default WebPage. */
   pageType?: string;
   /** Extra properties for the page node, e.g. { mainEntity: { "@id": … } }. */
@@ -64,7 +76,7 @@ export interface SeoInput {
  * Open Graph + Twitter tags and a single JSON-LD @graph (TattooParlor + WebSite + page nodes).
  */
 export function seoHead(input: SeoInput) {
-  const url = `${SITE_URL}${input.path === "/" ? "/" : input.path}`;
+  const url = canonical(input.path);
   const image = absolute(input.image ?? OG_IMAGE);
   const imageAlt = input.imageAlt ?? OG_IMAGE_ALT;
   const graph = [
@@ -88,7 +100,7 @@ export function seoHead(input: SeoInput) {
     meta: [
       { title: input.title },
       { name: "description", content: input.description },
-      ...(input.noindex ? [{ name: "robots", content: "noindex, follow" }] : []),
+      ...(input.noindex ? [{ name: "robots", content: "noindex,follow" }] : []),
       { property: "og:type", content: input.type ?? "website" },
       { property: "og:title", content: input.title },
       { property: "og:description", content: input.description },
@@ -103,7 +115,10 @@ export function seoHead(input: SeoInput) {
       { name: "twitter:image:alt", content: imageAlt },
       ...(input.meta ?? []),
     ],
-    links: [...(input.noindex ? [] : [{ rel: "canonical", href: url }]), ...(input.links ?? [])],
+    links: [
+      ...(input.canonical === false ? [] : [{ rel: "canonical", href: url }]),
+      ...(input.links ?? []),
+    ],
     scripts: [
       {
         type: "application/ld+json",

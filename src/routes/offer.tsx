@@ -8,6 +8,7 @@ import {
 } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { isOfferActive } from "@/data/business";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { track } from "@/lib/track";
 import offerCss from "@/styles/offer-page.css?url";
@@ -263,8 +264,8 @@ const offerSchema = {
         "@type": "Offer",
         name: o.name,
         description: o.text,
-        validFrom: OFFER.validFrom,
-        validThrough: OFFER.validThrough,
+        validFrom: `${OFFER.validFrom}T00:00:00+05:30`,
+        validThrough: `${OFFER.validThrough}T23:59:59+05:30`,
         seller: { "@id": BUSINESS_ID },
       })),
     },
@@ -272,14 +273,17 @@ const offerSchema = {
 };
 
 export const Route = createFileRoute("/offer")({
+  // Evaluated at build (prerender): once the offer has ended, a rebuild keeps /offer
+  // at 200 but drops the Offer schema, sets noindex,follow and leaves it out of the sitemap.
   head: () =>
     seoHead({
       path: "/offer",
       title: TITLE,
       description: DESCRIPTION,
+      noindex: !isOfferActive(),
       links: [{ rel: "stylesheet", href: offerCss }],
       graph: [
-        ...offerSchema["@graph"],
+        ...(isOfferActive() ? offerSchema["@graph"] : []),
         breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Tattoo Offer" }]),
       ],
     }),
@@ -486,7 +490,7 @@ function OfferPage() {
         </button>
       ) : (
         <p className="top-offer top-offer-ended" role="status">
-          This offer ended on {OFFER.endsLabel} — consultations are still free.
+          Offer ended — book a free consultation. (It ran until {OFFER.endsLabel}.)
         </p>
       )}
 

@@ -13,6 +13,7 @@ export const Route = createFileRoute("/404")({
       description:
         "This page doesn't exist or has moved. Find tattoo services, the gallery and guides from Xing Premium Tattoo Studio, Brookefield.",
       noindex: true,
+      canonical: false,
     }),
   component: NotFoundPage,
 });
