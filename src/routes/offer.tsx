@@ -8,6 +8,7 @@ import {
 } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { track } from "@/lib/track";
 import offerCss from "@/styles/offer-page.css?url";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
@@ -468,6 +469,7 @@ function OfferPage() {
   };
 
   return (
+    <>
     <div className="olp">
       <a className="skip" href="#main">
         Skip to content
@@ -1000,9 +1002,7 @@ function OfferPage() {
 
       <footer className="footer">
         <div className="wrap footer-inner">
-          <p>
-            © {year} {BUSINESS_NAME}. Made personal. Made permanent.
-          </p>
+          <p>Made personal. Made permanent.</p>
           <button type="button" onClick={() => privacyRef.current?.showModal()}>
             Privacy &amp; enquiries
           </button>
@@ -1178,5 +1178,7 @@ function OfferPage() {
         </form>
       </dialog>
     </div>
+    <SiteFooter />
+    </>
   );
 }

@@ -86,10 +86,10 @@ export const OPEN_TIME = "10:00";
 export const CLOSE_TIME = "21:00";
 export const OPEN_LABEL = "10 AM – 9 PM";
 /** Hours as text — the one format used on every page (and matched by the schema below). */
-export const HOURS_TEXT = `Mon ${OPEN_LABEL} · Tue Closed · Wed–Sun ${OPEN_LABEL}`;
+export const HOURS_TEXT = `Monday ${OPEN_LABEL} · Tuesday Closed · Wednesday–Sunday ${OPEN_LABEL}`;
 export const HOURS_SHORT = HOURS_TEXT;
 export const HOURS_LONG = HOURS_TEXT;
-export const HOURS_OPEN_DAYS = "Mon, Wed–Sun";
+export const HOURS_OPEN_DAYS = "Monday, Wednesday–Sunday";
 export const HOURS: {
   day: number;
   short: string;
@@ -105,11 +105,11 @@ export const HOURS: {
   { day: 0, short: "Sun", long: "Sunday" },
 ];
 export const CLOSED_DAY = 2;
-/** Hours rows in the one site format — Mon · Tue Closed · Wed–Sun (same grouping as HOURS_TEXT). */
+/** Hours rows in the one site format — Monday · Tuesday Closed · Wednesday–Sunday (as HOURS_TEXT). */
 export const HOURS_ROWS: { label: string; days: number[]; closed?: boolean }[] = [
-  { label: "Mon", days: [1] },
-  { label: "Tue", days: [2], closed: true },
-  { label: "Wed–Sun", days: [3, 4, 5, 6, 0] },
+  { label: "Monday", days: [1] },
+  { label: "Tuesday", days: [2], closed: true },
+  { label: "Wednesday–Sunday", days: [3, 4, 5, 6, 0] },
 ];
 
 /** Current GBP offer post. Banners and CTAs hide after `validThrough` (India time). */
