@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, CornerDownRight, MessageCircle, Search, X } from "lucide-react";
 
+import { BUSINESS_ID, pageTitle, SITE_URL } from "@/data/business";
 import { faqById, faqCategories, faqs, type Faq } from "@/data/faqs";
 import { WHATSAPP_URL } from "@/data/site";
 import {
@@ -16,9 +17,9 @@ import { SocialDock } from "@/components/layout/SocialDock";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { CreaseLines, SectionNav } from "@/components/sections/Origami";
 
-const TITLE = "Tattoo FAQs | Cost, Pain, Aftercare & Booking | XING Tattoo Studio Brookefield";
+const TITLE = pageTitle("Tattoo FAQs: Pain, Aftercare & Booking");
 const DESCRIPTION =
-  "Answers to 28 common tattoo questions — cost, pain, hygiene, first tattoos, aftercare and healing — from XING Tattoo Studio in Brookefield, Bengaluru.";
+  "Answers to common tattoo questions — pain, hygiene, first tattoos, aftercare and booking — from Xing Premium Tattoo Studio in Brookefield, Bengaluru.";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/faq")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/faq" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/faq` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -37,7 +38,7 @@ export const Route = createFileRoute("/faq")({
           "@context": "https://schema.org",
           "@type": "FAQPage",
           name: TITLE,
-          about: { "@id": "#studio" },
+          about: { "@id": BUSINESS_ID },
           mainEntity: faqs.map((f) => ({
             "@type": "Question",
             name: f.question,
@@ -117,7 +118,7 @@ function FaqPage() {
           <h1 className="mt-4 font-display text-[2.1rem] leading-[1.05] font-medium tracking-tight sm:text-5xl">
             Tattoo FAQs{" "}
             <span className="mt-2 block text-xl font-normal tracking-normal text-muted-foreground sm:text-2xl">
-              Straight answers from XING Tattoo Studio, Brookefield
+              Straight answers from Xing Premium Tattoo Studio, Brookefield
             </span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -205,7 +206,7 @@ function FaqPage() {
                       )}
                       {faq.related.length > 0 && (
                         <div className="mt-5 rounded-sm border border-border bg-card p-4">
-                          <p className="text-[0.65rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+                          <p className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
                             People also ask
                           </p>
                           <ul className="mt-2 space-y-1.5">
@@ -251,7 +252,7 @@ function FaqPage() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-sm border border-primary px-5 py-3 font-display text-xs font-semibold tracking-[0.14em] uppercase hover:bg-accent"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary px-5 py-3 font-display text-xs font-bold tracking-[0.14em] uppercase hover:bg-accent"
             >
               <MessageCircle className="h-4 w-4" /> Ask On WhatsApp
             </a>
@@ -276,7 +277,7 @@ function FaqPage() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-sm bg-amber-600 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
               >
                 Book Free Consultation <ArrowRight className="h-4 w-4" />
               </button>
@@ -284,7 +285,7 @@ function FaqPage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-sm border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"
+                className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>

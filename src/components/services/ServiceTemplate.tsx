@@ -106,7 +106,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 onClick={() => openBookingModal(service.shortName)}
-                className="inline-flex items-center gap-3 rounded-sm bg-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
               >
                 Book Consultation <ArrowRight className="h-4 w-4" />
               </button>
@@ -114,7 +114,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-sm border border-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp Us
               </a>
@@ -153,7 +153,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               <p className="font-display text-xs font-bold leading-snug">
                 {service.quickFacts.sessionTime}
               </p>
-              <p className="mt-1 text-[0.65rem] tracking-wide text-muted-foreground uppercase">
+              <p className="mt-1 text-xs tracking-wide text-muted-foreground uppercase">
                 Session Time
               </p>
             </div>
@@ -164,7 +164,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               <div className="flex items-center gap-2">
                 <PainMeter score={service.quickFacts.painScore} />
               </div>
-              <p className="mt-1 text-[0.65rem] tracking-wide text-muted-foreground uppercase">
+              <p className="mt-1 text-xs tracking-wide text-muted-foreground uppercase">
                 {service.quickFacts.painLabel}
               </p>
             </div>
@@ -175,7 +175,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               <p className="font-display text-xs font-bold leading-snug">
                 {service.quickFacts.healingTime}
               </p>
-              <p className="mt-1 text-[0.65rem] tracking-wide text-muted-foreground uppercase">
+              <p className="mt-1 text-xs tracking-wide text-muted-foreground uppercase">
                 Healing Time
               </p>
             </div>
@@ -186,7 +186,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               <p className="font-display text-xs font-bold leading-snug">
                 {service.quickFacts.touchUp}
               </p>
-              <p className="mt-1 text-[0.65rem] tracking-wide text-muted-foreground uppercase">
+              <p className="mt-1 text-xs tracking-wide text-muted-foreground uppercase">
                 Touch-Up Policy
               </p>
             </div>
@@ -344,7 +344,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         <section className="mx-auto max-w-7xl px-5 pb-16">
           <SectionHeading
             eyebrow={service.studioDifferenceEyebrow ?? "Precision & Safety"}
-            title={service.studioDifferenceTitle ?? "The XING Tattoo Difference"}
+            title={service.studioDifferenceTitle ?? "The Xing Premium Difference"}
           />
           <ul className="mt-8 grid gap-5 sm:grid-cols-3">
             {service.studioDifference.map((item) => (
@@ -452,7 +452,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         <section className="mx-auto max-w-7xl px-5 pb-16">
           <SectionHeading eyebrow="Recent Work" title={`${service.shortName} Tattoos We've Done`} />
           <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-            Every piece below was tattooed right here at XING. Tap any photo to see it up close.
+            Every piece below was tattooed right here at Xing. Tap any photo to see it up close.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3">
             {relatedGallery.map(({ img, alt }, i) => (
@@ -477,7 +477,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
           <div className="mt-8 text-center">
             <a
               href="/#gallery"
-              className="inline-flex items-center gap-3 rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+              className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
             >
               View Full Gallery <ArrowRight className="h-4 w-4" />
             </a>
@@ -518,7 +518,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               key={s.slug}
               to="/services/$slug"
               params={{ slug: s.slug }}
-              className="group media-hover rounded-sm border border-border bg-card shadow-[var(--shadow-card)]"
+              className="group media-hover rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
             >
               <img
                 src={s.heroImage}
@@ -555,7 +555,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => openBookingModal(service.shortName)}
-              className="inline-flex items-center gap-3 rounded-sm bg-amber-600 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)] focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
+              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)] focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
             >
               {service.ctaPrimaryLabel ?? "Book Consultation"} <ArrowRight className="h-4 w-4" />
             </button>
@@ -563,7 +563,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 rounded-sm border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors duration-300 hover:bg-primary-foreground/10 focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
+              className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors duration-300 hover:bg-primary-foreground/10 focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
             >
               <MessageCircle className="h-4 w-4" />{" "}
               {service.ctaSecondaryLabel ?? "Chat On WhatsApp"}

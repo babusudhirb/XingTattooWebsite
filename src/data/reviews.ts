@@ -5,11 +5,9 @@ export interface Review {
   rating: 1 | 2 | 3 | 4 | 5;
   /** Short theme pulled from the review text, shown as a tag on the card. */
   highlight: string;
-  /** Set false for entries that shouldn't go into the Review schema (e.g. a placeholder name). */
-  inSchema?: boolean;
 }
 
-export const GOOGLE_RATING = 4.9;
+export { GOOGLE_RATING, REVIEW_COUNT } from "@/data/business";
 
 export const reviews: Review[] = [
   {
@@ -35,7 +33,7 @@ export const reviews: Review[] = [
       "Came for my very first tattoo and the service and care and Mr Peace was excellent. The design came out amazing.",
   },
   {
-    name: "Krishna D J",
+    name: "Krishna DJ",
     rating: 5,
     highlight: "Clean & professional",
     quote:
@@ -63,15 +61,6 @@ export const reviews: Review[] = [
       "I got my first tattoo in my life. I was very scared at first, but brother did it so beautifully that it didn't hurt at all. I will come back for more tattoos.",
   },
   {
-    // TODO: placeholder name — replace with the reviewer's real name from Google.
-    name: "John Doe",
-    rating: 5,
-    highlight: "First tattoo",
-    inSchema: false,
-    quote:
-      "Got my first ever tattoo from them. Can’t believe how it turned out - way better than what I had imagined. Sterilisation, pace everything was just perfect.",
-  },
-  {
     name: "Navya Jyoti",
     rating: 5,
     highlight: "Precise work",
@@ -79,22 +68,3 @@ export const reviews: Review[] = [
       "Got an amazing tattoo at Xing Studio today, super clean and precise work. Peace is very talented! Highly recommend!!",
   },
 ];
-
-/** Review schema for the home page — only reviews visible in ReviewsSection (self-reviews are not eligible for star snippets, but still describe the business). */
-export function reviewsSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "TattooParlor",
-    "@id": "#studio",
-    name: "XING Tattoo Studio",
-    review: reviews
-      .filter((r) => r.inSchema !== false)
-      .map((r) => ({
-        "@type": "Review",
-        author: { "@type": "Person", name: r.name },
-        reviewBody: r.quote,
-        reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-        publisher: { "@type": "Organization", name: "Google" },
-      })),
-  };
-}

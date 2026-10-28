@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
+import { BRAND_NAME, BUSINESS_ID, BUSINESS_NAME, businessSchema, pageTitle, SITE_URL } from "@/data/business";
 import { getService } from "@/data/services";
 import { ServiceTemplate } from "@/components/services/ServiceTemplate";
 
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/services/$slug")({
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) return {};
-    const canonical = `/services/${params.slug}`;
+    const canonical = `${SITE_URL}/services/${params.slug}`;
     const faqSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -25,29 +26,16 @@ export const Route = createFileRoute("/services/$slug")({
       "@context": "https://schema.org",
       "@type": "Service",
       serviceType: loaderData.name,
-      name: `${loaderData.name} | XING Tattoo Studio`,
+      name: `${loaderData.name} | ${BRAND_NAME}`,
       description: loaderData.metaDescription,
-      areaServed: ["Brookefield", "Whitefield", "Marathahalli", "Bengaluru"],
-      provider: {
-        "@type": "TattooParlor",
-        name: "XING Tattoo Studio",
-        image: loaderData.heroImage,
-        telephone: "+91-8970007818",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "1st Floor, SV Plaza, 267, 60 Feet Rd, above DMART, AECS Layout A Block",
-          addressLocality: "Brookefield, Bengaluru",
-          addressRegion: "Karnataka",
-          postalCode: "560037",
-          addressCountry: "IN",
-        },
-      },
+      areaServed: businessSchema.areaServed,
+      provider: { "@id": BUSINESS_ID, name: BUSINESS_NAME },
     };
     return {
       meta: [
-        { title: loaderData.metaTitle },
+        { title: pageTitle(loaderData.metaTitle) },
         { name: "description", content: loaderData.metaDescription },
-        { property: "og:title", content: loaderData.metaTitle },
+        { property: "og:title", content: pageTitle(loaderData.metaTitle) },
         { property: "og:description", content: loaderData.metaDescription },
         { property: "og:type", content: "website" },
         { property: "og:image", content: loaderData.heroImage },

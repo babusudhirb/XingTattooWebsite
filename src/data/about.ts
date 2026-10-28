@@ -1,4 +1,5 @@
 /** Content for the /about page. Facts only from the studio's own site and public listings. */
+import { ADDRESS, HOURS_LONG, PHONE_DISPLAY } from "@/data/business";
 
 export const aboutValues = [
   {
@@ -37,22 +38,22 @@ export const hygieneStandards = [
 ];
 
 export const visitLandmarks = [
-  "Directly above D-Mart on 60 Feet Road",
-  "Inside AECS Layout A Block, Brookefield",
+  ADDRESS.landmark,
+  "In AECS Layout, Brookefield",
   "About 3 km from Marathahalli",
-  "Easy to reach from Whitefield, ITPL and Kundalahalli",
+  "Easy reach from Whitefield and ITPL",
 ];
 
 export const aboutFaqs = [
   {
-    question: "Where is XING Tattoo Studio located?",
+    question: "Where is Xing Premium Tattoo Studio located?",
     answer:
-      "1st Floor, SV Plaza, 267, 60 Feet Road, AECS Layout A Block, Brookefield, Bengaluru 560037 — directly above D-Mart, about 3 km from Marathahalli.",
+      `${ADDRESS.full} — about 3 km from Marathahalli.`,
   },
   {
     question: "What are the studio's opening hours?",
     answer:
-      "10:00 AM to 9:00 PM, Wednesday to Monday. The studio is closed every Tuesday for cleaning and rest.",
+      `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day.`,
   },
   {
     question: "Do I need an appointment, or can I walk in?",
@@ -62,14 +63,14 @@ export const aboutFaqs = [
   {
     question: "Is the consultation free?",
     answer:
-      "Yes. Consultations are free and there's no obligation — in the studio or over WhatsApp on +91 89700 07818.",
+      `Yes. Consultations are free and there's no obligation — in the studio or over WhatsApp on ${PHONE_DISPLAY}.`,
   },
   {
-    question: "What is the minimum age to get a tattoo at XING?",
+    question: "What is the minimum age to get a tattoo at Xing Premium Tattoo Studio?",
     answer: "You must be 18 or older to get tattooed at the studio.",
   },
   {
-    question: "How does XING keep tattoos safe and hygienic?",
+    question: "How does Xing Premium Tattoo Studio keep tattoos safe and hygienic?",
     answer:
       "Single-use needles opened in front of you, sealed US-imported inks, medical-grade sterilisation and barrier protection on all equipment, with the workstation fully cleaned between every client.",
   },

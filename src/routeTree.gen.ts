@@ -10,16 +10,28 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as R404RouteImport } from './routes/404'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as OfferRouteImport } from './routes/offer'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as TattooArtistRouteImport } from './routes/tattoo-artist'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
+import { Route as BlogCategoryCategoryRouteImport } from './routes/blog/category/$category'
+import { Route as BlogPagePageRouteImport } from './routes/blog/page/$page'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -37,9 +49,29 @@ const OfferRoute = OfferRouteImport.update({
   path: '/offer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TattooArtistRoute = TattooArtistRouteImport.update({
   id: '/tattoo-artist',
   path: '/tattoo-artist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
@@ -52,73 +84,132 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogCategoryCategoryRoute = BlogCategoryCategoryRouteImport.update({
+  id: '/blog/category/$category',
+  path: '/blog/category/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogPagePageRoute = BlogPagePageRouteImport.update({
+  id: '/blog/page/$page',
+  path: '/blog/page/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/offer': typeof OfferRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/tattoo-artist': typeof TattooArtistRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
+  '/blog/page/$page': typeof BlogPagePageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/offer': typeof OfferRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/tattoo-artist': typeof TattooArtistRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
+  '/blog/page/$page': typeof BlogPagePageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/offer': typeof OfferRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/tattoo-artist': typeof TattooArtistRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
+  '/blog/page/$page': typeof BlogPagePageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/404'
     | '/about'
     | '/faq'
     | '/offer'
+    | '/privacy-policy'
     | '/tattoo-artist'
+    | '/terms-and-conditions'
+    | '/blog/$slug'
     | '/services/$slug'
+    | '/blog/'
     | '/services/'
+    | '/blog/category/$category'
+    | '/blog/page/$page'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/404'
     | '/about'
     | '/faq'
     | '/offer'
+    | '/privacy-policy'
     | '/tattoo-artist'
+    | '/terms-and-conditions'
+    | '/blog/$slug'
     | '/services/$slug'
+    | '/blog'
     | '/services'
+    | '/blog/category/$category'
+    | '/blog/page/$page'
   id:
     | '__root__'
     | '/'
+    | '/404'
     | '/about'
     | '/faq'
     | '/offer'
+    | '/privacy-policy'
     | '/tattoo-artist'
+    | '/terms-and-conditions'
+    | '/blog/$slug'
     | '/services/$slug'
+    | '/blog/'
     | '/services/'
+    | '/blog/category/$category'
+    | '/blog/page/$page'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
   FaqRoute: typeof FaqRoute
   OfferRoute: typeof OfferRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   TattooArtistRoute: typeof TattooArtistRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  BlogCategoryCategoryRoute: typeof BlogCategoryCategoryRoute
+  BlogPagePageRoute: typeof BlogPagePageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -128,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -151,11 +249,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OfferRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tattoo-artist': {
       id: '/tattoo-artist'
       path: '/tattoo-artist'
       fullPath: '/tattoo-artist'
       preLoaderRoute: typeof TattooArtistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/': {
@@ -172,17 +298,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/category/$category': {
+      id: '/blog/category/$category'
+      path: '/blog/category/$category'
+      fullPath: '/blog/category/$category'
+      preLoaderRoute: typeof BlogCategoryCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/page/$page': {
+      id: '/blog/page/$page'
+      path: '/blog/page/$page'
+      fullPath: '/blog/page/$page'
+      preLoaderRoute: typeof BlogPagePageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
   AboutRoute: AboutRoute,
   FaqRoute: FaqRoute,
   OfferRoute: OfferRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   TattooArtistRoute: TattooArtistRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  BlogCategoryCategoryRoute: BlogCategoryCategoryRoute,
+  BlogPagePageRoute: BlogPagePageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

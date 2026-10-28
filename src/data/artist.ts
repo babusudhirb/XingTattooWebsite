@@ -1,3 +1,4 @@
+import { COUNTS, GOOGLE_RATING, HOURS_LONG, PHONE_DISPLAY } from "@/data/business";
 import { services, type ServiceSlug } from "./services";
 
 /** Facts about the studio's artist. Only confirmed details — no invented biography. */
@@ -5,11 +6,11 @@ export const ARTIST = {
   name: "Peace",
   fullName: "Chingri Awungshi",
   role: "Lead Tattoo Artist",
-  yearsExperience: "15+",
-  tattoosCompleted: "1800+",
-  happyClients: "1200+",
-  studioSince: "2021",
-  googleRating: "4.9",
+  yearsExperience: COUNTS.years,
+  tattoosCompleted: COUNTS.tattoos,
+  happyClients: COUNTS.clients,
+  studioSince: COUNTS.since,
+  googleRating: String(GOOGLE_RATING),
 };
 
 /** Tattoos and clients shown together everywhere: "1800+ tattoos for 1200+ happy clients". */
@@ -23,7 +24,7 @@ export const artistMilestones = [
   { value: `${ARTIST.yearsExperience} yrs`, label: "Behind the machine" },
   tattoosForClients,
   { value: `${ARTIST.googleRating}★`, label: "Google rating" },
-  { value: ARTIST.studioSince, label: "Opened XING" },
+  { value: ARTIST.studioSince, label: "Opened Xing" },
 ];
 
 /** What Peace brings to each style — links to the matching service page. */
@@ -60,7 +61,7 @@ export const artistStyles: { slug: ServiceSlug; title: string; text: string }[] 
   },
 ];
 
-/** A cross-section of work from the service galleries, all done at XING. */
+/** A cross-section of work from the service galleries, all done at Xing. */
 const pick = (slug: ServiceSlug, i: number) => {
   const image = services[slug].galleryImages[i];
   if (!image) throw new Error(`Missing gallery image ${slug}[${i}]`);
@@ -99,14 +100,14 @@ export const artistBookingSteps = [
 
 export const artistFaqs = [
   {
-    question: "Who is the tattoo artist at XING Tattoo Studio, Brookefield?",
+    question: "Who is the tattoo artist at Xing Premium Tattoo Studio, Brookefield?",
     answer:
-      "XING's lead tattoo artist is Peace (Chingri Awungshi), with 15+ years of experience and 1800+ tattoos completed. Every tattoo at the studio is designed and done by Peace personally.",
+      `Xing Premium Tattoo Studio's lead tattoo artist is Peace (Chingri Awungshi), with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. Every tattoo at the studio is designed and done by Peace personally.`,
   },
   {
     question: "Can I choose Peace to do my tattoo?",
     answer:
-      "Yes — you don't need to request it. Every consultation, design and session at XING is handled by Peace, so there are no handoffs between artists.",
+      "Yes — you don't need to request it. Every consultation, design and session at Xing Premium Tattoo Studio is handled by Peace, so there are no handoffs between artists.",
   },
   {
     question: "What tattoo styles does Peace specialise in?",
@@ -126,6 +127,6 @@ export const artistFaqs = [
   {
     question: "How do I book an appointment with Peace?",
     answer:
-      "Use the Book Consultation form on this site, message +91 89700 07818 on WhatsApp, or visit the studio in AECS Layout, Brookefield. The studio is open 10 AM – 9 PM every day except Tuesday.",
+      `Use the Book Consultation form on this site, message ${PHONE_DISPLAY} on WhatsApp, or visit the studio in AECS Layout, Brookefield. Hours: ${HOURS_LONG}.`,
   },
 ];

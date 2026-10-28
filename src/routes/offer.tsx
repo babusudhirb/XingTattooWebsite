@@ -11,8 +11,22 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import offerCss from "@/styles/offer-page.css?url";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import offerHeroSamurai from "@/assets/offers/page/offer-hero-samurai.webp";
+import {
+  ADDRESS,
+  BUSINESS_ID,
+  BUSINESS_NAME,
+  COUNTS,
+  DIRECTIONS_URL,
+  HOURS_TEXT,
+  MAP_EMBED_URL,
+  OFFER,
+  pageTitle,
+  SERVICE_AREAS,
+  SITE_URL,
+} from "@/data/business";
+import { useOfferActive } from "@/lib/offer";
 import { ARTIST } from "@/data/artist";
-import { OFFER_ENDS, OFFER_ENDS_LABEL as OFFER_VALID_UNTIL, offerDaysLeft } from "@/data/offer";
+import { offerDaysLeft } from "@/data/offer";
 import { GOOGLE_RATING, reviews } from "@/data/reviews";
 import { services } from "@/data/services";
 import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
@@ -25,16 +39,11 @@ import { sendOfferClaim } from "@/lib/booking-request";
  * Styles live in src/styles/offer-page.css, scoped under .olp.
  */
 
-const TITLE = "Tattoo Offers in Brookefield, Bengaluru — Up to 50% Off | XING Tattoo Studio";
+const TITLE = pageTitle("Tattoo Offer: Up to 50% Off");
 const DESCRIPTION =
-  "Get up to 50% off on your tattoos at XING Tattoo Studio, Brookefield. Tattoos from ₹1,499, any 10 sq. inch tattoo at ₹2,499, up to 50% off large tattoos. 15+ yrs artist, single-use needles, premium US ink.";
+  `Up to 50% off custom tattoos at Xing Premium Tattoo Studio, Brookefield, Bengaluru. ${OFFER.validLabel}. Get your exact quote at a free consultation.`;
 
 const wa = (text: string) => `${WHATSAPP_URL}?text=${encodeURIComponent(text)}`;
-
-const STUDIO_MAP_QUERY =
-  "Xing Premium Tattoo Studio, SV Plaza, 60 Feet Rd, AECS Layout, Brookefield, Bengaluru 560037";
-const MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(STUDIO_MAP_QUERY)}&output=embed`;
-const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(STUDIO_MAP_QUERY)}`;
 
 /* Intent events only. No advertising tags or conversion labels are fabricated.
    Configure the site's consent-aware tag manager separately before Ads launch.
@@ -52,10 +61,10 @@ const blackGrey = services["black-grey"];
 
 const HERO_IMAGE = {
   src: offerHeroSamurai,
-  alt: "Black and grey samurai warrior forearm tattoo with red accents by XING Tattoo Studio, Brookefield, Bengaluru",
+  alt: "Black and grey samurai warrior forearm tattoo with red accents by Xing Premium Tattoo Studio, Brookefield, Bengaluru",
 };
 
-type OfferId = "from-1499" | "10-sq-inch" | "large-50" | "privilege";
+type OfferId = "small" | "10-sq-inch" | "large-50" | "privilege";
 
 interface Offer {
   id: OfferId;
@@ -63,39 +72,39 @@ interface Offer {
   /** Short name used in the claim form and the lead email. */
   name: string;
   kicker: string;
-  /** Small line above the price on the photo, e.g. "Up to". */
+  /** Small line above the headline on the photo, e.g. "Up to". */
   pricePrefix?: string;
+  /** Headline on the photo — never a rupee figure; the exact quote comes at the consultation. */
   price: string;
   title: string;
   text: string;
   img: string;
   alt: string;
   featured?: boolean;
-  tiers?: [string, string][];
 }
 
 const OFFERS: Offer[] = [
   {
-    id: "from-1499",
+    id: "small",
     badge: "Perfect first tattoo",
-    name: "Tattoo starting from ₹1,499",
-    kicker: "Starting from",
-    price: "₹1,499",
-    title: "Tattoos from ₹1,499",
+    name: "Small & first tattoo offer",
+    kicker: "Small & first tattoos",
+    price: "Offer price",
+    title: "Small & first tattoos",
     text: "Minimal, fine-line, name and symbol tattoos.",
     img: minimalist.galleryImages[6]!.src,
-    alt: "Fine-line floral heart tattoo on wrist — small tattoos from ₹1,499 at XING Tattoo Studio, Brookefield",
+    alt: "Fine-line floral heart tattoo on wrist — small tattoo offer at Xing Premium Tattoo Studio, Brookefield",
   },
   {
     id: "10-sq-inch",
     badge: "Most popular",
-    name: "Any 10 sq. inch tattoo at ₹2,499",
+    name: "Any 10 sq. inch tattoo offer",
     kicker: "Any 10 sq. inch tattoo",
-    price: "₹2,499",
+    price: "Offer price",
     title: "Any 10 sq. inch tattoo",
     text: "Any design, any style — up to 10 square inches.",
     img: geometric.heroImage,
-    alt: "Geometric compass and moon forearm tattoo — any 10 sq. inch tattoo at ₹2,499 in Bengaluru",
+    alt: "Geometric compass and moon forearm tattoo — 10 sq. inch tattoo offer at Xing Premium Tattoo Studio, Brookefield",
     featured: true,
   },
   {
@@ -108,36 +117,32 @@ const OFFERS: Offer[] = [
     title: "Up to 50% off large tattoos",
     text: "Sleeves, back pieces, portraits and cover-ups.",
     img: realism.galleryImages[1]!.src,
-    alt: "Realistic eagle wing sleeve tattoo — up to 50% off large tattoos at XING Tattoo Studio",
+    alt: "Realistic eagle wing sleeve tattoo — up to 50% off large tattoos at Xing Premium Tattoo Studio",
   },
   {
     id: "privilege",
     badge: "Additional privilege",
-    name: "Additional privilege — 10% off above ₹10K / 20% off above ₹20K",
+    name: "Extra savings on bigger pieces",
     kicker: "Spend more, save more",
-    price: "Extra 20% off",
-    title: "Extra off on bigger pieces",
-    text: "Spend more, save more on your tattoo bill.",
+    price: "Extra off",
+    title: "Extra savings on bigger pieces",
+    text: "Larger pieces get extra savings — ask at your free consultation.",
     img: traditional.heroImage,
-    alt: "Detailed black and grey hand tattoo — additional privilege discount on tattoos above ₹10,000",
-    tiers: [
-      ["Above ₹10,000", "10% off"],
-      ["Above ₹20,000", "20% off"],
-    ],
+    alt: "Detailed black and grey hand tattoo — extra savings on bigger pieces at Xing Premium Tattoo Studio",
   },
 ];
 
 /** Compact offer picker in the desktop hero; each opens the claim popup preselected. */
 const HERO_PICKS: { id: OfferId; value: string; label: string; popular?: boolean }[] = [
-  { id: "from-1499", value: "₹1,499", label: "Starting from" },
-  { id: "10-sq-inch", value: "₹2,499", label: "Any 10 sq. inch", popular: true },
+  { id: "small", value: "Offer price", label: "Small & first" },
+  { id: "10-sq-inch", value: "Offer price", label: "Any 10 sq. inch", popular: true },
   { id: "large-50", value: "50% off", label: "Large tattoos" },
-  { id: "privilege", value: "10–20% off", label: "Above ₹10K" },
+  { id: "privilege", value: "Extra off", label: "Bigger pieces" },
 ];
 
 const WHY_XING: { value: string; label: string; text: string; icon: ReactNode }[] = [
   {
-    value: "15+ yrs",
+    value: `${COUNTS.years} yrs`,
     label: "Artist experience",
     text: "Every piece by Peace, our lead artist.",
     icon: (
@@ -187,7 +192,7 @@ const ARTIST_FACTS = [
 const STAGES: { title: string; text: string; guide?: { label: string; items: string[] } }[] = [
   {
     title: "Consult",
-    text: "Your idea, refined by 5000+ tattoos of experience.",
+    text: `Your idea, refined by ${COUNTS.tattoos} tattoos of experience.`,
     guide: {
       label: "Pre-Session Guide",
       items: [
@@ -239,22 +244,22 @@ const FIRST_TATTOO_POINTS = [
   },
 ];
 
-const REVIEWS = reviews.filter((r) => r.inSchema !== false).slice(0, 6);
+const REVIEWS = reviews.slice(0, 6);
 
 const offerSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "OfferCatalog",
-      name: "XING Tattoo Studio offers",
+      name: `${OFFER.title} — Xing Premium Tattoo Studio`,
+      url: `${SITE_URL}${OFFER.url}`,
       itemListElement: OFFERS.map((o) => ({
         "@type": "Offer",
         name: o.name,
         description: o.text,
-        ...(o.id === "from-1499" && { price: "1499", priceCurrency: "INR" }),
-        ...(o.id === "10-sq-inch" && { price: "2499", priceCurrency: "INR" }),
-        validThrough: OFFER_ENDS.toISOString().slice(0, 10),
-        seller: { "@id": "#studio" },
+        validFrom: OFFER.validFrom,
+        validThrough: OFFER.validThrough,
+        seller: { "@id": BUSINESS_ID },
       })),
     },
   ],
@@ -272,7 +277,7 @@ export const Route = createFileRoute("/offer")({
     ],
     links: [
       { rel: "stylesheet", href: offerCss },
-      { rel: "canonical", href: "/offer" },
+      { rel: "canonical", href: `${SITE_URL}/offer` },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(offerSchema) }],
   }),
@@ -353,8 +358,8 @@ function ClaimButton({
 
 /** Studio mark — links back to the home page. */
 const Brand = () => (
-  <Link to="/" className="brand" aria-label="XING Tattoo Studio — home">
-    <img src="/xing-logo.webp" alt="XING Tattoo Studio logo" width={40} height={40} />
+  <Link to="/" className="brand" aria-label="Xing Premium Tattoo Studio — home">
+    <img src="/xing-logo.webp" alt="Xing Premium Tattoo Studio logo" width={40} height={40} />
     <span className="brand-name">
       <strong>XING</strong>
       <span>TATTOO STUDIO</span>
@@ -369,6 +374,7 @@ function OfferPage() {
   const claimRef = useRef<HTMLDialogElement>(null);
   const [year, setYear] = useState(2026);
   const [daysLeft, setDaysLeft] = useState<number | undefined>(undefined);
+  const offerActive = useOfferActive();
   useEffect(() => {
     setYear(new Date().getFullYear());
     setDaysLeft(offerDaysLeft());
@@ -376,7 +382,7 @@ function OfferPage() {
 
   const urgency =
     daysLeft === undefined
-      ? `Valid until ${OFFER_VALID_UNTIL}`
+      ? OFFER.validLabel
       : daysLeft === 0
         ? "Ends tonight"
         : daysLeft === 1
@@ -402,7 +408,7 @@ function OfferPage() {
 
   const chosenOffer = OFFERS.find((o) => o.id === claimOffer)!;
   const claimWhatsApp = wa(
-    `Hi XING! I'd like to claim this offer: ${chosenOffer.name}.\nName: ${claimName.trim()}\nPhone: ${claimPhone.trim()}` +
+    `Hi Xing! I'd like to claim this offer: ${chosenOffer.name}.\nName: ${claimName.trim()}\nPhone: ${claimPhone.trim()}` +
       (claimIdea.trim() ? `\nMy idea: ${claimIdea.trim()}` : "") +
       "\nPlease share the quote and available slots.",
   );
@@ -445,7 +451,7 @@ function OfferPage() {
     e.preventDefault();
     const text = idea.trim();
     const message =
-      "Hi XING! Here's my tattoo idea.\nType: " +
+      "Hi Xing! Here's my tattoo idea.\nType: " +
       type +
       "\nSize: " +
       size +
@@ -468,17 +474,20 @@ function OfferPage() {
         Skip to content
       </a>
 
-      <button type="button" className="top-offer" onClick={() => openClaim(undefined, "top_bar")}>
-        <span className="top-offer-tag">{urgency}</span>
-        <span>
-          Up to <strong>50% off</strong> on tattoos
-          <span className="top-offer-extra">
-            {" "}
-            · Tattoos from <strong>₹1,499</strong>
+      {offerActive ? (
+        <button type="button" className="top-offer" onClick={() => openClaim(undefined, "top_bar")}>
+          <span className="top-offer-tag">{urgency}</span>
+          <span>
+            Up to <strong>50% off</strong> custom tattoos
+            <span className="top-offer-extra"> · {OFFER.validLabel}</span>
           </span>
-        </span>
-        <span className="top-offer-cta">Claim now →</span>
-      </button>
+          <span className="top-offer-cta">Claim now →</span>
+        </button>
+      ) : (
+        <p className="top-offer top-offer-ended" role="status">
+          This offer ended on {OFFER.endsLabel} — consultations are still free.
+        </p>
+      )}
 
       <header className="site-header">
         <div className="wrap header-inner">
@@ -506,7 +515,7 @@ function OfferPage() {
             </h1>
             <p className="intro">
               A tattoo on your skin is your bold story — crafted with precision, hygiene and care at
-              XING Tattoo Studio.
+              Xing Premium Tattoo Studio.
             </p>
             {/* Desktop only: pick an offer straight from the hero (hidden on phones) */}
             <div className="hero-picks" role="group" aria-label="Choose your offer">
@@ -532,9 +541,9 @@ function OfferPage() {
             <ul className="hero-assure">
               <li>Free consultation</li>
               <li>No advance to claim</li>
-              <li>Price confirmed before you book</li>
+              <li>Exact quote at your free consultation</li>
             </ul>
-            <ul className="hero-proof" aria-label="Why clients trust XING">
+            <ul className="hero-proof" aria-label="Why clients trust Xing">
               <li>
                 <Stars /> <strong>{GOOGLE_RATING}</strong> Google rating
               </li>
@@ -560,8 +569,8 @@ function OfferPage() {
               <span>off</span>
             </div>
             <div className="hero-card">
-              <span>Tattoos starting from</span>
-              <strong>₹1,499</strong>
+              <span>{OFFER.validLabel}</span>
+              <strong>Free consultation</strong>
               <em>{urgency}</em>
             </div>
           </div>
@@ -597,20 +606,10 @@ function OfferPage() {
                     <span className="offer-badge">{o.badge}</span>
                     <span className="offer-overlay">
                       <span className="offer-kicker">{o.kicker}</span>
-                      {o.tiers ? (
-                        <span className="offer-tiers">
-                          {o.tiers.map(([above, off]) => (
-                            <span key={above}>
-                              <b>{off}</b> {above.replace("Above ", "on ")}
-                            </span>
-                          ))}
-                        </span>
-                      ) : (
-                        <span className="offer-price">
-                          {o.pricePrefix && <small>{o.pricePrefix} </small>}
-                          {o.price}
-                        </span>
-                      )}
+                      <span className="offer-price">
+                        {o.pricePrefix && <small>{o.pricePrefix} </small>}
+                        {o.price}
+                      </span>
                     </span>
                   </button>
                   <div className="offer-body">
@@ -629,19 +628,19 @@ function OfferPage() {
               ))}
             </div>
             <p className="price-note">
-              Offers valid until {OFFER_VALID_UNTIL}. Final price and eligibility are confirmed by
-              the studio after reviewing your design, size and placement. Consultation is free.
+              {OFFER.validLabel}. Exact quote at your free consultation — final price and
+              eligibility are confirmed after reviewing your design, size and placement.
             </p>
           </div>
         </section>
 
-        {/* Why XING */}
+        {/* Why Xing */}
         <section className="why-section" aria-labelledby="why-title">
           <div className="wrap">
             <div className="section-heading center">
               <span className="eyebrow">Tattoo studio in Brookefield you can trust</span>
               <h2 id="why-title">
-                Why choose <em>XING?</em>
+                Why choose <em>Xing?</em>
               </h2>
             </div>
             <ul className="why-grid">
@@ -679,7 +678,7 @@ function OfferPage() {
                 More <em>showing.</em>
               </h2>
             </div>
-            <p>Every piece below was inked by Peace at XING, Brookefield.</p>
+            <p>Every piece below was inked by Peace at Xing, Brookefield.</p>
           </div>
           <div className="work-grid">
             {WORK.map((img) => (
@@ -700,14 +699,14 @@ function OfferPage() {
             <div className="artist-photo">
               <img
                 src={artistPortrait}
-                alt="Peace (Chingri Awungshi), lead tattoo artist at XING Tattoo Studio, Brookefield, Bengaluru"
+                alt="Peace (Chingri Awungshi), lead tattoo artist at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
                 width={1200}
                 height={1350}
                 loading="lazy"
               />
               <div className="artist-tag">
                 <strong>{ARTIST.name}</strong>
-                {ARTIST.role} at XING
+                {ARTIST.role} at Xing
               </div>
             </div>
             <div className="artist-copy">
@@ -716,15 +715,15 @@ function OfferPage() {
                 Meet <em>{ARTIST.name}.</em>
               </h2>
               <p className="artist-role">
-                {ARTIST.fullName} — {ARTIST.role} at XING Tattoo Studio
+                {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio
               </p>
               <p>
                 With {ARTIST.yearsExperience} years behind the machine and {ARTIST.tattoosCompleted}{" "}
-                tattoos completed, Peace is the one hand behind every piece at XING Tattoo Studio in
-                AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and across
-                Bengaluru for custom realism, portraits, fine-line work and Indian traditional
-                designs — each one drawn from scratch and inked in a studio run to clinic-level
-                hygiene.
+                tattoos completed, Peace is the one hand behind every piece at Xing Premium Tattoo
+                Studio in AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and
+                across Bengaluru for custom realism, portraits, fine-line work and Indian
+                traditional designs — each one drawn from scratch and inked in a studio run to
+                clinic-level hygiene.
               </p>
               <ul className="artist-facts">
                 {ARTIST_FACTS.map((fact) => (
@@ -809,7 +808,7 @@ function OfferPage() {
               </ul>
               <ClaimButton
                 onOpen={openClaim}
-                offer="from-1499"
+                offer="small"
                 placement="first_tattoo"
                 className="btn gold"
               >
@@ -950,20 +949,14 @@ function OfferPage() {
               In the heart of <em>Brookefield.</em>
             </h2>
             <address>
-              <strong>XING Tattoo Studio</strong>
-              1st Floor, SV Plaza, 267, 60 Feet Rd,
-              <br />
-              above DMART, AECS Layout A Block,
-              <br />
-              Brookefield, Bengaluru, Karnataka 560037
+              <strong>{BUSINESS_NAME}</strong>
+              {ADDRESS.full}
             </address>
             <dl className="location-info">
               <div>
                 <dt>Studio hours</dt>
                 <dd>
-                  10:00 AM – 9:00 PM
-                  <br />
-                  Closed on Tuesdays
+                  {HOURS_TEXT}
                 </dd>
               </div>
               <div>
@@ -975,8 +968,8 @@ function OfferPage() {
                 </dd>
               </div>
               <div>
-                <dt>Nearby</dt>
-                <dd>Whitefield · Marathahalli · ITPL · Kundalahalli</dd>
+                <dt>Serving</dt>
+                <dd>{SERVICE_AREAS.join(" · ")}</dd>
               </div>
             </dl>
             <div className="location-actions">
@@ -994,7 +987,7 @@ function OfferPage() {
           <div className="map">
             <iframe
               src={MAP_EMBED_URL}
-              title="Map showing XING Tattoo Studio, AECS Layout, Brookefield, Bengaluru"
+              title={`Map: ${BUSINESS_NAME}`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
@@ -1005,7 +998,9 @@ function OfferPage() {
 
       <footer className="footer">
         <div className="wrap footer-inner">
-          <p>© {year} XING Tattoo Studio, Brookefield, Bengaluru. Made personal. Made permanent.</p>
+          <p>
+            © {year} {BUSINESS_NAME}. Made personal. Made permanent.
+          </p>
           <button type="button" onClick={() => privacyRef.current?.showModal()}>
             Privacy &amp; enquiries
           </button>
@@ -1016,7 +1011,7 @@ function OfferPage() {
         <ClaimButton onOpen={openClaim} placement="mobile_sticky" className="btn gold" />
         <T
           className="btn outline icon-only"
-          href={wa("Hi XING! I'd like to know more about the tattoo offer.")}
+          href={wa("Hi Xing! I'd like to know more about the tattoo offer.")}
           track="whatsapp_click"
           placement="mobile_sticky"
           label="Chat on WhatsApp"
@@ -1082,12 +1077,8 @@ function OfferPage() {
                       checked={claimOffer === o.id}
                       onChange={() => setClaimOffer(o.id)}
                     />
-                    <strong>
-                      {o.id === "privilege"
-                        ? "10–20% off"
-                        : [o.pricePrefix, o.price].filter(Boolean).join(" ")}
-                    </strong>
-                    <span>{o.id === "privilege" ? "Above ₹10K" : o.kicker}</span>
+                    <strong>{[o.pricePrefix, o.price].filter(Boolean).join(" ")}</strong>
+                    <span>{o.kicker}</span>
                   </label>
                 ))}
               </div>
@@ -1169,15 +1160,15 @@ function OfferPage() {
         <h2>Privacy &amp; enquiries</h2>
         <p>
           When you claim an offer, your name, phone number, chosen offer and idea are emailed to
-          XING Tattoo Studio so we can call you back with a quote. They are used only for your
-          enquiry and never sold or shared.
+          Xing Premium Tattoo Studio so we can call you back with a quote. They are used only for
+          your enquiry and never sold or shared.
         </p>
         <p>
           The “Design your tattoos” form only prepares a WhatsApp message — you decide whether to
           send it. WhatsApp and Google Maps apply their own privacy policies when you use them.
         </p>
         <p>
-          For questions about your enquiry, contact XING Tattoo Studio at{" "}
+          For questions about your enquiry, contact Xing Premium Tattoo Studio at{" "}
           <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
         </p>
         <form method="dialog">

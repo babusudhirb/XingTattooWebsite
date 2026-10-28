@@ -9,7 +9,8 @@ import { openBookingModal } from "@/components/booking/BookingContext";
 import { TattooFlash } from "@/components/sections/TattooFlash";
 
 const STEPS = ["Share your idea", "Get your custom design", "Book your session"];
-const TRUST = ["4.9★ on Google", "1800+ tattoos", "Single-use needles", "No payment upfront"];
+import { COUNTS, GOOGLE_RATING } from "@/data/business";
+const TRUST = [`${GOOGLE_RATING}★ on Google`, `${COUNTS.tattoos} tattoos`, "Single-use needles", "No payment upfront"];
 
 /** Same schedule the booking form uses, so the promised slot is really bookable. */
 function nextOpenSlot() {
@@ -65,7 +66,7 @@ export function BookingCTA() {
         </div>
 
         <div className="max-w-2xl p-5 sm:p-10 lg:p-12">
-          <p className="font-display text-[0.65rem] font-semibold tracking-[0.3em] text-amber-400 uppercase">
+          <p className="font-display text-xs font-semibold tracking-[0.18em] text-amber-400 uppercase">
             Ready To Get Inked?
           </p>
           <h2
@@ -87,7 +88,7 @@ export function BookingCTA() {
             {STEPS.map((step, i) => (
               <li key={step} className="flex items-center gap-2">
                 <span className="flex items-center gap-2 rounded-full border border-amber-400/25 bg-white/[0.04] py-1.5 pr-3 pl-1.5">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-400 font-display text-[0.65rem] font-bold text-black">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-400 font-display text-xs font-bold text-black">
                     {i + 1}
                   </span>
                   {step}
@@ -124,7 +125,7 @@ export function BookingCTA() {
           <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
             <button
               onClick={() => openBookingModal()}
-              className="col-span-2 inline-flex min-h-12 items-center justify-center gap-3 rounded-sm bg-yellow-400 px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-black uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-[0_12px_30px_-10px_rgba(250,204,21,0.6)]"
+              className="col-span-2 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-yellow-400 px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-black uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-[0_12px_30px_-10px_rgba(250,204,21,0.6)]"
             >
               Book Free Consultation <ArrowRight className="h-4 w-4" />
             </button>
@@ -132,19 +133,19 @@ export function BookingCTA() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-amber-400/50 px-4 py-4 sm:px-6 font-display text-xs font-semibold tracking-[0.14em] text-amber-100 uppercase transition-colors hover:bg-amber-400/10"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-amber-400/50 px-4 py-4 sm:px-6 font-display text-xs font-bold tracking-[0.14em] text-amber-100 uppercase transition-colors hover:bg-amber-400/10"
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             <a
               href={PHONE_TEL}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-white/15 px-2 py-4 text-sm text-stone-300 sm:justify-start sm:border-0 underline-offset-4 transition-colors hover:text-white hover:underline"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 px-2 py-4 text-sm font-bold text-stone-300 sm:justify-start sm:border-0 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
             </a>
           </div>
 
-          <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-[0.7rem] tracking-wide text-stone-400 uppercase">
+          <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-xs tracking-wide text-stone-400 uppercase">
             {TRUST.map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <span className="h-1 w-1 rotate-45 bg-amber-400" aria-hidden="true" />

@@ -1,3 +1,4 @@
+import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -11,6 +12,16 @@ import {
 } from "lucide-react";
 
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
+import {
+  ADDRESS,
+  BUSINESS_ID,
+  BUSINESS_NAME,
+  DIRECTIONS_URL,
+  HOURS_TEXT,
+  pageTitle,
+  SHORT_ADDRESS,
+  SITE_URL,
+} from "@/data/business";
 import { aboutFaqs, aboutValues, hygieneStandards, visitLandmarks } from "@/data/about";
 import { ARTIST, tattoosForClients } from "@/data/artist";
 import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
@@ -26,11 +37,9 @@ import { SocialDock } from "@/components/layout/SocialDock";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/sections/Origami";
 
-const TITLE = "About XING Tattoo Studio | Custom Tattoo Studio in Brookefield, Bengaluru";
+const TITLE = pageTitle("About the Studio");
 const DESCRIPTION =
-  "The story of XING Tattoo Studio, AECS Layout, Brookefield — custom tattoos by Peace since 2021, clinic-level hygiene, 4.9★ on Google. Hours, map & FAQs.";
-const MAP_EMBED =
-  "https://www.google.com/maps?q=XING+Tattoo+Studio+SV+Plaza+AECS+Layout+Brookefield+Bengaluru&output=embed";
+  "The story of Xing Premium Tattoo Studio, AECS Layout, Brookefield, Bengaluru: custom tattoos by Peace, clinic-level hygiene, hours, map and studio FAQs.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -42,7 +51,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -51,7 +60,7 @@ export const Route = createFileRoute("/about")({
           "@type": "AboutPage",
           name: TITLE,
           description: DESCRIPTION,
-          about: { "@id": "#studio" },
+          about: { "@id": BUSINESS_ID },
         }),
       },
       {
@@ -134,7 +143,7 @@ function AboutPage() {
             id="about-title"
             className="mt-4 font-display text-[2rem] leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl"
           >
-            About XING Tattoo Studio,{" "}
+            About Xing Premium Tattoo Studio,{" "}
             <span className="block text-amber-700">Brookefield, Bengaluru</span>
           </h1>
           <p className="mx-auto mt-5 max-w-sm font-script text-2xl text-amber-700">
@@ -145,14 +154,15 @@ function AboutPage() {
         <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-6 lg:grid-cols-2">
           <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             <p className="font-display text-xl leading-snug font-medium text-foreground">
-              A tattoo is one of the few things you'll keep for life. We built XING around that
+              A tattoo is one of the few things you'll keep for life. We built Xing around that
               fact.
             </p>
             <p>
-              XING Tattoo Studio opened in {ARTIST.studioSince} on the 1st floor of SV Plaza, 60
-              Feet Road — right above D-Mart in AECS Layout, Brookefield. The idea was simple: a
-              custom tattoo studio for East Bengaluru where every design is drawn from scratch,
-              every session is unhurried, and hygiene is treated like a clinic, not an afterthought.
+              Xing opened in {ARTIST.studioSince} on the 1st floor of SV Plaza, 60 Feet Road —
+              right above DMART Ready in AECS Layout, Brookefield. The idea
+              was simple: a custom tattoo studio for East Bengaluru where every design is drawn from
+              scratch, every session is unhurried, and hygiene is treated like a clinic, not an
+              afterthought.
             </p>
             <p>
               Since then, {ARTIST.happyClients} clients from Brookefield, Whitefield, Marathahalli,
@@ -163,7 +173,7 @@ function AboutPage() {
           </div>
           <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             <p>
-              Every tattoo at XING is designed and inked by one artist —{" "}
+              Every tattoo at Xing is designed and inked by one artist —{" "}
               <Link
                 to="/tattoo-artist"
                 className="font-semibold text-foreground underline decoration-amber-700/40 underline-offset-4 hover:decoration-amber-700"
@@ -182,7 +192,7 @@ function AboutPage() {
             <div className="flex flex-wrap gap-3 pt-2">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
               >
                 Book Free Consultation <ArrowRight className="h-4 w-4" />
               </button>
@@ -269,7 +279,7 @@ function AboutPage() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <img
             src={artistPortrait}
-            alt="Peace (Chingri Awungshi), lead tattoo artist at XING Tattoo Studio, Brookefield"
+            alt="Peace (Chingri Awungshi), lead tattoo artist at Xing Premium Tattoo Studio, Brookefield"
             width={1200}
             height={1350}
             loading="lazy"
@@ -285,12 +295,12 @@ function AboutPage() {
             </h2>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
               {ARTIST.fullName}, known to clients as Peace, brings {ARTIST.yearsExperience} years of
-              experience and {ARTIST.tattoosCompleted} tattoos to every session at XING. See the
+              experience and {ARTIST.tattoosCompleted} tattoos to every session at Xing. See the
               styles, signature work and client reviews on the full artist profile.
             </p>
             <Link
               to="/tattoo-artist"
-              className="mt-6 inline-flex items-center gap-3 rounded-sm border border-primary px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+              className="mt-6 inline-flex items-center gap-3 rounded-full border border-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
             >
               View Artist Profile <ArrowRight className="h-4 w-4" />
             </Link>
@@ -308,7 +318,7 @@ function AboutPage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <FoldCard className="h-full">
             <h3 className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase">
-              XING Tattoo Studio
+              {BUSINESS_NAME}
             </h3>
             <dl className="mt-4 space-y-4 text-sm">
               <div className="flex gap-3">
@@ -316,10 +326,7 @@ function AboutPage() {
                 <div>
                   <dt className="sr-only">Address</dt>
                   <dd>
-                    <address className="not-italic">
-                      1st Floor, SV Plaza, 267, 60 Feet Rd, AECS Layout A Block, Brookefield,
-                      Bengaluru, Karnataka 560037
-                    </address>
+                    <address className="not-italic">{ADDRESS.full}</address>
                   </dd>
                 </div>
               </div>
@@ -328,9 +335,7 @@ function AboutPage() {
                 <div>
                   <dt className="sr-only">Hours</dt>
                   <dd>
-                    Wednesday – Monday: 10:00 AM – 9:00 PM
-                    <br />
-                    <span className="text-muted-foreground">Tuesday: closed</span>
+                    {HOURS_TEXT}
                   </dd>
                 </div>
               </div>
@@ -358,12 +363,14 @@ function AboutPage() {
                 </li>
               ))}
             </ul>
+            <p className="eyebrow mt-6">At The Studio</p>
+            <AttributeChips className="mt-3" />
             <div className="mt-6 grid grid-cols-2 gap-3">
               <a
-                href={GOOGLE_REVIEWS_URL}
+                href={DIRECTIONS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-sm bg-primary px-4 py-3 font-display text-[0.7rem] font-semibold tracking-[0.12em] text-primary-foreground uppercase hover:opacity-90"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 font-display text-xs font-bold tracking-[0.12em] text-primary-foreground uppercase hover:opacity-90"
               >
                 <Navigation className="h-3.5 w-3.5" /> Directions
               </a>
@@ -371,21 +378,13 @@ function AboutPage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border border-primary px-4 py-3 font-display text-[0.7rem] font-semibold tracking-[0.12em] uppercase hover:bg-accent"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-primary px-4 py-3 font-display text-xs font-bold tracking-[0.12em] uppercase hover:bg-accent"
               >
                 <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
               </a>
             </div>
           </FoldCard>
-          <div className="relative min-h-[320px] overflow-hidden border border-border [clip-path:polygon(0_0,100%_0,100%_calc(100%-32px),calc(100%-32px)_100%,0_100%)]">
-            <iframe
-              title="Map showing XING Tattoo Studio, AECS Layout, Brookefield, Bengaluru"
-              src={MAP_EMBED}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full grayscale-[40%]"
-            />
-          </div>
+          <LazyMap className="min-h-[320px] h-full" />
         </div>
       </section>
 
@@ -417,7 +416,7 @@ function AboutPage() {
           <CreaseLines className="text-amber-200/10" />
           <div className="relative flex flex-wrap items-center justify-between gap-6">
             <div>
-              <p className="eyebrow text-amber-500">AECS Layout, Brookefield · Above D-Mart</p>
+              <p className="eyebrow text-amber-500">{SHORT_ADDRESS}</p>
               <p className="mt-2 font-display text-[1.35rem] leading-tight font-semibold tracking-wide text-balance uppercase sm:text-3xl">
                 Wear Your Story. Properly.
               </p>
@@ -427,7 +426,7 @@ function AboutPage() {
             </div>
             <button
               onClick={() => openBookingModal()}
-              className="inline-flex items-center gap-3 rounded-sm bg-amber-600 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
             >
               Book Free Consultation <ArrowRight className="h-4 w-4" />
             </button>

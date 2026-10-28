@@ -1,17 +1,31 @@
 import { Instagram, MessageCircle, Phone } from "lucide-react";
 
-export const STUDIO_NAME = "XING Tattoo Studio";
-export const PHONE_DISPLAY = "+91 8970007818";
-export const PHONE_TEL = "tel:+918970007818";
-export const WHATSAPP_URL = "https://wa.me/918970007818";
-export const INSTAGRAM_URL = "https://www.instagram.com/xingtattoo_blr/";
-export const EMAIL = "xingtattoo.aecs@gmail.com";
+import {
+  ADDRESS,
+  BRAND_NAME,
+  EMAIL,
+  INSTAGRAM_URL,
+  MAPS_PLACE_URL,
+  PHONE_TEL,
+  WHATSAPP_URL,
+} from "@/data/business";
+
+// Contact details live in data/business.ts (the GBP source of truth); re-exported here
+// so components keep one import path.
+export {
+  EMAIL,
+  INSTAGRAM_URL,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  WHATSAPP_URL,
+  DIRECTIONS_URL,
+  MAPS_PLACE_URL,
+} from "@/data/business";
+export const STUDIO_NAME = BRAND_NAME;
 export const EMAIL_TO = `mailto:${EMAIL}`;
-/** Opens the studio's Google Business profile (reviews). Swap for the exact
- *  "Share" link from Google Maps (maps.app.goo.gl/…) once available. */
-export const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/maps/search/?api=1&query=XING+Tattoo+Studio+AECS+Layout+Brookefield+Bengaluru";
-export const ADDRESS_LINE = "AECS Layout, Brookefield (60 Feet Rd, above DMART), Bengaluru";
+/** Opens the studio's Google Business profile (reviews). */
+export const GOOGLE_REVIEWS_URL = MAPS_PLACE_URL;
+export const ADDRESS_LINE = ADDRESS.full;
 
 /** Header order: Home, Tattoo Designs (dropdown), the rest of these, then Offers. */
 export const navLinks = [
@@ -19,8 +33,15 @@ export const navLinks = [
   { label: "Artist", href: "/tattoo-artist" },
   { label: "Gallery", href: "/#gallery" },
   { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about" },
 ];
+
+/** Page links (not #anchors) are active on their own URL and everything below it. */
+export function isActiveHref(pathname: string, href: string) {
+  if (href.includes("#")) return false;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export const socials = [
   {

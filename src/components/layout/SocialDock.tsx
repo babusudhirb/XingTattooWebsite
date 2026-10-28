@@ -35,7 +35,7 @@ export function SocialDock() {
           >
             <Icon className="h-5 w-5" strokeWidth={1.8} />
             <span
-              className={`pointer-events-none absolute hidden font-display text-[0.6rem] tracking-[0.14em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block ${
+              className={`pointer-events-none absolute hidden font-display text-xs tracking-[0.14em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block ${
                 docked ? "-top-7" : "right-14"
               }`}
             >

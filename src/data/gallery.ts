@@ -1,6 +1,3 @@
-import blackGreyStock1 from "@/assets/gallery-1.webp";
-import blackGreyStock2 from "@/assets/gallery-5.webp";
-
 import { SERVICE_SLUGS, services } from "./services";
 import { studioPhotos } from "./studio-photos";
 
@@ -14,18 +11,12 @@ export const STUDIO_TAG = "Studio";
 
 export const galleryFilters = ["All", ...SERVICE_SLUGS.map((slug) => services[slug].shortName)];
 
-const blackGreyStock: GalleryItem[] = [
-  { img: blackGreyStock1, tag: "Black & Grey", alt: "Floral back tattoo" },
-  { img: blackGreyStock2, tag: "Black & Grey", alt: "Warrior sleeve tattoo" },
-];
-
 const styledGallery: GalleryItem[] = SERVICE_SLUGS.flatMap((slug) => {
   const service = services[slug];
-  const items: GalleryItem[] = [
+  return [
     { img: service.heroImage, tag: service.shortName, alt: service.heroImageAlt },
     ...service.galleryImages.map((g) => ({ img: g.src, tag: service.shortName, alt: g.alt })),
   ];
-  return slug === "black-grey" ? [...items, ...blackGreyStock] : items;
 });
 
 const studioGallery: GalleryItem[] = studioPhotos.map((p) => ({

@@ -1,3 +1,4 @@
+import { COUNTS, GOOGLE_RATING, PHONE_DISPLAY, RATING_LABEL, REVIEW_COUNT, SHORT_ADDRESS } from "@/data/business";
 import styleBlackGrey from "@/assets/style-blackgrey.webp";
 
 import realismHero from "@/assets/services/realism/hero.webp";
@@ -175,12 +176,12 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     name: "Realism Tattoos",
     shortName: "Realism",
     tagline: "Photographs that happen to be skin-deep.",
-    metaTitle: "Realism Tattoo Studio Bengaluru | Photo-Realistic & Micro Realism Ink",
+    metaTitle: "Realism Tattoos in Brookefield | Xing Premium Tattoo Studio",
     metaDescription:
-      "Best portrait & black-and-grey realism tattoo artist in Brookefield, Bengaluru. Photo-realistic, micro-realism and colour realism tattoos built to heal cleanly and last a lifetime — book a free consultation at XING Tattoo Studio.",
+      `Photo-real realism tattoos by Peace (${COUNTS.years} yrs) at Xing Premium Tattoo Studio, Brookefield, Bengaluru. ${GOOGLE_RATING}★ on Google, single-use needles. Free consultation.`,
     heroHeadline: "Realism Tattoos in Bengaluru | Custom Micro & Photo-Realistic Ink",
     heroSummary:
-      "Transform memories, portraits, and bold concepts into lifelike skin art at Xing Tattoo Studio (Brookefield, Bengaluru). Realism requires master-level shading, precise contrast, and technical depth. Whether you want a hyper-realistic pet portrait, a classic Roman statue, or custom bio-mechanical art, our studio crafts high-detail realism tattoos designed to heal cleanly and last a lifetime.",
+      "Transform memories, portraits, and bold concepts into lifelike skin art at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Realism requires master-level shading, precise contrast, and technical depth. Whether you want a hyper-realistic pet portrait, a classic Roman statue, or custom bio-mechanical art, our studio crafts high-detail realism tattoos designed to heal cleanly and last a lifetime.",
     heroImage: realismHero,
     thumbImage: realismThumb,
     heroImageAlt: "Realistic angel wings tattoo on forearm with fine feather detailing",
@@ -243,7 +244,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         text: "High-precision miniature art optimized for inner wrists, forearms, or ankles.",
       },
       {
-        title: "Color Realism & Surrealism",
+        title: "Colour Realism & Surrealism",
         text: "Vibrant saturation paired with true-to-life realistic textures.",
       },
     ],
@@ -358,12 +359,12 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     name: "Portrait Tattoos",
     shortName: "Portrait",
     tagline: "Faces you'll never forget, inked to last a lifetime.",
-    metaTitle: "Portrait Tattoo Artist Bengaluru | Realistic Human & Pet Ink",
+    metaTitle: "Portrait Tattoos in Brookefield | Xing Premium Tattoo Studio",
     metaDescription:
-      "Best portrait tattoo artist in Brookefield & Whitefield, Bengaluru. Realistic human and pet portrait tattoos, custom black & grey portrait ink — book a free consultation at XING Tattoo Studio.",
+      "Realistic portrait, pet and memorial tattoos by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Bring a clear photo; book a free consultation.",
     heroHeadline: "Custom Portrait Tattoos in Bengaluru | Lifelike Human & Pet Ink",
     heroSummary:
-      "Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.",
+      `Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.`,
     heroImage: portraitHero,
     thumbImage: portraitThumb,
     heroImageAlt: '"Queen" eyes portrait tattoo on chest with fine realistic shading',
@@ -416,7 +417,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         title: "Smooth Depth & Contrast",
-        text: "Masterful black & grey or color shading ensures smooth skin-tone gradients that age cleanly.",
+        text: "Masterful black & grey or colour shading ensures smooth skin-tone gradients that age cleanly.",
       },
     ],
     specialtiesTitle: "Our Portrait Tattoo Specialties",
@@ -434,12 +435,12 @@ export const services: Record<ServiceSlug, ServiceContent> = {
         text: "Respectful, high-detail tributes designed to keep cherished memories alive forever.",
       },
       {
-        title: "Color & Black-and-Grey Portraits",
-        text: "Vibrant color depth or classic smooth charcoal shading tailored to your style.",
+        title: "Colour and Black & Grey Portraits",
+        text: "Vibrant colour depth or classic smooth charcoal shading tailored to your style.",
       },
     ],
     studioDifferenceEyebrow: "Safety & Mastery",
-    studioDifferenceTitle: "The Xing Tattoo Standards",
+    studioDifferenceTitle: "The Xing Premium Standards",
     studioDifference: [
       {
         title: "Stencil & Photo Consultation",
@@ -547,16 +548,16 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     name: "Black & Grey Tattoos",
     shortName: "Black & Grey",
     tagline: "All the depth of realism, none of the colour commitment.",
-    metaTitle: "Black and Grey Tattoo Studio Bengaluru | Brookefield & Whitefield",
+    metaTitle: "Black & Grey Tattoos in Brookefield | Xing Premium",
     metaDescription:
-      "Best black and grey tattoo artist in Brookefield & Whitefield, Bengaluru. Custom blackwork, darkside art, fine-line shading and full sleeves by Artist Peace (15+ yrs). 4.9★ Google rated — book a free consultation at XING Tattoo Studio.",
+      `Black and grey tattoos, blackwork and sleeves by Peace (${COUNTS.years} yrs) at Xing Premium Tattoo Studio, Brookefield, Bengaluru. ${GOOGLE_RATING}★ on Google. Free consultation.`,
     heroHeadline: "Custom Black & Grey Tattoos in Bengaluru | Timeless Shading & Depth",
     heroSummary:
-      "Experience the power of classic monochrome ink at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.",
+      `Experience the power of classic monochrome ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.`,
     heroImage: styleBlackGrey,
     thumbImage: blackGreyThumb,
     heroImageAlt:
-      "Black and grey warrior sleeve tattoo with smooth charcoal shading at XING Tattoo Studio, Bengaluru",
+      "Black and grey warrior sleeve tattoo with smooth charcoal shading at Xing Premium Tattoo Studio, Bengaluru",
     galleryImages: [],
     galleryTag: "Black & Grey",
     introParagraphs: [
@@ -580,7 +581,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     whyChoosePoints: [
       {
         title: "High Contrast & Longevity",
-        text: "Premium black carbon inks hold sharp edges and deep values without color drift over time.",
+        text: "Premium black carbon inks hold sharp edges and deep values without colour drift over time.",
       },
       {
         title: "Flattering on All Skin Tones",
@@ -594,7 +595,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     specialties: [
       {
         title: "Smooth Shading & Realism",
-        text: "Subtle gray-wash transitions for portraits, statues, wildlife, and surrealism.",
+        text: "Subtle grey-wash transitions for portraits, statues, wildlife, and surrealism.",
       },
       {
         title: "Fine Line & Minimalist Blackwork",
@@ -610,7 +611,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
     ],
     studioDifferenceEyebrow: "Precision & Safety",
-    studioDifferenceTitle: "The Xing Tattoo Standard",
+    studioDifferenceTitle: "The Xing Premium Standard",
     studioDifference: [
       {
         title: "Custom Wash & Dilution Control",
@@ -695,7 +696,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     faqs: [
       {
-        question: "Why do black and grey tattoos age better than color tattoos?",
+        question: "Why do black and grey tattoos age better than colour tattoos?",
         answer:
           "Black ink pigments have higher density and stability, making them more resistant to UV fading over time.",
       },
@@ -728,16 +729,16 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     name: "Geometric Tattoos",
     shortName: "Geometric",
     tagline: "Symmetry so sharp it could cut glass.",
-    metaTitle: "Geometric Tattoo Studio Bengaluru | Sacred Geometry & Mandala Ink",
+    metaTitle: "Geometric & Mandala Tattoos, Brookefield | Xing Premium",
     metaDescription:
-      "Best geometric tattoo artist in Brookefield & Whitefield, Bengaluru. Sacred geometry, mandala, dotwork, fine-line symmetry and full geometric sleeves by Artist Peace (15+ yrs). 4.9★ Google rated — book a free consultation at XING Tattoo Studio.",
+      "Geometric, mandala and dotwork tattoos mapped to your body by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Book a free consultation today.",
     heroHeadline: "Custom Geometric & Sacred Geometry Tattoos in Bengaluru",
     heroSummary:
-      "Experience mathematical symmetry and spiritual balance at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.",
+      `Experience mathematical symmetry and spiritual balance at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.`,
     heroImage: geometricHero,
     thumbImage: geometricThumb,
     heroImageAlt:
-      "Geometric compass and wave tattoo on forearm with precise fine-line symmetry at XING Tattoo Studio, Bengaluru",
+      "Geometric compass and wave tattoo on forearm with precise fine-line symmetry at Xing Premium Tattoo Studio, Bengaluru",
     galleryImages: [
       { src: geometricGallery1, alt: "Chakra symbols geometric tattoo along the spine" },
       {
@@ -801,7 +802,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
     ],
     studioDifferenceEyebrow: "Precision & Safety",
-    studioDifferenceTitle: "The Xing Tattoo Standard",
+    studioDifferenceTitle: "The Xing Premium Standard",
     studioDifference: [
       {
         title: "Stencil Mapping & Alignment",
@@ -913,18 +914,18 @@ export const services: Record<ServiceSlug, ServiceContent> = {
   traditional: {
     slug: "traditional",
     name: "Indian Traditional Tattoos",
-    shortName: "Traditional",
+    shortName: "Indian Traditional",
     tagline: "Faith, heritage and story — inked to carry for a lifetime.",
-    metaTitle: "Indian Traditional Tattoo Studio Bengaluru | Religious & Spiritual Ink",
+    metaTitle: "Indian Traditional Tattoos, Brookefield | Xing Premium",
     metaDescription:
-      "Best Indian traditional tattoo artist in Brookefield & Whitefield, Bengaluru. Custom Shiva, Mahadev, Ganesha, Krishna, Hanuman, Om, Trishul and Sanskrit script tattoos by Artist Peace (15+ yrs). 4.9★ Google rated — book a free consultation at XING Tattoo Studio.",
+      "Shiva, Hanuman, Om, Trishul and Sanskrit script tattoos drawn with respect by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Free consultation.",
     heroHeadline: "Custom Indian Traditional Tattoos in Bengaluru | Spiritual & Cultural Ink",
     heroSummary:
-      "Carry your faith, heritage and family story in ink at Xing Tattoo Studio (Brookefield, Bengaluru). Led by Artist Peace (15+ years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.",
+      `Carry your faith, heritage and family story in ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.`,
     heroImage: traditionalHero,
     thumbImage: traditionalThumb,
     heroImageAlt:
-      "Bold ornamental face tattoo on the back of the hand at XING Tattoo Studio, Bengaluru",
+      "Bold ornamental face tattoo on the back of the hand at Xing Premium Tattoo Studio, Bengaluru",
     galleryImages: [
       { src: realismGallery5, alt: "Lord Shiva Indian traditional tattoo on forearm" },
       { src: realismGallery4, alt: "Lord Hanuman idol Indian traditional tattoo on forearm" },
@@ -997,7 +998,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
     ],
     studioDifferenceEyebrow: "Precision & Safety",
-    studioDifferenceTitle: "The Xing Tattoo Standard",
+    studioDifferenceTitle: "The Xing Premium Standard",
     studioDifference: [
       {
         title: "Respectful Custom Design",
@@ -1115,22 +1116,22 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     name: "Minimalist Tattoos",
     shortName: "Minimalist",
     tagline: "Subtle. Elegant. Engineered with extreme precision.",
-    metaTitle: "Minimalist & Fine Line Tattoo Studio Bengaluru | Brookefield, Whitefield",
+    metaTitle: "Minimalist & Fine Line Tattoos, Brookefield | Xing Premium",
     metaDescription:
-      "Fine line tattoo artist in Brookefield & Whitefield, Bengaluru. Custom minimalist, micro and small symbol tattoos by lead artist Peace. 4.8★ from 1,600+ reviews, 100% single-use sterile gear. See cost, aftercare & book a free consult.",
+      `Fine line, minimalist and micro tattoos by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. ${GOOGLE_RATING}★ · ${REVIEW_COUNT} Google reviews. Book a free consultation.`,
     heroHeadline: "Custom Minimalist & Fine-Line Tattoos in Bengaluru",
     heroSummary:
-      "Minimalist tattoos prove that simplicity speaks loudest. At Xing Tattoo Studio in Brookefield, we specialize in needle-thin linework, single-needle micro tattoos, botanical art, delicate typography, and subtle geometric symbols. Guided by lead artist Peace, every fine-line piece is crafted to look clean, elegant, and perfectly balanced on your skin.",
+      "Minimalist tattoos prove that simplicity speaks loudest. At Xing Premium Tattoo Studio in Brookefield, we specialize in needle-thin linework, single-needle micro tattoos, botanical art, delicate typography, and subtle geometric symbols. Guided by lead artist Peace, every fine-line piece is crafted to look clean, elegant, and perfectly balanced on your skin.",
     heroTrustPoints: [
-      "4.8★ rating across 1,600+ reviews",
+      RATING_LABEL,
       "100% single-use sterile gear",
       "Lead artist Peace — fine-line & precision specialist",
-      "AECS Layout, 60 Feet Rd, Brookefield (near D-Mart)",
+      SHORT_ADDRESS,
     ],
     heroImage: minimalistHero,
     thumbImage: minimalistThumb,
     heroImageAlt:
-      "Fine-line sun, moon and script minimalist tattoo along the spine at XING Tattoo Studio, Brookefield, Bengaluru",
+      "Fine-line sun, moon and script minimalist tattoo along the spine at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     galleryImages: [
       { src: minimalistGallery1, alt: "Fine-line butterfly and heart tattoo on arm" },
       { src: minimalistGallery2, alt: "Fine-line floral face line-art tattoo on arm" },
@@ -1235,7 +1236,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         title: "Micro-Moisturizing",
-        text: "Apply a micro-thin layer of tattoo butter; fine lines require far less ointment than heavy color tattoos.",
+        text: "Apply a micro-thin layer of tattoo butter; fine lines require far less ointment than heavy colour tattoos.",
       },
       {
         title: "Sun & Water Shield",
@@ -1249,7 +1250,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ctaHeadline: "Ready for Your First or Next Subtle Piece?",
     ctaSubcopy: "Tell us your idea — we'll size it, stencil it and quote it, no pressure.",
     ctaPrimaryLabel: "Book Free Consult",
-    ctaSecondaryLabel: "WhatsApp Us Directly (+91 89700 07818)",
+    ctaSecondaryLabel: `WhatsApp Us Directly (${PHONE_DISPLAY})`,
     quickFacts: {
       sessionTime: "30 min – 1.5 hrs",
       painScore: 2,
@@ -1322,7 +1323,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
           "Fine-line tattoos require precise needle depth. When done by experienced artists using high-density carbon ink, they hold crisp details for years. Free touch-ups are offered within 60 days if needed.",
       },
       {
-        question: "How much does a small minimalist tattoo cost at Xing Tattoo Studio Brookefield?",
+        question: "How much does a small minimalist tattoo cost at Xing Premium Tattoo Studio Brookefield?",
         answer:
           "Small, simple minimalist pieces start at our base shop minimum. Pricing varies based on placement and linework complexity.",
       },

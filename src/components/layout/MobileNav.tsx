@@ -1,12 +1,22 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Link } from "@tanstack/react-router";
-import { ArrowRight, Instagram, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ArrowRight, Instagram, Menu, MessageCircle, Navigation, Phone, X } from "lucide-react";
 
-import { INSTAGRAM_URL, navLinks, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
+import {
+  DIRECTIONS_URL,
+  INSTAGRAM_URL,
+  isActiveHref,
+  navLinks,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  STUDIO_NAME,
+  WHATSAPP_URL,
+} from "@/data/site";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { Logo } from "@/components/layout/Logo";
+import { useOfferActive } from "@/lib/offer";
 
 const ROW =
   "flex min-h-12 items-center justify-between gap-3 border-b border-border font-display text-base font-semibold tracking-wide";
@@ -18,6 +28,8 @@ const ROW =
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const offerActive = useOfferActive();
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -65,7 +77,12 @@ export function MobileMenu() {
               </li>
               {navLinks.slice(1).map(({ label, href }) => (
                 <li key={href}>
-                  <a href={href} onClick={close} className={ROW}>
+                  <a
+                    href={href}
+                    onClick={close}
+                    aria-current={isActiveHref(pathname, href) ? "page" : undefined}
+                    className={`${ROW} aria-[current=page]:text-amber-800`}
+                  >
                     {label}
                     <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
                   </a>
@@ -75,7 +92,7 @@ export function MobileMenu() {
             <Link
               to="/offer"
               onClick={close}
-              className="mt-3 flex min-h-12 items-center justify-between rounded-sm border border-amber-400/30 bg-[#0b0a08] px-4 font-display text-xs font-semibold tracking-[0.14em] text-amber-200 uppercase"
+              className="mt-3 flex min-h-12 items-center justify-between rounded-full border border-amber-400/30 bg-[#0b0a08] px-4 font-display text-xs font-bold tracking-[0.14em] text-amber-200 uppercase"
             >
               Offers
               <ArrowRight className="h-4 w-4 shrink-0" />
@@ -108,7 +125,7 @@ export function MobileMenu() {
             <div className="mt-6 grid grid-cols-3 gap-2">
               <a
                 href={PHONE_TEL}
-                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-sm border border-border text-[0.7rem]"
+                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-full border border-border text-xs font-bold"
               >
                 <Phone className="h-4 w-4" /> Call
               </a>
@@ -116,7 +133,7 @@ export function MobileMenu() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-sm border border-border text-[0.7rem]"
+                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-full border border-border text-xs font-bold"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>
@@ -124,12 +141,15 @@ export function MobileMenu() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-sm border border-border text-[0.7rem]"
+                className="flex min-h-12 flex-col items-center justify-center gap-1 rounded-full border border-border text-xs font-bold"
               >
                 <Instagram className="h-4 w-4" /> Instagram
               </a>
             </div>
-            <p className="mt-3 text-center text-xs text-muted-foreground">{PHONE_DISPLAY}</p>
+            <p className="mt-3 text-center text-xs text-muted-foreground">
+              <span className="block font-semibold text-foreground/80">{STUDIO_NAME}</span>
+              {PHONE_DISPLAY}
+            </p>
           </nav>
 
           <div className="border-t border-border p-5">
@@ -138,7 +158,7 @@ export function MobileMenu() {
                 close();
                 openBookingModal();
               }}
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-sm bg-primary font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase"
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase"
             >
               Book Free Consultation <ArrowRight className="h-4 w-4" />
             </button>
@@ -162,7 +182,7 @@ export function MobileActionBar() {
           target="_blank"
           rel="noreferrer"
           aria-label="Chat on WhatsApp"
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm text-white"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white"
           style={{ background: "var(--brand-whatsapp)" }}
         >
           <MessageCircle className="h-5 w-5" />
@@ -170,18 +190,27 @@ export function MobileActionBar() {
         <a
           href={PHONE_TEL}
           aria-label={`Call ${PHONE_DISPLAY}`}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm text-white"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white"
           style={{ background: "var(--brand-call)" }}
         >
           <Phone className="h-5 w-5" />
         </a>
+        <a
+          href={DIRECTIONS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Get directions to the studio"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground"
+        >
+          <Navigation className="h-5 w-5" />
+        </a>
         <button
           onClick={() => openBookingModal()}
-          className="flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-sm bg-primary px-3 font-display text-xs font-semibold tracking-[0.12em] text-primary-foreground uppercase"
+          className="flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-3 font-display text-xs font-bold tracking-[0.12em] text-primary-foreground uppercase"
         >
           <span className="truncate">
-            <span className="min-[360px]:hidden">Book Free</span>
-            <span className="hidden min-[360px]:inline">Book Free Consultation</span>
+            <span className="min-[400px]:hidden">Book Free</span>
+            <span className="hidden min-[400px]:inline">Book Free Consultation</span>
           </span>
           <ArrowRight className="h-4 w-4 shrink-0" />
         </button>

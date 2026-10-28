@@ -124,7 +124,7 @@ export function GalleryLightbox({
         />
         <div className="mt-4 flex w-full max-w-xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
-            <p className="font-display text-[0.65rem] font-semibold tracking-[0.16em] text-amber-500 uppercase">
+            <p className="font-display text-xs font-semibold tracking-[0.16em] text-amber-500 uppercase">
               {item.tag}
             </p>
             <p className="mt-1 text-xs text-primary-foreground/80">{item.alt}</p>
@@ -133,13 +133,13 @@ export function GalleryLightbox({
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-sm bg-amber-600 px-4 py-2.5 font-display text-[0.65rem] font-semibold tracking-[0.14em] text-white uppercase transition-transform duration-300 hover:-translate-y-0.5"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-amber-600 px-4 py-2.5 font-display text-xs font-bold tracking-[0.14em] text-white uppercase transition-transform duration-300 hover:-translate-y-0.5"
           >
             Want This Style? <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
         {total > 1 && (
-          <p className="mt-3 text-[0.65rem] tracking-[0.12em] text-primary-foreground/60 uppercase">
+          <p className="mt-3 text-xs tracking-[0.12em] text-primary-foreground/60 uppercase">
             {index + 1} / {total}
           </p>
         )}

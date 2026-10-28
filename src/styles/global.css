@@ -157,6 +157,32 @@
     border-color: var(--color-border);
   }
 
+  :root {
+    /* Safe-area insets (notch, Dynamic Island, home indicator, landscape sides) */
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+    /* Page gutters: 16px on phones, 20px from sm — never under a landscape notch */
+    --gutter-l: max(16px, var(--sal));
+    --gutter-r: max(16px, var(--sar));
+    /* Sticky bottom action bar: 10px + 48px buttons + 10px + home indicator */
+    --action-bar-h: calc(68px + var(--sab));
+  }
+  @media (min-width: 640px) {
+    :root {
+      --gutter-l: max(20px, var(--sal));
+      --gutter-r: max(20px, var(--sar));
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* The page colour fills the notch / home-indicator areas edge to edge */
+    background-color: var(--color-background);
+  }
+
   html,
   body {
     /* clip (not hidden) blocks sideways scroll without creating a scroll
@@ -169,8 +195,10 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;
-    text-size-adjust: 100%;
   }
 
   h1,
@@ -180,21 +208,127 @@
     font-family: var(--font-display);
     /* Long words wrap instead of overflowing narrow screens */
     overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+  /* Fluid defaults (components may size headings themselves) */
+  h1 {
+    font-size: clamp(2.25rem, 9vw, 4.5rem);
+  }
+  h2 {
+    font-size: clamp(1.6rem, 6vw, 2.75rem);
+  }
+  h3 {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  }
+  p,
+  li,
+  dd,
+  blockquote {
+    text-wrap: pretty;
   }
 
-  /* Phones: room for the fixed bottom action bar (MobileActionBar) + home indicator */
+  /* One visible focus ring everywhere (components can still restyle it) */
+  :focus-visible {
+    outline: 2px solid var(--color-amber-700);
+    outline-offset: 2px;
+  }
+
+  /* Phones: room for the fixed bottom action bar so it never covers content */
   @media (max-width: 767px) {
     body {
-      padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+      padding-bottom: calc(var(--action-bar-h) + 16px);
     }
+  }
+}
+
+/* ── Notch-to-notch layout (unlayered: wins over utility padding) ───────── */
+
+/* Page containers keep text out of the notch / rounded corners in landscape */
+.mx-auto.px-5 {
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+}
+/* Horizontal scrollers bleed to the screen edges; first item lines up with the
+   page gutter, the next item peeks in */
+/* bleed-to-sm / bleed-to-lg: only while the row scrolls (below sm / lg) */
+@media (max-width: 639px) {
+  .bleed-to-sm {
+    margin-left: calc(var(--gutter-l) * -1);
+    margin-right: calc(var(--gutter-r) * -1);
+    padding-left: var(--gutter-l);
+    padding-right: var(--gutter-r);
+    scroll-padding-inline: var(--gutter-l) var(--gutter-r);
+  }
+}
+@media (max-width: 1023px) {
+  .bleed-to-lg {
+    margin-left: calc(var(--gutter-l) * -1);
+    margin-right: calc(var(--gutter-r) * -1);
+    padding-left: var(--gutter-l);
+    padding-right: var(--gutter-r);
+    scroll-padding-inline: var(--gutter-l) var(--gutter-r);
+  }
+}
+.bleed-to-sm,
+.bleed-to-lg {
+  scrollbar-width: none;
+}
+.bleed-to-sm::-webkit-scrollbar,
+.bleed-to-lg::-webkit-scrollbar {
+  display: none;
+}
+
+/* iOS zooms into inputs under 16px — keep form text at 16px on phones */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Buttons: 48px tall on phones, 52px on desktop; gentle press feedback */
+@media (min-width: 1024px) {
+  .min-h-12 {
+    min-height: 3.25rem;
+  }
+}
+button:not(:disabled):active,
+a.rounded-full:active {
+  transform: scale(0.98);
+}
+
+/* Sticky bottom bar steps aside for drawers, modals, the lightbox and the
+   on-screen keyboard */
+body:has([role="dialog"]) .mobile-action-bar,
+body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
+  transform: translateY(110%);
+  pointer-events: none;
+}
+
+/* Landscape phones: compact header */
+@media (orientation: landscape) and (max-height: 500px) {
+  .site-header-inner {
+    min-height: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 @utility eyebrow {
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
 }
@@ -289,5 +423,164 @@
   transform: rotate(var(--r, 0deg));
   @media (prefers-reduced-motion: reduce) {
     animation: none;
+  }
+}
+
+/* Blog article body (HTML rendered from content/blog/*.md) */
+@layer components {
+  .blog-prose {
+    font-size: 1.0625rem; /* 17px phones */
+    line-height: 1.7;
+    color: color-mix(in oklab, var(--color-foreground) 88%, transparent);
+    overflow-wrap: break-word;
+  }
+  @media (min-width: 1024px) {
+    .blog-prose {
+      font-size: 1.125rem; /* 18px desktop */
+    }
+  }
+  .blog-prose > div > * + * {
+    margin-top: 1.1em;
+  }
+  .blog-prose h2 {
+    margin-top: 2.2em;
+    scroll-margin-top: calc(var(--header-h, 5rem) + 1rem);
+    font-size: 1.55rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-foreground);
+    text-wrap: balance;
+  }
+  .blog-prose h3 {
+    margin-top: 1.8em;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+  .blog-prose .heading-anchor {
+    margin-left: 0.4em;
+    color: var(--color-muted-foreground);
+    opacity: 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .blog-prose h2:hover .heading-anchor,
+  .blog-prose .heading-anchor:focus-visible {
+    opacity: 1;
+  }
+  .blog-prose a:not(.heading-anchor) {
+    color: var(--color-amber-800);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--color-amber-800) 35%, transparent);
+    text-underline-offset: 3px;
+  }
+  .blog-prose a:not(.heading-anchor):hover {
+    text-decoration-color: currentColor;
+  }
+  /* Components dropped into the article (inline CTA) keep their own styling */
+  .blog-prose .not-prose a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .blog-prose strong {
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+  .blog-prose ul,
+  .blog-prose ol {
+    padding-left: 1.3em;
+  }
+  .blog-prose ul {
+    list-style: disc;
+  }
+  .blog-prose ol {
+    list-style: decimal;
+  }
+  .blog-prose li + li {
+    margin-top: 0.45em;
+  }
+  .blog-prose li::marker {
+    color: var(--color-amber-700);
+  }
+  /* Markdown checklists: an empty box instead of a bullet */
+  .blog-prose ul.contains-task-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .blog-prose .task-list-item {
+    position: relative;
+    padding-left: 1.7em;
+  }
+  .blog-prose .task-box {
+    position: absolute;
+    left: 0;
+    top: 0.35em;
+    width: 1em;
+    height: 1em;
+    border: 2px solid var(--color-amber-700);
+    border-radius: 0.25em;
+  }
+  .blog-prose blockquote {
+    border-left: 3px solid var(--color-border);
+    padding-left: 1em;
+    font-style: italic;
+  }
+  /* "Peace's tip" callout */
+  .blog-prose blockquote.callout-tip {
+    border: 1px solid color-mix(in oklab, var(--color-amber-700) 30%, transparent);
+    border-left-width: 4px;
+    border-left-color: var(--color-amber-700);
+    border-radius: 0.75rem;
+    background: var(--color-card);
+    padding: 1em 1.2em;
+    font-style: normal;
+  }
+  .blog-prose blockquote > * + * {
+    margin-top: 0.6em;
+  }
+  .blog-prose .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  .blog-prose table {
+    width: 100%;
+    min-width: 32rem;
+    border-collapse: collapse;
+    font-size: 0.92em;
+    line-height: 1.5;
+  }
+  .blog-prose th,
+  .blog-prose td {
+    padding: 0.65em 0.9em;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .blog-prose th {
+    background: var(--color-card);
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+  .blog-prose tr:last-child td {
+    border-bottom: 0;
+  }
+  .blog-prose figure img {
+    width: 100%;
+    max-height: 34rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: var(--color-muted);
+  }
+  .blog-prose figcaption {
+    margin-top: 0.6em;
+    font-size: 0.85em;
+    color: var(--color-muted-foreground);
+  }
+  .blog-prose hr {
+    border-color: var(--color-border);
+    margin-block: 2em;
   }
 }

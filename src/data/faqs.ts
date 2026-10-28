@@ -1,3 +1,5 @@
+import { ADDRESS, COUNTS, HOURS_LONG, PHONE_DISPLAY } from "@/data/business";
+
 /**
  * Studio FAQs. Each entry has a stable `id` (its URL anchor, e.g. /faq#tattoo-cost)
  * and `related` ids — the follow-up questions its answer naturally raises.
@@ -54,9 +56,9 @@ export const faqs: Faq[] = [
   {
     id: "how-to-book",
     category: "booking",
-    question: "How do I book a tattoo appointment at XING Tattoo Studio?",
+    question: "How do I book a tattoo appointment at Xing Premium Tattoo Studio?",
     answer:
-      "Use the Book Consultation button on this site, message us on WhatsApp at +91 89700 07818, or visit the studio in AECS Layout, Brookefield. Share your idea, placement and rough size, and we'll set up a free consultation and then your session.",
+      `Use the Book Consultation button on this site, message us on WhatsApp at ${PHONE_DISPLAY}, or visit the studio in AECS Layout, Brookefield. Share your idea, placement and rough size, and we'll set up a free consultation and then your session.`,
     related: ["free-consultation", "what-to-bring", "walk-ins"],
   },
   {
@@ -112,7 +114,7 @@ export const faqs: Faq[] = [
   {
     id: "hygiene",
     category: "safety",
-    question: "Is XING Tattoo Studio hygienic and safe?",
+    question: "Is Xing Premium Tattoo Studio hygienic and safe?",
     answer:
       "Yes. We use 100% single-use needles opened in front of you, sealed skin-tested inks, medical-grade sterilisation and barrier film on all equipment. The workstation is fully cleaned and re-wrapped between every client.",
     related: ["inks", "medical-conditions"],
@@ -137,7 +139,7 @@ export const faqs: Faq[] = [
   {
     id: "minimum-age",
     category: "safety",
-    question: "What is the minimum age to get a tattoo at XING?",
+    question: "What is the minimum age to get a tattoo at Xing Premium Tattoo Studio?",
     answer: "You must be 18 or older to get tattooed at the studio, and we may ask for a photo ID.",
     related: ["what-to-bring", "first-tattoo"],
   },
@@ -183,7 +185,7 @@ export const faqs: Faq[] = [
     category: "design",
     question: "Do you create custom tattoo designs?",
     answer:
-      "Yes — every design at XING is drawn from scratch by our artist, Peace. Reference images are welcome as a starting point, and the final artwork is sized and shaped to fit your body and placement.",
+      "Yes — every design at Xing Premium Tattoo Studio is drawn from scratch by our artist, Peace. Reference images are welcome as a starting point, and the final artwork is sized and shaped to fit your body and placement.",
     related: ["design-changes", "styles-offered", "what-to-bring"],
     link: { label: "Meet the artist", to: "/tattoo-artist" },
   },
@@ -198,7 +200,7 @@ export const faqs: Faq[] = [
   {
     id: "styles-offered",
     category: "design",
-    question: "What tattoo styles does XING specialise in?",
+    question: "What tattoo styles does Xing Premium Tattoo Studio specialise in?",
     answer:
       "Realism, portraits, black & grey, fine-line and minimalist work, geometric and mandala designs, and Indian traditional tattoos such as Shiva, Ganesha, Om and Sanskrit script.",
     related: ["custom-design", "cover-ups"],
@@ -267,17 +269,17 @@ export const faqs: Faq[] = [
   {
     id: "location",
     category: "studio",
-    question: "Where is XING Tattoo Studio located?",
+    question: "Where is Xing Premium Tattoo Studio located?",
     answer:
-      "1st Floor, SV Plaza, 267, 60 Feet Road, AECS Layout A Block, Brookefield, Bengaluru 560037 — directly above D-Mart and about 3 km from Marathahalli. Easy to reach from Whitefield, ITPL and Kundalahalli.",
+      `${ADDRESS.full} — about 3 km from Marathahalli. Easy to reach from Whitefield, ITPL and Kundalahalli.`,
     related: ["opening-hours", "how-to-book"],
     link: { label: "Map & directions", to: "/about#visit" },
   },
   {
     id: "opening-hours",
     category: "studio",
-    question: "What are XING Tattoo Studio's opening hours?",
-    answer: "10:00 AM to 9:00 PM, Wednesday to Monday. The studio is closed every Tuesday.",
+    question: "What are Xing Premium Tattoo Studio's opening hours?",
+    answer: `${HOURS_LONG}.`,
     related: ["walk-ins", "location"],
   },
   {
@@ -285,7 +287,7 @@ export const faqs: Faq[] = [
     category: "studio",
     question: "Who will do my tattoo?",
     answer:
-      "Every tattoo is designed and done by Peace (Chingri Awungshi), XING's lead artist, with 15+ years of experience and 1800+ tattoos completed. The person you consult with is the person who tattoos you.",
+      `Every tattoo is designed and done by Peace (Chingri Awungshi), Xing Premium Tattoo Studio's lead artist, with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. The person you consult with is the person who tattoos you.`,
     related: ["custom-design", "styles-offered"],
     link: { label: "View the artist profile", to: "/tattoo-artist" },
   },

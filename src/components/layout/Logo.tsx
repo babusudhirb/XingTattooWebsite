@@ -13,7 +13,7 @@ export function Logo({ className = "" }: { className?: string }) {
       ) : (
         <img
           src="/xing-logo.webp"
-          alt="Xing Tattoo Studio logo"
+          alt="Xing Premium Tattoo Studio logo"
           width={40}
           height={40}
           className="h-10 w-10 object-contain"
@@ -22,8 +22,8 @@ export function Logo({ className = "" }: { className?: string }) {
       )}
       <span className="leading-none">
         <span className="block font-display text-lg font-bold tracking-wide">XING</span>
-        <span className="block text-[0.6rem] tracking-[0.3em] text-muted-foreground">
-          TATTOO STUDIO
+        <span className="block text-xs tracking-[0.06em] whitespace-nowrap text-muted-foreground">
+          PREMIUM TATTOO STUDIO
         </span>
       </span>
     </Link>

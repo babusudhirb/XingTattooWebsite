@@ -70,7 +70,7 @@ export function BenefitCards({ cards, styleName }: { cards: BenefitCard[]; style
                 aria-expanded={selected}
                 aria-controls={panelId}
                 onClick={() => setActive(i)}
-                className="mt-4 inline-flex items-center gap-1.5 font-display text-[0.65rem] font-semibold tracking-[0.14em] uppercase after:absolute after:inset-0 focus-visible:outline-none"
+                className="mt-4 inline-flex items-center gap-1.5 font-display text-xs font-semibold tracking-[0.14em] uppercase after:absolute after:inset-0 focus-visible:outline-none"
               >
                 {selected ? "Showing details" : "See details"}
                 <span className="sr-only"> for {card.title}</span>
@@ -116,7 +116,7 @@ export function BenefitCards({ cards, styleName }: { cards: BenefitCard[]; style
                 </div>
                 <button
                   onClick={() => openBookingModal(styleName)}
-                  className="inline-flex shrink-0 items-center justify-center gap-3 rounded-sm bg-primary px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+                  className="inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
                 >
                   Sounds Like Me <ArrowRight className="h-4 w-4" />
                 </button>
@@ -184,7 +184,7 @@ export function AftercareSteps({ steps }: { steps: ProcessStep[] }) {
                     {done ? <Check className="h-4 w-4" strokeWidth={2.5} /> : i + 1}
                   </span>
                   <span
-                    className={`text-center font-display text-[0.6rem] font-semibold tracking-[0.1em] uppercase sm:text-[0.68rem] ${
+                    className={`text-center font-display text-xs font-semibold tracking-[0.1em] uppercase sm:text-xs ${
                       selected ? "text-foreground" : "text-muted-foreground"
                     }`}
                   >
@@ -226,7 +226,7 @@ export function AftercareSteps({ steps }: { steps: ProcessStep[] }) {
             {i < steps.length - 1 ? (
               <button
                 onClick={() => setActive(i + 1)}
-                className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-primary px-5 py-2.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-primary px-5 py-2.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
               >
                 Next Step <ArrowRight className="h-4 w-4" />
               </button>

@@ -94,8 +94,8 @@ html:has(.olp) {
   display: block;
   color: var(--gold);
   font-family: var(--display);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 18px;
@@ -105,7 +105,7 @@ html:has(.olp) {
   letter-spacing: 0.08em;
 }
 
-/* Buttons — site style: square, uppercase display type */
+/* Buttons — site style: pill, bold uppercase display type */
 .olp .btn {
   display: inline-flex;
   align-items: center;
@@ -116,7 +116,7 @@ html:has(.olp) {
   background: var(--text);
   color: var(--bg);
   border: 1px solid var(--text);
-  border-radius: 2px;
+  border-radius: 999px;
   font-family: var(--display);
   font-weight: 700;
   font-size: 0.75rem;
@@ -223,7 +223,7 @@ html:has(.olp) {
 .olp .top-offer-tag {
   background: var(--yellow);
   color: #000;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -232,7 +232,7 @@ html:has(.olp) {
 }
 .olp .top-offer-cta {
   color: #fcd34d;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -276,8 +276,8 @@ html:has(.olp) {
 .olp .brand-name span {
   display: block;
   margin-top: 3px;
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   color: var(--muted);
 }
 .olp .nav {
@@ -393,7 +393,7 @@ html:has(.olp) {
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 .olp .hero-badge span {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
 }
@@ -430,7 +430,7 @@ html:has(.olp) {
 }
 .olp .hero-card em {
   font-family: var(--display);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -556,7 +556,7 @@ html:has(.olp) {
   background: rgba(11, 10, 8, 0.8);
   color: #f5f5f4;
   font-family: var(--display);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1044,7 +1044,7 @@ html:has(.olp) {
   gap: 10px;
 }
 .olp .review-tag {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #78350f;
   background: #fef3c7;
@@ -1106,7 +1106,7 @@ html:has(.olp) {
 }
 .olp .quote-section .eyebrow {
   color: #fbbf24;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.18em;
 }
 .olp .quote-section h2 {
   font-size: clamp(2rem, 3vw, 2.6rem);
@@ -1426,7 +1426,7 @@ html:has(.olp) {
   letter-spacing: -0.01em;
 }
 .olp .claim-offers span {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--muted);
   line-height: 1.3;
 }
@@ -1567,7 +1567,7 @@ html:has(.olp) {
   }
   .olp .eyebrow {
     margin-bottom: 12px;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
   .olp .top-offer {
     font-size: 0.75rem;
@@ -1586,7 +1586,7 @@ html:has(.olp) {
     height: 34px;
   }
   .olp .nav .btn {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     padding: 10px 14px;
     letter-spacing: 0.1em;
   }
@@ -1643,7 +1643,7 @@ html:has(.olp) {
     font-size: 1.8rem;
   }
   .olp .hero-badge span {
-    font-size: 0.6rem;
+    font-size: 0.75rem;
   }
   .olp .hero-card {
     left: 14px;
@@ -1721,7 +1721,7 @@ html:has(.olp) {
     font-size: 1.45rem;
   }
   .olp .why-grid h3 {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
   }
   .olp .why-grid p {
@@ -1952,7 +1952,7 @@ html:has(.olp) {
   white-space: nowrap;
 }
 .olp .hero-pick > span:last-child {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--muted);
   line-height: 1.3;
 }
@@ -1977,7 +1977,7 @@ html:has(.olp) {
   color: #000;
   border-radius: 2px;
   font-family: var(--display);
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2208,4 +2208,10 @@ html:has(.olp) {
   .olp .reviews {
     overflow-x: auto;
   }
+}
+
+/* Shown instead of the offer bar once the GBP offer window has closed */
+.olp .top-offer-ended {
+  justify-content: center;
+  cursor: default;
 }

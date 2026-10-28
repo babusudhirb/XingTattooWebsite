@@ -11,6 +11,7 @@ import {
   artistSignatureWork,
   artistStyles,
 } from "@/data/artist";
+import { BUSINESS_ID, COUNTS, pageTitle, SITE_URL } from "@/data/business";
 import { reviews } from "@/data/reviews";
 import { services } from "@/data/services";
 import { WHATSAPP_URL } from "@/data/site";
@@ -33,9 +34,9 @@ import {
   SectionNav,
 } from "@/components/sections/Origami";
 
-const TITLE = "Peace — Best Tattoo Artist in Brookefield, Bengaluru | XING Tattoo Studio";
+const TITLE = pageTitle("Meet Peace, Tattoo Artist");
 const DESCRIPTION =
-  "Meet Peace (Chingri Awungshi), lead tattoo artist at XING Tattoo Studio, Brookefield — 15+ years, 1800+ tattoos, 4.9★ on Google. Realism, portraits & fine-line.";
+  `Meet Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio, Brookefield, Bengaluru: ${COUNTS.years} years of realism, portraits and fine line work.`;
 
 export const Route = createFileRoute("/tattoo-artist")({
   head: () => ({
@@ -48,7 +49,7 @@ export const Route = createFileRoute("/tattoo-artist")({
       { property: "og:image", content: artistPortrait },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/tattoo-artist" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/tattoo-artist` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -63,7 +64,7 @@ export const Route = createFileRoute("/tattoo-artist")({
             alternateName: ARTIST.fullName,
             jobTitle: ARTIST.role,
             image: artistPortrait,
-            worksFor: { "@id": "#studio" },
+            worksFor: { "@id": BUSINESS_ID },
             knowsAbout: artistStyles.map((s) => `${s.title} tattoos`),
             knowsLanguage: ["en", "hi", "kn"],
           },
@@ -155,7 +156,7 @@ function TattooArtistPage() {
           <OrigamiFrame>
             <img
               src={artistPortrait}
-              alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, at XING Tattoo Studio"
+              alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, at Xing Premium Tattoo Studio"
               width={1200}
               height={1350}
               fetchPriority="high"
@@ -173,15 +174,16 @@ function TattooArtistPage() {
             >
               Peace{" "}
               <span className="mt-2 block text-xl font-normal tracking-normal text-muted-foreground sm:text-2xl">
-                {ARTIST.fullName} — {ARTIST.role} at XING Tattoo Studio
+                {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               With {ARTIST.yearsExperience} years behind the machine and {ARTIST.tattoosCompleted}{" "}
-              tattoos completed, Peace is the one hand behind every piece at XING Tattoo Studio in
-              AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and across
-              Bengaluru for custom realism, portraits, fine-line work and Indian traditional designs
-              — each one drawn from scratch and inked in a studio run to clinic-level hygiene.
+              tattoos completed, Peace is the one hand behind every piece at Xing Premium Tattoo
+              Studio in AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and
+              across Bengaluru for custom realism, portraits, fine-line work and Indian traditional
+              designs — each one drawn from scratch and inked in a studio run to clinic-level
+              hygiene.
             </p>
 
             {/* Folded "tag" facts */}
@@ -204,7 +206,7 @@ function TattooArtistPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-sm bg-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                className="inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
               >
                 Book With Peace <ArrowRight className="h-4 w-4" />
               </button>
@@ -212,7 +214,7 @@ function TattooArtistPage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-sm border border-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>
@@ -257,7 +259,7 @@ function TattooArtistPage() {
                   <span className="mt-1.5 block text-xs leading-relaxed text-muted-foreground">
                     {text}
                   </span>
-                  <span className="mt-3 inline-flex items-center gap-1 font-display text-[0.65rem] font-semibold tracking-[0.14em] text-amber-700 uppercase">
+                  <span className="mt-3 inline-flex items-center gap-1 font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase">
                     Explore style <ArrowRight className="h-3 w-3" />
                   </span>
                 </div>
@@ -287,7 +289,7 @@ function TattooArtistPage() {
       >
         <SectionTitle eyebrow="Portfolio" title="Signature Work By Peace" id="work-title" />
         <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-          A cross-section of real pieces tattooed at XING. Tap any photo to see it up close.
+          A cross-section of real pieces tattooed at Xing. Tap any photo to see it up close.
         </p>
         <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {artistSignatureWork.map(({ img, alt }, i) => (
@@ -322,7 +324,7 @@ function TattooArtistPage() {
         <div className="mt-8 text-center">
           <a
             href="/#gallery"
-            className="inline-flex items-center gap-3 rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+            className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
           >
             View Full Gallery <ArrowRight className="h-4 w-4" />
           </a>
@@ -434,19 +436,19 @@ function TattooArtistPage() {
                 Ready To Work With Peace?
               </p>
               <p className="mt-2 text-sm text-primary-foreground/80">
-                Free consultation at XING Tattoo Studio, AECS Layout, Brookefield.
+                Free consultation at Xing Premium Tattoo Studio, AECS Layout, Brookefield.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-sm bg-amber-600 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
               >
                 Book Consultation <ArrowRight className="h-4 w-4" />
               </button>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-3 rounded-sm border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"
+                className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"
               >
                 About The Studio
               </Link>

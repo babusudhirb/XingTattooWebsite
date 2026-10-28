@@ -1,6 +1,6 @@
-# XING Tattoo Studio
+# Xing Premium Tattoo Studio
 
-Website for **XING Tattoo Studio**, Brookefield, Bengaluru. Built with TanStack Start, React,
+Website for **Xing Premium Tattoo Studio**, Brookefield, Bengaluru. Built with TanStack Start, React,
 TypeScript and Tailwind CSS. Every page is rendered to a static `.html` file at build time.
 
 ## Commands
@@ -42,6 +42,20 @@ public/                   copied as-is: gallery photos, icons, robots.txt, .htac
 
 `src/routes/index.tsx` has to keep that name: the router maps `index` to `/`.
 
+## Blog
+
+Posts live in `content/blog/<slug>.md` (YAML frontmatter + Markdown). `scripts/blog-plugin.ts`
+turns them into pages at build time, checks every internal link and writes `sitemap.xml` and
+`blog/rss.xml` with live posts only.
+
+- **Scheduling:** posts with `draft: true` and a `publishAt` date go live on the first build on or
+  after that date (India time). Rebuild and re-upload on publish days (Mondays and Thursdays).
+  Preview the schedule with `BLOG_BUILD_DATE=2027-12-31 npm run build`.
+- **Images:** `python scripts/blog_images.py <slug>` makes the hero, card, OG image and body images
+  in `public/blog/` from the studio's photos (map in the script).
+- **Checks:** `python scripts/check_blog.py` validates titles, descriptions, keywords, links,
+  FAQs, word counts and bans price figures.
+
 ## Hosting on Hostinger
 
 `npm run build` writes the finished site to `.output/public/`:
@@ -59,8 +73,8 @@ services/realism.html  services/portrait.html  …
 `.htaccess` gives clean URLs (`/about` serves `about.html`), forces HTTPS, compresses text files
 and sets long cache times for photos, fonts, CSS and JS.
 
-To also generate `sitemap.xml`, build with your domain:
-`SITE_URL=https://your-domain.com npm run build`.
+`sitemap.xml` and `blog/rss.xml` are generated on every build (from `content/blog/` and the
+domain in `src/data/business.ts`) and only list blog posts that are live.
 
 ### Booking emails
 

@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-/** Studio hours: 10:00 AM – 9:00 PM, closed every Tuesday. */
+/** Booking-slot minutes; must agree with OPEN_TIME / CLOSE_TIME / CLOSED_DAY in data/business.ts. */
 export const OPEN_MINUTES = 10 * 60;
 export const CLOSE_MINUTES = 21 * 60;
 export const SLOT_COUNT = 8;

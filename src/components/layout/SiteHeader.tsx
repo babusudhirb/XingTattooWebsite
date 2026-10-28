@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Phone } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 
-import { navLinks, PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
+import { isActiveHref, navLinks, PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
+import { useOfferActive } from "@/lib/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { Logo } from "@/components/layout/Logo";
@@ -13,6 +14,8 @@ const DESIGNS_AFTER = 1;
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const offerActive = useOfferActive();
 
   // Publish the real header height (it changes with breakpoint, wrapping and the
   // iPhone notch inset) so sticky elements below it can sit flush: --header-h.
@@ -27,12 +30,28 @@ export function SiteHeader() {
     return () => observer.disconnect();
   }, []);
 
+  // Hide while scrolling down, come back on any scroll up (instant under reduced motion)
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y < 120 || y < lastY - 4) setHidden(false);
+      else if (y > lastY + 4 && !headerRef.current?.contains(document.activeElement)) setHidden(true);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 border-b border-border bg-background/90 pt-[env(safe-area-inset-top)] backdrop-blur"
+      className={`sticky top-0 z-40 border-b border-border bg-background pt-[var(--sat)] transition-transform duration-300 ease-out motion-reduce:transition-none supports-[backdrop-filter]:bg-background/85 supports-[backdrop-filter]:backdrop-blur-md supports-[backdrop-filter]:backdrop-saturate-150 ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
+      <div className="site-header-inner mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] sm:gap-4">
         <Logo />
         <nav className="hidden items-center gap-5 text-sm whitespace-nowrap lg:flex xl:gap-7">
           {navLinks.slice(0, DESIGNS_AFTER).map(({ label, href }) => (
@@ -79,7 +98,7 @@ export function SiteHeader() {
                           <span className="block font-display text-xs font-semibold tracking-[0.06em] uppercase transition-colors group-hover/item:text-amber-700">
                             {s.shortName}
                           </span>
-                          <span className="block text-[0.7rem] text-muted-foreground">
+                          <span className="block text-xs text-muted-foreground">
                             {s.tagline}
                           </span>
                         </span>
@@ -89,7 +108,7 @@ export function SiteHeader() {
                 </div>
                 <Link
                   to="/services"
-                  className="mt-2 block rounded-sm border-t border-border px-2 pt-3 text-center font-display text-[0.65rem] font-semibold tracking-[0.14em] text-amber-700 uppercase transition-colors hover:text-amber-800"
+                  className="mt-2 block rounded-sm border-t border-border px-2 pt-3 text-center font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-colors hover:text-amber-800"
                 >
                   View All Tattoo Designs
                 </Link>
@@ -101,18 +120,21 @@ export function SiteHeader() {
             <a
               key={href}
               href={href}
-              className="relative text-muted-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:text-foreground hover:after:w-full"
+              aria-current={isActiveHref(pathname, href) ? "page" : undefined}
+              className="relative text-muted-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:text-foreground hover:after:w-full aria-[current=page]:text-foreground aria-[current=page]:after:w-full"
             >
               {label}
             </a>
           ))}
 
-          <Link
-            to="/offer"
-            className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            Offers
-          </Link>
+          {offerActive && (
+            <Link
+              to="/offer"
+              className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              Offers
+            </Link>
+          )}
         </nav>
         <div className="flex items-center gap-2 sm:gap-4">
           <a
@@ -122,9 +144,10 @@ export function SiteHeader() {
             <Phone className="h-4 w-4" />
             {PHONE_DISPLAY}
           </a>
+          {/* Below 400px the sticky bottom bar carries the booking button */}
           <button
             onClick={() => openBookingModal()}
-            className="flex min-h-11 items-center rounded-sm bg-primary px-4 font-display whitespace-nowrap text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:px-5"
+            className="hidden min-h-12 items-center rounded-full bg-primary px-4 font-display whitespace-nowrap text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 min-[400px]:flex sm:px-5"
           >
             <span className="sm:hidden">Book</span>
             <span className="hidden sm:inline">Book Consultation</span>

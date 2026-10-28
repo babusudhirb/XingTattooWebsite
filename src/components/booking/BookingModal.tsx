@@ -20,12 +20,13 @@ import {
 } from "@/lib/booking-slots";
 import { sendBookingRequest } from "@/lib/booking-request";
 import { onOpenBookingModal } from "@/components/booking/BookingContext";
+import { BRAND_NAME, HOURS_SHORT, SHORT_ADDRESS } from "@/data/business";
 
 const TATTOO_STYLES = [
   "Realism",
   "Portrait",
   "Geometric",
-  "Traditional",
+  "Indian Traditional",
   "Minimalist & Fine-Line",
   "Black & Grey",
   "Custom Design",
@@ -251,7 +252,7 @@ export function BookingModal() {
 
   const dateLabel = form.date ? format(form.date, "EEEE, d MMM yyyy") : "";
   const whatsappMessage = encodeURIComponent(
-    `Hi XING Tattoo Studio! I'd like to book a free consultation.\n\nName: ${form.name}\nPhone: ${form.phone}\nAge: ${form.age}\nStyle: ${form.style}\nDate: ${dateLabel}\nTime: ${form.slot}`,
+    `Hi Xing Premium Tattoo Studio! I'd like to book a free consultation.\n\nName: ${form.name}\nPhone: ${form.phone}\nAge: ${form.age}\nStyle: ${form.style}\nDate: ${dateLabel}\nTime: ${form.slot}`,
   );
 
   const today = new Date();
@@ -312,7 +313,7 @@ export function BookingModal() {
                 ["Name", form.name],
               ].map(([k, v]) => (
                 <div key={k} className="bg-card px-4 py-3">
-                  <dt className="text-[0.65rem] tracking-wide text-muted-foreground uppercase">
+                  <dt className="text-xs tracking-wide text-muted-foreground uppercase">
                     {k}
                   </dt>
                   <dd className="mt-0.5 font-semibold">{v}</dd>
@@ -325,14 +326,14 @@ export function BookingModal() {
                 href={`${WHATSAPP_URL}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-sm bg-emerald-600 px-6 py-4 font-display text-xs font-semibold tracking-[0.14em] text-white uppercase transition-transform duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-4 font-display text-xs font-bold tracking-[0.14em] text-white uppercase transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <MessageCircle className="h-4 w-4" /> Send Booking On WhatsApp
               </a>
               {/* Once emailed, editing would send a duplicate — offer Done instead. */}
               <button
                 onClick={emailSent ? requestClose : () => setSubmitted(false)}
-                className="inline-flex items-center justify-center rounded-sm border border-border px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
               >
                 {emailSent ? "Done" : "Change Details"}
               </button>
@@ -352,7 +353,7 @@ export function BookingModal() {
               Book Your Consultation
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              XING Tattoo Studio, AECS Layout, Brookefield · Open 10 AM – 9 PM · Closed Tuesdays
+              {BRAND_NAME}, {SHORT_ADDRESS} · {HOURS_SHORT}
             </p>
 
             {/* Spam trap: hidden from people, but bots filling every field will fill it. */}
@@ -406,7 +407,7 @@ export function BookingModal() {
                     autoComplete="tel"
                     value={form.phone}
                     onChange={(e) => setField("phone", e.target.value)}
-                    placeholder="+91 98765 43210"
+                    placeholder="10-digit mobile number"
                     className={inputClass}
                     aria-invalid={!!errors.phone}
                     aria-describedby={errors.phone ? "bk-phone-err" : undefined}
@@ -498,7 +499,7 @@ export function BookingModal() {
                   </div>
                   <p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
                     <CalendarDays className="h-3.5 w-3.5 text-amber-700" />
-                    Tuesdays closed — studio rest day
+                    {HOURS_SHORT}
                   </p>
                   {errors.date && <p className="mt-1 text-xs text-destructive">{errors.date}</p>}
                 </div>
@@ -519,7 +520,7 @@ export function BookingModal() {
                         </p>
                       </div>
 
-                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.7rem] text-muted-foreground">
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                         <span className="flex items-center gap-1.5">
                           <span className="h-2.5 w-2.5 rounded-full bg-[#10B981]" /> Available
                         </span>
@@ -564,7 +565,7 @@ export function BookingModal() {
                                   <span className="sm:hidden">{slot.label.split(" – ")[0]}</span>
                                   <span className="hidden sm:inline">{slot.label}</span>
                                 </span>
-                                <span className="shrink-0 text-[0.7rem] opacity-80">
+                                <span className="shrink-0 text-xs opacity-80">
                                   {slot.status === "busy"
                                     ? "Occupied"
                                     : slot.status === "past"
@@ -600,7 +601,7 @@ export function BookingModal() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-7 py-4 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 disabled:opacity-60"
               >
                 {submitting
                   ? "Sending…"
@@ -608,7 +609,7 @@ export function BookingModal() {
                     ? `Book ${format(form.date, "EEE d MMM")} · ${form.slot}`
                     : "Confirm Appointment"}
               </button>
-              <p className="mt-2 text-center text-[0.65rem] text-muted-foreground">
+              <p className="mt-2 text-center text-xs text-muted-foreground">
                 Free consultation · No payment required now
               </p>
             </div>

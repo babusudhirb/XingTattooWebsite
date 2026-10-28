@@ -11,10 +11,22 @@ import {
 } from "lucide-react";
 
 import heroArt from "@/assets/hero-fineline-art.webp";
+import heroArtSmall from "@/assets/hero-fineline-art-sm.webp";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 
+import {
+  ADDRESS,
+  BUSINESS_NAME,
+  COUNTS,
+  GOOGLE_RATING,
+  isOfferActive,
+  OFFER,
+  OG_IMAGE,
+  pageTitle,
+  SITE_URL,
+} from "@/data/business";
 import { WHATSAPP_URL } from "@/data/site";
-import { OFFER_ENDS_LABEL, OFFER_IDEAS, OFFER_LABEL, offerImages } from "@/data/offer";
+import { OFFER_IDEAS, OFFER_LABEL, offerImages } from "@/data/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import {
   gallery,
@@ -31,7 +43,6 @@ import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { BookingCTA } from "@/components/booking/BookingCTA";
 import { StudioHighlights } from "@/components/sections/StudioHighlights";
-import { reviewsSchema } from "@/data/reviews";
 import { faqById, faqs, homeFaqIds } from "@/data/faqs";
 import {
   Accordion,
@@ -54,25 +65,28 @@ function galleryPageSizeForScreen() {
 
 const homeFaqs = homeFaqIds.map((id) => faqById.get(id)!);
 
+const HOME_TITLE = pageTitle("Tattoo Studio in Brookefield, Bangalore");
+const HOME_DESCRIPTION =
+  `Xing Premium Tattoo Studio, AECS Layout, Brookefield (above DMART Ready). Custom tattoos by Peace, ${COUNTS.years} yrs. ${GOOGLE_RATING}★ on Google, sterile needles. Free consult.`;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "XING Tattoo Studio | Custom Tattoo Studio in Brookefield, Bengaluru" },
-      {
-        name: "description",
-        content:
-          "Custom tattoo studio in Brookefield, Bengaluru. Artist Peace (15+ yrs) designs every piece from scratch. 4.9★ on Google, single-use needles. Free consultation.",
-      },
-      { property: "og:title", content: "XING Tattoo Studio | Art You Wear" },
-      {
-        property: "og:description",
-        content:
-          "Custom tattoos, premium hygiene and unmatched artistry. Book a free consultation.",
-      },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESCRIPTION },
+      { property: "og:site_name", content: BUSINESS_NAME },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESCRIPTION },
+      { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(reviewsSchema()) }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
   component: Index,
 });
@@ -162,26 +176,26 @@ function OfferModal({ onClose }: { onClose: () => void }) {
       className="fixed inset-0 z-[60] flex items-center justify-center p-2 sm:p-6"
     >
       <div
-        className={`absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-foreground/45 backdrop-blur-sm transition-opacity duration-300 ${
           closing ? "opacity-0" : "animate-fade-in opacity-100"
         }`}
         onClick={requestClose}
       />
       <div
         ref={panelRef}
-        className={`relative z-10 max-h-[94vh] w-full max-w-3xl overflow-x-hidden overflow-y-auto rounded-sm border border-amber-400/30 bg-[#0b0a08] text-stone-100 shadow-[0_0_60px_-15px_rgba(245,158,11,0.35)] transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
+        className={`relative z-10 max-h-[94vh] w-full max-w-3xl overflow-x-hidden overflow-y-auto rounded-sm border border-border bg-background text-foreground shadow-[0_24px_70px_-20px_rgba(0,0,0,0.45)] transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
           closing ? "scale-95 opacity-0" : "animate-scale-in scale-100 opacity-100"
         }`}
       >
-        {/* Decoration: gold glow + drifting flash-sheet line art, all behind content */}
+        {/* Decoration: warm glow + drifting flash-sheet line art, all behind content */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.18),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(250,204,21,0.08),transparent_50%)]" />
-          <div className="absolute inset-3 rounded-sm border border-amber-400/10" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.12),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.06),transparent_50%)]" />
+          <div className="absolute inset-3 rounded-sm border border-amber-700/15" />
           {OFFER_FLASH.map(({ name, className, rotate, delay }) => (
             <TattooFlash
               key={name}
               name={name}
-              className={`flash-drift absolute text-amber-300/20 ${className}`}
+              className={`flash-drift absolute text-amber-700/15 ${className}`}
               style={{ "--r": `${rotate}deg`, animationDelay: `${delay}s` } as React.CSSProperties}
             />
           ))}
@@ -191,26 +205,26 @@ function OfferModal({ onClose }: { onClose: () => void }) {
           ref={closeRef}
           onClick={requestClose}
           aria-label="Close offer"
-          className="absolute top-3 right-3 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-amber-400/30 bg-black/60 text-amber-100 backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-black focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none sm:top-4 sm:right-4"
+          className="absolute top-3 right-3 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-[var(--shadow-card)] transition-transform duration-300 hover:scale-110 hover:bg-accent focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none sm:top-4 sm:right-4"
         >
           <X className="h-4 w-4" />
         </button>
 
         <div className="relative p-4 pt-16 sm:p-8">
           <header className="text-center">
-            <p className="font-display text-[0.65rem] font-semibold tracking-[0.3em] text-amber-400 uppercase">
-              {OFFER_LABEL} · Valid Until {OFFER_ENDS_LABEL}
+            <p className="font-display text-xs font-semibold tracking-[0.18em] text-amber-700 uppercase">
+              {OFFER_LABEL} · {OFFER.validLabel}
             </p>
             <h2
               id="offer-title"
-              className="mt-2 bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text font-display text-2xl font-bold tracking-wide text-transparent uppercase sm:text-3xl"
+              className="mt-2 font-display text-2xl font-medium tracking-tight text-foreground uppercase sm:text-3xl"
             >
-              More Art. More You.
+              More Art. <span className="font-extrabold">More You.</span>
             </h2>
-            <div className="mt-3 flex items-center justify-center gap-2 text-amber-400/60">
-              <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-400/60" />
+            <div className="mt-3 flex items-center justify-center gap-2 text-amber-700/70">
+              <span className="h-px w-10 bg-gradient-to-r from-transparent to-amber-700/60" />
               <TattooFlash name="sparkle" className="h-3 w-3" />
-              <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-400/60" />
+              <span className="h-px w-10 bg-gradient-to-l from-transparent to-amber-700/60" />
             </div>
           </header>
 
@@ -218,7 +232,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
             {offerImages.map((offer) => (
               <div
                 key={offer.alt}
-                className="group flex flex-col overflow-hidden rounded-sm border border-amber-400/25 bg-black shadow-[0_10px_30px_-12px_rgba(0,0,0,0.8)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-[0_14px_40px_-12px_rgba(245,158,11,0.35)]"
+                className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-700/50 hover:shadow-[var(--shadow-soft)]"
               >
                 <button
                   onClick={() => {
@@ -239,7 +253,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                     requestClose();
                     openBookingModal();
                   }}
-                  className="flex items-center justify-center gap-2 bg-yellow-400 px-4 py-3 font-display text-xs font-bold tracking-[0.14em] text-black uppercase transition-colors hover:bg-yellow-300"
+                  className="m-2.5 flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
                 >
                   Claim This Offer <ArrowRight className="h-4 w-4" />
                 </button>
@@ -249,7 +263,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
 
           {/* Small ideas that fit the "up to 10 sq. inch" offer; each opens booking with a style */}
           <div className="mt-7">
-            <p className="text-center font-display text-[0.65rem] font-semibold tracking-[0.2em] text-amber-400/90 uppercase">
+            <p className="text-center font-display text-xs font-semibold tracking-[0.18em] text-amber-700 uppercase">
               Need an idea? These fit the 10 sq. inch offer
             </p>
             <ul className="mt-3 flex flex-wrap justify-center gap-2">
@@ -260,9 +274,9 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                       requestClose();
                       openBookingModal(idea.style);
                     }}
-                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber-400/25 bg-white/[0.03] px-3 py-1.5 text-xs sm:min-h-0 text-stone-200 transition-colors hover:border-amber-400/70 hover:bg-amber-400/10 hover:text-amber-100 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs sm:min-h-0 text-foreground transition-colors hover:border-amber-700 hover:bg-accent focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none"
                   >
-                    <TattooFlash name={idea.icon} className="h-3.5 w-3.5 text-amber-400" />
+                    <TattooFlash name={idea.icon} className="h-3.5 w-3.5 text-amber-700" />
                     {idea.label}
                   </button>
                 </li>
@@ -275,20 +289,20 @@ function OfferModal({ onClose }: { onClose: () => void }) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-sm border border-amber-400/60 px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-amber-100 uppercase transition-colors hover:bg-amber-400/10"
+              className="inline-flex items-center gap-2 rounded-full border border-primary bg-background px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-foreground uppercase transition-colors hover:bg-accent"
             >
               <MessageCircle className="h-4 w-4" /> Chat On WhatsApp
             </a>
             <Link
               to="/offer"
               onClick={requestClose}
-              className="inline-flex items-center gap-2 px-2 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-amber-200 uppercase underline-offset-4 transition-colors hover:text-amber-100 hover:underline"
+              className="inline-flex items-center gap-2 px-2 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase underline-offset-4 transition-colors hover:text-amber-800 hover:underline"
             >
               Full Offer Details <ArrowRight className="h-4 w-4" />
             </Link>
             <button
               onClick={requestClose}
-              className="font-display text-xs font-semibold tracking-[0.14em] text-stone-400 uppercase underline-offset-4 transition-colors hover:text-stone-100 hover:underline"
+              className="font-display text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase underline-offset-4 transition-colors hover:text-foreground hover:underline"
             >
               Maybe Later
             </button>
@@ -309,6 +323,8 @@ function Index() {
   const galleryEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // The popup only runs while the GBP offer is live (India time)
+    if (!isOfferActive()) return;
     const t = window.setTimeout(() => setOfferOpen(true), 10000);
     return () => window.clearTimeout(t);
   }, []);
@@ -388,28 +404,32 @@ function Index() {
       <section id="home" className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 px-5 pt-6 pb-8 sm:gap-x-8 sm:pt-10 sm:pb-12 lg:grid-cols-2 lg:gap-x-10 lg:py-16">
           <div className="relative col-start-2 row-start-1 flex justify-center lg:row-span-2">
-            {/* Soft warm glow behind the drawing */}
-            <div
-              className="pointer-events-none absolute top-1/2 left-1/2 h-[80%] w-[180%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(245,158,11,0.10),transparent)] lg:w-[60%]"
-              aria-hidden="true"
-            />
-            <img
-              src={heroArt}
-              alt="Fine-line floral tattoo design of a woman's face intertwined with flowering vines"
-              width={315}
-              height={1039}
-              fetchPriority="high"
-              className="relative block h-60 w-auto mix-blend-multiply sm:h-72 lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
-            />
+            {/* Below lg the drawing is small, so it gets a bolder-stroke version */}
+            <picture>
+              <source media="(max-width: 1023px)" srcSet={heroArtSmall} />
+              <img
+                src={heroArt}
+                alt="Fine-line floral tattoo design of a woman's face intertwined with flowering vines"
+                width={1260}
+                height={4156}
+                fetchPriority="high"
+                className="relative block h-80 w-auto mix-blend-multiply sm:h-96 lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
+              />
+            </picture>
           </div>
 
           <div className="relative z-10 col-start-1 row-start-1 lg:self-end">
-            <div className="flex items-center gap-3">
-              <PenTool className="h-4 w-4 -rotate-45" />
-              <p className="eyebrow">Ink Your Story</p>
-            </div>
-            <h1 className="mt-4 font-display text-[clamp(2rem,9.5vw,2.6rem)] leading-[0.95] font-medium tracking-tight uppercase sm:mt-5 sm:text-6xl lg:text-7xl">
-              Art you wear.
+            {/* The keyword line is part of the H1, styled as the eyebrow */}
+            <h1 className="font-display text-[clamp(2rem,9.5vw,2.6rem)] leading-[0.95] font-medium tracking-tight uppercase sm:text-6xl lg:text-7xl">
+              <span className="eyebrow flex items-center gap-3 leading-snug">
+                <PenTool
+                  className="h-4 w-4 shrink-0 -rotate-45 text-foreground"
+                  aria-hidden="true"
+                />
+                Custom Tattoo Studio in Brookefield, Bangalore
+              </span>
+              <span className="sr-only"> — </span>
+              <span className="mt-4 block sm:mt-5">Art you wear.</span>
               <span className="mt-1 block font-extrabold">For life.</span>
             </h1>
             <p className="mt-4 max-w-[19rem] text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:max-w-md sm:text-base">
@@ -425,7 +445,7 @@ function Index() {
             <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-3 font-display text-xs font-semibold tracking-[0.12em] whitespace-nowrap text-primary-foreground uppercase transition-opacity hover:opacity-90 min-[360px]:px-4 sm:gap-3 sm:px-7 sm:py-4 sm:tracking-[0.14em]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-3 font-display text-xs font-bold tracking-[0.12em] whitespace-nowrap text-primary-foreground uppercase transition-opacity hover:opacity-90 min-[360px]:px-4 sm:gap-3 sm:px-7 sm:py-4 sm:tracking-[0.14em]"
               >
                 <span className="sm:hidden">Book Now</span>
                 <span className="hidden sm:inline">Book Consultation</span>
@@ -433,7 +453,7 @@ function Index() {
               </button>
               <a
                 href="#gallery"
-                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-primary bg-background px-4 font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-7 sm:py-4 sm:tracking-[0.14em]"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary bg-background px-4 font-display text-xs font-bold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-7 sm:py-4 sm:tracking-[0.14em]"
               >
                 <span className="sm:hidden">Our Work</span>
                 <span className="hidden sm:inline">Explore Work</span>
@@ -445,7 +465,7 @@ function Index() {
                 <div key={title} className="flex flex-col items-start gap-2 sm:flex-row sm:gap-3">
                   <Icon className="h-5 w-5 sm:mt-0.5 sm:h-6 sm:w-6" strokeWidth={1.4} />
                   <div>
-                    <p className="font-display text-[0.7rem] leading-tight font-semibold sm:text-sm">
+                    <p className="font-display text-xs leading-tight font-semibold sm:text-sm">
                       {title}
                     </p>
                     <p className="hidden text-xs text-muted-foreground sm:block">{text}</p>
@@ -460,17 +480,17 @@ function Index() {
       {/* About — short teaser; the full story lives on /about */}
       <section id="about" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading
-          eyebrow="About XING Tattoo Studio"
+          eyebrow="About Xing Premium Tattoo Studio"
           title="Custom Tattoo Studio in Brookefield, Bengaluru"
         />
         <p className="mx-auto mt-4 max-w-xs text-center font-script text-xl text-amber-700 sm:mt-5 sm:max-w-sm sm:text-2xl">
           We make forever look easy.
         </p>
         <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A custom tattoo studio in AECS Layout, Brookefield — right above D-Mart. Since 2021, every
-          design has been drawn from scratch and inked by one artist, with single-use needles opened
-          in front of you. Trusted by clients from Whitefield, Marathahalli and across East
-          Bengaluru.
+          A custom tattoo studio in AECS Layout, Brookefield — right {ADDRESS.landmark}. Every
+          design at Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri Awungshi),
+          our Lead Artist, with single-use needles opened in front of you. Trusted by clients from
+          Brookefield, Marathahalli, Whitefield and across East Bengaluru.
         </p>
 
         <StudioHighlights />
@@ -478,13 +498,13 @@ function Index() {
         <div className="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
           <Link
             to="/about"
-            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
           >
             Read Our Story <ArrowRight className="h-4 w-4" />
           </Link>
           <button
             onClick={() => openBookingModal()}
-            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm bg-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
           >
             Book Free Consultation <ArrowRight className="h-4 w-4" />
           </button>
@@ -501,7 +521,7 @@ function Index() {
             return (
               <li key={slug}>
                 <Link to="/services/$slug" params={{ slug }} className="group block">
-                  <span className="block overflow-hidden rounded-sm bg-muted">
+                  <span className="block overflow-hidden rounded-2xl bg-muted">
                     <img
                       src={s.heroImage}
                       alt={s.heroImageAlt}
@@ -522,7 +542,7 @@ function Index() {
                     />
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-baseline gap-2">
-                        <span className="font-display text-[0.65rem] font-semibold text-amber-700 tabular-nums">
+                        <span className="font-display text-xs font-semibold text-amber-700 tabular-nums">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <h3 className="font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors group-hover:text-amber-700 sm:text-[0.8rem]">
@@ -546,7 +566,7 @@ function Index() {
         <div className="mt-10 text-center">
           <Link
             to="/services"
-            className="inline-flex min-h-12 w-full items-center justify-center rounded-sm bg-primary px-7 py-3.5 sm:w-auto font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-7 py-3.5 sm:w-auto font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
           >
             View All Services
           </Link>
@@ -564,14 +584,14 @@ function Index() {
           <figure className="group relative mx-auto w-full max-w-[20rem] sm:max-w-[520px]">
             <img
               src={artistPortrait}
-              alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, arms crossed showing tattooed forearms at XING Tattoo Studio"
+              alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, arms crossed showing tattooed forearms at Xing Premium Tattoo Studio"
               width={1200}
               height={1350}
               loading="lazy"
               className="w-full mix-blend-multiply transition-transform duration-700 group-hover:scale-[1.02]"
             />
             <figcaption className="sr-only">
-              Peace, lead tattoo artist at XING Tattoo Studio, Brookefield
+              Peace, lead tattoo artist at Xing Premium Tattoo Studio, Brookefield
             </figcaption>
           </figure>
 
@@ -590,12 +610,12 @@ function Index() {
               this studio.
             </h2>
             <p className="mt-4 font-display text-sm font-semibold tracking-wide text-foreground/80">
-              Peace (Chingri Awungshi) — Lead Tattoo Artist, Brookefield, Bengaluru
+              Peace — Lead Artist, Brookefield, Bengaluru
             </p>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-              15+ years, 1800+ tattoos and a 4.9★ Google rating. Every consultation, stencil and
-              session at XING is done by Peace personally — from realism and portraits to fine-line
-              and Indian traditional work.
+              {COUNTS.years} years, {COUNTS.tattoos} tattoos and a {GOOGLE_RATING}★ Google rating. Every consultation, stencil and
+              session at Xing is done by Peace personally — from realism and portraits to
+              fine-line and Indian traditional work.
             </p>
 
             <div className="mt-7 flex flex-col gap-6 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-8">
@@ -625,7 +645,7 @@ function Index() {
               <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
                 <button
                   onClick={() => openBookingModal()}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-4 py-4 sm:gap-3 sm:px-7 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-4 py-4 sm:gap-3 sm:px-7 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
                 >
                   <span className="sm:hidden">Book Now</span>
                   <span className="hidden sm:inline">Book With Peace</span>
@@ -633,7 +653,7 @@ function Index() {
                 </button>
                 <Link
                   to="/tattoo-artist"
-                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-primary px-4 py-4 sm:px-7 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary px-4 py-4 sm:px-7 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
                 >
                   Meet Peace
                 </Link>
@@ -647,11 +667,11 @@ function Index() {
       <section id="gallery" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading eyebrow="Our Work" title="Tattoo Gallery" />
         <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-          {gallery.length}+ real tattoos from the chair — no stock photos. Tap any style to filter,
+          {gallery.length}+ photos from {COUNTS.tattoos} tattoos inked — no stock photos. Tap any style to filter,
           tap any photo to see it up close.
         </p>
         {/* Phones: one swipeable row (bleeds to the screen edges); wraps and centres from sm */}
-        <div className="-mx-5 mt-5 flex snap-x gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0">
+        <div className="bleed-to-sm mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:mx-0 sm:mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0">
           {galleryFilters.map((f) => (
             <button
               key={f}
@@ -694,7 +714,7 @@ function Index() {
                 className="block h-auto w-full cursor-zoom-in"
               />
               <span className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/85 via-primary/20 to-transparent p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
-                <span className="font-display text-[0.6rem] tracking-[0.16em] text-primary-foreground uppercase">
+                <span className="font-display text-xs tracking-[0.16em] text-primary-foreground uppercase">
                   {tag}
                 </span>
                 <span className="mt-1 text-xs text-primary-foreground/80">{alt}</span>
@@ -714,14 +734,14 @@ function Index() {
           {hasMoreGallery && !galleryAutoLoad && (
             <button
               onClick={() => setGalleryVisibleCount((c) => c + galleryPageSize)}
-              className="inline-flex min-h-12 w-full items-center justify-center gap-3 sm:w-auto rounded-sm border border-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-3 sm:w-auto rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent"
             >
               Load More Tattoos ({visibleGallery.length - galleryVisibleCount} more)
             </button>
           )}
           <button
             onClick={() => openBookingModal()}
-            className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-sm bg-primary px-7 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:w-auto"
+            className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:w-auto"
           >
             <span className="sm:hidden">Book Your Consultation</span>
             <span className="hidden sm:inline">Love What You See? Book Your Consultation</span>
@@ -765,7 +785,7 @@ function Index() {
             <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <Link
                 to="/faq"
-                className="inline-flex min-h-12 items-center justify-center gap-2 sm:gap-3 rounded-sm bg-primary px-6 py-3.5 font-display text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 sm:gap-3 rounded-full bg-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
               >
                 <span className="sm:hidden">All {faqs.length} FAQs</span>
                 <span className="hidden sm:inline">View All {faqs.length} FAQs</span>
@@ -775,7 +795,7 @@ function Index() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-primary px-3 py-3.5 font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-6 sm:tracking-[0.14em]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary px-3 py-3.5 font-display text-xs font-bold tracking-[0.12em] uppercase transition-colors hover:bg-accent sm:px-6 sm:tracking-[0.14em]"
               >
                 <MessageCircle className="h-4 w-4 shrink-0" />
                 <span className="sm:hidden">Ask Us</span>
@@ -828,7 +848,7 @@ function Index() {
 
       <BookingCTA />
 
-      <SiteFooter />
+      <SiteFooter showMap />
     </main>
   );
 }

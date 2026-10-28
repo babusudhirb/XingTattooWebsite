@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
+import { BRAND_NAME, GBP_SERVICES, pageTitle, serviceAnchor, SITE_URL } from "@/data/business";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -9,15 +10,15 @@ import { SocialDock } from "@/components/layout/SocialDock";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Tattoo Styles & Services | XING Tattoo Studio, Brookefield" },
+      { title: pageTitle("Tattoo Styles & Services") },
       {
         name: "description",
         content:
-          "Explore every tattoo style at XING Tattoo Studio, Brookefield — realism, portrait, black & grey, geometric, traditional and minimalist. Aftercare, timing and pricing guidance for each.",
+          "Every tattoo style at Xing Premium Tattoo Studio, Brookefield, Bengaluru, with aftercare and timing guidance for each — exact quote at a free consultation.",
       },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/services` }],
   }),
   component: ServicesIndex,
 });
@@ -48,7 +49,7 @@ function ServicesIndex() {
                 key={slug}
                 to="/services/$slug"
                 params={{ slug }}
-                className="group media-hover rounded-sm border border-border bg-card shadow-[var(--shadow-card)]"
+                className="group media-hover rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
               >
                 <img
                   src={s.heroImage}
@@ -63,7 +64,7 @@ function ServicesIndex() {
                     {s.shortName}
                   </h2>
                   <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.tagline}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 font-display text-[0.65rem] font-semibold tracking-[0.14em] text-amber-700 uppercase">
+                  <span className="mt-3 inline-flex items-center gap-1 font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase">
                     Learn More <ArrowRight className="h-3 w-3" />
                   </span>
                 </div>
@@ -71,6 +72,30 @@ function ServicesIndex() {
             );
           })}
         </div>
+      </section>
+
+      <section
+        aria-labelledby="all-services-title"
+        className="mx-auto max-w-7xl border-t border-border px-5 py-14"
+      >
+        <p className="eyebrow text-center">Everything We Do</p>
+        <h2
+          id="all-services-title"
+          className="mt-3 text-center font-display text-2xl font-medium tracking-tight sm:text-3xl"
+        >
+          All services at {BRAND_NAME}
+        </h2>
+        <ul className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-x-8 text-sm text-muted-foreground sm:grid-cols-2 lg:grid-cols-3">
+          {GBP_SERVICES.map((name) => (
+            <li
+              key={name}
+              id={serviceAnchor(name)}
+              className="scroll-mt-28 border-b border-border py-2.5"
+            >
+              {name}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <SiteFooter />

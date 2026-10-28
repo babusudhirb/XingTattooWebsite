@@ -1,23 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
+import { COUNTS, GOOGLE_RATING } from "@/data/business";
+
 /**
  * Home "About" proof block: headline numbers (each linking to the thing that
  * proves it) and the four reasons clients choose the studio. Deliberately
  * box-free — hairline rules and type do the structure.
  */
 
-const RATING = { value: 4.9, decimals: 1, suffix: "★", label: "Google rating", href: "#reviews" };
+const RATING = { value: GOOGLE_RATING, decimals: 1, suffix: "★", label: "Google rating", href: "#reviews" };
 const EXPERIENCE = {
-  value: 15,
+  value: parseInt(COUNTS.years, 10),
   decimals: 0,
   suffix: "+ yrs",
   label: "Artist experience",
   href: "/tattoo-artist",
 };
-/** Tattoos and clients read as one proof point: "1800+ tattoos for 1200+ happy clients". */
-const TATTOOS = 1800;
-const CLIENTS = "1200+";
+/** Tattoos and clients read as one proof point: "1800+ / Tattoos inked for 1200+ happy clients". */
+const TATTOOS = parseInt(COUNTS.tattoos, 10);
+const CLIENTS = COUNTS.clients;
 
 const REASONS = [
   { title: "Precision", text: "Stencils mapped to your body's shape, so lines sit right." },
@@ -28,8 +30,10 @@ const REASONS = [
 
 /**
  * Counts up once when scrolled into view. The final number is what the
- * server renders (and what search engines read); the count-up is a
- * client-side flourish, skipped for reduced-motion visitors.
+ * server renders (and what search engines read), and it stays on screen until
+ * the count-up actually starts — so a counter that never scrolls far enough into
+ * view never shows 0. The count starts at 60% of the value (never from 0) and is
+ * skipped for reduced-motion visitors.
  */
 function CountUp({ value, decimals }: { value: number; decimals: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -40,7 +44,7 @@ function CountUp({ value, decimals }: { value: number; decimals: number }) {
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // Only animate if it starts off-screen — never visibly reset a number.
     if (el.getBoundingClientRect().top < window.innerHeight) return;
-    setShown(0);
+    const from = value * 0.6;
     let frame = 0;
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,12 +55,13 @@ function CountUp({ value, decimals }: { value: number; decimals: number }) {
         const tick = (now: number) => {
           const t = Math.min(1, (now - start) / duration);
           const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-          setShown(value * eased);
+          setShown(from + (value - from) * eased);
           if (t < 1) frame = requestAnimationFrame(tick);
         };
         frame = requestAnimationFrame(tick);
       },
-      { threshold: 0.6 },
+      // Start as the first pixel appears, so the reset to 60% happens at the screen edge
+      { threshold: 0 },
     );
     observer.observe(el);
     return () => {
@@ -97,7 +102,7 @@ function Stat({
           <CountUp value={value} decimals={decimals} />
           <span className="ml-0.5 text-lg font-medium text-amber-700 sm:text-xl">{suffix}</span>
         </span>
-        <span className="mt-2 flex items-center gap-1 text-[0.65rem] tracking-[0.16em] text-muted-foreground uppercase transition-colors group-hover:text-foreground sm:text-[0.7rem]">
+        <span className="mt-2 flex items-center gap-1 text-xs tracking-[0.16em] text-muted-foreground uppercase transition-colors group-hover:text-foreground sm:text-xs">
           {label}
           <ArrowUpRight
             className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
@@ -128,10 +133,13 @@ export function StudioHighlights() {
             <span className="block font-display text-3xl font-semibold tracking-tight sm:text-4xl">
               <CountUp value={TATTOOS} decimals={0} />
               <span className="text-lg font-medium text-amber-700 sm:text-xl">+</span>
-              <span className="ml-2 text-xl font-medium sm:text-2xl">tattoos</span>
-            </span>
-            <span className="mt-2 flex items-center gap-1 text-[0.65rem] tracking-[0.16em] text-muted-foreground uppercase transition-colors group-hover:text-foreground sm:text-[0.7rem]">
-              for <strong className="font-semibold text-amber-700">{CLIENTS}</strong> happy clients
+            </span>{" "}
+            {/* One label, two unbreakable phrases — no lone "for" when it wraps */}
+            <span className="mt-2 flex flex-wrap items-center justify-center gap-x-1.5 text-xs tracking-[0.16em] text-muted-foreground uppercase transition-colors group-hover:text-foreground sm:text-xs">
+              <span className="font-semibold whitespace-nowrap text-foreground/80">Tattoos inked</span>
+              <span className="whitespace-nowrap">
+                · <strong className="font-semibold text-amber-700">{CLIENTS}</strong> happy clients
+              </span>
               <ArrowUpRight
                 className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
                 aria-hidden="true"
@@ -155,7 +163,7 @@ export function StudioHighlights() {
               className="absolute top-0 left-0 h-px w-8 bg-amber-700 transition-all duration-500 group-hover:w-full"
               aria-hidden="true"
             />
-            <span className="font-display text-[0.7rem] font-semibold tracking-[0.14em] text-amber-700">
+            <span className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700">
               {String(i + 1).padStart(2, "0")}
             </span>
             <h3 className="mt-2 font-display text-sm font-semibold tracking-[0.06em] uppercase">

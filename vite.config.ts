@@ -5,11 +5,14 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-// Set SITE_URL (e.g. https://example.com) when building to also emit sitemap.xml.
-const siteUrl = process.env["SITE_URL"];
+import { blogPlugin } from "./scripts/blog-plugin";
 
 export default defineConfig({
+  // Builds write .output/ while dev runs; watching it crashes the dev server (EBUSY)
+  server: { watch: { ignored: ["**/.output/**"] } },
   plugins: [
+    // Blog Markdown → modules; also writes public/sitemap.xml and public/blog/rss.xml
+    blogPlugin(),
     tsconfigPaths(),
     tailwindcss(),
     tanstackStart({
@@ -25,7 +28,8 @@ export default defineConfig({
         // "/services/" is the same page as "/services" — write it once, as services.html
         filter: ({ path }) => path === "/" || !path.endsWith("/"),
       },
-      ...(siteUrl ? { sitemap: { enabled: true, host: siteUrl } } : {}),
+      // Not linked from anywhere, so list it: becomes 404.html (served by .htaccess)
+      pages: [{ path: "/404" }],
     }),
     react(),
     nitro(),

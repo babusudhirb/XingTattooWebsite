@@ -1,6 +1,6 @@
 import { ArrowUpRight, Quote, Star } from "lucide-react";
 
-import { GOOGLE_RATING, reviews, type Review } from "@/data/reviews";
+import { GOOGLE_RATING, REVIEW_COUNT, reviews, type Review } from "@/data/reviews";
 import { GOOGLE_REVIEWS_URL } from "@/data/site";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 
@@ -111,7 +111,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
           <Stars value={review.rating} />
           <span className="sr-only">Rated {review.rating} out of 5</span>
         </div>
-        <span className="relative mt-3 w-fit rounded-full border border-amber-700/20 bg-amber-50 px-2.5 py-0.5 text-[0.65rem] font-semibold tracking-wide text-amber-800 uppercase">
+        <span className="relative mt-3 w-fit rounded-full border border-amber-700/20 bg-amber-50 px-2.5 py-0.5 text-xs font-semibold tracking-wide text-amber-800 uppercase">
           {review.highlight}
         </span>
 
@@ -130,7 +130,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         <Avatar name={review.name} index={index} />
         <span>
           <cite className="block font-display text-sm font-semibold not-italic">{review.name}</cite>
-          <span className="mt-0.5 flex items-center gap-1 text-[0.7rem] text-muted-foreground">
+          <span className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
             <GoogleG className="h-3 w-3" /> Google review
           </span>
         </span>
@@ -144,8 +144,8 @@ export function ReviewsSection() {
     <section id="reviews" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
       <SectionHeading eyebrow="Google Reviews" title="What Our Clients Say" />
       <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-        Real reviews from clients of XING Tattoo Studio in Brookefield, Bengaluru — first tattoos,
-        custom designs and fine-line work by Artist Peace.
+        Real Google reviews from clients of Xing in Brookefield, Bengaluru — first tattoos, custom
+        designs and fine-line work by Peace. Rated {GOOGLE_RATING}★ from {REVIEW_COUNT} reviews.
       </p>
 
       {/* Rating summary */}
@@ -153,7 +153,7 @@ export function ReviewsSection() {
         href={GOOGLE_REVIEWS_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Rated ${GOOGLE_RATING} out of 5 on Google — view our Google profile`}
+        aria-label={`Rated ${GOOGLE_RATING} out of 5 from ${REVIEW_COUNT} Google reviews — view our Google profile`}
         className="group mx-auto mt-6 flex w-fit items-center gap-4 rounded-full border border-border bg-card px-5 py-3 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/60 hover:shadow-[var(--shadow-soft)]"
       >
         <GoogleG className="h-7 w-7 shrink-0" />
@@ -162,8 +162,8 @@ export function ReviewsSection() {
         </span>
         <span className="flex flex-col gap-0.5">
           <Stars value={GOOGLE_RATING} />
-          <span className="text-[0.7rem] font-medium tracking-wide text-muted-foreground uppercase">
-            Google Rating
+          <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            {REVIEW_COUNT} Google reviews
           </span>
         </span>
       </a>
@@ -193,11 +193,11 @@ export function ReviewsSection() {
           href={GOOGLE_REVIEWS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-sm border border-primary px-6 py-3.5 sm:w-auto font-display text-xs font-semibold tracking-[0.14em] uppercase transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none"
+          className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-full border border-primary px-6 py-3.5 sm:w-auto font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none"
         >
           <GoogleG className="h-4 w-4" />
-          <span className="sm:hidden">More Reviews On Google</span>
-          <span className="hidden sm:inline">Read more reviews on our Google profile</span>
+          <span className="sm:hidden">All reviews on Google</span>
+          <span className="hidden sm:inline">Read all reviews on Google</span>
           <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </div>
