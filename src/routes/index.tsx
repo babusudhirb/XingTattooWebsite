@@ -23,7 +23,7 @@ import {
   pageTitle,
 } from "@/data/business";
 import { WHATSAPP_URL } from "@/data/site";
-import { OFFER_IDEAS, OFFER_LABEL, offerImages } from "@/data/offer";
+import { OFFER_IDEAS, OFFER_IMAGE_SIZE, OFFER_LABEL, offerImages } from "@/data/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import {
   gallery,
@@ -242,6 +242,8 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                   <img
                     src={offer.src}
                     alt={offer.alt}
+                    width={OFFER_IMAGE_SIZE}
+                    height={OFFER_IMAGE_SIZE}
                     className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </button>

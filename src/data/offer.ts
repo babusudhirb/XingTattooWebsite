@@ -1,6 +1,6 @@
-import offer1499 from "@/assets/offers/page/offer-1499.webp";
-import offer50Off from "@/assets/offers/page/offer-50-off.webp";
-import offerBigDiscount from "@/assets/offers/page/offer-big-discount.webp";
+import offer50OffEveryTattoo from "@/assets/offers/page/offer-50-off-every-tattoo.webp";
+import offerGoBigSaveBigger from "@/assets/offers/page/offer-go-big-save-bigger.webp";
+import offerMoreArtMoreYou from "@/assets/offers/page/offer-more-art-more-you.webp";
 
 import type { FlashName } from "@/components/sections/TattooFlash";
 import { OFFER, studioDate } from "@/data/business";
@@ -9,18 +9,20 @@ import { OFFER, studioDate } from "@/data/business";
 export const OFFER_LABEL = "Limited Time Offer";
 export const OFFER_ENDS_LABEL = OFFER.endsLabel;
 
+/** Offer posters (800×800, from the studio's "offer photos"), in the studio's own order. */
+export const OFFER_IMAGE_SIZE = 800;
 export const offerImages = [
   {
-    src: offer1499,
-    alt: "More art, more you — tattoo offer poster from Xing Premium Tattoo Studio, Brookefield",
+    src: offer50OffEveryTattoo,
+    alt: "50% off every tattoo — offer poster with black & grey and colour prices at Xing Premium Tattoo Studio, Brookefield",
   },
   {
-    src: offer50Off,
-    alt: "Limited time offer poster — up to 50% off custom tattoos at Xing Premium Tattoo Studio, Brookefield",
+    src: offerGoBigSaveBigger,
+    alt: "Go big, save bigger — offer poster: bigger savings on sleeves and large tattoos at Xing Premium Tattoo Studio, Brookefield",
   },
   {
-    src: offerBigDiscount,
-    alt: "Big tattoo, bigger discount — offer poster for larger pieces at Xing Premium Tattoo Studio, Brookefield",
+    src: offerMoreArtMoreYou,
+    alt: "More art, more you — offer poster with first-tattoo, 10 sq. inch and couple tattoo prices at Xing Premium Tattoo Studio",
   },
 ];
 
