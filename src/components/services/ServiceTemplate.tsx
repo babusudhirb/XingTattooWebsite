@@ -27,7 +27,7 @@ import { SocialDock } from "@/components/layout/SocialDock";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { RelatedGuides } from "@/components/blog/RelatedGuides";
 import { postBySlug, SERVICE_GUIDES } from "@/data/blog";
-import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
+import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { AftercareSteps, BenefitCards } from "@/components/services/ServiceInteractive";
 
@@ -381,9 +381,11 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               key={step.title}
               className="group media-hover rounded-sm border border-border bg-card p-6 shadow-[var(--shadow-card)]"
             >
-              <span className="font-display text-3xl font-bold text-accent transition-colors duration-300 group-hover:text-amber-700">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <span
+                aria-hidden="true"
+                data-n={String(i + 1).padStart(2, "0")}
+                className="font-display text-3xl font-bold text-accent transition-colors duration-300 group-hover:text-amber-700 before:content-[attr(data-n)]"
+              />
               <h3 className="mt-3 font-display text-xs font-semibold tracking-[0.1em] uppercase">
                 {step.title}
               </h3>
@@ -490,7 +492,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         </section>
       )}
 
-      <GalleryLightbox
+      <LazyGalleryLightbox
         items={relatedGallery}
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
@@ -532,7 +534,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               className="group media-hover rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
             >
               <img
-                src={s.heroImage}
+                src={s.cardImage}
                 alt={s.heroImageAlt}
                 width={640}
                 height={768}
@@ -566,7 +568,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => openBookingModal(service.shortName)}
-              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)] focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
+              className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)] focus-visible:ring-2 focus-visible:ring-background focus-visible:outline-none"
             >
               {service.ctaPrimaryLabel ?? "Book Consultation"} <ArrowRight className="h-4 w-4" />
             </button>

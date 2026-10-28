@@ -32,7 +32,7 @@ export function BookingCTA() {
     <section
       id="book"
       aria-labelledby="book-cta-title"
-      className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16"
+      className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16"
     >
       <div className="relative isolate overflow-hidden rounded-sm border border-amber-400/25 bg-[#0b0a08] text-stone-100 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]">
         {/* Photo on the right, fading into the dark panel */}

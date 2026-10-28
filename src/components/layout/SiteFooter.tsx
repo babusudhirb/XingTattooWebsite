@@ -26,7 +26,7 @@ import { VisitStudio } from "@/components/layout/VisitStudio";
 export function SiteFooter({ showMap = false }: { showMap?: boolean }) {
   const [emailUser, emailDomain] = EMAIL.split("@");
   return (
-    <footer className="border-t border-border">
+    <footer className="cv-auto border-t border-border">
       {showMap && <VisitStudio />}
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-12 lg:grid-cols-5">
         <div className="col-span-2 lg:col-span-1">

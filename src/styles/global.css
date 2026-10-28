@@ -20,8 +20,8 @@
  */
 
 @theme inline {
-  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Archivo Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Karla", "Karla Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Dancing Script", cursive;
   /* Artist signature only — a 5-glyph subset ("Peace"), see fonts.css */
   --font-signature: "Mrs Saint Delafield", "Dancing Script", cursive;
@@ -392,6 +392,14 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* Below-the-fold sections: the browser skips their layout and paint until they near the
+   screen, which keeps the first render of long pages fast. The size is a placeholder
+   estimate; `auto` remembers the real size once a section has been shown. */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 @utility marquee-track {

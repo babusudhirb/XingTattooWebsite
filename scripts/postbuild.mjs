@@ -72,6 +72,12 @@ function htmlFiles(dir) {
 }
 
 // ── Read every prerendered page ────────────────────────────────────────────
+// A page cut off mid-stream must never ship: fail the build instead.
+const truncated = htmlFiles(OUT).filter(
+  (f) => !fs.readFileSync(f, "utf8").trimEnd().endsWith("</html>"),
+);
+if (truncated.length) throw new Error(`[postbuild] truncated pages: ${truncated.join(", ")}`);
+
 const pages = htmlFiles(OUT).map((file) => {
   const rel = path
     .relative(OUT, file)

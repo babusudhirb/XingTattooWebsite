@@ -66,7 +66,7 @@ function ServicesIndex() {
                 className="group media-hover rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
               >
                 <img
-                  src={s.heroImage}
+                  src={s.cardImage}
                   alt={s.heroImageAlt}
                   width={640}
                   height={768}

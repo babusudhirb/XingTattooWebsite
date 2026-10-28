@@ -3,6 +3,24 @@
  * The latin-ext files only download when a page uses a glyph from their
  * unicode-range (e.g. the rupee sign).
  */
+/* Metric-matched fallbacks: Arial scaled to Archivo / Karla (measured in Chrome), so text
+   doesn't move when the web font swaps in. */
+@font-face {
+  font-family: "Archivo Fallback";
+  src: local("Arial");
+  size-adjust: 98.86%;
+  ascent-override: 89.01%;
+  descent-override: 21.24%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Karla Fallback";
+  src: local("Arial");
+  size-adjust: 101.41%;
+  ascent-override: 90.72%;
+  descent-override: 24.65%;
+  line-gap-override: 0%;
+}
 /* Archivo — latin-ext */
 @font-face {
   font-family: "Archivo";

@@ -28,6 +28,8 @@ import { SERVICE_SLUGS, services } from "@/data/services";
 import {
   gallery,
   galleryFilters,
+  GALLERY_SIZES,
+  gallerySrcSet,
   loadGallerySeen,
   mixGallery,
   saveGallerySeen,
@@ -36,7 +38,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { SectionHeading } from "@/components/sections/SectionHeading";
-import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
+import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { BookingCTA } from "@/components/booking/BookingCTA";
 import { StudioHighlights } from "@/components/sections/StudioHighlights";
@@ -74,6 +76,11 @@ export const Route = createFileRoute("/")({
       path: "/",
       title: HOME_TITLE,
       description: HOME_DESCRIPTION,
+      // The hero drawing is the largest thing on screen: fetch the right one first
+      links: [
+        { rel: "preload", as: "image", href: heroArtSmall, media: "(max-width: 1023px)", fetchPriority: "high" },
+        { rel: "preload", as: "image", href: heroArt, media: "(min-width: 1024px)", fetchPriority: "high" },
+      ],
       graph: [faqNode(homeFaqs)],
     }),
   component: Index,
@@ -500,7 +507,7 @@ function Index() {
       </section>
 
       {/* Services */}
-      <section id="services" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
+      <section id="services" className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading eyebrow="Our Services" title="Tattoo Styles We Specialize In" />
         {/* Box-free style cards: photo, then a numbered label on a hairline that fills amber on hover */}
         <ul className="mt-6 grid grid-cols-2 gap-x-3 gap-y-7 sm:mt-8 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-9 lg:grid-cols-6">
@@ -511,7 +518,7 @@ function Index() {
                 <Link to="/services/$slug" params={{ slug }} className="group block">
                   <span className="block overflow-hidden rounded-2xl bg-muted">
                     <img
-                      src={s.heroImage}
+                      src={s.cardImage}
                       alt={s.heroImageAlt}
                       width={640}
                       height={800}
@@ -565,7 +572,7 @@ function Index() {
       <section
         id="artist"
         aria-labelledby="artist-title"
-        className="relative mx-auto max-w-7xl overflow-hidden px-5 py-12 sm:py-16"
+        className="cv-auto relative mx-auto max-w-7xl overflow-hidden px-5 py-12 sm:py-16"
       >
         <div className="relative grid items-center gap-6 sm:gap-10 lg:grid-cols-[0.95fr_1fr] lg:gap-14">
           {/* Portrait — white backdrop multiplies into the page colour, no hard box */}
@@ -652,7 +659,7 @@ function Index() {
       </section>
 
       {/* Gallery */}
-      <section id="gallery" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
+      <section id="gallery" className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading eyebrow="Our Work" title="Tattoo Gallery" />
         <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
           {gallery.length}+ photos from {COUNTS.tattoos} tattoos inked — no stock photos. Tap any style to filter,
@@ -695,6 +702,8 @@ function Index() {
             >
               <img
                 src={img}
+                srcSet={gallerySrcSet(img)}
+                sizes={GALLERY_SIZES}
                 alt={alt}
                 width={640}
                 height={768}
@@ -738,7 +747,7 @@ function Index() {
         </div>
       </section>
 
-      <GalleryLightbox
+      <LazyGalleryLightbox
         items={visibleGallery}
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
@@ -753,7 +762,7 @@ function Index() {
       <section
         id="faq"
         aria-labelledby="home-faq-title"
-        className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16"
+        className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16"
       >
         <div className="grid gap-7 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           <div className="lg:sticky lg:top-28 lg:self-start">

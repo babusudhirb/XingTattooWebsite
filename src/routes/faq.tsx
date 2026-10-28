@@ -260,7 +260,7 @@ function FaqPage() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
               >
                 Book Free Consultation <ArrowRight className="h-4 w-4" />
               </button>

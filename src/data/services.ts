@@ -59,6 +59,12 @@ import blackGreyThumb from "@/assets/services/black-grey/thumb.webp";
 import geometricThumb from "@/assets/services/geometric/thumb.webp";
 import traditionalThumb from "@/assets/services/traditional/thumb.webp";
 import minimalistThumb from "@/assets/services/minimalist/thumb.webp";
+import realismCard from "@/assets/services/realism/card.webp";
+import portraitCard from "@/assets/services/portrait/card.webp";
+import blackGreyCard from "@/assets/services/black-grey/card.webp";
+import geometricCard from "@/assets/services/geometric/card.webp";
+import traditionalCard from "@/assets/services/traditional/card.webp";
+import minimalistCard from "@/assets/services/minimalist/card.webp";
 
 export const SERVICE_SLUGS = [
   "realism",
@@ -125,6 +131,8 @@ export interface ServiceContent {
   heroImage: string;
   /** 96px square crop of the hero, for menus — keeps the full photo off every page. */
   thumbImage: string;
+  /** 560px copy of the hero for style cards (scripts/optimize-images.mjs). */
+  cardImage: string;
   heroImageAlt: string;
   galleryImages: GalleryImage[];
   galleryTag?: string;
@@ -184,6 +192,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       "Transform memories, portraits, and bold concepts into lifelike skin art at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Realism requires master-level shading, precise contrast, and technical depth. Whether you want a hyper-realistic pet portrait, a classic Roman statue, or custom bio-mechanical art, our studio crafts high-detail realism tattoos designed to heal cleanly and last a lifetime.",
     heroImage: realismHero,
     thumbImage: realismThumb,
+    cardImage: realismCard,
     heroImageAlt: "Realistic angel wings tattoo on forearm with fine feather detailing",
     galleryImages: [
       {
@@ -367,6 +376,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       `Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.`,
     heroImage: portraitHero,
     thumbImage: portraitThumb,
+    cardImage: portraitCard,
     heroImageAlt: '"Queen" eyes portrait tattoo on chest with fine realistic shading',
     galleryImages: [
       {
@@ -556,6 +566,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       `Experience the power of classic monochrome ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.`,
     heroImage: styleBlackGrey,
     thumbImage: blackGreyThumb,
+    cardImage: blackGreyCard,
     heroImageAlt:
       "Black and grey warrior sleeve tattoo with smooth charcoal shading at Xing Premium Tattoo Studio, Bengaluru",
     galleryImages: [],
@@ -737,6 +748,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       `Experience mathematical symmetry and spiritual balance at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.`,
     heroImage: geometricHero,
     thumbImage: geometricThumb,
+    cardImage: geometricCard,
     heroImageAlt:
       "Geometric compass and wave tattoo on forearm with precise fine-line symmetry at Xing Premium Tattoo Studio, Bengaluru",
     galleryImages: [
@@ -924,6 +936,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       `Carry your faith, heritage and family story in ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.`,
     heroImage: traditionalHero,
     thumbImage: traditionalThumb,
+    cardImage: traditionalCard,
     heroImageAlt:
       "Bold ornamental face tattoo on the back of the hand at Xing Premium Tattoo Studio, Bengaluru",
     galleryImages: [
@@ -1130,6 +1143,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     heroImage: minimalistHero,
     thumbImage: minimalistThumb,
+    cardImage: minimalistCard,
     heroImageAlt:
       "Fine-line sun, moon and script minimalist tattoo along the spine at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     galleryImages: [

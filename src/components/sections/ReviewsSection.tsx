@@ -1,4 +1,5 @@
-import { ArrowUpRight, Quote, Star } from "lucide-react";
+import { useEffect, useId, useState } from "react";
+import { ArrowUpRight, Quote } from "lucide-react";
 
 import { GOOGLE_RATING, REVIEW_COUNT, reviews, type Review } from "@/data/reviews";
 import { GOOGLE_REVIEWS_URL } from "@/data/site";
@@ -28,22 +29,44 @@ function GoogleG({ className }: { className?: string }) {
   );
 }
 
+/** Lucide's star outline (24×24), drawn five times in one SVG instead of ten separate icons. */
+const STAR_PATH =
+  "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z";
+const STAR_STEP = 27; // 24px star + 3px gap (2px at the 16px display size)
+const STAR_X = [0, 1, 2, 3, 4].map((i) => i * STAR_STEP);
+
 /** Five stars with the last one filled fractionally (e.g. 4.9 → 90%). */
-function Stars({ value, size = "h-4 w-4" }: { value: number; size?: string }) {
+function Stars({ value, size = "h-4" }: { value: number; size?: string }) {
+  const id = useId().replace(/[^a-zA-Z0-9-]/g, "");
+  const filled = Math.max(0, Math.min(5, value));
+  const partial = filled < 5;
+  const clipWidth = Math.floor(filled) * STAR_STEP + (filled % 1) * 24;
+  const stars = STAR_X.map((x) => <use key={x} href={`#${id}-star`} x={x} />);
   return (
-    <span className="flex gap-0.5" aria-hidden="true">
-      {Array.from({ length: 5 }).map((_, i) => {
-        const fill = Math.max(0, Math.min(1, value - i));
-        return (
-          <span key={i} className={`relative ${size}`}>
-            <Star className={`absolute inset-0 ${size} text-amber-300/50`} strokeWidth={1.5} />
-            <span className="absolute inset-0 overflow-hidden" style={{ width: `${fill * 100}%` }}>
-              <Star className={`${size} fill-amber-400 text-amber-400`} strokeWidth={1.5} />
-            </span>
-          </span>
-        );
-      })}
-    </span>
+    <svg
+      viewBox={`0 0 ${4 * STAR_STEP + 24} 24`}
+      className={`${size} w-auto`}
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <defs>
+        <path id={`${id}-star`} d={STAR_PATH} />
+        {partial && (
+          <clipPath id={`${id}-fill`}>
+            <rect width={clipWidth} height={24} />
+          </clipPath>
+        )}
+      </defs>
+      {partial && <g className="fill-none stroke-amber-300/50">{stars}</g>}
+      <g
+        className="fill-amber-400 stroke-amber-400"
+        clipPath={partial ? `url(#${id}-fill)` : undefined}
+      >
+        {stars}
+      </g>
+    </svg>
   );
 }
 
@@ -140,8 +163,14 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
 }
 
 export function ReviewsSection() {
+  // The loop copy only matters while the carousel moves
+  const [loop, setLoop] = useState(false);
+  useEffect(() => {
+    setLoop(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
   return (
-    <section id="reviews" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
+    <section id="reviews" className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
       <SectionHeading eyebrow="Google Reviews" title="What Our Clients Say" />
       <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
         Real Google reviews from clients of Xing in Brookefield, Bengaluru — first tattoos, custom
@@ -179,12 +208,15 @@ export function ReviewsSection() {
           {reviews.map((review, i) => (
             <ReviewCard key={review.name} review={review} index={i} />
           ))}
-          {/* Second copy completes the seamless loop — hidden from screen readers. */}
-          <div className="flex gap-5 pr-5 motion-reduce:hidden" aria-hidden="true" inert>
-            {reviews.map((review, i) => (
-              <ReviewCard key={`${review.name}-loop`} review={review} index={i} />
-            ))}
-          </div>
+          {/* Second copy completes the seamless loop — hidden from screen readers, and added
+              in the browser only (it would double the page's HTML for no reader's benefit). */}
+          {loop && (
+            <div className="flex gap-5 pr-5" aria-hidden="true" inert>
+              {reviews.map((review, i) => (
+                <ReviewCard key={`${review.name}-loop`} review={review} index={i} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

@@ -7,6 +7,7 @@ import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import zlib from "node:zlib";
 
 import { REDIRECTS } from "./redirects.mjs";
 
@@ -31,13 +32,35 @@ const TYPES = {
 };
 
 const isFile = (p) => fs.existsSync(p) && fs.statSync(p).isFile();
+const COMPRESSIBLE = new Set([
+  ".html",
+  ".xml",
+  ".txt",
+  ".js",
+  ".css",
+  ".json",
+  ".webmanifest",
+  ".svg",
+]);
 
-function send(res, status, file, headers = {}) {
-  res.writeHead(status, {
-    "Content-Type": TYPES[path.extname(file)] ?? "application/octet-stream",
-    ...headers,
-  });
-  fs.createReadStream(file).pipe(res);
+/** Brotli/gzip for text files, as LiteSpeed does on Hostinger, so local Lighthouse runs are fair. */
+function send(req, res, status, file) {
+  const headers = { "Content-Type": TYPES[path.extname(file)] ?? "application/octet-stream" };
+  const accept = req.headers["accept-encoding"] ?? "";
+  const stream = fs.createReadStream(file);
+  if (COMPRESSIBLE.has(path.extname(file)) && /\bbr\b/.test(accept)) {
+    res.writeHead(status, { ...headers, "Content-Encoding": "br", Vary: "Accept-Encoding" });
+    // Quality 5, like a web server compressing on the fly (11, the default, is far slower)
+    return stream
+      .pipe(zlib.createBrotliCompress({ params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } }))
+      .pipe(res);
+  }
+  if (COMPRESSIBLE.has(path.extname(file)) && /\bgzip\b/.test(accept)) {
+    res.writeHead(status, { ...headers, "Content-Encoding": "gzip", Vary: "Accept-Encoding" });
+    return stream.pipe(zlib.createGzip()).pipe(res);
+  }
+  res.writeHead(status, headers);
+  stream.pipe(res);
 }
 
 http
@@ -57,9 +80,9 @@ http
       return redirect(p.slice(0, -1));
 
     const file = path.join(ROOT, p === "/" ? "index.html" : p);
-    if (!file.startsWith(ROOT)) return send(res, 404, path.join(ROOT, "404.html"));
-    if (isFile(file)) return send(res, 200, file);
-    if (isFile(`${file}.html`)) return send(res, 200, `${file}.html`);
-    return send(res, 404, path.join(ROOT, "404.html"));
+    if (!file.startsWith(ROOT)) return send(req, res, 404, path.join(ROOT, "404.html"));
+    if (isFile(file)) return send(req, res, 200, file);
+    if (isFile(`${file}.html`)) return send(req, res, 200, `${file}.html`);
+    return send(req, res, 404, path.join(ROOT, "404.html"));
   })
   .listen(PORT, () => console.log(`Serving .output/public at http://localhost:${PORT}`));

@@ -8,6 +8,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { blogPlugin } from "./scripts/blog-plugin";
 
 export default defineConfig({
+  build: { target: "es2020" },
   // Builds write .output/ while dev runs; watching it crashes the dev server (EBUSY)
   server: { watch: { ignored: ["**/.output/**"] } },
   plugins: [
@@ -25,8 +26,10 @@ export default defineConfig({
         crawlLinks: true,
         autoSubfolderIndex: false,
         failOnError: true,
-        // "/services/" is the same page as "/services" — write it once, as services.html
-        filter: ({ path }) => path === "/" || !path.endsWith("/"),
+        // "/services/" is the same page as "/services" — write it once, as services.html.
+        // "/#gallery", "/faq#inks"… are the same files too: rendering them again races the
+        // first write of index.html / faq.html and can leave a truncated page.
+        filter: ({ path }) => !path.includes("#") && (path === "/" || !path.endsWith("/")),
       },
       // Not linked from anywhere, so list it: becomes 404.html (served by .htaccess)
       pages: [{ path: "/404" }],

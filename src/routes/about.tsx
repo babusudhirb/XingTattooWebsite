@@ -196,9 +196,11 @@ function AboutPage() {
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {aboutValues.map(({ title, text }, i) => (
             <FoldCard key={title} as="li" className="h-full">
-              <span className="font-display text-3xl font-bold text-amber-700/25">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <span
+                aria-hidden="true"
+                data-n={String(i + 1).padStart(2, "0")}
+                className="font-display text-3xl font-bold text-amber-700/25 before:content-[attr(data-n)]"
+              />
               <h3 className="mt-2 font-display text-sm font-semibold tracking-[0.08em] uppercase">
                 {title}
               </h3>
@@ -297,34 +299,34 @@ function AboutPage() {
             </h3>
             <dl className="mt-4 space-y-4 text-sm">
               <div className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
-                <div>
-                  <dt className="sr-only">Address</dt>
-                  <dd>
-                    <address className="not-italic">{ADDRESS.full}</address>
-                  </dd>
-                </div>
+                <dt className="mt-0.5 shrink-0">
+                  <MapPin className="h-4 w-4 text-amber-700" aria-hidden="true" />
+                  <span className="sr-only">Address</span>
+                </dt>
+                <dd>
+                  <address className="not-italic">{ADDRESS.full}</address>
+                </dd>
               </div>
               <div className="flex gap-3">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
-                <div>
-                  <dt className="sr-only">Hours</dt>
-                  <dd>{HOURS_TEXT}</dd>
-                </div>
+                <dt className="mt-0.5 shrink-0">
+                  <Clock className="h-4 w-4 text-amber-700" aria-hidden="true" />
+                  <span className="sr-only">Hours</span>
+                </dt>
+                <dd>{HOURS_TEXT}</dd>
               </div>
               <div className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
-                <div>
-                  <dt className="sr-only">Phone</dt>
-                  <dd>
-                    <a
-                      href={PHONE_TEL}
-                      className="inline-flex min-h-11 items-center hover:text-amber-700"
-                    >
-                      {PHONE_DISPLAY}
-                    </a>
-                  </dd>
-                </div>
+                <dt className="mt-0.5 shrink-0">
+                  <Phone className="h-4 w-4 text-amber-700" aria-hidden="true" />
+                  <span className="sr-only">Phone</span>
+                </dt>
+                <dd>
+                  <a
+                    href={PHONE_TEL}
+                    className="inline-flex min-h-11 items-center hover:text-amber-700"
+                  >
+                    {PHONE_DISPLAY}
+                  </a>
+                </dd>
               </div>
             </dl>
             <p className="eyebrow mt-6">Landmarks</p>
@@ -399,7 +401,7 @@ function AboutPage() {
             </div>
             <button
               onClick={() => openBookingModal()}
-              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
             >
               Book Free Consultation <ArrowRight className="h-4 w-4" />
             </button>

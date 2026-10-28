@@ -106,7 +106,7 @@ const OFFERS: Offer[] = [
     price: "Offer price",
     title: "Any 10 sq. inch tattoo",
     text: "Any design, any style — up to 10 square inches.",
-    img: geometric.heroImage,
+    img: geometric.cardImage,
     alt: "Geometric compass and moon forearm tattoo — 10 sq. inch tattoo offer at Xing Premium Tattoo Studio, Brookefield",
     featured: true,
   },
@@ -130,7 +130,7 @@ const OFFERS: Offer[] = [
     price: "Extra off",
     title: "Extra savings on bigger pieces",
     text: "Larger pieces get extra savings — ask at your free consultation.",
-    img: traditional.heroImage,
+    img: traditional.cardImage,
     alt: "Detailed black and grey hand tattoo — extra savings on bigger pieces at Xing Premium Tattoo Studio",
   },
 ];
@@ -175,12 +175,12 @@ const WHY_XING: { value: string; label: string; text: string; icon: ReactNode }[
 ];
 
 const WORK = [
-  { src: realism.heroImage, alt: realism.heroImageAlt },
+  { src: realism.cardImage, alt: realism.heroImageAlt },
   portrait.galleryImages[0]!,
-  { src: minimalist.heroImage, alt: minimalist.heroImageAlt },
+  { src: minimalist.cardImage, alt: minimalist.heroImageAlt },
   geometric.galleryImages[0]!,
-  { src: blackGrey.heroImage, alt: blackGrey.heroImageAlt },
-  { src: portrait.heroImage, alt: portrait.heroImageAlt },
+  { src: blackGrey.cardImage, alt: blackGrey.heroImageAlt },
+  { src: portrait.cardImage, alt: portrait.heroImageAlt },
   minimalist.galleryImages[2]!,
   realism.galleryImages[2]!,
 ];

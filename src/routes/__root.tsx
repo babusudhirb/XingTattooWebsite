@@ -3,7 +3,6 @@ import { type ReactNode } from "react";
 
 import appCss from "@/styles/global.css?url";
 import archivoFont from "@/assets/fonts/archivo-latin.woff2?url";
-import karlaFont from "@/assets/fonts/karla-latin.woff2?url";
 import { BookingModalLoader } from "@/components/booking/BookingModalLoader";
 import { BUSINESS_NAME, GEO_META } from "@/data/business";
 import { NotFoundPage } from "@/components/layout/NotFoundPage";
@@ -66,8 +65,9 @@ export const Route = createRootRoute({
       ...(BING_VERIFICATION ? [{ name: "msvalidate.01", content: BING_VERIFICATION }] : []),
     ],
     links: [
-      // Fonts are self-hosted (src/styles/fonts.css); preload the two used above the fold.
-      ...[archivoFont, karlaFont].map((href) => ({
+      // Fonts are self-hosted (src/styles/fonts.css). Preload only the heading font; body text
+      // paints at once in the metric-matched fallback and swaps without moving.
+      ...[archivoFont].map((href) => ({
         rel: "preload",
         as: "font",
         type: "font/woff2",

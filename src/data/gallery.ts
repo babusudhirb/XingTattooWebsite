@@ -9,6 +9,15 @@ export interface GalleryItem {
 
 export const STUDIO_TAG = "Studio";
 
+/** srcset for studio photos, which have a 480px copy alongside (scripts/optimize-images.mjs). */
+export const gallerySrcSet = (src: string) =>
+  src.startsWith("/gallery/")
+    ? `${src.replace(/\.webp$/, "-480.webp")} 480w, ${src} 800w`
+    : undefined;
+/** Grid columns: 2 on phones, 3 from sm, 4 from lg, 5 from xl. */
+export const GALLERY_SIZES =
+  "(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw";
+
 export const galleryFilters = ["All", ...SERVICE_SLUGS.map((slug) => services[slug].shortName)];
 
 const styledGallery: GalleryItem[] = SERVICE_SLUGS.flatMap((slug) => {

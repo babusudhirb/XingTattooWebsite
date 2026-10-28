@@ -24,7 +24,7 @@ import {
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
+import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import {
   AccordionFold,
@@ -230,7 +230,7 @@ function TattooArtistPage() {
             <FoldCard key={slug} as="li" className="h-full">
               <Link to="/services/$slug" params={{ slug }} className="group flex h-full gap-4">
                 <img
-                  src={services[slug].heroImage}
+                  src={services[slug].cardImage}
                   alt={services[slug].heroImageAlt}
                   width={160}
                   height={200}
@@ -316,7 +316,7 @@ function TattooArtistPage() {
         </div>
       </section>
 
-      <GalleryLightbox
+      <LazyGalleryLightbox
         items={artistSignatureWork}
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
@@ -427,7 +427,7 @@ function TattooArtistPage() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => openBookingModal()}
-                className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-3 rounded-full bg-amber-700 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5"
               >
                 Book Consultation <ArrowRight className="h-4 w-4" />
               </button>
