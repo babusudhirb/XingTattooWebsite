@@ -1,4 +1,4 @@
-import { COUNTS, GOOGLE_RATING, PHONE_DISPLAY, RATING_LABEL, SHORT_ADDRESS } from "@/data/business";
+import { COUNTS, GOOGLE_RATING, RATING_LABEL, SHORT_ADDRESS } from "@/data/business";
 import styleBlackGrey from "@/assets/style-blackgrey.webp";
 
 import realismHero from "@/assets/services/realism/hero.webp";
@@ -343,19 +343,24 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     faqs: [
       {
-        question: "How long does a realism tattoo take?",
-        answer:
-          "Due to microscopic detail, sessions range from 4 to 8 hours for mid-size pieces (e.g., forearm).",
-      },
-      {
         question: "Do realism tattoos fade faster than line art?",
         answer:
-          "No. With correct needle depth and proper sunscreen aftercare, high-contrast realism ages exceptionally well.",
+          "No. With correct needle depth, strong contrast and proper sunscreen aftercare, high-contrast realism ages well. Very fine detail softens first over the years, so Peace sizes each piece to leave room for that. Keeping the tattoo out of strong sun while it heals, then using SPF once healed, is the biggest single factor.",
       },
       {
-        question: "What makes a good reference photo for portraits?",
+        question: "What makes a good reference photo for a realism tattoo?",
         answer:
-          "High-resolution, well-lit photos with clear shadows and sharp focus produce the best realism tattoos.",
+          "High-resolution, well-lit photos with clear shadows and sharp focus produce the best realism tattoos. Avoid heavy filters, screenshots and photos taken in dim light, because missing detail can't be added back on skin. Bring two or three options to your free consultation and Peace will help choose the one that will translate best.",
+      },
+      {
+        question: "Can a realism tattoo be done in black & grey or in colour?",
+        answer:
+          "Both. Black & grey realism uses smooth shading and contrast for depth, while colour realism adds tones for skin, eyes or nature. The right choice depends on the subject, your skin tone and the placement. Peace will talk through examples at your consultation and recommend the option that will heal and age best.",
+      },
+      {
+        question: "Where can I get a realism tattoo near Whitefield or Marathahalli?",
+        answer:
+          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every realism tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
       },
     ],
     relatedSlugs: ["black-grey", "portrait"],
@@ -535,17 +540,22 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "What type of photo works best for a portrait tattoo?",
         answer:
-          "High-resolution, unedited photos with clear lighting and distinct shadows work best. Avoid blurry, dark, or heavily filtered images.",
+          "High-resolution, unedited photos with clear lighting and distinct shadows work best. Avoid blurry, dark or heavily filtered images, and screenshots from social media. A photo where the face fills most of the frame gives the most detail. Bring a few options to your free consultation and Peace will help pick the strongest one.",
       },
       {
-        question: "How much does a custom portrait tattoo cost in Bengaluru?",
+        question: "Can you tattoo a portrait of my pet?",
         answer:
-          "Pricing depends on detail level, size, and placement. We provide exact estimates during your free initial consultation.",
+          "Yes. Pet portraits are done the same way as human portraits: from a sharp, well-lit photo that shows the eyes and fur texture clearly. Peace draws the design from scratch, sizes it to your placement and shows it to you before your session, so you can ask for changes until it feels right.",
       },
       {
         question: "How do portrait tattoos age over time?",
         answer:
-          "Executed with proper contrast and correct needle depth, portrait tattoos heal smoothly and age exceptionally well with proper sunscreen aftercare.",
+          "Executed with proper contrast and correct needle depth, portrait tattoos heal smoothly and age well with good aftercare. Very fine detail softens slowly, so portraits are sized with enough room for the features to stay readable. Daily SPF once healed is the biggest factor, and a touch-up years later can refresh an older piece.",
+      },
+      {
+        question: "Where can I get a portrait tattoo near Whitefield or Marathahalli?",
+        answer:
+          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every portrait tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
       },
     ],
     relatedSlugs: ["realism", "black-grey"],
@@ -707,27 +717,22 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Why do black and grey tattoos age better than colour tattoos?",
         answer:
-          "Black ink pigments have higher density and stability, making them more resistant to UV fading over time.",
-      },
-      {
-        question: "How much does a black and grey tattoo cost in Brookefield, Bengaluru?",
-        answer:
-          "Pricing depends on design complexity, scale, and placement. We provide exact estimates during your free consultation.",
-      },
-      {
-        question: "How long does black and grey ink take to heal?",
-        answer:
-          "Surface healing takes 2 to 3 weeks, while deep skin layers settle fully within 4 to 6 weeks with proper aftercare.",
+          "Black ink pigments have higher density and stability, which makes them more resistant to UV fading than many colours. Smooth grey shading also softens gracefully rather than losing a hue. Good aftercare still matters: keep the tattoo out of strong sun while it heals and use SPF once healed to keep the contrast sharp.",
       },
       {
         question: "Is black & grey better for cover-ups?",
         answer:
-          "Often, yes. Its shading blends well over older tattoos and can disguise faded lines more naturally than flat colour.",
+          "Often, yes. Black & grey shading blends well over older tattoos and can disguise faded lines more naturally than flat colour. The new design usually needs to be a little larger and darker than the old one. Peace assesses your skin and the existing ink at a free consultation before suggesting a design.",
       },
       {
-        question: "How is this different from realism?",
+        question: "How is black & grey different from realism?",
         answer:
-          "Black & grey is the technique; realism is one of the things you can do with it. Not every black & grey piece aims for photographic accuracy — some lean illustrative or abstract instead.",
+          "Black & grey is the technique; realism is one of the things you can do with it. Not every black & grey piece aims for photographic accuracy — some lean illustrative or abstract instead. At the consultation, Peace will show you which approach suits your idea, the size you have in mind and the placement.",
+      },
+      {
+        question: "Where can I get a black & grey tattoo near Whitefield or Marathahalli?",
+        answer:
+          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every black & grey tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
       },
     ],
     relatedSlugs: ["realism", "portrait", "minimalist"],
@@ -893,29 +898,24 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     ],
     faqs: [
       {
-        question: "Do geometric tattoos take longer than other styles?",
-        answer:
-          "Yes. Because geometric art requires exact symmetry and razor-straight linework, stencil placement and execution require extra time and precision.",
-      },
-      {
         question: "Where is the best placement for a geometric or mandala tattoo?",
         answer:
-          "Forearms, upper arms, chest, back, and calves are ideal because skin stays stable, minimizing pattern distortion.",
+          "Forearms, upper arms, chest, back and calves work well because the skin there stays relatively stable, which keeps straight lines and symmetry from distorting. Areas that bend a lot, like joints, can stretch a pattern and may need a touch-up. Peace places the stencil first so you can check the alignment before tattooing starts.",
       },
       {
-        question: "Do dotwork and fine line geometric tattoos age well?",
+        question: "Do dotwork and fine-line geometric tattoos age well?",
         answer:
-          "When executed at correct needle depth using quality ink, geometric dotwork and linework age crisply and hold their structure remarkably well.",
-      },
-      {
-        question: "Can geometric patterns wrap around joints?",
-        answer:
-          "Yes, but expect a slightly higher chance of needing a touch-up, since skin over joints stretches more during healing.",
+          "When done at the correct needle depth with quality ink, geometric dotwork and linework age crisply and hold their structure well. Very small, tightly packed details can soften over the years, so patterns are sized with some breathing room. Sunscreen once healed and following the aftercare guidance are the biggest factors in keeping lines sharp.",
       },
       {
         question: "Is geometric a good choice for a first tattoo?",
         answer:
-          "Smaller geometric pieces are a great first tattoo — shorter sessions, moderate pain, and a bold, clean look.",
+          "Smaller geometric pieces make a good first tattoo: shorter sessions, moderate discomfort and a bold, clean look. A simple armband, a single mandala or a small sacred-geometry symbol are easy places to start. A geometric piece can also be added to later, so it can grow into a larger design over time.",
+      },
+      {
+        question: "Where can I get a geometric or mandala tattoo near Whitefield or Marathahalli?",
+        answer:
+          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every geometric or mandala tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
       },
     ],
     relatedSlugs: ["minimalist", "black-grey", "traditional"],
@@ -1096,27 +1096,22 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "What are the most popular Indian traditional tattoo designs?",
         answer:
-          "Lord Shiva and Mahadev, Trishul, Om, Ganesha, Krishna's flute and peacock feather, Hanuman, and Sanskrit mantras are among the most requested — often combined with mandalas or lotus motifs.",
+          "Lord Shiva and Mahadev, Trishul, Om, Ganesha, Krishna's flute and peacock feather, Hanuman, and Sanskrit mantras are among the most requested — often combined with mandalas or lotus motifs. Peace draws each one from scratch, so the design is yours rather than copied from a catalogue. Bring any references that matter to you.",
       },
       {
         question: "Can you tattoo Sanskrit, Hindi or Kannada script accurately?",
         answer:
-          "Yes. Bring the exact text or its source, and we confirm the spelling and letterforms with you before stenciling so the script reads correctly.",
+          "Yes. Bring the exact text or its source, and we confirm the spelling and letterforms with you before stencilling so the script reads correctly. Sanskrit, Hindi and Kannada are checked character by character, since a single stroke can change the meaning. Mantras, names and dates go through the same check before anything goes on skin.",
       },
       {
         question: "Where should I place a religious or deity tattoo?",
         answer:
-          "Many clients prefer the forearm, upper arm, chest or back for deity tattoos out of respect. We'll guide you on placement during your consultation.",
+          "Many clients prefer the forearm, upper arm, chest or back for deity tattoos, out of respect and so the design has room for detail. Some prefer to avoid the feet and lower legs for religious imagery. Peace talks through placement with you at the consultation, along with how the design will heal and age.",
       },
       {
-        question: "How much does an Indian traditional tattoo cost in Brookefield, Bengaluru?",
+        question: "Where can I get an Indian traditional tattoo near Whitefield or Marathahalli?",
         answer:
-          "Pricing depends on design complexity, size, and placement. We provide exact estimates during your free consultation.",
-      },
-      {
-        question: "Can you rework or cover an old traditional tattoo?",
-        answer:
-          "Often, yes. Faded or blurred older tattoos can usually be refreshed or reworked into a new design — we assess the skin and ink during your consultation.",
+          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every Indian traditional tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
       },
     ],
     relatedSlugs: ["realism", "black-grey", "geometric"],
@@ -1330,32 +1325,22 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       {
         question: "Do fine-line and minimalist tattoos fade faster?",
         answer:
-          "Fine-line tattoos require precise needle depth. When done by experienced artists using high-density carbon ink, they hold crisp details for years. Free touch-ups are offered within 60 days if needed.",
-      },
-      {
-        question: "How much does a small minimalist tattoo cost at Xing Premium Tattoo Studio Brookefield?",
-        answer:
-          "Small, simple minimalist pieces start at our base shop minimum. Pricing varies based on placement and linework complexity.",
+          "Fine-line tattoos need precise needle depth. Done well with high-density carbon ink, they hold crisp detail for years, although very thin lines soften slowly over time. Sunscreen once healed helps most. If any part heals unevenly, a free touch-up is included within 60 days, so small gaps can be fixed while the tattoo is fresh.",
       },
       {
         question: "Can I bring my own handwritten note or reference for a minimalist tattoo?",
         answer:
-          "Absolutely! We frequently convert handwritten family notes, signatures, and custom doodles into exact fine-line stencils.",
-      },
-      {
-        question: "Is minimalist less painful than other styles?",
-        answer:
-          "Generally, yes. Shorter sessions and lighter needle saturation make it one of the more comfortable styles to sit for.",
-      },
-      {
-        question: "Can a minimalist tattoo be added to later?",
-        answer:
-          "Absolutely — it's a great starting point for a future collection of small pieces, or the seed of a larger design down the line.",
+          "Absolutely. We regularly turn handwritten family notes, signatures and custom doodles into fine-line stencils that keep the original strokes. A clear photo or scan of the writing works best. Peace sizes the lettering so it stays readable as it heals, and you check the stencil on your skin before anything is tattooed.",
       },
       {
         question: "What placements work best for minimalist designs?",
         answer:
-          "Wrists, ankles, behind the ear and ribs are popular — anywhere the design can stay clean and undistorted by movement.",
+          "Wrists, ankles, behind the ear, the inner forearm and ribs are popular — anywhere the design can stay clean and undistorted by movement. Very small pieces on hands and fingers can blur faster, so they need extra thought. At your consultation, Peace will help choose a spot that suits the size and keeps the lines sharp.",
+      },
+      {
+        question: "Where can I get a minimalist tattoo near Whitefield or Marathahalli?",
+        answer:
+          "Xing Premium Tattoo Studio in AECS Layout, Brookefield, is right above DMART Ready on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every minimalist tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.",
       },
     ],
     relatedSlugs: ["geometric", "traditional"],

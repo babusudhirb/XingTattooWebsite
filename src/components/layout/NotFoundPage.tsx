@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, CalendarCheck, Home, Images } from "lucide-react";
+import { BookOpen, Home, Images } from "lucide-react";
 
 import { BookCTA } from "@/components/cta";
-import { openBookingModal } from "@/components/booking/BookingContext";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SocialDock } from "@/components/layout/SocialDock";

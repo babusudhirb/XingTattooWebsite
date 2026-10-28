@@ -58,7 +58,7 @@ export const faqs: Faq[] = [
     category: "booking",
     question: "How do I book a tattoo appointment at Xing Premium Tattoo Studio?",
     answer:
-      `Use the Book Consultation button on this site, message us on WhatsApp at ${PHONE_DISPLAY}, or visit the studio in AECS Layout, Brookefield. Share your idea, placement and rough size, and we'll set up a free consultation and then your session.`,
+      `Tap Book Free Consultation on this site, message us on WhatsApp at ${PHONE_DISPLAY}, or visit the studio in AECS Layout, Brookefield. Share your idea, placement and rough size. We'll set up a free consultation first, then book your session once you're happy with the design and the date suits you.`,
     related: ["free-consultation", "what-to-bring", "walk-ins"],
   },
   {
@@ -74,7 +74,7 @@ export const faqs: Faq[] = [
     category: "booking",
     question: "How much does a tattoo cost in Brookefield, Bengaluru?",
     answer:
-      "Price depends on size, detail, style and placement — a small fine-line symbol costs far less than a realism sleeve. You'll get an exact quote at your free consultation, and seasonal offers are announced on our home page.",
+      "Price depends on size, detail, style and placement, so a small fine-line symbol costs far less than a realism sleeve. You'll get an exact quote at your free consultation, before anything is booked and with no obligation to go ahead. Any current studio offer is shown on our home page and on the offer page.",
     related: ["free-consultation", "session-length", "touch-ups"],
   },
   {
@@ -82,7 +82,7 @@ export const faqs: Faq[] = [
     category: "booking",
     question: "Do you accept walk-in tattoos?",
     answer:
-      "Walk-ins are welcome when the artist is free, but appointments are preferred so your design can be prepared properly in advance. Small, simple pieces are the most likely to fit in on the day.",
+      "Walk-ins are welcome when the artist is free, but appointments are preferred so your design can be drawn and prepared properly in advance. Small, simple pieces are the most likely to fit in on the day. To avoid a wait, message us on WhatsApp before you come in. The studio is closed on Tuesdays.",
     related: ["opening-hours", "how-to-book"],
   },
   {
@@ -90,7 +90,7 @@ export const faqs: Faq[] = [
     category: "booking",
     question: "What should I bring to my tattoo consultation?",
     answer:
-      "Bring reference images, an idea of the placement and rough size, and a budget if you have one. For names or script, bring the exact spelling. You'll also need a photo ID showing you're 18 or older.",
+      "Bring reference images, an idea of the placement and rough size, and a budget if you have one. For names, dates or script, bring the exact spelling or the original source. You'll also need a photo ID showing you're 18 or older. A clear idea of size helps us give you an accurate quote.",
     related: ["custom-design", "script-accuracy", "minimum-age"],
   },
 
@@ -108,7 +108,7 @@ export const faqs: Faq[] = [
     category: "safety",
     question: "Which parts of the body hurt most to tattoo?",
     answer:
-      "Ribs, spine, feet, hands, elbows and the inner bicep tend to be the most sensitive. The outer forearm, upper arm, calf and thigh are usually the most comfortable — which is why they're popular for first tattoos.",
+      "Ribs, spine, feet, hands, elbows and the inner bicep tend to be the most sensitive. The outer forearm, upper arm, calf and thigh are usually the most comfortable, which is why they're popular for first tattoos. If you're nervous about pain, start with a comfortable area and a smaller design, and take breaks whenever you need them.",
     related: ["does-it-hurt", "first-tattoo-placement"],
   },
   {
@@ -116,7 +116,7 @@ export const faqs: Faq[] = [
     category: "safety",
     question: "Is Xing Premium Tattoo Studio hygienic and safe?",
     answer:
-      "Yes. We use 100% single-use needles opened in front of you, sealed skin-tested inks, medical-grade sterilisation and barrier film on all equipment. The workstation is fully cleaned and re-wrapped between every client.",
+      "Yes. We use 100% single-use needles opened in front of you, sealed skin-tested inks, medical-grade sterilisation and barrier film on all equipment. The workstation is fully cleaned and re-wrapped between every client. You're welcome to ask about any step of the process at your consultation or before your session starts.",
     related: ["inks", "medical-conditions"],
     link: { label: "Read our hygiene standards", to: "/about#hygiene" },
   },
@@ -125,7 +125,7 @@ export const faqs: Faq[] = [
     category: "safety",
     question: "What tattoo inks do you use?",
     answer:
-      "We use premium, skin-tested inks imported from the US, opened sealed for your session. Quality pigments hold deep blacks and smooth shading through healing and fade more slowly over the years.",
+      "We use premium, skin-tested inks imported from the US, opened sealed for your session. Quality pigments hold deep blacks and smooth shading through healing and fade more slowly over the years. If you have a known skin allergy or sensitivity, tell us at your consultation so we can talk it through before you book.",
     related: ["hygiene", "tattoo-fading"],
   },
   {
@@ -133,14 +133,15 @@ export const faqs: Faq[] = [
     category: "safety",
     question: "Can I get a tattoo if I have a medical condition or I'm pregnant?",
     answer:
-      "Tell us about any medical condition, allergy or medication (especially blood thinners) before your session, and check with your doctor first. If you're pregnant or breastfeeding, it's safest to wait until afterwards.",
+      "Tell us about any medical condition, allergy or medication (especially blood thinners) before your session, and check with your doctor first. If you're pregnant or breastfeeding, it's safest to wait until afterwards. Bring up anything relevant at your free consultation; it stays private, and it helps us plan a safe session for you.",
     related: ["hygiene", "prepare-for-session"],
   },
   {
     id: "minimum-age",
     category: "safety",
     question: "What is the minimum age to get a tattoo at Xing Premium Tattoo Studio?",
-    answer: "You must be 18 or older to get tattooed at the studio, and we may ask for a photo ID.",
+    answer:
+      "You must be 18 or older to get tattooed at Xing Premium Tattoo Studio, and we may ask for a photo ID. This applies to every tattoo, however small. Please bring a valid photo ID showing your date of birth to your consultation and to your session, so there's no delay on the day.",
     related: ["what-to-bring", "first-tattoo"],
   },
 
@@ -150,7 +151,7 @@ export const faqs: Faq[] = [
     category: "session",
     question: "How should I prepare for my tattoo session?",
     answer:
-      "Sleep well, eat a proper meal beforehand and stay hydrated. Avoid alcohol for 24 hours before, wear loose clothing that gives easy access to the area, and bring a snack and water for longer sessions.",
+      "Sleep well, eat a proper meal beforehand and stay hydrated. Avoid alcohol for 24 hours before, wear loose clothing that gives easy access to the area, and bring a snack and water for longer sessions. Tell us about any medication in advance, and arrive on time so the stencil can be placed without rushing.",
     related: ["does-it-hurt", "session-length", "aftercare-basics"],
   },
   {
@@ -166,7 +167,7 @@ export const faqs: Faq[] = [
     category: "session",
     question: "I'm getting my first tattoo — what should I choose?",
     answer:
-      "Many first-timers start with a small fine-line or minimalist piece: shorter session, lower discomfort and quick healing. Choose something meaningful, and use the free consultation to talk through size and placement — there are no silly questions.",
+      "Many first-timers start with a small fine-line or minimalist piece: shorter session, lower discomfort and quick healing. Choose something meaningful, and use the free consultation to talk through size and placement — there are no silly questions. Peace will explain how the design will heal and age before anything starts.",
     related: ["first-tattoo-placement", "does-it-hurt", "custom-design"],
     link: { label: "Explore minimalist & fine-line tattoos", to: "/services/minimalist" },
   },
@@ -175,7 +176,7 @@ export const faqs: Faq[] = [
     category: "session",
     question: "Where is the best placement for a first tattoo?",
     answer:
-      "The outer forearm, upper arm, calf, ankle and wrist are popular first placements — comfortable to tattoo, easy to care for and easy to show or cover. Think about whether you want it visible at work.",
+      "The outer forearm, upper arm, calf, ankle and wrist are popular first placements: comfortable to tattoo, easy to care for and easy to show or cover. Think about whether you want it visible at work. If you're unsure, we place the stencil first so you can see the size and position before you commit.",
     related: ["most-painful-spots", "first-tattoo"],
   },
 
@@ -185,7 +186,7 @@ export const faqs: Faq[] = [
     category: "design",
     question: "Do you create custom tattoo designs?",
     answer:
-      "Yes — every design at Xing Premium Tattoo Studio is drawn from scratch by our artist, Peace. Reference images are welcome as a starting point, and the final artwork is sized and shaped to fit your body and placement.",
+      "Yes — every design at Xing Premium Tattoo Studio is drawn from scratch by our artist, Peace. Reference images are welcome as a starting point, and the final artwork is sized and shaped to fit your body and placement. You'll see the design and can ask for changes before your session.",
     related: ["design-changes", "styles-offered", "what-to-bring"],
     link: { label: "Meet the artist", to: "/tattoo-artist" },
   },
@@ -194,7 +195,7 @@ export const faqs: Faq[] = [
     category: "design",
     question: "Can I see and change my design before I get tattooed?",
     answer:
-      "Absolutely. You review the design before your session is booked and can request changes to size, detail or placement. We only start once you're completely happy with it.",
+      "Absolutely. You review the design before your session is booked and can request changes to size, detail or placement. We only start once you're completely happy with it. On the day, the stencil goes on first, so you can check the size and position on your skin before any tattooing begins.",
     related: ["custom-design", "how-to-book"],
   },
   {
@@ -202,7 +203,7 @@ export const faqs: Faq[] = [
     category: "design",
     question: "What tattoo styles does Xing Premium Tattoo Studio specialise in?",
     answer:
-      "Realism, portraits, black & grey, fine-line and minimalist work, geometric and mandala designs, and Indian traditional tattoos such as Shiva, Ganesha, Om and Sanskrit script.",
+      "Realism, portraits, black & grey, fine-line and minimalist work, geometric and mandala designs, and Indian traditional tattoos such as Shiva, Ganesha, Om and Sanskrit script. Peace also takes on cover-ups and reworks of older tattoos. Each style has its own page on this site with recent work, so you can see examples before you book.",
     related: ["custom-design", "cover-ups"],
     link: { label: "See all tattoo styles", to: "/services" },
   },
@@ -219,7 +220,7 @@ export const faqs: Faq[] = [
     category: "design",
     question: "Can you tattoo names or Sanskrit, Hindi or Kannada script?",
     answer:
-      "Yes. Bring the exact text or its source, and we'll confirm spelling and letterforms with you before stencilling so the script reads correctly.",
+      "Yes. Bring the exact text or its source, and we'll confirm spelling and letterforms with you before stencilling so the script reads correctly. This matters most for Sanskrit, Hindi and Kannada, where a single stroke can change the meaning. Names, dates and handwritten notes are checked the same way before anything goes on skin.",
     related: ["design-changes", "what-to-bring"],
   },
 
@@ -237,7 +238,7 @@ export const faqs: Faq[] = [
     category: "aftercare",
     question: "How long does a tattoo take to heal?",
     answer:
-      "The surface heals in about 10 days to 3 weeks depending on the style — fine-line work is quickest, heavy shading takes longer. Deeper layers settle fully over 1–3 months, when true contrast shows.",
+      "The surface heals in about 10 days to 3 weeks depending on the style — fine-line work is quickest, heavy shading takes longer. Deeper layers settle fully over 1–3 months, when true contrast shows. Follow the aftercare guidance we give you, and message us if anything looks unusual while it heals.",
     related: ["aftercare-basics", "swimming-sun", "touch-ups"],
   },
   {
@@ -253,7 +254,7 @@ export const faqs: Faq[] = [
     category: "aftercare",
     question: "Do you offer free tattoo touch-ups?",
     answer:
-      "Yes. Each tattoo comes with one free touch-up within 45–60 days (depending on the style) if any part heals unevenly.",
+      "Yes. Each tattoo comes with one free touch-up within 45–60 days (depending on the style) if any part heals unevenly. Wait until the tattoo has settled, then message us on WhatsApp with a photo so we can book a short slot. Touch-ups needed years later because of sun or ageing are discussed at a consultation.",
     related: ["healing-time", "aftercare-basics"],
   },
   {
@@ -261,7 +262,7 @@ export const faqs: Faq[] = [
     category: "aftercare",
     question: "Will my tattoo fade over time?",
     answer:
-      "Every tattoo softens slowly, but bold lines, solid blacks and good aftercare hold up best. Daily SPF is the biggest factor — UV is what fades ink fastest. A touch-up years later can refresh older pieces.",
+      "Every tattoo softens slowly, but bold lines, solid blacks and good aftercare hold up best. Daily SPF is the biggest factor — UV is what fades ink fastest. A touch-up years later can refresh older pieces. If you're unsure whether an older tattoo needs a refresh, bring it to a free consultation.",
     related: ["inks", "swimming-sun", "touch-ups"],
   },
 
@@ -271,7 +272,7 @@ export const faqs: Faq[] = [
     category: "studio",
     question: "Where is Xing Premium Tattoo Studio located?",
     answer:
-      `${ADDRESS.full} — about 3 km from Marathahalli. Easy to reach from Whitefield, ITPL and Kundalahalli.`,
+      `${ADDRESS.full}. Look for SV Plaza on 60 Feet Road: the studio is right above DMART Ready in AECS Layout, about 3 km from Marathahalli and easy to reach from Whitefield, ITPL and Kundalahalli. Use Get Directions on this site for a Google Maps route.`,
     related: ["opening-hours", "how-to-book"],
     link: { label: "Map & directions", to: "/about#visit" },
   },
@@ -279,7 +280,8 @@ export const faqs: Faq[] = [
     id: "opening-hours",
     category: "studio",
     question: "What are Xing Premium Tattoo Studio's opening hours?",
-    answer: `${HOURS_LONG}.`,
+    answer:
+      `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day. Appointments are preferred, so message us on WhatsApp or use the booking form to pick a time that suits you. Walk-ins are welcome when the artist is free, and these hours match the studio's Google Business Profile.`,
     related: ["walk-ins", "location"],
   },
   {
@@ -287,7 +289,7 @@ export const faqs: Faq[] = [
     category: "studio",
     question: "Who will do my tattoo?",
     answer:
-      `Every tattoo is designed and done by Peace (Chingri Awungshi), Xing Premium Tattoo Studio's lead artist, with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. The person you consult with is the person who tattoos you.`,
+      `Every tattoo is designed and done by Peace (Chingri Awungshi), Xing Premium Tattoo Studio's lead artist, with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. The person you consult with is the person who tattoos you. Consultations, design and aftercare advice all come from the same person.`,
     related: ["custom-design", "styles-offered"],
     link: { label: "View the artist profile", to: "/tattoo-artist" },
   },

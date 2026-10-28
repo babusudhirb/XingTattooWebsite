@@ -36,6 +36,12 @@ const businessNode = Object.fromEntries(
   Object.entries(businessSchema).filter(([k]) => k !== "@context"),
 );
 
+/** Page-node `speakable`: the H1 and the QuickAnswer section's direct answer. */
+export const SPEAKABLE = {
+  "@type": "SpeakableSpecification",
+  cssSelector: ["h1", "#quick-answer"],
+};
+
 export const faqNode = (items: { question: string; answer: string }[]) => ({
   "@type": "FAQPage",
   mainEntity: items.map((f) => ({

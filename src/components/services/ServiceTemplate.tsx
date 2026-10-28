@@ -6,20 +6,15 @@ import {
   ChevronRight,
   Clock,
   Flame,
-  MessageCircle,
   RefreshCcw,
   ShieldCheck,
   Timer,
 } from "lucide-react";
 
+import { FaqSection } from "@/components/faq/FaqSection";
+import { QuickAnswer } from "@/components/faq/QuickAnswer";
+import { serviceQuickAnswer } from "@/data/page-copy";
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { WHATSAPP_URL } from "@/data/site";
 import { services, type ServiceContent } from "@/data/services";
 import { gallery } from "@/data/gallery";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -29,7 +24,6 @@ import { SectionHeading } from "@/components/sections/SectionHeading";
 import { RelatedGuides } from "@/components/blog/RelatedGuides";
 import { postBySlug, SERVICE_GUIDES } from "@/data/blog";
 import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
-import { openBookingModal } from "@/components/booking/BookingContext";
 import { AftercareSteps, BenefitCards } from "@/components/services/ServiceInteractive";
 
 function PainMeter({ score }: { score: 1 | 2 | 3 | 4 | 5 }) {
@@ -49,6 +43,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const [headlineMain, headlineSub] = (service.heroHeadline ?? service.name).split(" | ");
+  const quickAnswer = serviceQuickAnswer(service.slug);
 
   const relatedGallery =
     service.galleryImages.length > 0
@@ -488,22 +483,9 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         onNavigate={setLightboxIndex}
       />
 
-      {/* FAQ */}
-      <section className="mx-auto max-w-7xl px-5 pb-16">
-        <SectionHeading eyebrow="Good To Know" title={`${service.shortName} Tattoo FAQs`} />
-        <div className="mx-auto mt-8 max-w-2xl">
-          <Accordion type="single" collapsible>
-            {service.faqs.map((faq, i) => (
-              <AccordionItem key={faq.question} value={`faq-${i}`}>
-                <AccordionTrigger className="font-display text-sm">{faq.question}</AccordionTrigger>
-                <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      {quickAnswer && <QuickAnswer data={quickAnswer} />}
+
+      <FaqSection items={service.faqs} className="mx-auto max-w-7xl px-5 pb-16" />
 
       <RelatedGuides
         posts={guides}

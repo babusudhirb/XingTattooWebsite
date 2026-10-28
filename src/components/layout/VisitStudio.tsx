@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { MessageCircle, Navigation, Phone } from "lucide-react";
 
 import { CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
@@ -8,16 +7,12 @@ import {
   ADDRESS,
   BUSINESS_NAME,
   CLOSE_TIME,
-  DIRECTIONS_URL,
   HOURS,
   MAPS_PLACE_URL,
   OPEN_LABEL,
   OPEN_TIME,
-  PHONE_DISPLAY,
-  PHONE_TEL,
   RATING_LABEL,
   HOURS_ROWS,
-  WHATSAPP_URL,
 } from "@/data/business";
 
 const toMinutes = (hhmm: string) => {
@@ -56,8 +51,6 @@ function useStudioStatus() {
   return status;
 }
 
-const ACTION =
-  "inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 font-display text-xs font-bold tracking-[0.12em] uppercase transition-colors sm:w-auto";
 
 /** Homepage footer block: address, hours, directions and the live map. */
 export function VisitStudio() {

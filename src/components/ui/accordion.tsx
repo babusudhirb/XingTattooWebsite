@@ -42,7 +42,7 @@ const AccordionContent = React.forwardRef<
     ref={ref}
     {...(forceMount ? { forceMount } : {})}
     className={cn(
-      "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down motion-reduce:animate-none",
       // forceMount keeps closed answers in the HTML (for search engines);
       // Radix then leaves them visible, so hide them ourselves.
       forceMount && "data-[state=closed]:hidden",

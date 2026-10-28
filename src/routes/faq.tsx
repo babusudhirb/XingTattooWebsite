@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronRight, CornerDownRight, MessageCircle, Search, X } from "lucide-react";
+import { ArrowRight, ChevronRight, CornerDownRight, Search, X } from "lucide-react";
 
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import { pageTitle } from "@/data/business";
 import { faqById, faqCategories, faqs, type Faq } from "@/data/faqs";
-import { WHATSAPP_URL } from "@/data/site";
 import {
   Accordion,
   AccordionContent,
@@ -15,7 +14,6 @@ import {
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { openBookingModal } from "@/components/booking/BookingContext";
 import { CreaseLines, SectionNav } from "@/components/sections/Origami";
 import { faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
@@ -175,14 +173,14 @@ function FaqPage() {
                     id={faq.id}
                     className="scroll-mt-36 border-border"
                   >
-                    <AccordionTrigger className="py-5 font-display text-sm font-semibold hover:no-underline sm:text-base [&[data-state=open]]:text-amber-800">
+                    <AccordionTrigger data-faq-q className="py-5 font-display text-sm font-semibold hover:no-underline sm:text-base [&[data-state=open]]:text-amber-800">
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent
                       forceMount
                       className="pb-6 text-sm leading-relaxed text-muted-foreground sm:text-base"
                     >
-                      <p>{faq.answer}</p>
+                      <p data-faq-a>{faq.answer}</p>
                       {faq.link && (
                         <a
                           href={faq.link.to}

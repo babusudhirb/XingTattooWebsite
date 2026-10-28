@@ -1,3 +1,6 @@
+import { FaqSection } from "@/components/faq/FaqSection";
+import { QuickAnswer } from "@/components/faq/QuickAnswer";
+import { aboutQuickAnswer } from "@/data/page-copy";
 import { BookCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -7,8 +10,6 @@ import {
   ChevronRight,
   Clock,
   MapPin,
-  MessageCircle,
-  Navigation,
   Phone,
 } from "lucide-react";
 
@@ -16,24 +17,16 @@ import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield
 import {
   ADDRESS,
   BUSINESS_NAME,
-  DIRECTIONS_URL,
   HOURS_TEXT,
   pageTitle,
   SHORT_ADDRESS,
 } from "@/data/business";
 import { aboutFaqs, aboutValues, hygieneStandards, visitLandmarks } from "@/data/about";
 import { ARTIST, tattoosForClients } from "@/data/artist";
-import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { openBookingModal } from "@/components/booking/BookingContext";
 import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/sections/Origami";
 import { faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
@@ -347,28 +340,11 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section
-        id="faq"
-        aria-labelledby="about-faq-title"
-        className="mx-auto max-w-7xl scroll-mt-36 px-5 py-14"
-      >
-        <SectionTitle eyebrow="Good To Know" title="Studio FAQs" id="about-faq-title" />
-        <div className="mx-auto mt-8 max-w-2xl">
-          <Accordion type="single" collapsible>
-            {aboutFaqs.map((faq, i) => (
-              <AccordionItem key={faq.question} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left font-display text-sm">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      <QuickAnswer data={aboutQuickAnswer}>
+        <DirectionsCTA location="about_quick_answer" variant="primary" />
+      </QuickAnswer>
+
+      <FaqSection items={aboutFaqs} />
 
       <section className="mx-auto max-w-7xl px-5 pb-16">
         <div className="relative overflow-hidden bg-primary px-8 py-10 text-primary-foreground [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]">

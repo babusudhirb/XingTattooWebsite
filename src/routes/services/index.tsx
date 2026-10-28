@@ -1,13 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
+import { FaqSection } from "@/components/faq/FaqSection";
+import { servicesFaqs } from "@/data/page-copy";
 import { BRAND_NAME, GBP_SERVICES, pageTitle, serviceAnchor, SITE_URL } from "@/data/business";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { Breadcrumbs } from "@/components/blog/BlogBits";
-import { seoHead } from "@/lib/seo";
+import { faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
 
 export const Route = createFileRoute("/services/")({
@@ -28,6 +30,7 @@ export const Route = createFileRoute("/services/")({
             name: services[slug].name,
           })),
         },
+        faqNode(servicesFaqs),
         breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Tattoo Services" }]),
       ],
     }),
@@ -111,6 +114,8 @@ function ServicesIndex() {
           ))}
         </ul>
       </section>
+
+      <FaqSection items={servicesFaqs} className="mx-auto max-w-7xl border-t border-border px-5 py-14" />
 
       <SiteFooter />
     </main>

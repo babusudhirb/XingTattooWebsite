@@ -143,6 +143,7 @@ export const OFFER = {
   validFrom: "2026-10-25",
   validThrough: "2026-11-30",
   /** Short end date for banners, e.g. "Valid till 30 Nov 2026". */
+  startsLabel: "25 Oct 2026",
   endsLabel: "30 Nov 2026",
   validLabel: "Valid till 30 Nov 2026",
   url: "/offer",

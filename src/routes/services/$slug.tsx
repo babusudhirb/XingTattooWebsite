@@ -10,7 +10,7 @@ import {
 } from "@/data/business";
 import { getService } from "@/data/services";
 import { ServiceTemplate } from "@/components/services/ServiceTemplate";
-import { faqNode, seoHead } from "@/lib/seo";
+import { faqNode, seoHead, SPEAKABLE } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -28,6 +28,7 @@ export const Route = createFileRoute("/services/$slug")({
       description: loaderData.metaDescription,
       image: `/og/services-${params.slug}.jpg`,
       imageAlt: loaderData.heroImageAlt,
+      page: { speakable: SPEAKABLE },
       graph: [
         {
           "@type": "Service",

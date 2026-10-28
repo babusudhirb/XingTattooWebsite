@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, MessageCircle, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 import { WHATSAPP_URL } from "@/data/site";
 import type { GalleryItem } from "@/data/gallery";

@@ -8,6 +8,8 @@ import {
 } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { FaqSection } from "@/components/faq/FaqSection";
+import { offerFaqs } from "@/data/page-copy";
 import { isOfferActive } from "@/data/business";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { track } from "@/lib/track";
@@ -39,7 +41,7 @@ import { services } from "@/data/services";
 import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
 import { sendOfferClaim } from "@/lib/booking-request";
 import { Breadcrumbs } from "@/components/blog/BlogBits";
-import { seoHead } from "@/lib/seo";
+import { faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
 
 /*
@@ -283,7 +285,7 @@ export const Route = createFileRoute("/offer")({
       noindex: !isOfferActive(),
       links: [{ rel: "stylesheet", href: offerCss }],
       graph: [
-        ...(isOfferActive() ? offerSchema["@graph"] : []),
+        ...(isOfferActive() ? [...offerSchema["@graph"], faqNode(offerFaqs)] : []),
         breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Tattoo Offer" }]),
       ],
     }),
@@ -375,11 +377,9 @@ const Brand = () => (
 function OfferPage() {
   const privacyRef = useRef<HTMLDialogElement>(null);
   const claimRef = useRef<HTMLDialogElement>(null);
-  const [year, setYear] = useState(2026);
   const [daysLeft, setDaysLeft] = useState<number | undefined>(undefined);
   const offerActive = useOfferActive();
   useEffect(() => {
-    setYear(new Date().getFullYear());
     setDaysLeft(offerDaysLeft());
   }, []);
 
@@ -1182,6 +1182,7 @@ function OfferPage() {
         </form>
       </dialog>
     </div>
+    {offerActive && <FaqSection items={offerFaqs} id="offer-faq" />}
     <SiteFooter />
     </>
   );

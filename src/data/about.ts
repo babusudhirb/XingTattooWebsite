@@ -46,32 +46,23 @@ export const visitLandmarks = [
 
 export const aboutFaqs = [
   {
-    question: "Where is Xing Premium Tattoo Studio located?",
+    question: "What landmark helps me find Xing Premium Tattoo Studio?",
     answer:
-      `${ADDRESS.full} — about 3 km from Marathahalli.`,
+      `Look for DMART Ready on 60 Feet Road in AECS Layout, Brookefield: the studio is right above it, in SV Plaza. The full address is ${ADDRESS.full}. Tap Get Directions on this page for a Google Maps route to the door.`,
   },
   {
-    question: "What are the studio's opening hours?",
+    question: "When is Xing Premium Tattoo Studio open?",
     answer:
-      `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day.`,
+      `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day, so on weekdays plan your visit for Monday or Wednesday to Friday. Saturdays and Sundays follow the same hours. The hours on this site match the studio's Google Business Profile.`,
   },
   {
-    question: "Do I need an appointment, or can I walk in?",
+    question: "Can I walk in without an appointment?",
     answer:
-      "Appointments are preferred so your design can be prepared in advance, but walk-ins are welcome when the artist is free.",
+      `Yes, walk-ins are welcome when the artist is free, but appointments are preferred so your design can be drawn and prepared in advance. Small, simple pieces are the easiest to fit in on the day. Message ${PHONE_DISPLAY} on WhatsApp before you come to check availability and avoid a wait.`,
   },
   {
-    question: "Is the consultation free?",
+    question: "Which payment methods does the studio accept?",
     answer:
-      `Yes. Consultations are free and there's no obligation — in the studio or over WhatsApp on ${PHONE_DISPLAY}.`,
-  },
-  {
-    question: "What is the minimum age to get a tattoo at Xing Premium Tattoo Studio?",
-    answer: "You must be 18 or older to get tattooed at the studio.",
-  },
-  {
-    question: "How does Xing Premium Tattoo Studio keep tattoos safe and hygienic?",
-    answer:
-      "Single-use needles opened in front of you, sealed US-imported inks, medical-grade sterilisation and barrier protection on all equipment, with the workstation fully cleaned between every client.",
+      "The studio accepts credit cards, debit cards and Google Pay, including MasterCard and VISA, as listed on its Google Business Profile. There's nothing to pay for the consultation, which is free with no obligation. You'll get a clear quote before your session is booked, so you know exactly what you're paying for.",
   },
 ];

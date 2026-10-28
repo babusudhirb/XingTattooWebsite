@@ -3,7 +3,6 @@ import { ArrowLeft, ArrowRight, Check, Crosshair, Feather, MapPin } from "lucide
 
 import { BookCTA } from "@/components/cta";
 import type { BenefitCard, BenefitIcon, ProcessStep } from "@/data/services";
-import { openBookingModal } from "@/components/booking/BookingContext";
 
 const benefitIcons: Record<BenefitIcon, typeof Feather> = {
   heal: Feather,

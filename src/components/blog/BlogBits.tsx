@@ -1,19 +1,11 @@
 import { Fragment } from "react";
 import { Link } from "@tanstack/react-router";
-import { CalendarCheck, ChevronRight, MessageCircle, Navigation, Phone } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 import type { Crumb } from "@/lib/blog";
 import { BookCTA, CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 
-import {
-  ADDRESS,
-  BUSINESS_NAME,
-  DIRECTIONS_URL,
-  HOURS_SHORT,
-  PHONE_DISPLAY,
-  PHONE_TEL,
-  WHATSAPP_URL,
-} from "@/data/business";
+import { ADDRESS, BUSINESS_NAME, HOURS_SHORT } from "@/data/business";
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
@@ -47,8 +39,6 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   );
 }
 
-const BTN =
-  "inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 font-display text-xs font-bold tracking-[0.12em] uppercase transition-colors sm:w-auto";
 
 /** "Visit the studio" strip used at the end of blog listings. */
 export function VisitStrip() {

@@ -3,13 +3,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   CrownIcon,
-  MessageCircle,
   PenTool,
   ShieldCheck,
   Shuffle,
   X,
 } from "lucide-react";
 
+import { QuickAnswer } from "@/components/faq/QuickAnswer";
+import { homeQuickAnswer } from "@/data/page-copy";
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import heroArt from "@/assets/hero-fineline-art.webp";
 import heroArtSmall from "@/assets/hero-fineline-art-sm.webp";
@@ -23,7 +24,6 @@ import {
   OFFER,
   pageTitle,
 } from "@/data/business";
-import { WHATSAPP_URL } from "@/data/site";
 import { OFFER_IDEAS, OFFER_IMAGE_SIZE, OFFER_LABEL, offerImages } from "@/data/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import {
@@ -55,7 +55,7 @@ import { TattooFlash, type FlashName } from "@/components/sections/TattooFlash";
 import { RelatedGuides } from "@/components/blog/RelatedGuides";
 import { HOME_GUIDES, sectionPosts } from "@/data/blog";
 import { blogItemList } from "@/lib/blog";
-import { faqNode, seoHead } from "@/lib/seo";
+import { faqNode, seoHead, SPEAKABLE } from "@/lib/seo";
 
 const GALLERY_PAGE_SIZE = 24;
 const GALLERY_PAGE_SIZE_PHONE = 12;
@@ -84,6 +84,7 @@ export const Route = createFileRoute("/")({
         { rel: "preload", as: "image", href: heroArtSmall, media: "(max-width: 1023px)", fetchPriority: "high" },
         { rel: "preload", as: "image", href: heroArt, media: "(min-width: 1024px)", fetchPriority: "high" },
       ],
+      page: { speakable: SPEAKABLE },
       graph: [faqNode(homeFaqs), { ...blogItemList(homeGuides), name: "Tattoo guides from Xing Premium Tattoo Studio" }],
     }),
   component: Index,
@@ -491,6 +492,8 @@ function Index() {
         </div>
       </section>
 
+      <QuickAnswer data={homeQuickAnswer} className="mx-auto max-w-3xl px-5 pb-12 sm:pb-16" />
+
       {/* Services */}
       <section id="services" className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading eyebrow="Our Services" title="Tattoo Styles We Specialize In" />
@@ -750,8 +753,8 @@ function Index() {
               id="home-faq-title"
               className="mt-4 font-display text-[1.75rem] leading-[1.1] font-medium tracking-tight sm:mt-5 sm:text-4xl"
             >
-              Tattoo questions,{" "}
-              <span className="font-script text-[2.2rem] text-amber-700 sm:text-5xl">answered</span>
+              Frequently asked{" "}
+              <span className="font-script text-[2.2rem] text-amber-700 sm:text-5xl">questions</span>
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               The five things people ask us most before a session. Cost, pain, hygiene, first
@@ -777,11 +780,17 @@ function Index() {
                 value={faq.id}
                 className="rounded-sm border border-border bg-card px-4 shadow-[var(--shadow-card)] transition-colors data-[state=open]:border-amber-700/40 sm:px-5"
               >
-                <AccordionTrigger className="gap-3 py-4 font-display text-sm font-semibold hover:no-underline sm:gap-4 sm:py-5 sm:text-base">
+                <AccordionTrigger
+                  data-faq-q
+                  className="gap-3 py-4 font-display text-sm font-semibold hover:no-underline sm:gap-4 sm:py-5 sm:text-base"
+                >
                   <span className="flex items-center gap-4 text-left">
-                    <span className="font-display text-xs font-bold text-amber-700 tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    {/* Number as CSS content, so it isn't part of the question text */}
+                    <span
+                      aria-hidden="true"
+                      data-n={String(i + 1).padStart(2, "0")}
+                      className="font-display text-xs font-bold text-amber-700 tabular-nums before:content-[attr(data-n)]"
+                    />
                     {faq.question}
                   </span>
                 </AccordionTrigger>
@@ -789,7 +798,7 @@ function Index() {
                   forceMount
                   className="pb-5 text-sm leading-relaxed text-muted-foreground sm:pl-9"
                 >
-                  <p>{faq.answer}</p>
+                  <p data-faq-a>{faq.answer}</p>
                   <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
                     <span className="font-semibold tracking-wide text-foreground/70 uppercase">
                       People also ask:

@@ -1,4 +1,4 @@
-import { COUNTS, GOOGLE_RATING, HOURS_LONG, PHONE_DISPLAY } from "@/data/business";
+import { COUNTS, GOOGLE_RATING } from "@/data/business";
 import { services, type ServiceSlug } from "./services";
 
 /** Facts about the studio's artist. Only confirmed details — no invented biography. */
@@ -102,31 +102,21 @@ export const artistFaqs = [
   {
     question: "Who is the tattoo artist at Xing Premium Tattoo Studio, Brookefield?",
     answer:
-      `Xing Premium Tattoo Studio's lead tattoo artist is Peace (Chingri Awungshi), with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. Every tattoo at the studio is designed and done by Peace personally.`,
-  },
-  {
-    question: "Can I choose Peace to do my tattoo?",
-    answer:
-      "Yes — you don't need to request it. Every consultation, design and session at Xing Premium Tattoo Studio is handled by Peace, so there are no handoffs between artists.",
+      `Xing Premium Tattoo Studio's lead tattoo artist is Peace (Chingri Awungshi), with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. Every tattoo at the studio is designed and done by Peace personally, from the first consultation to the final session, so there are no handoffs between artists and you always know who is working on your skin.`,
   },
   {
     question: "What tattoo styles does Peace specialise in?",
     answer:
-      "Realism, portraits, black & grey, fine-line and minimalist work, geometric and mandala designs, and Indian traditional tattoos such as Shiva, Ganesha, Om and Sanskrit script.",
+      "Peace specialises in realism, portraits, black & grey, fine-line and minimalist work, geometric and mandala designs, and Indian traditional tattoos such as Shiva, Ganesha, Om and Sanskrit script. He also takes on cover-ups and reworks of older tattoos. Each style has its own page on this site showing recent work from the studio.",
   },
   {
     question: "Does Peace design custom tattoos or use flash designs?",
     answer:
-      "Every design is drawn from scratch for you. You can bring reference images — they're used as a starting point, and the final design is made to fit your body and placement.",
+      "Every design is drawn from scratch for you. You can bring reference images, and they're used as a starting point rather than copied. The final design is sized and shaped to fit your body and placement, and you review it before your session is booked, with changes to size, detail or placement welcome.",
   },
   {
     question: "Is Peace a good choice for a first tattoo?",
     answer:
-      "Many of Peace's Google reviews come from first-timers who mention feeling comfortable throughout the session and getting clear aftercare advice. Small fine-line pieces are a popular first choice.",
-  },
-  {
-    question: "How do I book an appointment with Peace?",
-    answer:
-      `Use the Book Consultation form on this site, message ${PHONE_DISPLAY} on WhatsApp, or visit the studio in AECS Layout, Brookefield. Hours: ${HOURS_LONG}.`,
+      "Many of Peace's Google reviews come from first-timers who mention feeling comfortable throughout the session and getting clear aftercare advice. Small fine-line pieces are a popular first choice. At the free consultation he explains placement, how the design will heal and what to expect on the day, so nothing comes as a surprise.",
   },
 ];

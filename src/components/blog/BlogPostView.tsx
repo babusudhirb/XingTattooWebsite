@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock, Link2, ListOrdered, MessageCircle } from "lucide-react";
 
 import { categoryLabel, formatPostDate, relatedPosts } from "@/data/blog";
-import { COUNTS, LEAD_ARTIST, SITE_URL, WHATSAPP_URL } from "@/data/business";
+import { COUNTS, LEAD_ARTIST, SITE_URL } from "@/data/business";
 import { services, type ServiceSlug } from "@/data/services";
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -286,11 +286,12 @@ export function BlogPostView({ post }: { post: BlogPostData }) {
                         value={`faq-${i}`}
                         className="rounded-xl border border-border bg-card px-4 sm:px-5"
                       >
-                        <AccordionTrigger className="py-4 text-left font-display text-[0.95rem] font-semibold hover:no-underline">
+                        <AccordionTrigger data-faq-q className="py-4 text-left font-display text-[0.95rem] font-semibold hover:no-underline">
                           {f.q}
                         </AccordionTrigger>
                         <AccordionContent
                           forceMount
+                          data-faq-a
                           className="pb-4 text-[0.95rem] leading-relaxed text-muted-foreground"
                         >
                           {f.a}
