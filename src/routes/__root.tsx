@@ -1,6 +1,7 @@
 import { Outlet, createRootRoute, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
+import { GoogleTagEvents, GoogleTagHead, GoogleTagNoscript } from "@/components/analytics/GoogleTag";
 import appCss from "@/styles/global.css?url";
 import archivoFont from "@/assets/fonts/archivo-latin.woff2?url";
 import { BookingModalLoader } from "@/components/booking/BookingModalLoader";
@@ -92,8 +93,10 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en-IN">
       <head>
         <HeadContent />
+        <GoogleTagHead />
       </head>
       <body>
+        <GoogleTagNoscript />
         {children}
         <Scripts />
       </body>
@@ -107,6 +110,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <BookingModalLoader />
+      <GoogleTagEvents />
     </>
   );
 }

@@ -18,12 +18,14 @@ export type TrackEvent =
 
 type Win = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
 
+const tagMode = () => document.documentElement.dataset["tag"]; // "gtm" | "ga", set by GoogleTag
+
 export function track(name: TrackEvent, params: Record<string, string | number | undefined> = {}) {
   if (typeof window === "undefined") return;
   const w = window as Win;
   if (!w.dataLayer) return;
   // gtag.js reads `arguments`-style entries; GTM reads plain objects with `event`
-  if (typeof w.gtag === "function") w.gtag("event", name, params);
+  if (tagMode() === "ga" && typeof w.gtag === "function") w.gtag("event", name, params);
   else w.dataLayer.push({ event: name, ...params });
 }
 
