@@ -107,6 +107,17 @@ export const BLOG_SECTIONS: {
   },
 ];
 
+/** Guides featured on the home page: the questions people ask before booking (cost, pain,
+ *  skin tone, aftercare, first tattoo) plus the local guide. Live posts only are shown. */
+export const HOME_GUIDES = [
+  "tattoo-studio-aecs-layout-brookefield",
+  "tattoo-cost-in-bangalore",
+  "tattoo-pain-chart",
+  "tattoo-aftercare-guide",
+  "tattoos-on-indian-skin",
+  "first-tattoo-guide-bangalore",
+];
+
 /** Guides linked from each service page (live posts only are shown). */
 export const SERVICE_GUIDES: Record<string, string[]> = {
   realism: ["realism-tattoos-guide", "micro-realism-tattoos", "japanese-irezumi-vs-realism-sleeve"],

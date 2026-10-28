@@ -1,4 +1,4 @@
-import { COUNTS, GOOGLE_RATING, PHONE_DISPLAY, RATING_LABEL, REVIEW_COUNT, SHORT_ADDRESS } from "@/data/business";
+import { COUNTS, GOOGLE_RATING, PHONE_DISPLAY, RATING_LABEL, SHORT_ADDRESS } from "@/data/business";
 import styleBlackGrey from "@/assets/style-blackgrey.webp";
 
 import realismHero from "@/assets/services/realism/hero.webp";

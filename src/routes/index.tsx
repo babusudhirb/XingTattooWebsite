@@ -52,7 +52,8 @@ import {
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { TattooFlash, type FlashName } from "@/components/sections/TattooFlash";
 import { RelatedGuides } from "@/components/blog/RelatedGuides";
-import { posts } from "@/data/blog";
+import { HOME_GUIDES, sectionPosts } from "@/data/blog";
+import { blogItemList } from "@/lib/blog";
 import { faqNode, seoHead } from "@/lib/seo";
 
 const GALLERY_PAGE_SIZE = 24;
@@ -66,6 +67,7 @@ function galleryPageSizeForScreen() {
 }
 
 const homeFaqs = homeFaqIds.map((id) => faqById.get(id)!);
+const homeGuides = sectionPosts(HOME_GUIDES);
 
 const HOME_TITLE = pageTitle("Tattoo Studio in Brookefield, Bangalore");
 const HOME_DESCRIPTION = `Custom tattoos by Peace (${COUNTS.years} yrs) at Xing Premium Tattoo Studio, AECS Layout, Brookefield, above DMART Ready. ${GOOGLE_RATING}★ on Google. Book a free consultation.`;
@@ -81,7 +83,7 @@ export const Route = createFileRoute("/")({
         { rel: "preload", as: "image", href: heroArtSmall, media: "(max-width: 1023px)", fetchPriority: "high" },
         { rel: "preload", as: "image", href: heroArt, media: "(min-width: 1024px)", fetchPriority: "high" },
       ],
-      graph: [faqNode(homeFaqs)],
+      graph: [faqNode(homeFaqs), { ...blogItemList(homeGuides), name: "Tattoo guides from Xing Premium Tattoo Studio" }],
     }),
   component: Index,
 });
@@ -421,7 +423,7 @@ function Index() {
                   className="h-4 w-4 shrink-0 -rotate-45 text-foreground"
                   aria-hidden="true"
                 />
-                Custom Tattoo Studio in Brookefield, Bangalore
+                Premium Tattoo Studio in Brookefield, Bangalore
               </span>
               <span className="sr-only"> — </span>
               <span className="mt-4 block sm:mt-5">Art you wear.</span>
@@ -476,13 +478,13 @@ function Index() {
       <section id="about" className="mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
         <SectionHeading
           eyebrow="About Xing Premium Tattoo Studio"
-          title="Custom Tattoo Studio in Brookefield, Bengaluru"
+          title="Premium Tattoo Studio in Brookefield, Bangalore"
         />
         <p className="mx-auto mt-4 max-w-xs text-center font-script text-xl text-amber-700 sm:mt-5 sm:max-w-sm sm:text-2xl">
           We make forever look easy.
         </p>
         <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A custom tattoo studio in AECS Layout, Brookefield — right {ADDRESS.landmark}. Every
+          A premium tattoo studio in AECS Layout, Brookefield — right {ADDRESS.landmark}. Every
           design at Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri Awungshi),
           our Lead Artist, with single-use needles opened in front of you. Trusted by clients from
           Brookefield, Marathahalli, Whitefield and across East Bengaluru.
@@ -756,7 +758,13 @@ function Index() {
 
       <ReviewsSection />
 
-      <RelatedGuides posts={posts.slice(0, 3)} eyebrow="From The Blog" title="Latest Tattoo Guides" />
+      <RelatedGuides
+        posts={homeGuides}
+        limit={6}
+        eyebrow="Tattoo Guides & Answers"
+        title="Tattoo Advice from Our Brookefield Studio"
+        intro="Straight answers on cost, pain, hygiene and aftercare from Peace — plus tips for clients coming from Whitefield, ITPL and Marathahalli."
+      />
 
       {/* FAQ — the five most-asked questions; the full set lives on /faq */}
       <section
