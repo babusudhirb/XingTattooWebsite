@@ -45,7 +45,14 @@ const COMPRESSIBLE = new Set([
 
 /** Brotli/gzip for text files, as LiteSpeed does on Hostinger, so local Lighthouse runs are fair. */
 function send(req, res, status, file) {
-  const headers = { "Content-Type": TYPES[path.extname(file)] ?? "application/octet-stream" };
+  const headers = {
+    "Content-Type": TYPES[path.extname(file)] ?? "application/octet-stream",
+    // Same security headers as public/.htaccess
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "X-Frame-Options": "SAMEORIGIN",
+  };
   const accept = req.headers["accept-encoding"] ?? "";
   const stream = fs.createReadStream(file);
   if (COMPRESSIBLE.has(path.extname(file)) && /\bbr\b/.test(accept)) {

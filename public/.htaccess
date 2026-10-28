@@ -8,10 +8,8 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # One host, HTTPS only: http:// and the bare domain go to https://www.xingtattoo.in in a single 301
-  RewriteCond %{HTTPS} !=on [OR]
-  RewriteCond %{HTTP_HOST} !^www\.xingtattoo\.in$ [NC]
-  RewriteRule ^ https://www.xingtattoo.in%{REQUEST_URI} [L,R=301,NE]
+  # Every redirect targets https://www.xingtattoo.in directly, so any mix of http://,
+  # bare domain, old URL, .html or trailing slash resolves in ONE 301.
 
   # Old or alternative URLs (from scripts/redirects.mjs)
   # BEGIN generated redirects
@@ -19,9 +17,14 @@ ErrorDocument 404 /404.html
 
   # /about.html -> /about, /about/ -> /about (one clean URL per page)
   RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
-  RewriteRule ^ /%1 [R=301,L]
+  RewriteRule ^ https://www.xingtattoo.in/%1 [R=301,L,NE]
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.+)/$ /$1 [R=301,L]
+  RewriteRule ^(.+?)/+$ https://www.xingtattoo.in/$1 [R=301,L,NE]
+
+  # One host, HTTPS only: http:// and the bare domain go to https://www.xingtattoo.in
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\.xingtattoo\.in$ [NC]
+  RewriteRule ^ https://www.xingtattoo.in%{REQUEST_URI} [L,R=301,NE]
 
   # Clean URLs: /about serves about.html, /services/realism serves services/realism.html
   RewriteCond %{REQUEST_FILENAME}.html -f
@@ -53,6 +56,8 @@ ErrorDocument 404 /404.html
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header set X-Frame-Options "SAMEORIGIN"
 </IfModule>
 
 <IfModule mod_mime.c>

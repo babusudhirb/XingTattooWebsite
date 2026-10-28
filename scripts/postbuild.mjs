@@ -230,7 +230,9 @@ const htPath = path.join(OUT, ".htaccess");
 const ht = fs.readFileSync(htPath, "utf8");
 const rules = REDIRECTS.map(({ from, to }) => {
   const pattern = from.slice(1).replace(/[.]/g, "\\.");
-  return `  RewriteRule ^${pattern}(\\.html|/)?$ ${to} [R=301,L,NE]`;
+  // Absolute target, so http://, the bare domain and an old URL all resolve in one 301
+  const target = to.startsWith("/") ? SITE + to : to;
+  return `  RewriteRule ^${pattern}(\\.html|/)?$ ${target} [R=301,L,NE]`;
 }).join("\n");
 const MARKERS = /# BEGIN generated redirects\r?\n[\s\S]*?# END generated redirects/;
 if (!MARKERS.test(ht)) throw new Error("[postbuild] redirect markers missing in public/.htaccess");
