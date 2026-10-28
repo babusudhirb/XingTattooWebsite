@@ -182,7 +182,6 @@ export function ReviewsSection() {
         href={GOOGLE_REVIEWS_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Rated ${GOOGLE_RATING} out of 5 from ${REVIEW_COUNT} Google reviews — view our Google profile`}
         className="group mx-auto mt-6 flex w-fit items-center gap-4 rounded-full border border-border bg-card px-5 py-3 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/60 hover:shadow-[var(--shadow-soft)]"
       >
         <GoogleG className="h-7 w-7 shrink-0" />
@@ -194,6 +193,7 @@ export function ReviewsSection() {
           <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
             {REVIEW_COUNT} Google reviews
           </span>
+          <span className="sr-only"> — view our Google profile</span>
         </span>
       </a>
 

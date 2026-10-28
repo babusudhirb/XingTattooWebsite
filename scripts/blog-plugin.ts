@@ -226,7 +226,8 @@ function rehypeBlog(ctx: { file: string; live: Set<string>; known: Set<string> }
               className: ["heading-anchor"],
               ariaLabel: `Link to section: ${hastToString(node)}`,
             },
-            [{ type: "text", value: "#" }],
+            // The "#" is a decorative symbol, not a visible label the name must match
+            [el("span", { ariaHidden: "true" }, [{ type: "text", value: "#" }])],
           ),
         );
       }

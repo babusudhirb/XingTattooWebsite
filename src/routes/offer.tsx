@@ -502,6 +502,9 @@ function OfferPage() {
             <a href="#work">Our work</a>
             <a href="#reviews">Reviews</a>
             <a href="#studio">Visit us</a>
+            <a href={PHONE_TEL} data-track="click_call" data-location="offer_header">
+              Call {PHONE_DISPLAY}
+            </a>
             <ClaimButton onOpen={openClaim} placement="header">
               Claim offer
             </ClaimButton>
@@ -611,8 +614,10 @@ function OfferPage() {
                     aria-label={`Claim: ${o.name}`}
                   >
                     <img src={o.img} alt={o.alt} width={1120} height={1400} loading="lazy" />
-                    <span className="offer-badge">{o.badge}</span>
-                    <span className="offer-overlay">
+                    <span className="offer-badge" aria-hidden="true">
+                      {o.badge}
+                    </span>
+                    <span className="offer-overlay" aria-hidden="true">
                       <span className="offer-kicker">{o.kicker}</span>
                       <span className="offer-price">
                         {o.pricePrefix && <small>{o.pricePrefix} </small>}
@@ -1043,7 +1048,9 @@ function OfferPage() {
         onClick={closeOnBackdrop}
       >
         <form method="dialog" className="dialog-close">
-          <button aria-label="Close">×</button>
+          <button aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
         </form>
         {claimStatus === "sent" || claimStatus === "whatsapp" ? (
           <div className="claim-done">

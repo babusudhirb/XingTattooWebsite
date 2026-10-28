@@ -691,7 +691,9 @@ function Index() {
                 loading="lazy"
                 className="block h-auto w-full cursor-zoom-in"
               />
-              <span className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/85 via-primary/20 to-transparent p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/85 via-primary/20 to-transparent p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
                 <span className="font-display text-xs tracking-[0.16em] text-primary-foreground uppercase">
                   {tag}
                 </span>
