@@ -324,9 +324,12 @@ function TattooArtistPage() {
         <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {artistBookingSteps.map(({ title, text }, i) => (
             <FoldCard key={title} as="li" className="h-full">
-              <span className="font-display text-3xl font-bold text-amber-700/30">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              {/* Decorative step number (the list is already ordered): CSS content, not text */}
+              <span
+                aria-hidden="true"
+                data-n={String(i + 1).padStart(2, "0")}
+                className="block font-display text-3xl font-bold text-amber-700/30 before:content-[attr(data-n)]"
+              />
               <h3 className="mt-2 font-display text-xs font-semibold tracking-[0.12em] uppercase">
                 {title}
               </h3>
