@@ -231,7 +231,12 @@ export const BUSINESS_PHOTOS = [
   `${SITE_URL}/blog/signature-realism.webp`,
   `${SITE_URL}/blog/signature-portrait.webp`,
 ];
-export const LOGO_URL = `${SITE_URL}/xing-logo.webp`;
+/** Logo artwork from the brand design (tagline outlined, so no extra font loads). */
+export const LOGO_SRC = "/xing-logo.svg";
+export const LOGO_WIDTH = 666;
+export const LOGO_HEIGHT = 366;
+/** Raster copy for the schema `logo` (white background). */
+export const LOGO_URL = `${SITE_URL}/xing-logo.png`;
 
 /** Geo meta tags for the site <head>. */
 export const GEO_META = [

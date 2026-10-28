@@ -260,25 +260,8 @@ html:has(.olp) {
   gap: 10px;
 }
 .olp .brand img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-.olp .brand-name {
-  line-height: 1;
-}
-.olp .brand-name strong {
-  display: block;
-  font-family: var(--display);
-  font-size: 1.125rem;
-  letter-spacing: 0.04em;
-}
-.olp .brand-name span {
-  display: block;
-  margin-top: 3px;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  color: var(--muted);
+  width: auto;
+  height: 48px;
 }
 .olp .nav {
   display: flex;
@@ -1582,8 +1565,7 @@ html:has(.olp) {
     gap: 10px;
   }
   .olp .brand img {
-    width: 34px;
-    height: 34px;
+    height: 40px;
   }
   .olp .nav .btn {
     font-size: 0.75rem;

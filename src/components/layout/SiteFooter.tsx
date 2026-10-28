@@ -30,7 +30,7 @@ export function SiteFooter({ showMap = false }: { showMap?: boolean }) {
       {showMap && <VisitStudio />}
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-12 lg:grid-cols-5">
         <div className="col-span-2 lg:col-span-1">
-          <Logo />
+          <Logo imgClassName="h-16 w-auto" />
           <p className="mt-4 text-xs leading-relaxed text-balance text-muted-foreground">
             <span className="font-semibold text-foreground/80">{BUSINESS_NAME}.</span> Custom
             tattoos, premium hygiene and honest advice — {ADDRESS.landmark}.

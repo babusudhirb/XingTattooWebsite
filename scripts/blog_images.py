@@ -1,7 +1,7 @@
 """Blog images: hero (1600x900), card (800x500), OG (1200x630 + title) and body images.
 
 Run from clonecraft-hero/:  python -I scripts/blog_images.py [slug ...]
-           Site pages (og/*.jpg, favicon-16, manifest icons):  python -I scripts/blog_images.py site
+           Site pages' social images (og/*.jpg):  python -I scripts/blog_images.py site
 Sources are the studio's own photos (copied, never moved). "TYPE" = typographic cover.
 Titles for the OG overlay are read from content/blog/<slug>.md.
 """
@@ -140,7 +140,7 @@ def wrap(draw, text, font, max_w):
 
 def logo_mark(size):
     logo = Image.open(ROOT / "public" / "xing-logo.webp").convert("RGBA")
-    logo.thumbnail((size, size), Image.LANCZOS)
+    logo.thumbnail((size * 2, size), Image.LANCZOS)  # the logo is wide: allow up to 2:1
     # The mark is dark on transparent: invert to white for dark backgrounds.
     r, g, b, a = logo.split()
     white = Image.merge("RGBA", (*(ImageOps.invert(Image.merge("RGB", (r, g, b))).split()), a))
@@ -285,7 +285,7 @@ def draw_with_stars(d, xy, text, font, size, fill):
 
 
 def site_images():
-    """Social images for the home, services and artist pages, plus favicon-16 and manifest icons."""
+    """Social images for the home, services and artist pages (icons: scripts/logo-assets.mjs)."""
     out = ROOT / "public" / "og"
     out.mkdir(parents=True, exist_ok=True)
     rating = f"Brookefield, Bangalore  ·  {tokens()['stars']} on Google"
@@ -301,20 +301,11 @@ def site_images():
             if (out / f"{name}.jpg").stat().st_size <= 200 * 1024 or quality <= 50:
                 break
             quality -= 6
-    icon32 = Image.open(ROOT / "public" / "favicon-32.png")
-    icon32.resize((16, 16), Image.LANCZOS).save(ROOT / "public" / "favicon-16.png")
-    logo = Image.open(ROOT / "public" / "xing-logo.webp").convert("RGBA")
-    for size in (192, 512):
-        canvas = Image.new("RGBA", (size, size), PAPER + (255,))
-        mark = logo.copy()
-        mark.thumbnail((int(size * 0.72), int(size * 0.72)), Image.LANCZOS)
-        canvas.paste(mark, ((size - mark.width) // 2, (size - mark.height) // 2), mark)
-        canvas.convert("RGB").save(ROOT / "public" / f"icon-{size}.png", optimize=True)
 
 
 if __name__ == "__main__" and sys.argv[1:] == ["site"]:
     site_images()
-    print(f"built {len(SITE_OG)} site social images, favicon-16 and manifest icons")
+    print(f"built {len(SITE_OG)} site social images")
     sys.exit()
 
 if __name__ == "__main__":

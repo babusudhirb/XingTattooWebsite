@@ -1,0 +1,47 @@
+/**
+ * Everything derived from the logo, from one source: public/xing-logo.svg.
+ * Run from clonecraft-hero/ after replacing the SVG:  node scripts/logo-assets.mjs
+ *
+ *   public/xing-logo.png   1200px, white background — the schema `logo`
+ *   public/xing-logo.webp  800px, transparent — the mark on social images (scripts/blog_images.py)
+ *   favicon-16/32, apple-touch-icon, icon-192/512 — just the lettering (the tagline is
+ *   unreadable at icon sizes), centred on white
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import sharp from "sharp";
+
+const PUBLIC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
+const svg = fs.readFileSync(path.join(PUBLIC, "xing-logo.svg"), "utf8");
+// The tagline is the one filled <path> (the lettering is stroked); drop it for icons
+const lettering = svg.replace(/<path fill="[^"]+" d="[^"]*"\/>/, "");
+if (lettering === svg) throw new Error("tagline path not found in xing-logo.svg");
+
+const render = (source, width) => sharp(Buffer.from(source), { density: 300 }).resize({ width });
+
+await render(svg, 1200)
+  .flatten({ background: "#ffffff" })
+  .png()
+  .toFile(path.join(PUBLIC, "xing-logo.png"));
+await render(svg, 800).webp({ quality: 90 }).toFile(path.join(PUBLIC, "xing-logo.webp"));
+
+async function icon(size, file, pad = 0.12) {
+  const art = await render(lettering, Math.round(size * (1 - pad * 2)))
+    .png()
+    .toBuffer();
+  const { width, height } = await sharp(art).metadata();
+  await sharp({ create: { width: size, height: size, channels: 4, background: "#ffffff" } })
+    .composite([
+      { input: art, left: Math.round((size - width) / 2), top: Math.round((size - height) / 2) },
+    ])
+    .png()
+    .toFile(path.join(PUBLIC, file));
+}
+await icon(16, "favicon-16.png", 0.04);
+await icon(32, "favicon-32.png", 0.06);
+await icon(180, "apple-touch-icon.png");
+await icon(192, "icon-192.png");
+await icon(512, "icon-512.png");
+console.log("logo-assets: png, webp and 5 icons written from public/xing-logo.svg");

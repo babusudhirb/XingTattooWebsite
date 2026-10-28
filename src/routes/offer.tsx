@@ -15,6 +15,9 @@ import {
   ADDRESS,
   BUSINESS_ID,
   BUSINESS_NAME,
+  LOGO_HEIGHT,
+  LOGO_SRC,
+  LOGO_WIDTH,
   COUNTS,
   DIRECTIONS_URL,
   HOURS_TEXT,
@@ -357,12 +360,8 @@ function ClaimButton({
 
 /** Studio mark — links back to the home page. */
 const Brand = () => (
-  <Link to="/" className="brand" aria-label="Xing Premium Tattoo Studio — home">
-    <img src="/xing-logo.webp" alt="Xing Premium Tattoo Studio logo" width={40} height={40} />
-    <span className="brand-name">
-      <strong>XING</strong>
-      <span>TATTOO STUDIO</span>
-    </span>
+  <Link to="/" className="brand">
+    <img src={LOGO_SRC} alt="Xing Premium Tattoo Studio — home" width={LOGO_WIDTH} height={LOGO_HEIGHT} />
   </Link>
 );
 
