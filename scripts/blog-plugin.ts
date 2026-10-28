@@ -9,7 +9,7 @@
  * - Each `.md` import becomes { ...meta, introHtml, sections, headings }.
  * - Every internal link is checked at build time; links to posts that are not
  *   live yet are unwrapped to plain text so the site never links to a 404.
- * - Writes public/sitemap.xml and public/blog/rss.xml with live posts only.
+ * - Writes public/blog/rss.xml with live posts only (sitemaps: scripts/postbuild.mjs).
  * - {{token}}s (phone, address, hours, stats…) are filled from src/data/business.ts,
  *   so posts never carry their own copy of the studio's details.
  */
@@ -274,7 +274,12 @@ function rehypeBlog(ctx: { file: string; live: Set<string>; known: Set<string> }
 
       // Markdown checklists ("- [ ] item"): the disabled checkboxes are decoration only, and
       // unlabelled form controls fail accessibility checks — draw the box with a span instead.
-      if (node.tagName === "input" && node.properties["type"] === "checkbox" && parent && index !== undefined) {
+      if (
+        node.tagName === "input" &&
+        node.properties["type"] === "checkbox" &&
+        parent &&
+        index !== undefined
+      ) {
         parent.children[index] = el("span", { className: ["task-box"], ariaHidden: "true" }, []);
         return SKIP;
       }
@@ -358,33 +363,11 @@ function writeIfChanged(file: string, content: string) {
   fs.writeFileSync(file, content);
 }
 
+/** Writes public/blog/rss.xml (live posts only). Sitemaps and robots.txt are written after the
+ *  build by scripts/postbuild.mjs, from the prerendered pages. */
 function writeFeeds(posts: SourcePost[]) {
   const live = posts.filter((p) => p.live);
-  const today = buildDate();
   const metas = live.map(publicMeta);
-  const pages = Math.max(1, Math.ceil(live.length / POSTS_PER_PAGE));
-  const cats = BLOG_CATEGORIES.filter((c) => live.some((p) => p.fm.category === c));
-  const known = [...knownPaths(posts)].filter((u) => !u.startsWith("/blog"));
-
-  const urls: { loc: string; lastmod: string }[] = [
-    ...known.map((u) => ({ loc: u, lastmod: today })),
-    { loc: "/blog", lastmod: metas[0]?.dateModified ?? today },
-    ...Array.from({ length: pages - 1 }, (_, i) => ({
-      loc: `/blog/page/${i + 2}`,
-      lastmod: today,
-    })),
-    ...cats.map((c) => ({ loc: `/blog/category/${c}`, lastmod: today })),
-    ...metas.map((m) => ({ loc: `/blog/${m.slug}`, lastmod: m.dateModified })),
-  ];
-  writeIfChanged(
-    path.join(PUBLIC_DIR, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
-      .map(
-        (u) =>
-          `  <url><loc>${SITE_URL}${u.loc === "/" ? "/" : u.loc}</loc><lastmod>${u.lastmod}</lastmod></url>`,
-      )
-      .join("\n")}\n</urlset>\n`,
-  );
 
   const items = metas
     .map(

@@ -1,5 +1,5 @@
 # Xing Premium Tattoo Studio — Hostinger (LiteSpeed / Apache) rules.
-# Uploaded with the site into public_html.
+# Uploaded with the site into public_html. scripts/postbuild.mjs fills in the generated redirects.
 
 Options -Indexes -MultiViews
 DirectorySlash Off
@@ -8,9 +8,14 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Always HTTPS
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # One host, HTTPS only: http:// and the bare domain go to https://www.xingtattoo.in in a single 301
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\.xingtattoo\.in$ [NC]
+  RewriteRule ^ https://www.xingtattoo.in%{REQUEST_URI} [L,R=301,NE]
+
+  # Old or alternative URLs (from scripts/redirects.mjs)
+  # BEGIN generated redirects
+  # END generated redirects
 
   # /about.html -> /about, /about/ -> /about (one clean URL per page)
   RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
@@ -34,13 +39,18 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   # Photos and icons: cache for a month
-  <FilesMatch "\.(webp|png|jpg|jpeg|svg|ico)$">
+  <FilesMatch "\.(webp|avif|png|jpg|jpeg|svg|ico)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
-  # Pages: always revalidate so edits show up immediately
-  <FilesMatch "\.html$">
+  # Pages, sitemaps, robots.txt and feeds: always revalidate so edits show up immediately
+  <FilesMatch "\.(html|xml|txt|webmanifest)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
+  <FilesMatch "\.xml$">
+    Header set Content-Type "application/xml; charset=utf-8"
+  </FilesMatch>
+  # HTTPS only from now on (no "preload" until every subdomain is confirmed to serve HTTPS)
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
@@ -48,4 +58,6 @@ ErrorDocument 404 /404.html
 <IfModule mod_mime.c>
   AddType font/woff2 .woff2
   AddType image/webp .webp
+  AddType image/avif .avif
+  AddType application/manifest+json .webmanifest
 </IfModule>
