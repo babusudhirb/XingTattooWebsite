@@ -35,3 +35,4 @@ dist-ssr
 public/sitemap.xml
 public/blog/rss.xml
 _originals/
+scripts/.tmp/
