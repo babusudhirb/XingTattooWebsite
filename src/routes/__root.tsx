@@ -1,28 +1,15 @@
-import {
-  Outlet,
-  createRootRoute,
-  useRouter,
-  HeadContent,
-  Scripts,
-} from "@tanstack/react-router";
+import { Outlet, createRootRoute, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
 import appCss from "@/styles/global.css?url";
 import archivoFont from "@/assets/fonts/archivo-latin.woff2?url";
 import karlaFont from "@/assets/fonts/karla-latin.woff2?url";
 import { BookingModalLoader } from "@/components/booking/BookingModalLoader";
-import {
-  ADDRESS,
-  BUSINESS_NAME,
-  businessSchema,
-  COUNTS,
-  GEO_META,
-  GOOGLE_RATING,
-  LEAD_ARTIST,
-  OG_IMAGE,
-  pageTitle,
-} from "@/data/business";
+import { BUSINESS_NAME, GEO_META } from "@/data/business";
 import { NotFoundPage } from "@/components/layout/NotFoundPage";
+
+const GSC_VERIFICATION = import.meta.env["VITE_GSC_VERIFICATION"] as string | undefined;
+const BING_VERIFICATION = import.meta.env["VITE_BING_VERIFICATION"] as string | undefined;
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
@@ -60,35 +47,24 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRoute({
+  // Site-wide tags only. Each route adds its own title, description, canonical, Open Graph
+  // and JSON-LD @graph through seoHead() in src/lib/seo.ts.
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover",
-      },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#faf9f7" },
-      { title: pageTitle("Custom Tattoos in Brookefield, Bangalore") },
-      {
-        name: "description",
-        content: `Custom tattoos by ${LEAD_ARTIST.fullName} (${COUNTS.years} years) at Xing Premium Tattoo Studio, Brookefield, Bengaluru, ${ADDRESS.landmark}. ${GOOGLE_RATING}★ on Google.`,
-      },
       { name: "author", content: BUSINESS_NAME },
       { property: "og:site_name", content: BUSINESS_NAME },
-      { property: "og:title", content: pageTitle("Custom Tattoos in Brookefield, Bangalore") },
-      {
-        property: "og:description",
-        content: `Custom tattoos, premium hygiene and ${COUNTS.years} years of artistry in Brookefield, Bengaluru.`,
-      },
-      { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_IN" },
-      { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      ...GEO_META,
       { name: "twitter:card", content: "summary_large_image" },
+      ...GEO_META,
+      // Search Console / Bing ownership tags, only when the build sets them (see SEARCH-CONSOLE.md)
+      ...(GSC_VERIFICATION
+        ? [{ name: "google-site-verification", content: GSC_VERIFICATION }]
+        : []),
+      ...(BING_VERIFICATION ? [{ name: "msvalidate.01", content: BING_VERIFICATION }] : []),
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(businessSchema) }],
     links: [
       // Fonts are self-hosted (src/styles/fonts.css); preload the two used above the fold.
       ...[archivoFont, karlaFont].map((href) => ({
@@ -100,7 +76,9 @@ export const Route = createRootRoute({
       })),
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/favicon-16.png", type: "image/png", sizes: "16x16" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
@@ -111,7 +89,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <HeadContent />
       </head>

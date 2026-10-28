@@ -114,6 +114,7 @@ export function MobileMenu() {
                       height={32}
                       loading="lazy"
                       alt=""
+                      aria-hidden="true"
                       className="h-8 w-8 shrink-0 rounded-sm object-cover"
                     />
                     {services[slug].shortName}

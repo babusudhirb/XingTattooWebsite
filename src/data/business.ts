@@ -17,11 +17,15 @@ export const GBP_CATEGORY = "Tattoo Shop";
 
 export const SITE_URL = "https://www.xingtattoo.in";
 export const BUSINESS_ID = `${SITE_URL}/#business`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const ADDRESS = {
   /** Display line, verbatim from the GBP. */
-  full: "SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout, Brookefield, Bengaluru, Karnataka 560037, India",
-  street: "SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout, Brookefield",
+  /** Display line, character for character as on the GBP (which spells the locality "Brookfield"). */
+  full: "SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout, Brookfield, Bengaluru, Karnataka 560037, India",
+  /** Schema streetAddress (the GBP street line). */
+  street: "SV Plaza, 267, 60 Feet Road, Above DMART Ready, AECS Layout",
+  sublocality: "Brookfield",
   locality: "Bengaluru",
   region: "Karnataka",
   postalCode: "560037",
@@ -71,7 +75,7 @@ export const SERVICE_AREAS = [
   "AECS Layout",
   "Marathahalli",
   "Whitefield",
-  "East Bengaluru",
+  "Bengaluru",
 ];
 
 /** Opening hours, Monday-first. Day numbers match Date.getDay(). */
@@ -194,7 +198,9 @@ export const TITLE_SUFFIX_LONG = " | Xing Premium Tattoo Studio";
 export const TITLE_SUFFIX_SHORT = " | Xing Premium";
 export const pageTitle = (base: string) => {
   const bare = base.replace(/\s*\|\s*Xing Premium( Tattoo Studio)?\s*$/, "");
-  return (bare + TITLE_SUFFIX_LONG).length <= 60 ? bare + TITLE_SUFFIX_LONG : bare + TITLE_SUFFIX_SHORT;
+  return (bare + TITLE_SUFFIX_LONG).length <= 60
+    ? bare + TITLE_SUFFIX_LONG
+    : bare + TITLE_SUFFIX_SHORT;
 };
 
 /** {{token}} values the blog pipeline substitutes into content/blog/*.md (frontmatter and body). */
@@ -215,7 +221,16 @@ export const BLOG_TOKENS: Record<string, string> = {
   since: COUNTS.since,
 };
 
-export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+/** Default social image (1200×630, made by scripts/blog_images.py). Services and the artist page have their own. */
+export const OG_IMAGE = `${SITE_URL}/og/og-default.jpg`;
+export const OG_IMAGE_ALT =
+  "Tattoo work by Peace at Xing Premium Tattoo Studio, Brookefield, Bangalore";
+/** Photos of the studio's work for the business schema (absolute URLs). */
+export const BUSINESS_PHOTOS = [
+  OG_IMAGE,
+  `${SITE_URL}/blog/signature-realism.webp`,
+  `${SITE_URL}/blog/signature-portrait.webp`,
+];
 export const LOGO_URL = `${SITE_URL}/xing-logo.webp`;
 
 /** Geo meta tags for the site <head>. */
@@ -234,12 +249,11 @@ export const businessSchema = {
   "@id": BUSINESS_ID,
   name: BUSINESS_NAME,
   alternateName: BRAND_NAME,
-  description:
-    `Custom tattoo studio in AECS Layout, Brookefield, Bengaluru (${ADDRESS.landmark}). Lead Artist ${LEAD_ARTIST.fullName} (${COUNTS.years} years) designs every tattoo from scratch — realism, portraits, Black & Grey, geometric, Indian traditional and minimalist fine-line. Sterile, single-use equipment. Free consultation.`,
+  description: `Custom tattoo studio in AECS Layout, Brookefield, Bengaluru (${ADDRESS.landmark}). Lead Artist ${LEAD_ARTIST.fullName} (${COUNTS.years} years) designs every tattoo from scratch — realism, portraits, Black & Grey, geometric, Indian traditional and minimalist fine-line. Sterile, single-use equipment. Free consultation.`,
   url: `${SITE_URL}/`,
   telephone: PHONE_E164,
   email: EMAIL,
-  image: OG_IMAGE,
+  image: BUSINESS_PHOTOS,
   logo: LOGO_URL,
   address: {
     "@type": "PostalAddress",

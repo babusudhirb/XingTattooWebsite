@@ -14,17 +14,15 @@ import {
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import {
   ADDRESS,
-  BUSINESS_ID,
   BUSINESS_NAME,
   DIRECTIONS_URL,
   HOURS_TEXT,
   pageTitle,
   SHORT_ADDRESS,
-  SITE_URL,
 } from "@/data/business";
 import { aboutFaqs, aboutValues, hygieneStandards, visitLandmarks } from "@/data/about";
 import { ARTIST, tattoosForClients } from "@/data/artist";
-import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
 import {
   Accordion,
   AccordionContent,
@@ -36,47 +34,25 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/sections/Origami";
+import { faqNode, seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
-const TITLE = pageTitle("About the Studio");
+const TITLE = pageTitle("About Us: Tattoo Studio in AECS Layout");
 const DESCRIPTION =
-  "The story of Xing Premium Tattoo Studio, AECS Layout, Brookefield, Bengaluru: custom tattoos by Peace, clinic-level hygiene, hours, map and studio FAQs.";
+  "Our custom tattoo studio above DMART Ready, AECS Layout, Brookefield: hygiene, process, hours and directions. Serving Whitefield and Marathahalli.";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          name: TITLE,
-          description: DESCRIPTION,
-          about: { "@id": BUSINESS_ID },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: aboutFaqs.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        }),
-      },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      path: "/about",
+      title: TITLE,
+      description: DESCRIPTION,
+      pageType: "AboutPage",
+      graph: [
+        faqNode(aboutFaqs),
+        breadcrumbSchema([{ label: "Home", href: "/" }, { label: "About Us" }]),
+      ],
+    }),
   component: AboutPage,
 });
 
@@ -144,7 +120,7 @@ function AboutPage() {
             className="mt-4 font-display text-[2rem] leading-[1.05] font-medium tracking-tight text-balance sm:text-5xl"
           >
             About Xing Premium Tattoo Studio,{" "}
-            <span className="block text-amber-700">Brookefield, Bengaluru</span>
+            <span className="block text-amber-700">Brookefield, Bangalore</span>
           </h1>
           <p className="mx-auto mt-5 max-w-sm font-script text-2xl text-amber-700">
             We make forever look easy.
@@ -158,11 +134,10 @@ function AboutPage() {
               fact.
             </p>
             <p>
-              Xing opened in {ARTIST.studioSince} on the 1st floor of SV Plaza, 60 Feet Road —
-              right above DMART Ready in AECS Layout, Brookefield. The idea
-              was simple: a custom tattoo studio for East Bengaluru where every design is drawn from
-              scratch, every session is unhurried, and hygiene is treated like a clinic, not an
-              afterthought.
+              Xing opened in {ARTIST.studioSince} on the 1st floor of SV Plaza, 60 Feet Road — right
+              above DMART Ready in AECS Layout, Brookefield. The idea was simple: a custom tattoo
+              studio for East Bengaluru where every design is drawn from scratch, every session is
+              unhurried, and hygiene is treated like a clinic, not an afterthought.
             </p>
             <p>
               Since then, {ARTIST.happyClients} clients from Brookefield, Whitefield, Marathahalli,
@@ -334,9 +309,7 @@ function AboutPage() {
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
                 <div>
                   <dt className="sr-only">Hours</dt>
-                  <dd>
-                    {HOURS_TEXT}
-                  </dd>
+                  <dd>{HOURS_TEXT}</dd>
                 </div>
               </div>
               <div className="flex gap-3">

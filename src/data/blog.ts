@@ -107,8 +107,37 @@ export const BLOG_SECTIONS: {
   },
 ];
 
+/** Guides linked from each service page (live posts only are shown). */
+export const SERVICE_GUIDES: Record<string, string[]> = {
+  realism: ["realism-tattoos-guide", "micro-realism-tattoos", "japanese-irezumi-vs-realism-sleeve"],
+  portrait: ["portrait-tattoo-reference-photo", "memorial-tattoo-ideas", "pet-portrait-tattoos"],
+  "black-grey": [
+    "black-grey-vs-colour-tattoos",
+    "custom-sleeve-tattoo-sessions-timeline",
+    "tattoos-on-indian-skin",
+  ],
+  geometric: [
+    "geometric-mandala-tattoos",
+    "cyberpunk-neo-tribal-tattoos-bangalore",
+    "travel-tattoo-ideas",
+  ],
+  traditional: [
+    "indian-traditional-tattoos",
+    "lord-shiva-tattoo-designs",
+    "om-trishul-spiritual-tattoos",
+  ],
+  minimalist: [
+    "fine-line-tattoos",
+    "minimalist-tattoo-ideas",
+    "small-fine-line-tattoo-cost-bangalore",
+  ],
+};
+
 export const sectionPosts = (slugs: string[]) =>
-  slugs.map(postBySlug).filter((p): p is BlogPostMeta => !!p).slice(0, 6);
+  slugs
+    .map(postBySlug)
+    .filter((p): p is BlogPostMeta => !!p)
+    .slice(0, 6);
 
 export const featuredPosts = posts.filter((p) => p.featured).slice(0, 3);
 

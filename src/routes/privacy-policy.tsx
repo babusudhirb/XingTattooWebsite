@@ -1,24 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { BUSINESS_NAME, OG_IMAGE, pageTitle, SITE_URL } from "@/data/business";
+import { BUSINESS_NAME, pageTitle } from "@/data/business";
 import { LegalPage } from "@/components/layout/LegalPage";
+import { seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
 const TITLE = pageTitle("Privacy Policy");
 const DESCRIPTION =
   "How Xing Premium Tattoo Studio, Brookefield, Bengaluru uses the details you share through our booking and offer forms, WhatsApp and phone. We never sell it.";
 
 export const Route = createFileRoute("/privacy-policy")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: `${SITE_URL}/privacy-policy` },
-      { property: "og:image", content: OG_IMAGE },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/privacy-policy` }],
-  }),
+  head: () =>
+    seoHead({
+      path: "/privacy-policy",
+      title: TITLE,
+      description: DESCRIPTION,
+      graph: [breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Privacy Policy" }])],
+    }),
   component: PrivacyPolicy,
 });
 
@@ -26,8 +24,8 @@ function PrivacyPolicy() {
   return (
     <LegalPage title="Privacy Policy" updated="26 October 2026">
       <p>
-        This policy explains what information {BUSINESS_NAME} (“we”, “the studio”) collects
-        through this website and how we use it.
+        This policy explains what information {BUSINESS_NAME} (“we”, “the studio”) collects through
+        this website and how we use it.
       </p>
       <h2>What we collect</h2>
       <ul>
@@ -36,8 +34,8 @@ function PrivacyPolicy() {
           preferred date and time, and any idea you choose to share.
         </li>
         <li>
-          <strong>WhatsApp and phone:</strong> the messages, photos and details you send us when
-          you contact the studio directly.
+          <strong>WhatsApp and phone:</strong> the messages, photos and details you send us when you
+          contact the studio directly.
         </li>
       </ul>
       <h2>How we use it</h2>

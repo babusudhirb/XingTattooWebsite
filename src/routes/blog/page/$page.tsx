@@ -1,9 +1,10 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { pageTitle, SITE_URL } from "@/data/business";
+import { pageTitle } from "@/data/business";
 import { pageCount, postsForPage } from "@/data/blog";
 import { BlogListing } from "@/components/blog/BlogListing";
 import { blogItemList, breadcrumbSchema, type Crumb } from "@/lib/blog";
+import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/page/$page")({
   loader: ({ params }) => {
@@ -15,31 +16,18 @@ export const Route = createFileRoute("/blog/page/$page")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { page } = loaderData;
-    const title = pageTitle(`Tattoo Blog – Page ${page}`);
-    const description = `More tattoo guides, ideas and aftercare advice from Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Page ${page} of ${pageCount}. Book a free consult.`;
     const crumbs: Crumb[] = [
       { label: "Home", href: "/" },
       { label: "Blog", href: "/blog" },
       { label: `Page ${page}` },
     ];
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:type", content: "website" },
-      ],
-      links: [{ rel: "canonical", href: `${SITE_URL}/blog/page/${page}` }],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [blogItemList(postsForPage(page)), breadcrumbSchema(crumbs)],
-          }),
-        },
-      ],
-    };
+    return seoHead({
+      path: `/blog/page/${page}`,
+      title: pageTitle(`Tattoo Blog – Page ${page}`),
+      description: `More tattoo guides, ideas and aftercare advice from Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Page ${page} of ${pageCount}. Book a free consult.`,
+      pageType: "CollectionPage",
+      graph: [blogItemList(postsForPage(page)), breadcrumbSchema(crumbs)],
+    });
   },
   component: BlogPage,
 });

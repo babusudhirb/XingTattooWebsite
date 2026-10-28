@@ -31,6 +31,9 @@ import { GOOGLE_RATING, reviews } from "@/data/reviews";
 import { services } from "@/data/services";
 import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
 import { sendOfferClaim } from "@/lib/booking-request";
+import { Breadcrumbs } from "@/components/blog/BlogBits";
+import { seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
 /*
  * Offer landing page (/offer) — an ad landing page: the logo is the only link
@@ -39,9 +42,9 @@ import { sendOfferClaim } from "@/lib/booking-request";
  * Styles live in src/styles/offer-page.css, scoped under .olp.
  */
 
-const TITLE = pageTitle("Tattoo Offer: Up to 50% Off");
+const TITLE = pageTitle("Tattoo Offer in Brookefield, Bangalore");
 const DESCRIPTION =
-  `Up to 50% off custom tattoos at Xing Premium Tattoo Studio, Brookefield, Bengaluru. ${OFFER.validLabel}. Get your exact quote at a free consultation.`;
+  `Up to 50% off custom tattoos at Xing Premium Tattoo Studio, Brookefield. ${OFFER.validLabel}. Book a free consultation on WhatsApp or in AECS Layout.`;
 
 const wa = (text: string) => `${WHATSAPP_URL}?text=${encodeURIComponent(text)}`;
 
@@ -266,21 +269,17 @@ const offerSchema = {
 };
 
 export const Route = createFileRoute("/offer")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: HERO_IMAGE.src },
-    ],
-    links: [
-      { rel: "stylesheet", href: offerCss },
-      { rel: "canonical", href: `${SITE_URL}/offer` },
-    ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(offerSchema) }],
-  }),
+  head: () =>
+    seoHead({
+      path: "/offer",
+      title: TITLE,
+      description: DESCRIPTION,
+      links: [{ rel: "stylesheet", href: offerCss }],
+      graph: [
+        ...offerSchema["@graph"],
+        breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Tattoo Offer" }]),
+      ],
+    }),
   component: OfferPage,
 });
 
@@ -505,13 +504,16 @@ function OfferPage() {
       </header>
 
       <main id="main">
+        <div className="wrap pt-3">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tattoo Offer" }]} />
+        </div>
         {/* Hero */}
         <section className="wrap hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <span className="eyebrow">Tattoo offer · Brookefield, Bengaluru</span>
+            <span className="eyebrow">Tattoo offer · Brookefield, Bangalore</span>
             <h1 id="hero-title">
               <span className="h1-line">Get up to</span> <span className="h1-accent">50% off</span>{" "}
-              <span className="h1-line">on your tattoos</span>
+              <span className="h1-line">on tattoos in Brookefield</span>
             </h1>
             <p className="intro">
               A tattoo on your skin is your bold story — crafted with precision, hygiene and care at

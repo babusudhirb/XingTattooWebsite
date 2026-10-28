@@ -11,7 +11,7 @@ import {
   artistSignatureWork,
   artistStyles,
 } from "@/data/artist";
-import { BUSINESS_ID, COUNTS, pageTitle, SITE_URL } from "@/data/business";
+import { BUSINESS_ID, COUNTS, LEAD_ARTIST, pageTitle, SITE_URL } from "@/data/business";
 import { reviews } from "@/data/reviews";
 import { services } from "@/data/services";
 import { WHATSAPP_URL } from "@/data/site";
@@ -33,57 +33,42 @@ import {
   OrigamiFrame,
   SectionNav,
 } from "@/components/sections/Origami";
+import { absolute, faqNode, seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
-const TITLE = pageTitle("Meet Peace, Tattoo Artist");
+const TITLE = pageTitle("Peace, Tattoo Artist, Brookefield, Bangalore");
+const PERSON_ID = `${SITE_URL}/tattoo-artist#peace`;
 const DESCRIPTION =
-  `Meet Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio, Brookefield, Bengaluru: ${COUNTS.years} years of realism, portraits and fine line work.`;
+  `Meet Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio: ${COUNTS.years} years of realism, portrait and fine-line work in Brookefield. Book a consult.`;
 
 export const Route = createFileRoute("/tattoo-artist")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "profile" },
-      { property: "og:image", content: artistPortrait },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/tattoo-artist` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfilePage",
-          name: TITLE,
-          description: DESCRIPTION,
-          mainEntity: {
-            "@type": "Person",
-            name: ARTIST.name,
-            alternateName: ARTIST.fullName,
-            jobTitle: ARTIST.role,
-            image: artistPortrait,
-            worksFor: { "@id": BUSINESS_ID },
-            knowsAbout: artistStyles.map((s) => `${s.title} tattoos`),
-            knowsLanguage: ["en", "hi", "kn"],
-          },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: artistFaqs.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        }),
-      },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      path: "/tattoo-artist",
+      title: TITLE,
+      description: DESCRIPTION,
+      type: "profile",
+      image: "/og/tattoo-artist.jpg",
+      imageAlt: "Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio, Brookefield, Bangalore",
+      pageType: "ProfilePage",
+      page: { mainEntity: { "@id": PERSON_ID } },
+      graph: [
+        {
+          "@type": "Person",
+          "@id": PERSON_ID,
+          name: LEAD_ARTIST.fullName,
+          alternateName: ARTIST.name,
+          jobTitle: ARTIST.role,
+          image: absolute(artistPortrait),
+          url: `${SITE_URL}/tattoo-artist`,
+          worksFor: { "@id": BUSINESS_ID },
+          knowsAbout: artistStyles.map((s) => `${s.title} tattoos`),
+          knowsLanguage: ["en", "hi", "kn"],
+        },
+        faqNode(artistFaqs),
+        breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Tattoo Artist" }]),
+      ],
+    }),
   component: TattooArtistPage,
 });
 
@@ -174,7 +159,7 @@ function TattooArtistPage() {
             >
               Peace{" "}
               <span className="mt-2 block text-xl font-normal tracking-normal text-muted-foreground sm:text-2xl">
-                {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio
+                {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio, Brookefield
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">

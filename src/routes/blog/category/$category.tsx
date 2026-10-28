@@ -1,9 +1,10 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { pageTitle, SITE_URL } from "@/data/business";
+import { pageTitle } from "@/data/business";
 import { activeCategories, posts } from "@/data/blog";
 import { BlogListing } from "@/components/blog/BlogListing";
 import { blogItemList, breadcrumbSchema, type Crumb } from "@/lib/blog";
+import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/category/$category")({
   loader: ({ params }) => {
@@ -15,7 +16,9 @@ export const Route = createFileRoute("/blog/category/$category")({
     if (!loaderData) return {};
     const list = posts.filter((p) => p.category === loaderData.slug);
     // "Tattoo Guides" would read "Tattoo Guides Tattoo Guides" — only add the suffix when it isn't in the label
-    const topic = /guides/i.test(loaderData.label) ? loaderData.label : `${loaderData.label} Tattoo Guides`;
+    const topic = /guides/i.test(loaderData.label)
+      ? loaderData.label
+      : `${loaderData.label} Tattoo Guides`;
     const title = pageTitle(topic);
     // 145–158 characters whatever the label length: add the longest closing line that fits
     const base = `${topic} from Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru.`;
@@ -33,34 +36,13 @@ export const Route = createFileRoute("/blog/category/$category")({
       { label: "Blog", href: "/blog" },
       { label: loaderData.label },
     ];
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "website" },
-      ],
-      links: [{ rel: "canonical", href: `${SITE_URL}/blog/category/${loaderData.slug}` }],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "CollectionPage",
-                name: title,
-                description,
-                url: `${SITE_URL}/blog/category/${loaderData.slug}`,
-              },
-              blogItemList(list),
-              breadcrumbSchema(crumbs),
-            ],
-          }),
-        },
-      ],
-    };
+    return seoHead({
+      path: `/blog/category/${loaderData.slug}`,
+      title,
+      description,
+      pageType: "CollectionPage",
+      graph: [blogItemList(list), breadcrumbSchema(crumbs)],
+    });
   },
   component: CategoryPage,
 });

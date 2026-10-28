@@ -1,6 +1,7 @@
 """Blog images: hero (1600x900), card (800x500), OG (1200x630 + title) and body images.
 
 Run from clonecraft-hero/:  python -I scripts/blog_images.py [slug ...]
+           Site pages (og/*.jpg, favicon-16, manifest icons):  python -I scripts/blog_images.py site
 Sources are the studio's own photos (copied, never moved). "TYPE" = typographic cover.
 Titles for the OG overlay are read from content/blog/<slug>.md.
 """
@@ -170,7 +171,7 @@ def typographic(size, title):
     return img
 
 
-def og_image(hero: Image.Image, title):
+def og_image(hero: Image.Image, title, bottom=70):
     img = ImageOps.fit(hero, (1200, 630), Image.LANCZOS)
     shade = Image.new("L", (1200, 630))
     sd = ImageDraw.Draw(shade)
@@ -183,7 +184,7 @@ def og_image(hero: Image.Image, title):
     while len(lines) > 3:
         font = ImageFont.truetype(SERIF_BOLD, font.size - 4)
         lines = wrap(d, title, font, 1080)
-    y = 630 - 70 - len(lines) * font.size * 1.15
+    y = 630 - bottom - len(lines) * font.size * 1.15
     for line in lines:
         d.text((60, y), line, font=font, fill=PAPER)
         y += font.size * 1.15
@@ -256,6 +257,65 @@ def signature_cards():
     face = face.crop((int(w * 0.2), 0, int(w * 0.8), int(w * 0.6)))
     save_webp(face.resize((160, 160), Image.LANCZOS), OUT / "peace-avatar.webp", 15)
 
+
+# Site pages' social images (1200x630): source photo and the headline drawn on it
+SITE_OG = {
+    "og-default": (S + "realism/hero.webp", "Xing Premium Tattoo Studio"),
+    "services-realism": (S + "realism/hero.webp", "Realism Tattoos in Bangalore"),
+    "services-portrait": (S + "portrait/hero.webp", "Portrait Tattoos in Bangalore"),
+    "services-black-grey": (A + "style-blackgrey.webp", "Black & Grey Tattoos in Bangalore"),
+    "services-geometric": (S + "geometric/hero.webp", "Geometric & Mandala Tattoos in Bangalore"),
+    "services-traditional": (S + "traditional/hero.webp", "Indian Traditional Tattoos in Bangalore"),
+    "services-minimalist": (S + "minimalist/hero.webp", "Fine Line & Minimalist Tattoos in Bangalore"),
+    "tattoo-artist": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", "Peace, Tattoo Artist in Brookefield"),
+}
+SYMBOL = str(FONT_DIR / "seguisym.ttf")  # the only stock font here with a real ★
+
+
+def draw_with_stars(d, xy, text, font, size, fill):
+    """Draw text, switching to a symbol font for ★ (Arial has no star glyph)."""
+    x, y = xy
+    star_font = ImageFont.truetype(SYMBOL, size)
+    for i, part in enumerate(text.split("★")):
+        if i:
+            d.text((x, y), "★", font=star_font, fill=fill)
+            x += d.textlength("★", font=star_font)
+        d.text((x, y), part, font=font, fill=fill)
+        x += d.textlength(part, font=font)
+
+
+def site_images():
+    """Social images for the home, services and artist pages, plus favicon-16 and manifest icons."""
+    out = ROOT / "public" / "og"
+    out.mkdir(parents=True, exist_ok=True)
+    rating = f"Brookefield, Bangalore  ·  {tokens()['stars']} on Google"
+    for name, (src, title) in SITE_OG.items():
+        im = Image.open(ROOT / src).convert("RGB")
+        img = og_image(fill_frame(im, (1200, 630)), title, bottom=125 if name == "og-default" else 70)
+        if name == "og-default":
+            d = ImageDraw.Draw(img)
+            draw_with_stars(d, (60, 530), rating, ImageFont.truetype(SANS_BOLD, 30), 30, (232, 229, 224))
+        quality = 82
+        while True:
+            img.save(out / f"{name}.jpg", "JPEG", quality=quality, optimize=True, progressive=True)
+            if (out / f"{name}.jpg").stat().st_size <= 200 * 1024 or quality <= 50:
+                break
+            quality -= 6
+    icon32 = Image.open(ROOT / "public" / "favicon-32.png")
+    icon32.resize((16, 16), Image.LANCZOS).save(ROOT / "public" / "favicon-16.png")
+    logo = Image.open(ROOT / "public" / "xing-logo.webp").convert("RGBA")
+    for size in (192, 512):
+        canvas = Image.new("RGBA", (size, size), PAPER + (255,))
+        mark = logo.copy()
+        mark.thumbnail((int(size * 0.72), int(size * 0.72)), Image.LANCZOS)
+        canvas.paste(mark, ((size - mark.width) // 2, (size - mark.height) // 2), mark)
+        canvas.convert("RGB").save(ROOT / "public" / f"icon-{size}.png", optimize=True)
+
+
+if __name__ == "__main__" and sys.argv[1:] == ["site"]:
+    site_images()
+    print(f"built {len(SITE_OG)} site social images, favicon-16 and manifest icons")
+    sys.exit()
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or [s for s in IMAGES if (ROOT / "content" / "blog" / f"{s}.md").exists()]

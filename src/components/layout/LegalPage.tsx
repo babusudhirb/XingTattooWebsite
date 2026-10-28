@@ -5,6 +5,7 @@ import { EMAIL_TO } from "@/data/site";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
+import { Breadcrumbs } from "@/components/blog/BlogBits";
 
 /** Shared layout for the Privacy Policy and Terms pages. */
 export function LegalPage({
@@ -20,8 +21,9 @@ export function LegalPage({
     <main className="min-h-screen bg-background text-foreground">
       <SocialDock />
       <SiteHeader />
-      <article className="mx-auto max-w-3xl px-5 py-14 sm:py-20">
-        <p className="eyebrow">{BUSINESS_NAME}</p>
+      <article className="mx-auto max-w-3xl px-5 pt-6 pb-14 sm:pt-8 sm:pb-20">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: title }]} />
+        <p className="eyebrow mt-6">{BUSINESS_NAME}</p>
         <h1 className="mt-3 font-display text-[2rem] leading-tight font-semibold tracking-tight text-balance sm:text-5xl">
           {title}
         </h1>

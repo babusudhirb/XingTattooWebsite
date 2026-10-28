@@ -6,20 +6,31 @@ import { SERVICE_SLUGS, services } from "@/data/services";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
+import { Breadcrumbs } from "@/components/blog/BlogBits";
+import { seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
 export const Route = createFileRoute("/services/")({
-  head: () => ({
-    meta: [
-      { title: pageTitle("Tattoo Styles & Services") },
-      {
-        name: "description",
-        content:
-          "Every tattoo style at Xing Premium Tattoo Studio, Brookefield, Bengaluru, with aftercare and timing guidance for each — exact quote at a free consultation.",
-      },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/services` }],
-  }),
+  head: () =>
+    seoHead({
+      path: "/services",
+      title: pageTitle("Tattoo Services in Brookefield, Bangalore"),
+      description:
+        "Realism, portrait, Black & Grey, geometric, Indian traditional and fine-line tattoos in AECS Layout, Brookefield. Book a free consultation with Peace.",
+      pageType: "CollectionPage",
+      graph: [
+        {
+          "@type": "ItemList",
+          itemListElement: SERVICE_SLUGS.map((slug, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${SITE_URL}/services/${slug}`,
+            name: services[slug].name,
+          })),
+        },
+        breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Tattoo Services" }]),
+      ],
+    }),
   component: ServicesIndex,
 });
 
@@ -29,10 +40,13 @@ function ServicesIndex() {
       <SocialDock />
       <SiteHeader />
 
-      <section className="mx-auto max-w-7xl px-5 py-14 text-center">
-        <p className="eyebrow">Our Services</p>
-        <h1 className="mt-4 font-display text-[2.1rem] leading-[1.05] font-medium tracking-tight uppercase sm:text-5xl">
-          Every Style. One Studio.
+      <div className="mx-auto max-w-7xl px-5 pt-5">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tattoo Services" }]} />
+      </div>
+      <section className="mx-auto max-w-7xl px-5 pt-8 pb-14 text-center">
+        <p className="eyebrow">Every Style. One Studio.</p>
+        <h1 className="mt-4 font-display text-[2.1rem] leading-[1.05] font-medium tracking-tight text-balance uppercase sm:text-5xl">
+          Tattoo Services in Brookefield, Bangalore
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground sm:text-base">
           Six distinct tattoo styles, each with its own process, healing timeline and best-fit

@@ -16,14 +16,11 @@ import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield
 
 import {
   ADDRESS,
-  BUSINESS_NAME,
   COUNTS,
   GOOGLE_RATING,
   isOfferActive,
   OFFER,
-  OG_IMAGE,
   pageTitle,
-  SITE_URL,
 } from "@/data/business";
 import { WHATSAPP_URL } from "@/data/site";
 import { OFFER_IDEAS, OFFER_LABEL, offerImages } from "@/data/offer";
@@ -52,6 +49,9 @@ import {
 } from "@/components/ui/accordion";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { TattooFlash, type FlashName } from "@/components/sections/TattooFlash";
+import { RelatedGuides } from "@/components/blog/RelatedGuides";
+import { posts } from "@/data/blog";
+import { faqNode, seoHead } from "@/lib/seo";
 
 const GALLERY_PAGE_SIZE = 24;
 const GALLERY_PAGE_SIZE_PHONE = 12;
@@ -66,28 +66,16 @@ function galleryPageSizeForScreen() {
 const homeFaqs = homeFaqIds.map((id) => faqById.get(id)!);
 
 const HOME_TITLE = pageTitle("Tattoo Studio in Brookefield, Bangalore");
-const HOME_DESCRIPTION =
-  `Xing Premium Tattoo Studio, AECS Layout, Brookefield (above DMART Ready). Custom tattoos by Peace, ${COUNTS.years} yrs. ${GOOGLE_RATING}★ on Google, sterile needles. Free consult.`;
+const HOME_DESCRIPTION = `Custom tattoos by Peace (${COUNTS.years} yrs) at Xing Premium Tattoo Studio, AECS Layout, Brookefield, above DMART Ready. ${GOOGLE_RATING}★ on Google. Book a free consultation.`;
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: HOME_TITLE },
-      { name: "description", content: HOME_DESCRIPTION },
-      { property: "og:site_name", content: BUSINESS_NAME },
-      { property: "og:title", content: HOME_TITLE },
-      { property: "og:description", content: HOME_DESCRIPTION },
-      { property: "og:url", content: `${SITE_URL}/` },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: "en_IN" },
-      { property: "og:image", content: OG_IMAGE },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: HOME_TITLE },
-      { name: "twitter:description", content: HOME_DESCRIPTION },
-      { name: "twitter:image", content: OG_IMAGE },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
-  }),
+  head: () =>
+    seoHead({
+      path: "/",
+      title: HOME_TITLE,
+      description: HOME_DESCRIPTION,
+      graph: [faqNode(homeFaqs)],
+    }),
   component: Index,
 });
 
@@ -758,6 +746,8 @@ function Index() {
       />
 
       <ReviewsSection />
+
+      <RelatedGuides posts={posts.slice(0, 3)} eyebrow="From The Blog" title="Latest Tattoo Guides" />
 
       {/* FAQ — the five most-asked questions; the full set lives on /faq */}
       <section

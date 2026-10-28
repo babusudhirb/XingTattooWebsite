@@ -139,6 +139,7 @@ function RelatedService({ href }: { href: string }) {
         <img
           src={service.thumbImage}
           alt=""
+          aria-hidden="true"
           width={96}
           height={96}
           loading="lazy"
@@ -199,6 +200,7 @@ export function BlogPostView({ post }: { post: BlogPostData }) {
                   <img
                     src="/blog/peace-avatar.webp"
                     alt=""
+                    aria-hidden="true"
                     width={40}
                     height={40}
                     className="h-10 w-10 rounded-full border border-border bg-card object-cover object-top"

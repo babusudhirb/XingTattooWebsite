@@ -1,24 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { BUSINESS_NAME, HOURS_LONG, OG_IMAGE, pageTitle, SITE_URL } from "@/data/business";
+import { BUSINESS_NAME, HOURS_LONG, pageTitle } from "@/data/business";
 import { LegalPage } from "@/components/layout/LegalPage";
+import { seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
 const TITLE = pageTitle("Terms & Conditions");
 const DESCRIPTION =
   "Terms for consultations, bookings, offers and aftercare at Xing Premium Tattoo Studio, Brookefield, Bengaluru. Please read before your free consultation.";
 
 export const Route = createFileRoute("/terms-and-conditions")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: `${SITE_URL}/terms-and-conditions` },
-      { property: "og:image", content: OG_IMAGE },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/terms-and-conditions` }],
-  }),
+  head: () =>
+    seoHead({
+      path: "/terms-and-conditions",
+      title: TITLE,
+      description: DESCRIPTION,
+      graph: [breadcrumbSchema([{ label: "Home", href: "/" }, { label: "Terms & Conditions" }])],
+    }),
   component: Terms,
 });
 
@@ -47,8 +45,8 @@ function Terms() {
       <h2>Your design</h2>
       <p>
         Every design is drawn for you and approved by you before tattooing begins. Please check
-        spellings, dates and scripts carefully — once the stencil is approved, the tattoo is
-        applied as shown.
+        spellings, dates and scripts carefully — once the stencil is approved, the tattoo is applied
+        as shown.
       </p>
       <h2>Aftercare and touch-ups</h2>
       <p>

@@ -25,6 +25,8 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { SectionHeading } from "@/components/sections/SectionHeading";
+import { RelatedGuides } from "@/components/blog/RelatedGuides";
+import { postBySlug, SERVICE_GUIDES } from "@/data/blog";
 import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { AftercareSteps, BenefitCards } from "@/components/services/ServiceInteractive";
@@ -54,6 +56,9 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         ? gallery.filter((g) => g.tag === service.galleryTag)
         : [];
   const relatedServices = service.relatedSlugs.map((slug) => services[slug]);
+  const guides = (SERVICE_GUIDES[service.slug] ?? [])
+    .map(postBySlug)
+    .filter((p): p is BlogPostMeta => !!p);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -509,6 +514,12 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         </div>
       </section>
 
+      <RelatedGuides
+        posts={guides}
+        eyebrow="Read Before You Book"
+        title={`${service.shortName} Tattoo Guides`}
+      />
+
       {/* Cross-sell */}
       <section className="mx-auto max-w-7xl px-5 pb-16">
         <SectionHeading eyebrow="Explore More" title="Other Styles You Might Like" />
@@ -522,7 +533,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
             >
               <img
                 src={s.heroImage}
-                alt={`${s.name} example`}
+                alt={s.heroImageAlt}
                 width={640}
                 height={768}
                 loading="lazy"

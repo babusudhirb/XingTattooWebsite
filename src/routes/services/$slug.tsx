@@ -1,8 +1,17 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { BRAND_NAME, BUSINESS_ID, BUSINESS_NAME, businessSchema, pageTitle, SITE_URL } from "@/data/business";
+import {
+  BRAND_NAME,
+  BUSINESS_ID,
+  BUSINESS_NAME,
+  businessSchema,
+  pageTitle,
+  SITE_URL,
+} from "@/data/business";
 import { getService } from "@/data/services";
 import { ServiceTemplate } from "@/components/services/ServiceTemplate";
+import { faqNode, seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -12,41 +21,32 @@ export const Route = createFileRoute("/services/$slug")({
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) return {};
-    const canonical = `${SITE_URL}/services/${params.slug}`;
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: loaderData.faqs.map((f) => ({
-        "@type": "Question",
-        name: f.question,
-        acceptedAnswer: { "@type": "Answer", text: f.answer },
-      })),
-    };
-    const serviceSchema = {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: loaderData.name,
-      name: `${loaderData.name} | ${BRAND_NAME}`,
+    const path = `/services/${params.slug}`;
+    return seoHead({
+      path,
+      title: pageTitle(loaderData.metaTitle),
       description: loaderData.metaDescription,
-      areaServed: businessSchema.areaServed,
-      provider: { "@id": BUSINESS_ID, name: BUSINESS_NAME },
-    };
-    return {
-      meta: [
-        { title: pageTitle(loaderData.metaTitle) },
-        { name: "description", content: loaderData.metaDescription },
-        { property: "og:title", content: pageTitle(loaderData.metaTitle) },
-        { property: "og:description", content: loaderData.metaDescription },
-        { property: "og:type", content: "website" },
-        { property: "og:image", content: loaderData.heroImage },
-        { name: "twitter:card", content: "summary_large_image" },
+      image: `/og/services-${params.slug}.jpg`,
+      imageAlt: loaderData.heroImageAlt,
+      graph: [
+        {
+          "@type": "Service",
+          "@id": `${SITE_URL}${path}#service`,
+          serviceType: loaderData.name,
+          name: `${loaderData.name} | ${BRAND_NAME}`,
+          description: loaderData.metaDescription,
+          url: `${SITE_URL}${path}`,
+          areaServed: businessSchema.areaServed,
+          provider: { "@id": BUSINESS_ID, name: BUSINESS_NAME },
+        },
+        faqNode(loaderData.faqs),
+        breadcrumbSchema([
+          { label: "Home", href: "/" },
+          { label: "Tattoo Services", href: "/services" },
+          { label: loaderData.name },
+        ]),
       ],
-      links: [{ rel: "canonical", href: canonical }],
-      scripts: [
-        { type: "application/ld+json", children: JSON.stringify(serviceSchema) },
-        { type: "application/ld+json", children: JSON.stringify(faqSchema) },
-      ],
-    };
+    });
   },
   component: ServiceRoute,
 });

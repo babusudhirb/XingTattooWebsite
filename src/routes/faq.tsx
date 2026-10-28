@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, CornerDownRight, MessageCircle, Search, X } from "lucide-react";
 
-import { BUSINESS_ID, pageTitle, SITE_URL } from "@/data/business";
+import { pageTitle } from "@/data/business";
 import { faqById, faqCategories, faqs, type Faq } from "@/data/faqs";
 import { WHATSAPP_URL } from "@/data/site";
 import {
@@ -16,38 +16,21 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { CreaseLines, SectionNav } from "@/components/sections/Origami";
+import { faqNode, seoHead } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/blog";
 
-const TITLE = pageTitle("Tattoo FAQs: Pain, Aftercare & Booking");
+const TITLE = pageTitle("Tattoo FAQs: Cost, Pain & Aftercare");
 const DESCRIPTION =
-  "Answers to common tattoo questions — pain, hygiene, first tattoos, aftercare and booking — from Xing Premium Tattoo Studio in Brookefield, Bengaluru.";
+  "Straight answers on tattoo cost factors, pain, hygiene, first tattoos and aftercare from Xing Premium Tattoo Studio, Brookefield, Bengaluru. Ask us anything.";
 
 export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/faq` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          name: TITLE,
-          about: { "@id": BUSINESS_ID },
-          mainEntity: faqs.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        }),
-      },
-    ],
-  }),
+  head: () =>
+    seoHead({
+      path: "/faq",
+      title: TITLE,
+      description: DESCRIPTION,
+      graph: [faqNode(faqs), breadcrumbSchema([{ label: "Home", href: "/" }, { label: "FAQ" }])],
+    }),
   component: FaqPage,
 });
 

@@ -1,10 +1,11 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { postLoaders } from "virtual:blog";
 
-import { BUSINESS_ID, BUSINESS_NAME, SITE_URL } from "@/data/business";
+import { BUSINESS_ID, BUSINESS_NAME, LEAD_ARTIST, SITE_URL } from "@/data/business";
 import { absoluteUrl, categoryLabel } from "@/data/blog";
 import { breadcrumbSchema, cardImage, postCrumbs, splitPostBody } from "@/lib/blog";
 import { BlogPostView } from "@/components/blog/BlogPostView";
+import { faqNode, seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -15,31 +16,21 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData: post }) => {
     if (!post) return {};
     const url = `${SITE_URL}/blog/${post.slug}`;
-    const image = absoluteUrl(post.ogImage);
-    return {
+    return seoHead({
+      path: `/blog/${post.slug}`,
+      title: post.seoTitle,
+      description: post.description,
+      type: "article",
+      image: post.ogImage,
+      imageAlt: post.heroAlt,
       meta: [
-        { title: post.seoTitle },
-        { name: "description", content: post.description },
         { name: "author", content: post.author },
-        { property: "og:type", content: "article" },
-        { property: "og:title", content: post.seoTitle },
-        { property: "og:description", content: post.description },
-        { property: "og:url", content: url },
-        { property: "og:image", content: image },
-        { property: "og:image:width", content: "1200" },
-        { property: "og:image:height", content: "630" },
-        { property: "og:image:alt", content: post.heroAlt },
         { property: "article:published_time", content: post.datePublished },
         { property: "article:modified_time", content: post.dateModified },
         { property: "article:section", content: categoryLabel(post.category) },
         ...post.tags.map((t) => ({ property: "article:tag", content: t })),
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: post.seoTitle },
-        { name: "twitter:description", content: post.description },
-        { name: "twitter:image", content: image },
       ],
       links: [
-        { rel: "canonical", href: url },
         {
           rel: "preload",
           as: "image",
@@ -49,51 +40,36 @@ export const Route = createFileRoute("/blog/$slug")({
           fetchPriority: "high",
         },
       ],
-      scripts: [
+      page: { mainEntity: { "@id": `${url}#post` } },
+      graph: [
         {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "BlogPosting",
-                "@id": `${url}#post`,
-                headline: post.title,
-                description: post.description,
-                ...(post.answer ? { abstract: post.answer } : {}),
-                image: [image, absoluteUrl(post.heroImage)],
-                datePublished: post.datePublished,
-                dateModified: post.dateModified,
-                author: {
-                  "@type": "Person",
-                  name: "Peace (Chingri Awungshi)",
-                  jobTitle: "Lead Tattoo Artist",
-                  url: `${SITE_URL}/tattoo-artist`,
-                },
-                publisher: { "@id": BUSINESS_ID, name: BUSINESS_NAME },
-                mainEntityOfPage: url,
-                keywords: [post.primaryKeyword, ...post.secondaryKeywords].join(", "),
-                articleSection: categoryLabel(post.category),
-                inLanguage: "en-IN",
-              },
-              breadcrumbSchema([...postCrumbs(post), { label: post.title }]),
-              ...(post.faqs.length
-                ? [
-                    {
-                      "@type": "FAQPage",
-                      mainEntity: post.faqs.map((f) => ({
-                        "@type": "Question",
-                        name: f.q,
-                        acceptedAnswer: { "@type": "Answer", text: f.a },
-                      })),
-                    },
-                  ]
-                : []),
-            ],
-          }),
+          "@type": "BlogPosting",
+          "@id": `${url}#post`,
+          headline: post.title,
+          description: post.description,
+          ...(post.answer ? { abstract: post.answer } : {}),
+          image: [absoluteUrl(post.ogImage), absoluteUrl(post.heroImage)],
+          datePublished: post.datePublished,
+          dateModified: post.dateModified,
+          author: {
+            "@type": "Person",
+            "@id": `${SITE_URL}/tattoo-artist#peace`,
+            name: LEAD_ARTIST.fullName,
+            jobTitle: LEAD_ARTIST.role,
+            url: `${SITE_URL}/tattoo-artist`,
+          },
+          publisher: { "@id": BUSINESS_ID, name: BUSINESS_NAME },
+          mainEntityOfPage: url,
+          keywords: [post.primaryKeyword, ...post.secondaryKeywords].join(", "),
+          articleSection: categoryLabel(post.category),
+          inLanguage: "en-IN",
         },
+        breadcrumbSchema([...postCrumbs(post), { label: post.title }]),
+        ...(post.faqs.length
+          ? [faqNode(post.faqs.map((f) => ({ question: f.q, answer: f.a })))]
+          : []),
       ],
-    };
+    });
   },
   component: PostRoute,
 });

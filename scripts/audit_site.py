@@ -85,7 +85,8 @@ for f in pages:
         issues.append(f"TattooParlor x{len(biz)}")
     else:
         a, A = biz[0]["address"], B["address"]
-        schema_addr = f'{a["streetAddress"]}, {a["addressLocality"]}, {a["addressRegion"]} {a["postalCode"]}, India'
+        # Schema = the GBP street line + locality; the display line adds the GBP sublocality
+        schema_addr = f'{a["streetAddress"]}, {A["sublocality"]}, {a["addressLocality"]}, {a["addressRegion"]} {a["postalCode"]}, India'
         if biz[0]["name"] != B["name"]: issues.append("schema name")
         if schema_addr != A["full"]: issues.append(f"schema address {schema_addr!r}")
         if biz[0]["telephone"] != B["e164"]: issues.append("schema telephone")
@@ -97,10 +98,12 @@ for f in pages:
     text = visible_text(re.sub(r"<time[^>]*>[\s\S]*?</time>", " ", h))
     for q in B["quotes"]:  # customer review quotes are never edited
         text = text.replace(" ".join(q.split()), " ")
+    # The GBP address spells it "Brookfield"; allowed there and nowhere else
+    banned_text = text.replace(B["address"]["full"], " ")
     for ok in ALLOWED:
-        text = text.replace(ok, " ")
+        banned_text = banned_text.replace(ok, " ")
     for b in BANNED:
-        if b in text or b in title or b in desc: issues.append(f"banned {b!r}")
+        if b in banned_text or b in title or b in desc: issues.append(f"banned {b!r}")
     for ph in PHONE_RE.findall(text):
         if re.sub(r"\D", "", ph)[-10:] != "8970007818": issues.append(f"phone {ph}")
         elif ph.strip() != B["phone"]: issues.append(f"phone format {ph!r}")
@@ -146,6 +149,6 @@ print(f"footer contact/hours variants: {len(footers)}")
 if len(footers) > 1:
     for k, v in footers.items():
         print(" -", v[:3], "…", k[:160])
-for extra in ["sitemap.xml", "robots.txt", "manifest.webmanifest", "blog/rss.xml"]:
+for extra in ["sitemap.xml", "robots.txt", "site.webmanifest", "sitemap-pages.xml", "sitemap-blog.xml", "llms.txt", "blog/rss.xml"]:
     print(f"{extra}: {'ok' if (ROOT / extra).exists() else 'MISSING'}")
 sys.exit(1 if problems or dupes or len(footers) > 1 else 0)
