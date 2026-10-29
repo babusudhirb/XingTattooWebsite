@@ -29,7 +29,7 @@ faqs:
     a: "Yes. Consultations are free. You can visit the studio in AECS Layout, Brookefield, during opening hours, or message the studio on WhatsApp to share your idea, references and placement before visiting."
 ---
 
-Peace — full name Chingri Awungshi — is the tattoo artist in Brookefield behind every piece at Xing. With more than 15 years of experience, he handles every consultation, design and session personally, from fine-line first tattoos to detailed realism and spiritual work.
+Peace — full name Chingri Awungshi — is the tattoo artist in Brookefield behind every piece at Xing. With {{years}} years of experience, he handles every consultation, design and session personally, from fine-line first tattoos to detailed realism and spiritual work.
 
 This post shares the confirmed facts about Peace and how he works. For his full profile and portfolio, visit the [artist page](/tattoo-artist).
 
@@ -144,7 +144,7 @@ At Xing, the artist you consult with is the artist who tattoos you. Peace sketch
 
 ## Conclusion
 
-If you're looking for a tattoo artist in Brookefield or anywhere in East Bengaluru, Peace brings more than 15 years of experience, a custom-design approach and strict hygiene to every tattoo. The best way to know if he's the right artist for you is to meet him and talk about your idea.
+If you're looking for a tattoo artist in Brookefield or anywhere in East Bengaluru, Peace brings {{years}} years of experience, a custom-design approach and strict hygiene to every tattoo. The best way to know if he's the right artist for you is to meet him and talk about your idea.
 
 Visit the [artist page](/tattoo-artist) for more, or browse the [tattoo gallery](/#gallery).
 

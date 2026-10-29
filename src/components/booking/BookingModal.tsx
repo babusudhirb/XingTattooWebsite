@@ -315,9 +315,7 @@ export function BookingModal() {
                 ["Name", form.name],
               ].map(([k, v]) => (
                 <div key={k} className="bg-card px-4 py-3">
-                  <dt className="text-xs tracking-wide text-muted-foreground uppercase">
-                    {k}
-                  </dt>
+                  <dt className="text-xs tracking-wide text-muted-foreground uppercase">{k}</dt>
                   <dd className="mt-0.5 font-semibold">{v}</dd>
                 </div>
               ))}

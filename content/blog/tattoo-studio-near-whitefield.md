@@ -155,7 +155,7 @@ You're welcome to bring a friend for support, especially for a first tattoo. Man
 
 ## How we do it at Xing
 
-At Xing, every tattoo is designed and done by Peace, who has more than 15 years of experience. Designs are sketched from scratch and approved by you before the stencil goes on.
+At Xing, every tattoo is designed and done by Peace, who has {{years}} years of experience. Designs are sketched from scratch and approved by you before the stencil goes on.
 
 Needles are single-use and opened in front of you, inks are sealed and skin-tested, reusable tools go through medical-grade sterilisation, and the workstation is cleaned and re-wrapped between every client. You leave with clear aftercare guidance, and we offer a free touch-up if any part heals unevenly.
 

@@ -17,7 +17,7 @@ export function SocialDock() {
     <>
       <MobileActionBar />
       <div
-        className={`fixed z-50 flex max-md:hidden transition-all duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
+        className={`fixed z-50 flex max-md:hidden landscape-phone:hidden transition-all duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
           docked
             ? "bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 translate-y-0 flex-row gap-3 rounded-full border border-border bg-card/90 px-4 py-2.5 shadow-[var(--shadow-soft)] backdrop-blur sm:gap-4 sm:px-5 sm:py-3"
             : "top-1/2 right-3 -translate-y-1/2 flex-col gap-3 rounded-full border border-transparent px-2 py-2 sm:right-5 sm:gap-5"

@@ -22,7 +22,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
               {c.href ? (
                 <a
                   href={c.href}
-                  className="inline-flex min-h-11 items-center hover:text-foreground hover:underline"
+                  className="inline-flex min-h-11 min-w-11 items-center hover:text-foreground hover:underline"
                 >
                   {c.label}
                 </a>
@@ -38,7 +38,6 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
     </nav>
   );
 }
-
 
 /** "Visit the studio" strip used at the end of blog listings. */
 export function VisitStrip() {
@@ -56,9 +55,7 @@ export function VisitStrip() {
           <address className="mt-3 text-sm leading-relaxed not-italic text-muted-foreground">
             {ADDRESS.full}
           </address>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {HOURS_SHORT}
-          </p>
+          <p className="mt-2 text-sm text-muted-foreground">{HOURS_SHORT}</p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
           <BookCTA location="blog_end" icon={false} />

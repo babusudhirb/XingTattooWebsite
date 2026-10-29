@@ -35,20 +35,20 @@ export function MobileMenu() {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
         aria-label="Open menu"
-        className="flex h-11 w-11 items-center justify-center rounded-sm border border-border transition-colors hover:bg-accent lg:hidden"
+        className="flex h-12 w-12 items-center justify-center rounded-sm border border-border transition-colors hover:bg-accent lg:hidden"
       >
         <Menu className="h-5 w-5" />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-        <Dialog.Content className="fixed inset-y-0 right-0 z-[80] flex w-[min(22rem,100vw)] flex-col bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] shadow-2xl data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right">
+        <Dialog.Content className="fixed inset-0 z-[80] flex h-dvh w-full flex-col bg-background pt-[var(--sat)] pr-[var(--sar)] pb-[var(--sab)] pl-[var(--sal)] shadow-2xl sm:left-auto sm:w-[min(24rem,100vw)] data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right">
           <div className="flex items-center justify-between border-b border-border px-5 py-3">
             <div onClick={close}>
               <Logo />
             </div>
             <Dialog.Close
               aria-label="Close menu"
-              className="flex h-11 w-11 items-center justify-center rounded-sm border border-border transition-colors hover:bg-accent"
+              className="flex h-12 w-12 items-center justify-center rounded-sm border border-border transition-colors hover:bg-accent"
             >
               <X className="h-5 w-5" />
             </Dialog.Close>
@@ -164,7 +164,7 @@ export function MobileMenu() {
  */
 export function MobileActionBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.18)] backdrop-blur md:hidden">
+    <div className="mobile-action-bar fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 pt-2 pr-[max(0.75rem,var(--sar))] pb-[calc(8px+var(--sab))] pl-[max(0.75rem,var(--sal))] shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.18)] backdrop-blur transition-transform duration-200 md:hidden landscape-phone:block">
       <div className="mx-auto flex max-w-md items-center gap-2">
         <WhatsAppCTA
           location="sticky_bar"

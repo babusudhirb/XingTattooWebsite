@@ -2,6 +2,7 @@
  * Image budget pass (sharp). Run from clonecraft-hero/:  node scripts/optimize-images.mjs
  *
  * - Studio gallery photos (public/gallery): adds a 480px copy next to each (name-480.webp) for srcset.
+ * - Style photos (src/assets/services): a 480px copy each, plus a 720px copy of each hero, for srcset.
  * - Recompresses WebP over budget: heroes ≤ 180 KB, thumbnails ≤ 60 KB, anything else ≤ 250 KB,
  *   gallery photos ≤ 1200px wide, heroes ≤ 1600px. Per-file width overrides below.
  * - Every file it changes is first copied to _originals/<same path> (kept out of the deploy).
@@ -21,6 +22,8 @@ const KB = 1024;
 const WIDTH_OVERRIDES = {
   // Shown at most ~200 CSS px wide (40rem tall, 1260×4156 drawing); 640px covers 3× screens
   "src/assets/hero-fineline-art.webp": 640,
+  // Phone version: ~90 CSS px wide at 38vh tall; 240px covers 2.5× screens
+  "src/assets/hero-fineline-art-sm.webp": 240,
 };
 
 function budget(rel) {
@@ -64,7 +67,9 @@ let changed = 0;
 let variants = 0;
 const files = [...walk(path.join(ROOT, "public")), ...walk(path.join(ROOT, "src/assets"))]
   .map((f) => path.relative(ROOT, f).replace(/\\/g, "/"))
-  .filter((rel) => rel.endsWith(".webp") && !rel.endsWith("-480.webp") && !rel.includes("/og/"));
+  .filter(
+    (rel) => rel.endsWith(".webp") && !/-(320|480|720)\.webp$/.test(rel) && !rel.includes("/og/"),
+  );
 
 for (const rel of files) {
   const abs = path.join(ROOT, rel);
@@ -81,6 +86,19 @@ for (const rel of files) {
       console.log(
         `${rel}: ${Math.round(input.length / KB)} KB ${width}w → ${Math.round(out.length / KB)} KB ${targetWidth}w`,
       );
+    }
+  }
+  // Style photos: a 480px copy for gallery grids, and a 720px copy of each hero for phones
+  const stylePhoto =
+    /^src\/assets\/services\/[^/]+\/(hero|gallery-\d+)\.webp$/.test(rel) ||
+    rel === "src/assets/style-blackgrey.webp";
+  if (stylePhoto) {
+    for (const [w, kb] of [[480, 45], ...(/hero|style-/.test(rel) ? [[720, 80]] : [])]) {
+      const small = abs.replace(/\.webp$/, `-${w}.webp`);
+      if (!fs.existsSync(small)) {
+        fs.writeFileSync(small, await encode(fs.readFileSync(abs), w, kb, 74));
+        variants++;
+      }
     }
   }
   if (rel.startsWith("public/gallery/")) {
@@ -103,11 +121,18 @@ const CARD_SOURCES = {
 let cards = 0;
 for (const [slug, src] of Object.entries(CARD_SOURCES)) {
   const dest = path.join(ROOT, `src/assets/services/${slug}/card.webp`);
-  if (fs.existsSync(dest)) continue;
-  fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.writeFileSync(dest, await encode(fs.readFileSync(path.join(ROOT, src)), 560, 60, 76));
-  cards++;
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, await encode(fs.readFileSync(path.join(ROOT, src)), 560, 60, 76));
+    cards++;
+  }
+  // Phones show cards ~170px wide (two columns): a 320px copy covers them
+  const small = dest.replace(/\.webp$/, "-320.webp");
+  if (!fs.existsSync(small)) {
+    fs.writeFileSync(small, await encode(fs.readFileSync(dest), 320, 20, 72));
+    cards++;
+  }
 }
 console.log(
-  `optimize-images: ${changed} recompressed, ${variants} new 480px gallery copies, ${cards} style cards`,
+  `optimize-images: ${changed} recompressed, ${variants} new 480/720px copies, ${cards} style cards`,
 );

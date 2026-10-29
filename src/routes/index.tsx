@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, CrownIcon, PenTool, ShieldCheck, X } from "lucide-react";
+import { preload } from "react-dom";
+import { ArrowRight, PenTool, ShieldCheck, Star, X } from "lucide-react";
 
 import { QuickAnswer } from "@/components/faq/QuickAnswer";
 import { homeQuickAnswer } from "@/data/page-copy";
@@ -12,7 +13,14 @@ import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield
 import { ADDRESS, COUNTS, GOOGLE_RATING, isOfferActive, OFFER, pageTitle } from "@/data/business";
 import { OFFER_IDEAS, OFFER_IMAGE_SIZE, OFFER_LABEL, offerImages } from "@/data/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
-import { GALLERY_SIZES, gallerySrcSet, studioGallery, styleGallery } from "@/data/gallery";
+import {
+  GALLERY_SIZES,
+  gallerySrcSet,
+  studioGallery,
+  styleGallery,
+  CARD_SIZES,
+  cardSrcSet,
+} from "@/data/gallery";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
@@ -33,6 +41,7 @@ import { RelatedGuides } from "@/components/blog/RelatedGuides";
 import { HOME_GUIDES, posts, sectionPosts } from "@/data/blog";
 import { blogItemList } from "@/lib/blog";
 import { faqNode, seoHead, SPEAKABLE } from "@/lib/seo";
+import { ReadMore } from "@/components/sections/ReadMore";
 
 /** Gallery preview: each style's lead photo, then three studio photos — each opens its
  *  section of /gallery. */
@@ -54,23 +63,6 @@ export const Route = createFileRoute("/")({
       path: "/",
       title: HOME_TITLE,
       description: HOME_DESCRIPTION,
-      // The hero drawing is the largest thing on screen: fetch the right one first
-      links: [
-        {
-          rel: "preload",
-          as: "image",
-          href: heroArtSmall,
-          media: "(max-width: 1023px)",
-          fetchPriority: "high",
-        },
-        {
-          rel: "preload",
-          as: "image",
-          href: heroArt,
-          media: "(min-width: 1024px)",
-          fetchPriority: "high",
-        },
-      ],
       page: { speakable: SPEAKABLE },
       graph: [
         faqNode(homeFaqs),
@@ -80,10 +72,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const features = [
-  { icon: PenTool, title: "Custom Designs", text: "Personalized just for you" },
-  { icon: ShieldCheck, title: "Safe & Hygienic", text: "100% sterile & safe" },
-  { icon: CrownIcon, title: "Premium Quality", text: "Premium inks & equipment" },
+/** Hero trust row: one compact line of chips. */
+const trust = [
+  { icon: Star, text: `${GOOGLE_RATING}★ Google` },
+  { icon: ShieldCheck, text: "Single-use needles" },
+  { icon: PenTool, text: "Free consultation" },
 ];
 
 /** Background flash art for the offer popup: position, tilt and drift offset. */
@@ -298,6 +291,10 @@ function OfferModal({ onClose }: { onClose: () => void }) {
 }
 
 function Index() {
+  // The hero drawing is the largest thing on screen. preload() (not a head link) lets React
+  // put the hint at the top of <head>, ahead of the script preloads it would compete with.
+  preload(heroArtSmall, { as: "image", fetchPriority: "high", media: "(max-width: 1023px)" });
+  preload(heroArt, { as: "image", fetchPriority: "high", media: "(min-width: 1024px)" });
   const [offerOpen, setOfferOpen] = useState(false);
 
   useEffect(() => {
@@ -316,7 +313,7 @@ function Index() {
       {/* Hero — fine-line artwork. Its white background is multiplied into the
           page colour, so the lines look drawn straight onto the page (no box).
           Below lg: the drawing sits beside the headline (same row), with the
-          buttons and features full-width underneath. From lg: tall in the
+          buttons and trust chips full-width underneath. From lg: tall in the
           right-hand column, text centred beside it. */}
       <section id="home" className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 px-5 pt-6 pb-8 sm:gap-x-8 sm:pt-10 sm:pb-12 lg:grid-cols-2 lg:gap-x-10 lg:py-16">
@@ -330,7 +327,7 @@ function Index() {
                 width={1260}
                 height={4156}
                 fetchPriority="high"
-                className="relative block h-80 w-auto mix-blend-multiply sm:h-96 lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
+                className="relative block h-[min(20rem,38vh)] w-auto mix-blend-multiply sm:h-96 lg:h-[40rem] lg:max-h-[calc(100svh-10rem)] lg:min-h-[26rem]"
               />
             </picture>
           </div>
@@ -365,19 +362,17 @@ function Index() {
               </Link>
             </div>
 
-            <div className="mt-7 grid grid-cols-3 gap-3 border-t border-border pt-5 sm:mt-12 sm:gap-6 sm:border-0 sm:pt-0">
-              {features.map(({ icon: Icon, title, text }) => (
-                <div key={title} className="flex flex-col items-start gap-2 sm:flex-row sm:gap-3">
-                  <Icon className="h-5 w-5 sm:mt-0.5 sm:h-6 sm:w-6" strokeWidth={1.4} />
-                  <div>
-                    <p className="font-display text-xs leading-tight font-semibold sm:text-sm">
-                      {title}
-                    </p>
-                    <p className="hidden text-xs text-muted-foreground sm:block">{text}</p>
-                  </div>
-                </div>
+            <ul className="mt-5 flex flex-wrap gap-2 sm:mt-10">
+              {trust.map(({ icon: Icon, text }) => (
+                <li
+                  key={text}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold sm:text-sm"
+                >
+                  <Icon className="h-3.5 w-3.5 shrink-0 text-amber-700" aria-hidden="true" />
+                  {text}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>
@@ -391,12 +386,14 @@ function Index() {
         <p className="mx-auto mt-4 max-w-xs text-center font-script text-xl text-amber-700 sm:mt-5 sm:max-w-sm sm:text-2xl">
           We make forever look easy.
         </p>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A premium tattoo studio in AECS Layout, Brookefield — {ADDRESS.landmark}. Every design at
-          Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri Awungshi),
-          our Lead Artist, with single-use needles opened in front of you. Trusted by clients from
-          Brookefield, Marathahalli, Whitefield and across East Bengaluru.
-        </p>
+        <ReadMore className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p>
+            A premium tattoo studio in AECS Layout, Brookefield — {ADDRESS.landmark}. Every design
+            at Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri
+            Awungshi), our Lead Artist, with single-use needles opened in front of you. Trusted by
+            clients from Brookefield, Marathahalli, Whitefield and across East Bengaluru.
+          </p>
+        </ReadMore>
 
         <StudioHighlights />
 
@@ -426,6 +423,8 @@ function Index() {
                   <span className="block overflow-hidden rounded-2xl bg-muted">
                     <img
                       src={s.cardImage}
+                      srcSet={cardSrcSet(s.cardImage)}
+                      sizes={CARD_SIZES}
                       alt={s.heroImageAlt}
                       width={640}
                       height={800}
@@ -514,11 +513,13 @@ function Index() {
             <p className="mt-4 font-display text-sm font-semibold tracking-wide text-foreground/80">
               Peace — Lead Artist, Brookefield, Bengaluru
             </p>
-            <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {COUNTS.years} years, {COUNTS.tattoos} tattoos and a {GOOGLE_RATING}★ Google rating.
-              Every consultation, stencil and session at Xing is done by Peace personally — from
-              realism and portraits to fine-line and Indian traditional work.
-            </p>
+            <ReadMore className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p>
+                {COUNTS.years} years, {COUNTS.tattoos} tattoos and a {GOOGLE_RATING}★ Google rating.
+                Every consultation, stencil and session at Xing is done by Peace personally — from
+                realism and portraits to fine-line and Indian traditional work.
+              </p>
+            </ReadMore>
 
             <div className="mt-7 flex flex-col gap-6 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-8">
               {/* Signature */}

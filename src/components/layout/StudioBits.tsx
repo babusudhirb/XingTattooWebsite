@@ -33,7 +33,11 @@ export function AttributeChips({ className = "" }: { className?: string }) {
  * shift), stays greyscale until used, and on touch screens sits behind a
  * "Tap to use map" overlay so a finger scrolling the page never gets trapped.
  */
-export function LazyMap({ className = "h-[280px] md:h-[360px] lg:h-[420px]" }: { className?: string }) {
+export function LazyMap({
+  className = "h-[280px] md:h-[360px] lg:h-[420px]",
+}: {
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
   const [active, setActive] = useState(false);

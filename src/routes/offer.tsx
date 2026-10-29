@@ -118,7 +118,7 @@ const OFFERS: Offer[] = [
   {
     id: "large-50",
     badge: "Biggest saving",
-    name: "Up to 50% off on large tattoos",
+    name: "Up to 50% off large tattoos",
     kicker: "Large tattoos",
     pricePrefix: "Up to",
     price: "50% off",

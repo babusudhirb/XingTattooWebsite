@@ -6,9 +6,9 @@ The site is plain files: every page is prerendered to `.html`, and `public/.htac
 
 ```sh
 npm install
-npm run build        # vite build + scripts/postbuild.mjs (sitemaps, robots.txt, llms.txt, redirects)
+npm run build        # seo:files (sitemaps, robots.txt, llms.txt, rss → public/) + vite build + postbuild (checks, redirects)
 npm run preview      # serves .output/public like Hostinger, on http://localhost:4173
-npm run seo:audit    # must end with "0 failures"
+npm run qa           # (with the preview running) SEO audit, NAP, links, mobile — each must report 0 failures
 ```
 
 Optional, before `npm run build`: set `VITE_GSC_VERIFICATION` and/or `VITE_BING_VERIFICATION` to add the
@@ -21,7 +21,7 @@ Search Console / Bing ownership meta tags (not needed if you verify the domain b
 3. Check in a browser:
    - `http://xingtattoo.in/about` → one redirect to `https://www.xingtattoo.in/about`
    - `https://www.xingtattoo.in/sitemap.xml` and `/robots.txt` load
-   - `https://www.xingtattoo.in/artist` → `/tattoo-artist`, `/gallery` → `/#gallery`
+   - `https://www.xingtattoo.in/artist` → `/tattoo-artist`, `/contact-us` → `/contact`, `/About` → `/about`
    - a made-up URL shows the branded 404 page
 
 ## What `.htaccess` does

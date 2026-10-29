@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { preload } from "react-dom";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
@@ -61,7 +62,16 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
-function Photo({ item, onOpen }: { item: GalleryItem; onOpen: () => void }) {
+/** `priority`: the first photos on the page — fetched at once, not lazily (they're the LCP). */
+function Photo({
+  item,
+  onOpen,
+  priority = false,
+}: {
+  item: GalleryItem;
+  onOpen: () => void;
+  priority?: boolean;
+}) {
   return (
     <li>
       <button
@@ -77,7 +87,8 @@ function Photo({ item, onOpen }: { item: GalleryItem; onOpen: () => void }) {
           alt={item.alt}
           width={800}
           height={1000}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
           decoding="async"
           className="aspect-[4/5] w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
@@ -87,6 +98,14 @@ function Photo({ item, onOpen }: { item: GalleryItem; onOpen: () => void }) {
 }
 
 function GalleryPage() {
+  // The first photo is the LCP: hint it at the top of <head>
+  const first = sections[0]!.items[0]!;
+  preload(first.img, {
+    as: "image",
+    fetchPriority: "high",
+    imageSrcSet: gallerySrcSet(first.img),
+    imageSizes: GALLERY_SIZES,
+  });
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [portfolioCount, setPortfolioCount] = useState(PORTFOLIO_PAGE);
   const [lightbox, setLightbox] = useState<{ items: GalleryItem[]; index: number } | null>(null);
@@ -107,8 +126,8 @@ function GalleryPage() {
           {H1}
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-pretty text-muted-foreground">
-          Every photo here is a tattoo {LEAD_ARTIST.name} designed and inked at our AECS Layout
-          studio. Pick a style to jump to it, or tap a photo to see it up close.
+          Tattoos {LEAD_ARTIST.name} designed and inked at our AECS Layout studio. Pick a style, or
+          tap a photo to see it up close.
         </p>
       </section>
 
@@ -164,6 +183,7 @@ function GalleryPage() {
                 <Photo
                   key={item.img}
                   item={item}
+                  priority={s.slug === sections[0]!.slug && i < 2}
                   onOpen={() => setLightbox({ items: s.items, index: i })}
                 />
               ))}

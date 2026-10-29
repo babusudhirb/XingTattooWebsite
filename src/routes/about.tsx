@@ -4,23 +4,10 @@ import { aboutQuickAnswer } from "@/data/page-copy";
 import { BookCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
 import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  Check,
-  ChevronRight,
-  Clock,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { ArrowRight, Check, ChevronRight, Clock, MapPin, Phone } from "lucide-react";
 
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
-import {
-  ADDRESS,
-  BUSINESS_NAME,
-  HOURS_TEXT,
-  pageTitle,
-  SHORT_ADDRESS,
-} from "@/data/business";
+import { ADDRESS, BUSINESS_NAME, HOURS_TEXT, pageTitle, SHORT_ADDRESS } from "@/data/business";
 import { aboutFaqs, aboutValues, hygieneStandards, visitLandmarks } from "@/data/about";
 import { ARTIST, tattoosForClients } from "@/data/artist";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
@@ -30,10 +17,10 @@ import { SocialDock } from "@/components/layout/SocialDock";
 import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/sections/Origami";
 import { faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
+import { ReadMore } from "@/components/sections/ReadMore";
 
 const TITLE = pageTitle("About Us: Tattoo Studio in AECS Layout");
-const DESCRIPTION =
-  `Custom tattoo studio ${ADDRESS.landmark}: hygiene, process, opening hours and directions.`;
+const DESCRIPTION = `Custom tattoo studio ${ADDRESS.landmark}: hygiene, process, opening hours and directions.`;
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -127,36 +114,42 @@ function AboutPage() {
               A tattoo is one of the few things you'll keep for life. We built Xing around that
               fact.
             </p>
-            <p>
-              Xing opened in {ARTIST.studioSince} {ADDRESS.landmark}. The idea was simple: a custom tattoo
-              studio for East Bengaluru where every design is drawn from scratch, every session is
-              unhurried, and hygiene is treated like a clinic, not an afterthought.
-            </p>
-            <p>
-              Since then, {ARTIST.happyClients} clients from Brookefield, Whitefield, Marathahalli,
-              ITPL and beyond have trusted us with first tattoos, names and dates, memorial
-              portraits, deity pieces, cover-ups and full sleeves — {ARTIST.tattoosCompleted}{" "}
-              tattoos and a {ARTIST.googleRating}★ Google rating later, the idea hasn't changed.
-            </p>
+            <ReadMore className="space-y-4">
+              <p>
+                Xing opened in {ARTIST.studioSince} {ADDRESS.landmark}. The idea was simple: a
+                custom tattoo studio for East Bengaluru where every design is drawn from scratch,
+                every session is unhurried, and hygiene is treated like a clinic, not an
+                afterthought.
+              </p>
+              <p>
+                Since then, {ARTIST.happyClients} clients from Brookefield, Whitefield,
+                Marathahalli, ITPL and beyond have trusted us with first tattoos, names and dates,
+                memorial portraits, deity pieces, cover-ups and full sleeves —{" "}
+                {ARTIST.tattoosCompleted} tattoos and a {ARTIST.googleRating}★ Google rating later,
+                the idea hasn't changed.
+              </p>
+            </ReadMore>
           </div>
           <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            <p>
-              Every tattoo at Xing is designed and inked by one artist —{" "}
-              <Link
-                to="/tattoo-artist"
-                className="font-semibold text-foreground underline decoration-amber-700/40 underline-offset-4 hover:decoration-amber-700"
-              >
-                Peace ({ARTIST.fullName})
-              </Link>
-              , with {ARTIST.yearsExperience} years of experience across realism, portraits, black
-              &amp; grey, fine-line, geometric and Indian traditional work. That means the person
-              you consult with is the person who draws your design and the person who tattoos it.
-            </p>
-            <p>
-              We'd rather do fewer tattoos properly than rush more of them. It's why consultations
-              are free and unhurried, why we'll give you honest advice on size and placement, and
-              why a free touch-up is part of the deal if anything heals unevenly.
-            </p>
+            <ReadMore className="space-y-4">
+              <p>
+                Every tattoo at Xing is designed and inked by one artist —{" "}
+                <Link
+                  to="/tattoo-artist"
+                  className="font-semibold text-foreground underline decoration-amber-700/40 underline-offset-4 hover:decoration-amber-700"
+                >
+                  Peace ({ARTIST.fullName})
+                </Link>
+                , with {ARTIST.yearsExperience} years of experience across realism, portraits, black
+                &amp; grey, fine-line, geometric and Indian traditional work. That means the person
+                you consult with is the person who draws your design and the person who tattoos it.
+              </p>
+              <p>
+                We'd rather do fewer tattoos properly than rush more of them. It's why consultations
+                are free and unhurried, why we'll give you honest advice on size and placement, and
+                why a free touch-up is part of the deal if anything heals unevenly.
+              </p>
+            </ReadMore>
             <div className="flex flex-wrap gap-3 pt-2">
               <BookCTA location="about_story" />
             </div>
@@ -258,11 +251,13 @@ function AboutPage() {
             >
               Meet Peace — the one hand behind every piece
             </h2>
-            <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {ARTIST.fullName}, known to clients as Peace, brings {ARTIST.yearsExperience} years of
-              experience and {ARTIST.tattoosCompleted} tattoos to every session at Xing. See the
-              styles, signature work and client reviews on the full artist profile.
-            </p>
+            <ReadMore className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p>
+                {ARTIST.fullName}, known to clients as Peace, brings {ARTIST.yearsExperience} years
+                of experience and {ARTIST.tattoosCompleted} tattoos to every session at Xing. See
+                the styles, signature work and client reviews on the full artist profile.
+              </p>
+            </ReadMore>
             <Link
               to="/tattoo-artist"
               className="mt-6 inline-flex items-center gap-3 rounded-full border border-primary px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"

@@ -182,7 +182,7 @@ export function SectionNav({ sections }: { sections: { id: string; label: string
                 onClick={() => setActive(id)}
                 data-nav-pill={id}
                 aria-current={current ? "location" : undefined}
-                className={`inline-flex min-h-11 items-center rounded-full border px-4 py-1.5 font-display sm:min-h-9 text-xs font-semibold tracking-[0.12em] uppercase transition-colors ${
+                className={`inline-flex min-h-11 items-center rounded-full border px-4 py-1.5 font-display text-xs font-semibold tracking-[0.12em] uppercase transition-colors ${
                   current
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border text-muted-foreground hover:border-amber-700 hover:text-foreground"

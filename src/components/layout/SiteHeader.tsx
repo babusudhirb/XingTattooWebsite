@@ -59,14 +59,14 @@ export function SiteHeader() {
             href={MAPS_PLACE_URL}
             target="_blank"
             rel="noopener"
-            className="mr-auto py-1.5 hover:text-foreground"
+            className="mr-auto inline-flex min-h-11 items-center hover:text-foreground"
           >
             {SHORT_ADDRESS}
           </a>
           <CallCTA
             location="header"
             variant="plain"
-            className="min-h-8 px-0 text-xs font-semibold tracking-normal text-foreground normal-case md:min-h-8 [@media(hover:hover)]:hover:underline"
+            className="min-h-11 px-0 text-xs font-semibold tracking-normal text-foreground normal-case md:min-h-11 [@media(hover:hover)]:hover:underline"
           />
           <span aria-hidden="true">·</span>
           <span className="min-w-36">
@@ -74,7 +74,7 @@ export function SiteHeader() {
           </span>
         </div>
       </div>
-      <div className="site-header-inner mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] sm:gap-4">
+      <div className="site-header-inner mx-auto flex min-h-14 max-w-7xl lg:min-h-16 items-center justify-between gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] sm:gap-4">
         <Logo />
         <nav
           aria-label="Main"
@@ -87,7 +87,7 @@ export function SiteHeader() {
                 <Link
                   to="/services"
                   aria-current={isActiveHref(pathname, href) ? "page" : undefined}
-                  className="flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground aria-[current=page]:text-foreground"
+                  className="flex min-h-11 items-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground aria-[current=page]:text-foreground"
                 >
                   {label}
                   <ChevronDown
@@ -136,7 +136,7 @@ export function SiteHeader() {
                 key={href}
                 to={href}
                 aria-current={isActiveHref(pathname, href) ? "page" : undefined}
-                className="relative text-muted-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:text-foreground hover:after:w-full aria-[current=page]:text-foreground aria-[current=page]:after:w-full"
+                className="relative inline-flex min-h-11 min-w-11 items-center justify-center text-muted-foreground transition-colors after:absolute after:bottom-2 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:text-foreground hover:after:w-full aria-[current=page]:text-foreground aria-[current=page]:after:w-full"
               >
                 {label}
               </Link>
@@ -148,7 +148,7 @@ export function SiteHeader() {
               to="/offer"
               data-track="click_offer"
               data-location="header"
-              className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-transform duration-300 hover:-translate-y-0.5"
+              className="inline-flex min-h-11 items-center font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase transition-transform duration-300 hover:-translate-y-0.5"
             >
               Offers
             </Link>

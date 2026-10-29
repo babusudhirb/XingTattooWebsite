@@ -83,7 +83,9 @@ export function SignatureServices({
                   </a>
                 </ItemHeading>
                 {!compact && (
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground max-md:line-clamp-2">
+                    {s.blurb}
+                  </p>
                 )}
                 <div className="mt-auto flex flex-wrap items-center gap-x-4 pt-3">
                   <span className="inline-flex min-h-11 items-center gap-1.5 font-display text-xs font-bold tracking-[0.12em] uppercase group-hover:text-amber-800">

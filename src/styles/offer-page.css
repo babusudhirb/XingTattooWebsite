@@ -2202,3 +2202,17 @@ html:has(.olp) {
   justify-content: center;
   cursor: default;
 }
+
+/* Tap targets: 44px minimum for the brand link, header links, phone links and the offer bar */
+.olp .brand,
+.olp .nav a,
+.olp a[href^="tel:"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+}
+.olp .top-offer {
+  min-height: 48px;
+}

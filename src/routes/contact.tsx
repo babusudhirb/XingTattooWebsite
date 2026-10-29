@@ -20,7 +20,7 @@ export const Route = createFileRoute("/contact")({
     seoHead({
       path: "/contact",
       title: pageTitle("Contact Us: Tattoo Studio in Brookefield"),
-      description: `Visit ${BRAND_NAME} on the First Floor of SV Plaza, above DMART Ready, 60 Feet Road, AECS Layout, Brookefield. Call, WhatsApp or get directions.`,
+      description: `Visit ${BRAND_NAME} ${ADDRESS.landmark}. Call, WhatsApp or get directions to our studio.`,
       pageType: "ContactPage",
       page: { mainEntity: { "@id": BUSINESS_ID } },
       graph: [faqNode(contactFaqs), breadcrumbSchema(CRUMBS)],
@@ -62,8 +62,8 @@ function ContactPage() {
         </h2>
         <ol className="mt-5 space-y-3 text-pretty text-muted-foreground">
           <li>
-            <strong className="text-foreground">60 Feet Road, AECS Layout:</strong> look for SV
-            Plaza, No. 267, with DMART Ready below.
+            <strong className="text-foreground">60 Feet Road, AECS Layout:</strong> look for
+            building No. 267, with DMART Ready on the ground floor.
           </li>
           <li>
             <strong className="text-foreground">First Floor:</strong> the studio is{" "}

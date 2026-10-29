@@ -16,6 +16,7 @@ export function GalleryLightbox({
   onNavigate: (index: number) => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const swipe = useRef<{ x: number; y: number } | null>(null);
   const [closing, setClosing] = useState(false);
 
   const requestClose = useCallback(() => {
@@ -87,7 +88,7 @@ export function GalleryLightbox({
         ref={closeRef}
         onClick={requestClose}
         aria-label="Close"
-        className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-background/10 text-primary-foreground backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-background/20 focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:outline-none sm:top-6 sm:right-6"
+        className="absolute top-[max(1rem,var(--sat))] right-[max(1rem,var(--sar))] z-30 flex h-12 w-12 items-center justify-center rounded-full border border-primary-foreground/20 bg-background/10 text-primary-foreground backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-background/20 focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:outline-none sm:top-6 sm:right-6"
       >
         <X className="h-5 w-5" />
       </button>
@@ -97,14 +98,14 @@ export function GalleryLightbox({
           <button
             onClick={goPrev}
             aria-label="Previous photo"
-            className="absolute left-2 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-background/10 text-primary-foreground backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-background/20 focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:outline-none sm:left-6"
+            className="absolute left-[max(0.5rem,var(--sal))] z-30 flex h-12 w-12 items-center justify-center rounded-full border border-primary-foreground/20 bg-background/10 text-primary-foreground backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-background/20 focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:outline-none sm:left-6"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={goNext}
             aria-label="Next photo"
-            className="absolute right-2 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/20 bg-background/10 text-primary-foreground backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-background/20 focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:outline-none sm:right-6"
+            className="absolute right-[max(0.5rem,var(--sar))] z-30 flex h-12 w-12 items-center justify-center rounded-full border border-primary-foreground/20 bg-background/10 text-primary-foreground backdrop-blur transition-transform duration-300 hover:scale-110 hover:bg-background/20 focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:outline-none sm:right-6"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -112,7 +113,21 @@ export function GalleryLightbox({
       )}
 
       <div
-        className={`relative z-10 flex max-h-[88vh] w-full max-w-3xl flex-col items-center transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
+        // Swipe left / right for the next / previous photo; pinch-zoom stays native
+        onTouchStart={(e) => {
+          const t = e.touches[0];
+          swipe.current = e.touches.length === 1 && t ? { x: t.clientX, y: t.clientY } : null;
+        }}
+        onTouchEnd={(e) => {
+          const start = swipe.current;
+          const t = e.changedTouches[0];
+          swipe.current = null;
+          if (!start || !t || total < 2) return;
+          const dx = t.clientX - start.x;
+          if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(t.clientY - start.y) * 1.5)
+            (dx < 0 ? goNext : goPrev)();
+        }}
+        className={`relative z-10 flex max-h-[88vh] w-full max-w-3xl touch-pan-y touch-pinch-zoom flex-col items-center pb-[var(--sab)] transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
           closing ? "scale-95 opacity-0" : "animate-scale-in scale-100 opacity-100"
         }`}
       >
@@ -133,7 +148,7 @@ export function GalleryLightbox({
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-amber-600 px-4 py-2.5 font-display text-xs font-bold tracking-[0.14em] text-white uppercase transition-transform duration-300 hover:-translate-y-0.5"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-amber-600 px-4 font-display text-xs font-bold tracking-[0.14em] text-white uppercase transition-transform duration-300 hover:-translate-y-0.5"
           >
             Want This Style? <ArrowRight className="h-3.5 w-3.5" />
           </a>

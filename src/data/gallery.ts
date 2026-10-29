@@ -9,11 +9,43 @@ export interface GalleryItem {
 
 export const STUDIO_TAG = "Studio";
 
-/** srcset for studio photos, which have a 480px copy alongside (scripts/optimize-images.mjs). */
-export const gallerySrcSet = (src: string) =>
-  src.startsWith("/gallery/")
-    ? `${src.replace(/\.webp$/, "-480.webp")} 480w, ${src} 800w`
-    : undefined;
+/** Style photos and their smaller copies (scripts/optimize-images.mjs), as built URLs. */
+const STYLE_FILES = import.meta.glob<string>(
+  ["/src/assets/services/*/*.webp", "/src/assets/style-blackgrey.webp"],
+  { eager: true, query: "?url", import: "default" },
+);
+/** Built URL of a style photo → its `-480` / `-720` copies. */
+const STYLE_COPIES = new Map(
+  Object.entries(STYLE_FILES)
+    .filter(([file]) => !/-(320|480|720)\.webp$/.test(file))
+    .map(([file, url]) => [
+      url,
+      {
+        w480: STYLE_FILES[file.replace(/\.webp$/, "-480.webp")],
+        w720: STYLE_FILES[file.replace(/\.webp$/, "-720.webp")],
+        w320: STYLE_FILES[file.replace(/\.webp$/, "-320.webp")],
+      },
+    ]),
+);
+
+/** srcset for gallery photos: studio photos and style photos both have a 480px copy. */
+export const gallerySrcSet = (src: string) => {
+  if (src.startsWith("/gallery/"))
+    return `${src.replace(/\.webp$/, "-480.webp")} 480w, ${src} 800w`;
+  const small = STYLE_COPIES.get(src)?.w480;
+  return small ? `${small} 480w, ${src} 1120w` : undefined;
+};
+/** srcset + sizes for a style card (560px file, 320px copy for two-column phone grids). */
+export const cardSrcSet = (src: string) => {
+  const small = STYLE_COPIES.get(src)?.w320;
+  return small ? `${small} 320w, ${src} 560w` : undefined;
+};
+export const CARD_SIZES = "(min-width: 1024px) 280px, (min-width: 640px) 33vw, 50vw";
+/** srcset for a style's hero photo: 720px for phones, the full 1120px file from tablets up. */
+export const heroSrcSet = (src: string) => {
+  const mid = STYLE_COPIES.get(src)?.w720;
+  return mid ? `${mid} 720w, ${src} 1120w` : undefined;
+};
 /** Grid columns: 2 on phones, 3 from sm, 4 from lg, 5 from xl. */
 export const GALLERY_SIZES =
   "(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw";

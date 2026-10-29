@@ -9,7 +9,8 @@ import { initClickTracking, track } from "@/lib/track";
  * defaults are set before the tag loads: analytics granted, all ad storage denied.
  */
 const env = import.meta.env;
-const GTM_ID = env.PROD && /^GTM-[A-Z0-9]+$/.test(env["VITE_GTM_ID"] ?? "") ? env["VITE_GTM_ID"] : "";
+const GTM_ID =
+  env.PROD && /^GTM-[A-Z0-9]+$/.test(env["VITE_GTM_ID"] ?? "") ? env["VITE_GTM_ID"] : "";
 const GA_ID =
   env.PROD && !GTM_ID && /^G-[A-Z0-9]+$/.test(env["VITE_GA_ID"] ?? "") ? env["VITE_GA_ID"] : "";
 const TAG_ON = Boolean(GTM_ID || GA_ID);

@@ -10,7 +10,12 @@ import { TattooFlash } from "@/components/sections/TattooFlash";
 
 const STEPS = ["Share your idea", "Get your custom design", "Book your session"];
 import { COUNTS, GOOGLE_RATING } from "@/data/business";
-const TRUST = [`${GOOGLE_RATING}★ on Google`, `${COUNTS.tattoos} tattoos`, "Single-use needles", "No payment upfront"];
+const TRUST = [
+  `${GOOGLE_RATING}★ on Google`,
+  `${COUNTS.tattoos} tattoos`,
+  "Single-use needles",
+  "No payment upfront",
+];
 
 /** Same schedule the booking form uses, so the promised slot is really bookable. */
 function nextOpenSlot() {

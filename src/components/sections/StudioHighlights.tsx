@@ -9,7 +9,13 @@ import { COUNTS, GOOGLE_RATING } from "@/data/business";
  * box-free — hairline rules and type do the structure.
  */
 
-const RATING = { value: GOOGLE_RATING, decimals: 1, suffix: "★", label: "Google rating", href: "#reviews" };
+const RATING = {
+  value: GOOGLE_RATING,
+  decimals: 1,
+  suffix: "★",
+  label: "Google rating",
+  href: "#reviews",
+};
 const EXPERIENCE = {
   value: parseInt(COUNTS.years, 10),
   decimals: 0,
@@ -136,7 +142,9 @@ export function StudioHighlights() {
             </span>{" "}
             {/* One label, two unbreakable phrases — no lone "for" when it wraps */}
             <span className="mt-2 flex flex-wrap items-center justify-center gap-x-1.5 text-xs tracking-[0.16em] text-muted-foreground uppercase transition-colors group-hover:text-foreground sm:text-xs">
-              <span className="font-semibold whitespace-nowrap text-foreground/80">Tattoos inked</span>
+              <span className="font-semibold whitespace-nowrap text-foreground/80">
+                Tattoos inked
+              </span>
               <span className="whitespace-nowrap">
                 · <strong className="font-semibold text-amber-700">{CLIENTS}</strong> happy clients
               </span>

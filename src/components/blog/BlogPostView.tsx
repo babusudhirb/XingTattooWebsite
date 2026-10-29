@@ -46,7 +46,7 @@ function Toc({ sections, active }: { sections: BlogPostData["sections"]; active:
           <a
             href={`#${s.id}`}
             aria-current={active === s.id ? "location" : undefined}
-            className={`flex min-h-11 items-center border-l-2 py-1.5 pl-3 leading-snug transition-colors lg:min-h-0 ${
+            className={`flex min-h-11 items-center border-l-2 py-1.5 pl-3 leading-snug transition-colors ${
               active === s.id
                 ? "border-amber-700 font-semibold text-foreground"
                 : "border-border text-muted-foreground hover:text-foreground"
@@ -176,7 +176,7 @@ export function BlogPostView({ post }: { post: BlogPostData }) {
               >
                 {categoryLabel(post.category)}
               </a>
-              <h1 className="font-display text-[1.9rem] leading-[1.1] font-semibold tracking-tight text-balance sm:text-[2.6rem]">
+              <h1 className="font-display text-h1 font-semibold tracking-tight text-balance">
                 {post.title}
               </h1>
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
@@ -286,7 +286,10 @@ export function BlogPostView({ post }: { post: BlogPostData }) {
                         value={`faq-${i}`}
                         className="rounded-xl border border-border bg-card px-4 sm:px-5"
                       >
-                        <AccordionTrigger data-faq-q className="py-4 text-left font-display text-[0.95rem] font-semibold hover:no-underline">
+                        <AccordionTrigger
+                          data-faq-q
+                          className="py-4 text-left font-display text-[0.95rem] font-semibold hover:no-underline"
+                        >
                           {f.q}
                         </AccordionTrigger>
                         <AccordionContent
@@ -318,9 +321,9 @@ export function BlogPostView({ post }: { post: BlogPostData }) {
                   <p className="eyebrow">Written by</p>
                   <p className="mt-1 font-display text-lg font-semibold">Peace</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {LEAD_ARTIST.role} at Xing, Brookefield, with {COUNTS.years} years of experience.
-                    Every consultation, design and session at the studio is handled by Peace
-                    personally.
+                    {LEAD_ARTIST.role} at Xing, Brookefield, with {COUNTS.years} years of
+                    experience. Every consultation, design and session at the studio is handled by
+                    Peace personally.
                   </p>
                   <Link
                     to="/tattoo-artist"

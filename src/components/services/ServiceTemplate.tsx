@@ -16,7 +16,8 @@ import { QuickAnswer } from "@/components/faq/QuickAnswer";
 import { serviceQuickAnswer } from "@/data/page-copy";
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import { services, type ServiceContent } from "@/data/services";
-import { gallery } from "@/data/gallery";
+import { gallery, CARD_SIZES, cardSrcSet, heroSrcSet } from "@/data/gallery";
+import { preload } from "react-dom";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
@@ -25,6 +26,9 @@ import { RelatedGuides } from "@/components/blog/RelatedGuides";
 import { postBySlug, SERVICE_GUIDES } from "@/data/blog";
 import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
 import { AftercareSteps, BenefitCards } from "@/components/services/ServiceInteractive";
+import { ReadMore } from "@/components/sections/ReadMore";
+
+const HERO_SIZES = "(min-width: 1024px) 600px, 100vw";
 
 function PainMeter({ score }: { score: 1 | 2 | 3 | 4 | 5 }) {
   return (
@@ -40,6 +44,13 @@ function PainMeter({ score }: { score: 1 | 2 | 3 | 4 | 5 }) {
 }
 
 export function ServiceTemplate({ service }: { service: ServiceContent }) {
+  // The hero photo is the LCP: hint it at the top of <head> (see the home page)
+  preload(service.heroImage, {
+    as: "image",
+    fetchPriority: "high",
+    imageSrcSet: heroSrcSet(service.heroImage),
+    imageSizes: HERO_SIZES,
+  });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const [headlineMain, headlineSub] = (service.heroHeadline ?? service.name).split(" | ");
@@ -87,10 +98,10 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-10 lg:grid-cols-2 lg:py-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-6 pb-10 lg:grid-cols-2 lg:py-8">
           <div>
             <p className="eyebrow">Tattoo Style</p>
-            <h1 className="mt-4 font-display text-[clamp(1.5rem,7.2vw,1.9rem)] leading-[1.05] font-medium tracking-tight text-balance uppercase sm:text-5xl lg:text-6xl">
+            <h1 className="mt-3 font-display text-[clamp(1.5rem,6.6vw,1.75rem)] leading-[1.1] font-medium tracking-tight text-balance sm:text-5xl sm:uppercase lg:text-[3.25rem]">
               {headlineMain}
             </h1>
             {headlineSub && (
@@ -98,16 +109,17 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
                 {headlineSub}
               </p>
             )}
-            <p className="mt-4 max-w-md font-script text-2xl text-amber-700">{service.tagline}</p>
-            {service.heroSummary && (
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {service.heroSummary}
-              </p>
-            )}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <p className="mt-3 max-w-md font-script text-2xl text-amber-700">{service.tagline}</p>
+            {/* CTAs before the summary, so they sit above the fold on every screen */}
+            <div className="mt-6 flex flex-wrap gap-3">
               <BookCTA location="service_hero" style={service.shortName} />
               <WhatsAppCTA location="service_hero" />
             </div>
+            {service.heroSummary && (
+              <ReadMore className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+                <p>{service.heroSummary}</p>
+              </ReadMore>
+            )}
             {service.heroTrustPoints && (
               <ul className="mt-6 grid max-w-lg gap-x-5 gap-y-2 sm:grid-cols-2">
                 {service.heroTrustPoints.map((point) => (
@@ -123,9 +135,11 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
           <div className="relative">
             <img
               src={service.heroImage}
+              srcSet={heroSrcSet(service.heroImage)}
+              sizes={HERO_SIZES}
               alt={service.heroImageAlt}
               width={800}
-              height={960}
+              height={1000}
               fetchPriority="high"
               className="blend-image relative mx-auto max-h-[520px] w-full object-cover"
             />
@@ -191,9 +205,9 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
             title={service.whyChooseTitle ?? `Why Choose ${service.shortName} Tattoos?`}
           />
           {service.whyChooseIntro && (
-            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {service.whyChooseIntro}
-            </p>
+            <ReadMore className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p>{service.whyChooseIntro}</p>
+            </ReadMore>
           )}
           <BenefitCards cards={service.benefitCards} styleName={service.shortName} />
         </section>
@@ -204,9 +218,9 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
             title={service.whyChooseTitle ?? `Why Choose ${service.shortName} Tattoos?`}
           />
           {service.whyChooseIntro && (
-            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {service.whyChooseIntro}
-            </p>
+            <ReadMore className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p>{service.whyChooseIntro}</p>
+            </ReadMore>
           )}
           <ul className="mt-8 grid gap-5 sm:grid-cols-3">
             {service.whyChoosePoints.map((point) => (
@@ -281,11 +295,13 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
         <section className="mx-auto max-w-7xl px-5 pb-16">
           <SectionHeading eyebrow="The Technique" title={service.explainer.title} />
           <div className="mt-8 grid gap-8 lg:grid-cols-5">
-            <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base lg:col-span-3">
-              {service.explainer.paragraphs.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
+            <ReadMore className="text-sm leading-relaxed text-muted-foreground sm:text-base lg:col-span-3">
+              <div className="space-y-4">
+                {service.explainer.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+            </ReadMore>
             <div className="rounded-sm border border-border bg-card p-6 shadow-[var(--shadow-card)] lg:col-span-2">
               <h3 className="font-display text-xs font-semibold tracking-[0.14em] text-amber-700 uppercase">
                 {service.explainer.idealStylesTitle}
@@ -506,6 +522,8 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
             >
               <img
                 src={s.cardImage}
+                srcSet={cardSrcSet(s.cardImage)}
+                sizes={CARD_SIZES}
                 alt={s.heroImageAlt}
                 width={640}
                 height={768}

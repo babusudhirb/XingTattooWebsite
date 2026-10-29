@@ -254,7 +254,7 @@ That said, being nearby does help with aftercare questions and touch-ups. If you
 
 ## How we do it at Xing
 
-Every tattoo at Xing is designed and inked by Peace, our lead artist, who has more than 15 years of experience. There are no handoffs between artists.
+Every tattoo at Xing is designed and inked by Peace, our lead artist, who has {{years}} years of experience. There are no handoffs between artists.
 
 Designs are sketched from scratch and sized to your body. You see and approve the design before the stencil goes on.
 

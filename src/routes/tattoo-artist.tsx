@@ -32,10 +32,11 @@ import {
 } from "@/components/sections/Origami";
 import { absolute, faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
+import { ReadMore } from "@/components/sections/ReadMore";
+import { CARD_SIZES, cardSrcSet } from "@/data/gallery";
 
 const TITLE = pageTitle("Peace, Tattoo Artist, Brookefield, Bangalore");
-const DESCRIPTION =
-  `Meet Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio: ${COUNTS.years} years of realism, portrait and fine-line work in Brookefield. Book a consult.`;
+const DESCRIPTION = `Meet Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio: ${COUNTS.years} years of realism, portrait and fine-line work in Brookefield. Book a consult.`;
 
 export const Route = createFileRoute("/tattoo-artist")({
   head: () =>
@@ -45,7 +46,8 @@ export const Route = createFileRoute("/tattoo-artist")({
       description: DESCRIPTION,
       type: "profile",
       image: "/og/tattoo-artist.jpg",
-      imageAlt: "Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio, Brookefield, Bangalore",
+      imageAlt:
+        "Peace (Chingri Awungshi), Lead Artist at Xing Premium Tattoo Studio, Brookefield, Bangalore",
       pageType: "ProfilePage",
       page: { mainEntity: { "@id": PERSON_ID } },
       graph: [
@@ -133,25 +135,28 @@ function TattooArtistPage() {
         className="relative scroll-mt-36 overflow-hidden"
       >
         <CreaseLines />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-10 lg:grid-cols-[1fr_1.05fr] lg:py-14">
-          <OrigamiFrame>
-            <img
-              src={artistPortrait}
-              alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, at Xing Premium Tattoo Studio"
-              width={1200}
-              height={1350}
-              fetchPriority="high"
-              className="h-full w-full object-contain mix-blend-multiply"
-            />
-          </OrigamiFrame>
+        {/* Phones: name, CTAs and bio first, portrait after (so the CTAs are above the fold) */}
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pt-6 pb-10 lg:grid-cols-[1fr_1.05fr] lg:py-8">
+          <div className="order-last lg:order-none">
+            <OrigamiFrame>
+              <img
+                src={artistPortrait}
+                alt="Peace (Chingri Awungshi), best tattoo artist in Brookefield, Bengaluru, at Xing Premium Tattoo Studio"
+                width={1200}
+                height={1350}
+                fetchPriority="high"
+                className="h-full w-full object-contain mix-blend-multiply"
+              />
+            </OrigamiFrame>
+          </div>
 
-          <div>
+          <div className="flex flex-col lg:block">
             <p className="eyebrow flex items-center gap-3">
               <span className="h-px w-8 bg-amber-700" /> Tattoo Artist · Brookefield, Bengaluru
             </p>
             <h1
               id="artist-name"
-              className="mt-5 font-display text-[2.75rem] leading-[1] font-medium tracking-tight sm:text-6xl"
+              className="mt-4 font-display text-[2.5rem] leading-[1] font-medium tracking-tight sm:mt-5 sm:text-6xl"
             >
               Peace{" "}
               <span className="mt-2 block text-xl font-normal tracking-normal text-balance text-muted-foreground sm:text-2xl">
@@ -161,17 +166,19 @@ function TattooArtistPage() {
             <p className="subtitle mt-2 text-sm text-muted-foreground sm:text-base">
               {ARTIST.role} at Xing Premium Tattoo Studio
             </p>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              With {ARTIST.yearsExperience} years behind the machine and {ARTIST.tattoosCompleted}{" "}
-              tattoos completed, Peace is the one hand behind every piece at Xing Premium Tattoo
-              Studio in AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and
-              across Bengaluru for custom realism, portraits, fine-line work and Indian traditional
-              designs — each one drawn from scratch and inked in a studio run to clinic-level
-              hygiene.
-            </p>
+            <ReadMore className="order-5 mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p>
+                With {ARTIST.yearsExperience} years behind the machine and {ARTIST.tattoosCompleted}{" "}
+                tattoos completed, Peace is the one hand behind every piece at Xing Premium Tattoo
+                Studio in AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and
+                across Bengaluru for custom realism, portraits, fine-line work and Indian
+                traditional designs — each one drawn from scratch and inked in a studio run to
+                clinic-level hygiene.
+              </p>
+            </ReadMore>
 
             {/* Folded "tag" facts */}
-            <ul className="mt-7 flex flex-wrap gap-3">
+            <ul className="order-6 mt-6 flex flex-wrap gap-3">
               {[
                 `${ARTIST.googleRating}★ Google rating`,
                 `${ARTIST.yearsExperience} years experience`,
@@ -187,12 +194,12 @@ function TattooArtistPage() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <BookCTA location="artist_hero" label="Book with Peace" />
-              <WhatsAppCTA location="artist_hero" />
+            <div className="order-4 mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap lg:mt-8">
+              <BookCTA location="artist_hero" label="Book with Peace" className="max-sm:px-3" />
+              <WhatsAppCTA location="artist_hero" className="max-sm:px-3" />
             </div>
 
-            <div className="mt-8">
+            <div className="order-7 mt-8">
               <p className="font-signature -rotate-3 text-6xl leading-none" aria-hidden="true">
                 Peace
               </p>
@@ -218,6 +225,8 @@ function TattooArtistPage() {
               <Link to="/services/$slug" params={{ slug }} className="group flex h-full gap-4">
                 <img
                   src={services[slug].cardImage}
+                  srcSet={cardSrcSet(services[slug].cardImage)}
+                  sizes={CARD_SIZES}
                   alt={services[slug].heroImageAlt}
                   width={160}
                   height={200}
@@ -357,7 +366,9 @@ function TattooArtistPage() {
                 <figure className="flex h-full flex-col">
                   <Quote className="h-6 w-6 rotate-180 text-amber-600/40" aria-hidden="true" />
                   <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    <p>“{r.quote}”</p>
+                    <ReadMore lines={4}>
+                      <p>“{r.quote}”</p>
+                    </ReadMore>
                   </blockquote>
                   <figcaption className="mt-4 font-display text-sm font-semibold">
                     — {r.name}

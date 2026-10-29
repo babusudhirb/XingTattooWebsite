@@ -120,8 +120,8 @@ export function ReviewsSection() {
       </svg>
       <SectionHeading eyebrow="Google Reviews" title="What Our Clients Say" />
       <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-        Real Google reviews from clients of Xing in Brookefield, Bengaluru — first tattoos, custom
-        designs and fine-line work by Peace. Rated {GOOGLE_RATING}★ from {REVIEW_COUNT} reviews.
+        Real Google reviews from clients in Brookefield, Bengaluru. Rated {GOOGLE_RATING}★ from{" "}
+        {REVIEW_COUNT} reviews.
       </p>
 
       {/* Rating summary */}

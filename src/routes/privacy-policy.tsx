@@ -50,13 +50,13 @@ function PrivacyPolicy() {
       </p>
       <h2>Analytics &amp; cookies</h2>
       <p>
-        We may use Google Analytics (through Google Tag Manager) to count visits and see which
-        pages and buttons are used — for example, how many people tap Call, WhatsApp, Get
-        Directions or Book Free Consultation. It sets first-party cookies and records pages
-        viewed, device and browser type and approximate location. It does not record the text
-        you type into our forms. Advertising and personalisation storage is turned off. You can
-        block or delete cookies in your browser settings, or install Google&apos;s opt-out
-        add-on, and the site will still work.
+        We may use Google Analytics (through Google Tag Manager) to count visits and see which pages
+        and buttons are used — for example, how many people tap Call, WhatsApp, Get Directions or
+        Book Free Consultation. It sets first-party cookies and records pages viewed, device and
+        browser type and approximate location. It does not record the text you type into our forms.
+        Advertising and personalisation storage is turned off. You can block or delete cookies in
+        your browser settings, or install Google&apos;s opt-out add-on, and the site will still
+        work.
       </p>
       <h2>Keeping and deleting your details</h2>
       <p>

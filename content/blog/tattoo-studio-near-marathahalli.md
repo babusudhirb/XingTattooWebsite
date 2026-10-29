@@ -153,7 +153,7 @@ Small tattoos can often be done in a single short visit, while larger or detaile
 
 ## How we do it at Xing
 
-At Xing, Peace handles every consultation, design and session personally, with more than 15 years of experience. The studio is rated {{stars}} on Google.
+At Xing, Peace handles every consultation, design and session personally, with {{years}} years of experience. The studio is rated {{stars}} on Google.
 
 Needles are single-use and opened in front of you, inks are sealed and skin-tested, reusable tools go through medical-grade sterilisation, and the workstation is re-wrapped between every client.
 

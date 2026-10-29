@@ -18,6 +18,7 @@ import { Breadcrumbs, VisitStrip } from "@/components/blog/BlogBits";
 import type { Crumb } from "@/lib/blog";
 import { PostCard } from "@/components/blog/PostCard";
 import { SignatureServices } from "@/components/blog/SignatureServices";
+import { ReadMore } from "@/components/sections/ReadMore";
 
 function Pagination({ page }: { page: number }) {
   if (pageCount < 2) return null;
@@ -108,9 +109,9 @@ function TopicSection({ section }: { section: (typeof BLOG_SECTIONS)[number] }) 
           >
             {section.title}
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            {section.intro}
-          </p>
+          <ReadMore className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            <p>{section.intro}</p>
+          </ReadMore>
         </div>
         <Link
           to="/blog/category/$category"
@@ -181,10 +182,12 @@ export function BlogListing({
 
       <section className="mx-auto max-w-7xl px-5 pt-6 pb-10 sm:pt-8 sm:pb-14">
         <Breadcrumbs items={crumbs} />
-        <h1 className="mt-4 max-w-3xl font-display text-[2rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl">
+        <h1 className="mt-4 max-w-3xl font-display text-h1 font-semibold tracking-tight text-balance">
           {title}
         </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">{intro}</p>
+        <ReadMore className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+          <p>{intro}</p>
+        </ReadMore>
       </section>
 
       <CategoryChips current={category} />

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { QuickAnswer as QuickAnswerData } from "@/data/page-copy";
+import { ReadMore } from "@/components/sections/ReadMore";
 
 /**
  * A question-led H2 with a direct, snippet-ready first paragraph (#quick-answer,
@@ -23,13 +24,19 @@ export function QuickAnswer({
       >
         {data.question}
       </h2>
-      <div className="mt-4 space-y-3 text-base leading-relaxed text-muted-foreground">
-        {data.paragraphs.map((p, i) => (
-          <p key={i} id={i === 0 ? "quick-answer" : undefined} className={i === 0 ? "text-foreground" : ""}>
-            {p}
-          </p>
-        ))}
-      </div>
+      <ReadMore className="mt-4 text-base leading-relaxed text-muted-foreground">
+        <div className="space-y-3">
+          {data.paragraphs.map((p, i) => (
+            <p
+              key={i}
+              id={i === 0 ? "quick-answer" : undefined}
+              className={i === 0 ? "text-foreground" : ""}
+            >
+              {p}
+            </p>
+          ))}
+        </div>
+      </ReadMore>
       {children && <div className="mt-6 flex flex-wrap gap-3">{children}</div>}
     </section>
   );

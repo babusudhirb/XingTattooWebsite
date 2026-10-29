@@ -10,7 +10,10 @@ export function SectionHeading({
   return (
     <div className="text-center">
       <p className="eyebrow">{eyebrow}</p>
-      <h2 id={id} className="mt-2 text-[1.35rem] leading-tight font-semibold tracking-wide text-balance uppercase sm:text-3xl">
+      <h2
+        id={id}
+        className="mt-2 text-[1.35rem] leading-tight font-semibold tracking-wide text-balance uppercase sm:text-3xl"
+      >
         {title}
       </h2>
       <div className="mt-3 flex items-center justify-center gap-2 text-muted-foreground">

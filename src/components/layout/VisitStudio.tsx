@@ -51,7 +51,6 @@ function useStudioStatus() {
   return status;
 }
 
-
 /** Homepage footer block: address, hours, directions and the live map. */
 export function VisitStudio() {
   const status = useStudioStatus();
@@ -75,14 +74,14 @@ export function VisitStudio() {
             href={MAPS_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+            className="inline-flex min-h-11 items-center underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
           >
             {ADDRESS.full}
           </a>
         </address>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          Landmark: {ADDRESS.landmark} — about 3 km from
-          Marathahalli, easy reach from Whitefield &amp; ITPL.
+          Landmark: {ADDRESS.landmark} — about 3 km from Marathahalli, easy reach from Whitefield
+          &amp; ITPL.
         </p>
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <DirectionsCTA location="visit_studio" variant="primary" />
@@ -129,9 +128,7 @@ export function VisitStudio() {
         <AttributeChips className="mt-5" />
 
         <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-          <span className="font-semibold">
-            {RATING_LABEL}
-          </span>
+          <span className="font-semibold">{RATING_LABEL}</span>
           <span aria-hidden="true">—</span>
           <a
             href={MAPS_PLACE_URL}

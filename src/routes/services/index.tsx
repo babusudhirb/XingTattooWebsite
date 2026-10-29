@@ -11,6 +11,7 @@ import { SocialDock } from "@/components/layout/SocialDock";
 import { Breadcrumbs } from "@/components/blog/BlogBits";
 import { faqNode, seoHead } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/blog";
+import { CARD_SIZES, cardSrcSet } from "@/data/gallery";
 
 export const Route = createFileRoute("/services/")({
   head: () =>
@@ -70,6 +71,8 @@ function ServicesIndex() {
               >
                 <img
                   src={s.cardImage}
+                  srcSet={cardSrcSet(s.cardImage)}
+                  sizes={CARD_SIZES}
                   alt={s.heroImageAlt}
                   width={640}
                   height={768}
@@ -115,7 +118,10 @@ function ServicesIndex() {
         </ul>
       </section>
 
-      <FaqSection items={servicesFaqs} className="mx-auto max-w-7xl border-t border-border px-5 py-14" />
+      <FaqSection
+        items={servicesFaqs}
+        className="mx-auto max-w-7xl border-t border-border px-5 py-14"
+      />
 
       <SiteFooter />
     </main>

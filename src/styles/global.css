@@ -22,6 +22,8 @@
 /* Mobile size system: one fluid value per role, 360px phone → 1280px desktop.
    h1 28px → ~55px · h2 22px → ~37px · h3 18px → ~23px · section padding 48px → ~97px.
    Use text-h1 / text-h2 / text-h3 and py-section instead of ad-hoc sizes. */
+@custom-variant landscape-phone (@media (orientation: landscape) and (max-height: 500px));
+
 @theme {
   --text-h1: clamp(1.75rem, 1.1rem + 2.9vw, 4rem);
   --text-h1--line-height: 1.1;
@@ -255,8 +257,9 @@
     outline-offset: 2px;
   }
 
-  /* Phones: room for the fixed bottom action bar so it never covers content */
-  @media (max-width: 767px) {
+  /* Phones (portrait, and landscape up to 500px tall): room for the fixed bottom action bar
+     so it never covers content */
+  @media (max-width: 767px), (orientation: landscape) and (max-height: 500px) {
     body {
       padding-bottom: calc(var(--action-bar-h) + 16px);
     }
@@ -672,20 +675,40 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
   display: inline-block;
   flex-shrink: 0;
   background-color: currentColor;
-  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") center / contain no-repeat;
-  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>")
+    center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>")
+    center / contain no-repeat;
 }
 @utility icon-clock {
   display: inline-block;
   flex-shrink: 0;
   background-color: currentColor;
-  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>") center / contain no-repeat;
-  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>")
+    center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>")
+    center / contain no-repeat;
 }
 @utility icon-corner-down-right {
   display: inline-block;
   flex-shrink: 0;
   background-color: currentColor;
-  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m15 10 5 5-5 5'/><path d='M4 4v7a4 4 0 0 0 4 4h12'/></svg>") center / contain no-repeat;
-  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m15 10 5 5-5 5'/><path d='M4 4v7a4 4 0 0 0 4 4h12'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m15 10 5 5-5 5'/><path d='M4 4v7a4 4 0 0 0 4 4h12'/></svg>")
+    center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m15 10 5 5-5 5'/><path d='M4 4v7a4 4 0 0 0 4 4h12'/></svg>")
+    center / contain no-repeat;
+}
+
+/* ReadMore: clamp long copy on phones only (the text stays in the DOM) */
+@media (max-width: 767px) {
+  .read-more-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--lines, 3);
+    line-clamp: var(--lines, 3);
+    overflow: hidden;
+  }
+  .read-more-clamp > * + * {
+    margin-top: 0;
+  }
 }

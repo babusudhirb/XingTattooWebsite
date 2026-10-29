@@ -1,7 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 
 export interface FaqItem {
@@ -35,7 +40,11 @@ export function FaqSection({
               <AccordionTrigger data-faq-q className="min-h-12 text-left font-display text-sm">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent forceMount data-faq-a className="text-sm leading-relaxed text-muted-foreground">
+              <AccordionContent
+                forceMount
+                data-faq-a
+                className="text-sm leading-relaxed text-muted-foreground"
+              >
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
