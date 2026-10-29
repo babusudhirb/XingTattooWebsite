@@ -101,8 +101,7 @@ export const artistBookingSteps = [
 export const artistFaqs = [
   {
     question: "Who is the tattoo artist at Xing Premium Tattoo Studio, Brookefield?",
-    answer:
-      `Xing Premium Tattoo Studio's lead tattoo artist is Peace (Chingri Awungshi), with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. Every tattoo at the studio is designed and done by Peace personally, from the first consultation to the final session, so there are no handoffs between artists and you always know who is working on your skin.`,
+    answer: `Xing Premium Tattoo Studio's lead tattoo artist is Peace (Chingri Awungshi), with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. Every tattoo at the studio is designed and done by Peace personally, from the first consultation to the final session, so there are no handoffs between artists and you always know who is working on your skin.`,
   },
   {
     question: "What tattoo styles does Peace specialise in?",

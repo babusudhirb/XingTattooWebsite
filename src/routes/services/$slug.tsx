@@ -9,8 +9,8 @@ import {
   SITE_URL,
 } from "@/data/business";
 import { getService } from "@/data/services";
-import { ServiceTemplate } from "@/components/services/ServiceTemplate";
-import { faqNode, seoHead, SPEAKABLE } from "@/lib/seo";
+import { ServicePage } from "@/components/services/ServicePage";
+import { faqNode, seoHead, SPEAKABLE } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -54,5 +54,5 @@ export const Route = createFileRoute("/services/$slug")({
 
 function ServiceRoute() {
   const service = Route.useLoaderData();
-  return <ServiceTemplate service={service} />;
+  return <ServicePage service={service} />;
 }

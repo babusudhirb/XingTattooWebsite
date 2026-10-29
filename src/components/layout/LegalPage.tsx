@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 
 import { ADDRESS, BUSINESS_NAME, EMAIL, PHONE_DISPLAY, PHONE_TEL } from "@/data/business";
-import { EMAIL_TO } from "@/data/site";
+import { EMAIL_TO } from "@/data/navigation";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { Breadcrumbs } from "@/components/blog/BlogBits";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 /** Shared layout for the Privacy Policy and Terms pages. */
 export function LegalPage({

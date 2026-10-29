@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { socials } from "@/data/site";
-import { MobileActionBar } from "@/components/layout/MobileNav";
+import { socials } from "@/data/navigation";
+import { StickyContactBar } from "@/components/layout/StickyContactBar";
 
 export function SocialDock() {
   const [docked, setDocked] = useState(false);
@@ -15,7 +15,7 @@ export function SocialDock() {
 
   return (
     <>
-      <MobileActionBar />
+      <StickyContactBar />
       <div
         className={`fixed z-50 flex max-md:hidden landscape-phone:hidden transition-all duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
           docked

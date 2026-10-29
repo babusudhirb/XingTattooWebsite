@@ -4,7 +4,7 @@ import { pageTitle } from "@/data/business";
 import { activeCategories, posts } from "@/data/blog";
 import { BlogListing } from "@/components/blog/BlogListing";
 import { blogItemList, breadcrumbSchema, type Crumb } from "@/lib/blog";
-import { seoHead } from "@/lib/seo";
+import { seoHead } from "@/lib/seoHead";
 
 export const Route = createFileRoute("/blog/category/$category")({
   loader: ({ params }) => {

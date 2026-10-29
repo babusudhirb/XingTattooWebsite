@@ -13,14 +13,14 @@ import {
   styleGallery,
   type GalleryItem,
 } from "@/data/gallery";
-import { Breadcrumbs } from "@/components/blog/BlogBits";
-import { BookCTA, WhatsAppCTA } from "@/components/cta";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BookingCta, WhatsAppCta } from "@/components/cta";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
+import { LazyGalleryLightbox } from "@/components/gallery/LazyGalleryLightbox";
 import { breadcrumbSchema, type Crumb } from "@/lib/blog";
-import { absolute, seoHead } from "@/lib/seo";
+import { absolute, seoHead } from "@/lib/seoHead";
 
 /** Photos per style in the server HTML; "Show all" adds the rest. */
 const STYLE_PREVIEW = 4;
@@ -253,8 +253,8 @@ function GalleryPage() {
           .
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <BookCTA location="gallery_end" />
-          <WhatsAppCTA location="gallery_end" />
+          <BookingCta location="gallery_end" />
+          <WhatsAppCta location="gallery_end" />
         </div>
       </section>
 

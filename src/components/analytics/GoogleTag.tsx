@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "@tanstack/react-router";
 
-import { initClickTracking, track } from "@/lib/track";
+import { initClickTracking, track } from "@/lib/trackEvent";
 
 /**
  * Google Tag Manager (VITE_GTM_ID) or, failing that, GA4 gtag.js (VITE_GA_ID) — never

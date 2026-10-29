@@ -150,7 +150,7 @@ export interface ServiceContent {
   aftercare: AftercareStage[];
   faqs: ServiceFaq[];
   relatedSlugs: ServiceSlug[];
-  /** SEO-optimized page overrides — optional; when present, ServiceTemplate
+  /** SEO-optimized page overrides — optional; when present, ServicePage
    *  renders these in place of the generic Overview section. Used first on
    *  the Realism page; safe to leave undefined for every other style. */
   heroHeadline?: string;
@@ -359,8 +359,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         question: "Where can I get a realism tattoo near Whitefield or Marathahalli?",
-        answer:
-          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every realism tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
+        answer: `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every realism tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["black-grey", "portrait"],
@@ -372,11 +371,9 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     shortName: "Portrait",
     tagline: "Faces you'll never forget, inked to last a lifetime.",
     metaTitle: "Portrait Tattoos in Bangalore",
-    metaDescription:
-      `Lifelike human, pet and memorial portrait tattoos in Brookefield, Bengaluru. Expert shading by Peace (${COUNTS.years} yrs). Book your free consultation today.`,
+    metaDescription: `Lifelike human, pet and memorial portrait tattoos in Brookefield, Bengaluru. Expert shading by Peace (${COUNTS.years} yrs). Book your free consultation today.`,
     heroHeadline: "Portrait Tattoos in Brookefield, Bangalore | Lifelike Human & Pet Ink",
-    heroSummary:
-      `Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.`,
+    heroSummary: `Capture emotion, memory, and personal identity with custom portrait tattoos at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in ultra-realistic facial proportions, hair textures, and lifelike expressions. Whether honoring a loved one, a child, or a cherished pet, we turn high-resolution photographs into permanent skin art.`,
     heroImage: portraitHero,
     thumbImage: portraitThumb,
     cardImage: portraitCard,
@@ -554,8 +551,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         question: "Where can I get a portrait tattoo near Whitefield or Marathahalli?",
-        answer:
-          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every portrait tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
+        answer: `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every portrait tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["realism", "black-grey"],
@@ -567,11 +563,9 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     shortName: "Black & Grey",
     tagline: "All the depth of realism, none of the colour commitment.",
     metaTitle: "Black & Grey Tattoos in Bangalore",
-    metaDescription:
-      `Smooth Black & Grey shading, sleeves and blackwork at Xing Premium Tattoo Studio, AECS Layout, Brookefield. ${GOOGLE_RATING}★ on Google. Book a free consultation.`,
+    metaDescription: `Smooth Black & Grey shading, sleeves and blackwork at Xing Premium Tattoo Studio, AECS Layout, Brookefield. ${GOOGLE_RATING}★ on Google. Book a free consultation.`,
     heroHeadline: "Black & Grey Tattoos in Brookefield, Bangalore | Timeless Shading & Depth",
-    heroSummary:
-      `Experience the power of classic monochrome ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.`,
+    heroSummary: `Experience the power of classic monochrome ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years experience), our studio specializes in rich charcoal gradients, bold blackwork, and soft value-shading. From fine-line script and intricate mandalas to full-sleeve darkside realism, we design custom black & grey tattoos built to heal crisply and hold their depth for decades.`,
     heroImage: styleBlackGrey,
     thumbImage: blackGreyThumb,
     cardImage: blackGreyCard,
@@ -731,8 +725,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         question: "Where can I get a black & grey tattoo near Whitefield or Marathahalli?",
-        answer:
-          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every black & grey tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
+        answer: `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every black & grey tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["realism", "portrait", "minimalist"],
@@ -746,9 +739,9 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaTitle: "Geometric & Mandala Tattoos in Bangalore",
     metaDescription:
       "Sacred geometry, mandala and dotwork tattoos mapped to your body in Brookefield, Bengaluru. Custom designs by Peace. Book a free consultation today.",
-    heroHeadline: "Geometric & Mandala Tattoos in Brookefield, Bangalore | Sacred Geometry & Dotwork",
-    heroSummary:
-      `Experience mathematical symmetry and spiritual balance at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.`,
+    heroHeadline:
+      "Geometric & Mandala Tattoos in Brookefield, Bangalore | Sacred Geometry & Dotwork",
+    heroSummary: `Experience mathematical symmetry and spiritual balance at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in razor-sharp linework, intricate mandalas, optical illusions, and sacred geometric patterns. Whether you want a minimalist armband, dotwork shading, or a full geometric sleeve, we craft custom designs engineered to align with your body’s natural contours.`,
     heroImage: geometricHero,
     thumbImage: geometricThumb,
     cardImage: geometricCard,
@@ -914,8 +907,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         question: "Where can I get a geometric or mandala tattoo near Whitefield or Marathahalli?",
-        answer:
-          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every geometric or mandala tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
+        answer: `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every geometric or mandala tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["minimalist", "black-grey", "traditional"],
@@ -930,8 +922,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
     metaDescription:
       "Shiva, Hanuman, Om, Trishul and Sanskrit script tattoos drawn respectfully by Peace in Brookefield, Bengaluru. Book your free consultation today.",
     heroHeadline: "Indian Traditional Tattoos in Brookefield, Bangalore | Spiritual & Cultural Ink",
-    heroSummary:
-      `Carry your faith, heritage and family story in ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.`,
+    heroSummary: `Carry your faith, heritage and family story in ink at Xing Premium Tattoo Studio (Brookefield, Bengaluru). Led by Peace (Chingri Awungshi) (${COUNTS.years} years mastery), our studio specializes in Indian traditional tattoos — from Lord Shiva, Mahadev and Trishul designs to Ganesha, Krishna, Hanuman, Om and Sanskrit mantra script. Every piece is custom-drawn with respect for its symbolism, true-to-tradition detailing and placement, and built to heal cleanly and stay meaningful for a lifetime.`,
     heroImage: traditionalHero,
     thumbImage: traditionalThumb,
     cardImage: traditionalCard,
@@ -1110,8 +1101,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         question: "Where can I get an Indian traditional tattoo near Whitefield or Marathahalli?",
-        answer:
-          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every Indian traditional tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
+        answer: `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every Indian traditional tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["realism", "black-grey", "geometric"],
@@ -1339,8 +1329,7 @@ export const services: Record<ServiceSlug, ServiceContent> = {
       },
       {
         question: "Where can I get a minimalist tattoo near Whitefield or Marathahalli?",
-        answer:
-          `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every minimalist tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
+        answer: `Xing Premium Tattoo Studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield and ITPL. Every minimalist tattoo there is drawn and inked by Peace (Chingri Awungshi). Book a free consultation online or message the studio on WhatsApp.`,
       },
     ],
     relatedSlugs: ["geometric", "traditional"],

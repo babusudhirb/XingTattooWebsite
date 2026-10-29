@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } fro
 import { CalendarDays, Check, Clock, MessageCircle, X } from "lucide-react";
 import { format } from "date-fns";
 
-import { track } from "@/lib/track";
+import { track } from "@/lib/trackEvent";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Select,
@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { WHATSAPP_URL } from "@/data/site";
+import { WHATSAPP_URL } from "@/data/navigation";
 import {
   BOOKING_WINDOW_DAYS,
   firstOpenDate,

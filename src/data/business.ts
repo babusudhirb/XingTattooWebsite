@@ -43,7 +43,8 @@ export const PHONE_E164 = "+918970007818";
 export const PHONE_TEL = `tel:${PHONE_E164}`;
 export const WHATSAPP_URL = "https://wa.me/918970007818";
 /** The one WhatsApp CTA link: opens a chat with the consultation message filled in. */
-export const WHATSAPP_MESSAGE = "Hi Xing Premium Tattoo Studio, I'd like a free tattoo consultation.";
+export const WHATSAPP_MESSAGE =
+  "Hi Xing Premium Tattoo Studio, I'd like a free tattoo consultation.";
 export const WHATSAPP_CHAT_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 /** Not on the GBP — kept from the existing site. */
 export const EMAIL = "xingtattoo.aecs@gmail.com";
@@ -253,7 +254,7 @@ export const BLOG_TOKENS: Record<string, string> = {
   since: COUNTS.since,
 };
 
-/** Default social image (1200×630, made by scripts/blog_images.py). Services and the artist page have their own. */
+/** Default social image (1200×630, made by scripts/blog-images.py). Services and the artist page have their own. */
 export const OG_IMAGE = `${SITE_URL}/og/og-default.jpg`;
 export const OG_IMAGE_ALT =
   "Tattoo work by Peace at Xing Premium Tattoo Studio, Brookefield, Bangalore";

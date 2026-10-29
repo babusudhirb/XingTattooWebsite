@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
-import { FaqSection } from "@/components/faq/FaqSection";
-import { servicesFaqs } from "@/data/page-copy";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
+import { servicesFaqs } from "@/data/page-content";
 import { BRAND_NAME, GBP_SERVICES, pageTitle, serviceAnchor, SITE_URL } from "@/data/business";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { Breadcrumbs } from "@/components/blog/BlogBits";
-import { faqNode, seoHead } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { faqNode, seoHead } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
 import { CARD_SIZES, cardSrcSet } from "@/data/gallery";
 
@@ -118,7 +118,7 @@ function ServicesIndex() {
         </ul>
       </section>
 
-      <FaqSection
+      <FaqAccordion
         items={servicesFaqs}
         className="mx-auto max-w-7xl border-t border-border px-5 py-14"
       />

@@ -51,9 +51,9 @@ turns them into pages at build time, checks every internal link and writes `site
 - **Scheduling:** posts with `draft: true` and a `publishAt` date go live on the first build on or
   after that date (India time). Rebuild and re-upload on publish days (Mondays and Thursdays).
   Preview the schedule with `BLOG_BUILD_DATE=2027-12-31 npm run build`.
-- **Images:** `python scripts/blog_images.py <slug>` makes the hero, card, OG image and body images
+- **Images:** `python scripts/blog-images.py <slug>` makes the hero, card, OG image and body images
   in `public/blog/` from the studio's photos (map in the script).
-- **Checks:** `python scripts/check_blog.py` validates titles, descriptions, keywords, links,
+- **Checks:** `python scripts/qa/check-blog.py` validates titles, descriptions, keywords, links,
   FAQs, word counts and bans price figures.
 
 ## Hosting on Hostinger

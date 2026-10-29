@@ -4,8 +4,8 @@ import { preload } from "react-dom";
 import { ArrowRight, PenTool, ShieldCheck, Star, X } from "lucide-react";
 
 import { QuickAnswer } from "@/components/faq/QuickAnswer";
-import { homeQuickAnswer } from "@/data/page-copy";
-import { BookCTA, WhatsAppCTA } from "@/components/cta";
+import { homeQuickAnswer } from "@/data/page-content";
+import { BookingCta, WhatsAppCta } from "@/components/cta";
 import heroArt from "@/assets/hero-fineline-art.webp";
 import heroArtSmall from "@/assets/hero-fineline-art-sm.webp";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
@@ -24,10 +24,10 @@ import {
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { SectionHeading } from "@/components/sections/SectionHeading";
-import { ReviewsSection } from "@/components/sections/ReviewsSection";
-import { BookingCTA } from "@/components/booking/BookingCTA";
-import { StudioHighlights } from "@/components/sections/StudioHighlights";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { GoogleReviews } from "@/components/home/GoogleReviews";
+import { BookingSection } from "@/components/booking/BookingSection";
+import { StudioHighlights } from "@/components/home/StudioHighlights";
 import { faqById, faqs, homeFaqIds } from "@/data/faqs";
 import {
   Accordion,
@@ -36,12 +36,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { openBookingModal } from "@/components/booking/BookingContext";
-import { TattooFlash, type FlashName } from "@/components/sections/TattooFlash";
-import { RelatedGuides } from "@/components/blog/RelatedGuides";
+import { TattooFlash, type FlashName } from "@/components/decor/TattooFlash";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { HOME_GUIDES, posts, sectionPosts } from "@/data/blog";
 import { blogItemList } from "@/lib/blog";
-import { faqNode, seoHead, SPEAKABLE } from "@/lib/seo";
-import { ReadMore } from "@/components/sections/ReadMore";
+import { faqNode, seoHead, SPEAKABLE } from "@/lib/seoHead";
+import { ReadMore } from "@/components/ui/ReadMore";
 
 /** Gallery preview: each style's lead photo, then three studio photos — each opens its
  *  section of /gallery. */
@@ -235,7 +235,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                     className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </button>
-                <BookCTA location="offer_popup" onClick={requestClose} className="m-2.5 px-4" />
+                <BookingCta location="offer_popup" onClick={requestClose} className="m-2.5 px-4" />
               </div>
             ))}
           </div>
@@ -267,7 +267,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
           </div>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <WhatsAppCTA location="offer_popup" className="bg-background" />
+            <WhatsAppCta location="offer_popup" className="bg-background" />
             <Link
               to="/offer"
               onClick={requestClose}
@@ -353,7 +353,7 @@ function Index() {
 
           <div className="relative z-10 col-span-2 row-start-2 lg:col-span-1 lg:col-start-1 lg:self-start">
             <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
-              <BookCTA location="hero" className="col-span-2 sm:px-7" />
+              <BookingCta location="hero" className="col-span-2 sm:px-7" />
               <Link
                 to="/gallery"
                 className="col-span-2 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary bg-background px-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-7 md:min-h-13 [@media(hover:hover)]:hover:bg-accent"
@@ -404,7 +404,7 @@ function Index() {
           >
             Read Our Story <ArrowRight className="h-4 w-4" />
           </Link>
-          <BookCTA location="home_about" className="px-7" />
+          <BookingCta location="home_about" className="px-7" />
         </div>
       </section>
 
@@ -546,7 +546,7 @@ function Index() {
                 <p className="eyebrow mt-1">Chingri Awungshi · Lead Artist</p>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
-                <BookCTA
+                <BookingCta
                   location="home_artist"
                   label="Book with Peace"
                   className="col-span-2 sm:col-span-1"
@@ -600,13 +600,17 @@ function Index() {
           >
             See the Full Gallery <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
-          <BookCTA location="home_gallery" variant="secondary" className="w-full px-7 sm:w-auto" />
+          <BookingCta
+            location="home_gallery"
+            variant="secondary"
+            className="w-full px-7 sm:w-auto"
+          />
         </div>
       </section>
 
-      <ReviewsSection />
+      <GoogleReviews />
 
-      <RelatedGuides
+      <RelatedPosts
         posts={homeGuides}
         limit={6}
         eyebrow="Tattoo Guides & Answers"
@@ -647,7 +651,7 @@ function Index() {
                 All {faqs.length} FAQs
                 <ArrowRight className="h-4 w-4 shrink-0" />
               </Link>
-              <WhatsAppCTA location="home_faq" className="px-3 sm:px-6" />
+              <WhatsAppCta location="home_faq" className="px-3 sm:px-6" />
             </div>
           </div>
 
@@ -699,7 +703,7 @@ function Index() {
         </div>
       </section>
 
-      <BookingCTA />
+      <BookingSection />
 
       <SiteFooter showMap />
     </main>

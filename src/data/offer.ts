@@ -2,7 +2,7 @@ import offer50OffEveryTattoo from "@/assets/offers/page/offer-50-off-every-tatto
 import offerGoBigSaveBigger from "@/assets/offers/page/offer-go-big-save-bigger.webp";
 import offerMoreArtMoreYou from "@/assets/offers/page/offer-more-art-more-you.webp";
 
-import type { FlashName } from "@/components/sections/TattooFlash";
+import type { FlashName } from "@/components/decor/TattooFlash";
 import { OFFER, studioDate } from "@/data/business";
 
 /** Current offer — shared by the home page popup and the /offer page. */

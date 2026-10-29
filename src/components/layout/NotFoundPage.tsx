@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Home, Images, MapPin, Sparkles } from "lucide-react";
 
-import { WhatsAppCTA } from "@/components/cta";
+import { WhatsAppCta } from "@/components/cta";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SocialDock } from "@/components/layout/SocialDock";
@@ -38,7 +38,7 @@ export function NotFoundPage() {
               </li>
             ))}
             <li className="col-span-2">
-              <WhatsAppCTA location="404" className="w-full sm:w-auto" />
+              <WhatsAppCta location="404" className="w-full sm:w-auto" />
             </li>
           </ul>
         </nav>

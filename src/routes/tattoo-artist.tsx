@@ -2,11 +2,11 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, Quote } from "lucide-react";
 
-import { FaqSection } from "@/components/faq/FaqSection";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { QuickAnswer } from "@/components/faq/QuickAnswer";
-import { artistQuickAnswer } from "@/data/page-copy";
+import { artistQuickAnswer } from "@/data/page-content";
 import { PERSON_ID } from "@/data/business";
-import { BookCTA, WhatsAppCTA } from "@/components/cta";
+import { BookingCta, WhatsAppCta } from "@/components/cta";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import {
   ARTIST,
@@ -22,17 +22,17 @@ import { services } from "@/data/services";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
+import { LazyGalleryLightbox } from "@/components/gallery/LazyGalleryLightbox";
 import {
   AccordionFold,
   CreaseLines,
   FoldCard,
   OrigamiFrame,
   SectionNav,
-} from "@/components/sections/Origami";
-import { absolute, faqNode, seoHead } from "@/lib/seo";
+} from "@/components/decor/Origami";
+import { absolute, faqNode, seoHead } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
-import { ReadMore } from "@/components/sections/ReadMore";
+import { ReadMore } from "@/components/ui/ReadMore";
 import { CARD_SIZES, cardSrcSet } from "@/data/gallery";
 
 const TITLE = pageTitle("Peace, Tattoo Artist, Brookefield, Bangalore");
@@ -195,8 +195,8 @@ function TattooArtistPage() {
             </ul>
 
             <div className="order-4 mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap lg:mt-8">
-              <BookCTA location="artist_hero" label="Book with Peace" className="max-sm:px-3" />
-              <WhatsAppCTA location="artist_hero" className="max-sm:px-3" />
+              <BookingCta location="artist_hero" label="Book with Peace" className="max-sm:px-3" />
+              <WhatsAppCta location="artist_hero" className="max-sm:px-3" />
             </div>
 
             <div className="order-7 mt-8">
@@ -390,7 +390,7 @@ function TattooArtistPage() {
 
       <QuickAnswer data={artistQuickAnswer} />
 
-      <FaqSection items={artistFaqs} />
+      <FaqAccordion items={artistFaqs} />
 
       {/* Final CTA — folded banner */}
       <section className="mx-auto max-w-7xl px-5 pb-16">
@@ -407,7 +407,7 @@ function TattooArtistPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <BookCTA location="artist_end" className="bg-amber-700 text-white" />
+              <BookingCta location="artist_end" className="bg-amber-700 text-white" />
               <Link
                 to="/about"
                 className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/30 px-6 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-primary-foreground/10"

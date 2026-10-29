@@ -4,7 +4,7 @@ import { pageTitle } from "@/data/business";
 import { pageCount, postsForPage } from "@/data/blog";
 import { BlogListing } from "@/components/blog/BlogListing";
 import { blogItemList, breadcrumbSchema, type Crumb } from "@/lib/blog";
-import { seoHead } from "@/lib/seo";
+import { seoHead } from "@/lib/seoHead";
 
 export const Route = createFileRoute("/blog/page/$page")({
   loader: ({ params }) => {

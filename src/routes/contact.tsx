@@ -2,15 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ADDRESS, BRAND_NAME, BUSINESS_ID, pageTitle, SERVICE_AREAS } from "@/data/business";
 import { faqById } from "@/data/faqs";
-import { Breadcrumbs } from "@/components/blog/BlogBits";
-import { BookCTA, CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
-import { FaqSection } from "@/components/faq/FaqSection";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BookingCta, CallCta, DirectionsCta, WhatsAppCta } from "@/components/cta";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { VisitStudio } from "@/components/layout/VisitStudio";
 import { breadcrumbSchema, type Crumb } from "@/lib/blog";
-import { faqNode, seoHead } from "@/lib/seo";
+import { faqNode, seoHead } from "@/lib/seoHead";
 
 const CRUMBS: Crumb[] = [{ label: "Home", href: "/" }, { label: "Contact" }];
 const contactFaqs = ["location", "opening-hours", "walk-ins"].map((id) => faqById.get(id)!);
@@ -47,10 +47,10 @@ function ContactPage() {
           Layout, Brookefield.
         </p>
         <div className="mx-auto mt-6 grid max-w-xl grid-cols-2 gap-3">
-          <BookCTA location="contact" shortBelow="sm" className="col-span-2" />
-          <WhatsAppCTA location="contact" />
-          <DirectionsCTA location="contact" />
-          <CallCTA location="contact" className="col-span-2" />
+          <BookingCta location="contact" shortBelow="sm" className="col-span-2" />
+          <WhatsAppCta location="contact" />
+          <DirectionsCta location="contact" />
+          <CallCta location="contact" className="col-span-2" />
         </div>
       </section>
 
@@ -88,7 +88,7 @@ function ContactPage() {
         </p>
       </section>
 
-      <FaqSection
+      <FaqAccordion
         items={contactFaqs}
         className="mx-auto max-w-7xl border-t border-border px-5 py-section"
       />

@@ -4,8 +4,8 @@ import { postLoaders } from "virtual:blog";
 import { BUSINESS_ID, BUSINESS_NAME, LEAD_ARTIST, SITE_URL } from "@/data/business";
 import { absoluteUrl, categoryLabel } from "@/data/blog";
 import { breadcrumbSchema, cardImage, postCrumbs, splitPostBody } from "@/lib/blog";
-import { BlogPostView } from "@/components/blog/BlogPostView";
-import { faqNode, seoHead } from "@/lib/seo";
+import { BlogPostLayout } from "@/components/blog/BlogPostLayout";
+import { faqNode, seoHead } from "@/lib/seoHead";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -76,5 +76,5 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function PostRoute() {
   const post = Route.useLoaderData();
-  return <BlogPostView key={post.slug} post={post} />;
+  return <BlogPostLayout key={post.slug} post={post} />;
 }

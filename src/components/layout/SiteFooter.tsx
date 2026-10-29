@@ -2,7 +2,7 @@ import { useId, useState, type ReactNode } from "react";
 import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import { EMAIL, EMAIL_TO, studioLinks } from "@/data/site";
+import { EMAIL, EMAIL_TO, studioLinks } from "@/data/navigation";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import {
   ADDRESS,
@@ -17,7 +17,7 @@ import {
   REVIEW_COUNT,
   WHATSAPP_CHAT_URL,
 } from "@/data/business";
-import { DirectionsCTA } from "@/components/cta";
+import { DirectionsCta } from "@/components/cta";
 import { Logo } from "@/components/layout/Logo";
 import { VisitStudio } from "@/components/layout/VisitStudio";
 /**
@@ -184,7 +184,7 @@ export function SiteFooter({ showMap = false }: { showMap?: boolean }) {
               </a>
             </li>
           </ul>
-          <DirectionsCTA location="footer" className="mt-4 px-5" />
+          <DirectionsCta location="footer" className="mt-4 px-5" />
           <p className="mt-3 text-xs">
             <a
               href={MAPS_PLACE_URL}

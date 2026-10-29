@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { BUSINESS_NAME, HOURS_LONG, pageTitle } from "@/data/business";
 import { LegalPage } from "@/components/layout/LegalPage";
-import { seoHead } from "@/lib/seo";
+import { seoHead } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
 
 const TITLE = pageTitle("Terms & Conditions");

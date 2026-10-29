@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { CallCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
-import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
+import { CallCta, DirectionsCta, WhatsAppCta } from "@/components/cta";
+import { StudioMap } from "@/components/layout/StudioMap";
+import { StudioAttributes } from "@/components/layout/StudioAttributes";
 
 import {
   ADDRESS,
@@ -84,14 +85,14 @@ export function VisitStudio() {
           &amp; ITPL.
         </p>
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-          <DirectionsCTA location="visit_studio" variant="primary" />
-          <CallCTA location="visit_studio" />
-          <WhatsAppCTA location="visit_studio" />
+          <DirectionsCta location="visit_studio" variant="primary" />
+          <CallCta location="visit_studio" />
+          <WhatsAppCta location="visit_studio" />
         </div>
       </div>
 
       <div className="min-w-0 md:col-start-2 md:row-span-2 md:row-start-1">
-        <LazyMap />
+        <StudioMap />
       </div>
 
       <div className="min-w-0">
@@ -125,7 +126,7 @@ export function VisitStudio() {
           })}
         </ul>
 
-        <AttributeChips className="mt-5" />
+        <StudioAttributes className="mt-5" />
 
         <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
           <span className="font-semibold">{RATING_LABEL}</span>

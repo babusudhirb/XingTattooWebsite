@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { format } from "date-fns";
 import { z } from "zod";
 
-import { EMAIL, STUDIO_NAME } from "@/data/site";
+import { EMAIL, STUDIO_NAME } from "@/data/navigation";
 import { getSlotsForDate, isClosedDay } from "@/lib/booking-slots";
 
 /**
@@ -12,7 +12,7 @@ import { getSlotsForDate, isClosedDay } from "@/lib/booking-slots";
  *   GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN
  *     OAuth client + refresh token for the sender account, scope gmail.send
  *   GMAIL_SENDER          optional, defaults to master.tech.claude@gmail.com
- *   BOOKING_NOTIFY_EMAIL  optional, defaults to the studio email in data/site
+ *   BOOKING_NOTIFY_EMAIL  optional, defaults to the studio email in data/navigation
  */
 const DEFAULT_SENDER = "master.tech.claude@gmail.com";
 

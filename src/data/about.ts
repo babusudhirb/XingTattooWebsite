@@ -47,18 +47,15 @@ export const visitLandmarks = [
 export const aboutFaqs = [
   {
     question: "What landmark helps me find Xing Premium Tattoo Studio?",
-    answer:
-      `The studio is ${ADDRESS.landmark}, on 60 Feet Road; the DMART Ready store front is the easiest sign to spot. The full address is ${ADDRESS.full}. Tap Get Directions on this page for a Google Maps route to the door.`,
+    answer: `The studio is ${ADDRESS.landmark}, on 60 Feet Road; the DMART Ready store front is the easiest sign to spot. The full address is ${ADDRESS.full}. Tap Get Directions on this page for a Google Maps route to the door.`,
   },
   {
     question: "When is Xing Premium Tattoo Studio open?",
-    answer:
-      `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day, so on weekdays plan your visit for Monday or Wednesday to Friday. Saturdays and Sundays follow the same hours. The hours on this site match the studio's Google Business Profile.`,
+    answer: `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day, so on weekdays plan your visit for Monday or Wednesday to Friday. Saturdays and Sundays follow the same hours. The hours on this site match the studio's Google Business Profile.`,
   },
   {
     question: "Can I walk in without an appointment?",
-    answer:
-      `Yes, walk-ins are welcome when the artist is free, but appointments are preferred so your design can be drawn and prepared in advance. Small, simple pieces are the easiest to fit in on the day. Message ${PHONE_DISPLAY} on WhatsApp before you come to check availability and avoid a wait.`,
+    answer: `Yes, walk-ins are welcome when the artist is free, but appointments are preferred so your design can be drawn and prepared in advance. Small, simple pieces are the easiest to fit in on the day. Message ${PHONE_DISPLAY} on WhatsApp before you come to check availability and avoid a wait.`,
   },
   {
     question: "Which payment methods does the studio accept?",

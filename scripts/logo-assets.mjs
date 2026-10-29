@@ -3,7 +3,7 @@
  * Run from clonecraft-hero/ after replacing the SVG:  node scripts/logo-assets.mjs
  *
  *   public/xing-logo.png   1200px, white background — the schema `logo`
- *   public/xing-logo.webp  800px, transparent — the mark on social images (scripts/blog_images.py)
+ *   public/xing-logo.webp  800px, transparent — the mark on social images (scripts/blog-images.py)
  *   favicon.ico (16 + 32), favicon-16/32, apple-touch-icon, icon-192/512 — just the lettering (the tagline is
  *   unreadable at icon sizes), centred on white
  */

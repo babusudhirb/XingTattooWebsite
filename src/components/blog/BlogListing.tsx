@@ -14,11 +14,12 @@ import {
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { Breadcrumbs, VisitStrip } from "@/components/blog/BlogBits";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BlogVisitStrip } from "@/components/blog/BlogVisitStrip";
 import type { Crumb } from "@/lib/blog";
-import { PostCard } from "@/components/blog/PostCard";
+import { BlogCard } from "@/components/blog/BlogCard";
 import { SignatureServices } from "@/components/blog/SignatureServices";
-import { ReadMore } from "@/components/sections/ReadMore";
+import { ReadMore } from "@/components/ui/ReadMore";
 
 function Pagination({ page }: { page: number }) {
   if (pageCount < 2) return null;
@@ -127,7 +128,7 @@ function TopicSection({ section }: { section: (typeof BLOG_SECTIONS)[number] }) 
         {list.map((p) => (
           <li key={p.slug}>
             {/* Compact (no excerpt): the same posts' excerpts already show in the list above */}
-            <PostCard post={p} size="compact" />
+            <BlogCard post={p} size="compact" />
           </li>
         ))}
       </ul>
@@ -198,10 +199,10 @@ export function BlogListing({
             Featured Guides
           </h2>
           <div className="mt-4 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-            <PostCard post={lead} size="large" />
+            <BlogCard post={lead} size="large" />
             <div className="grid gap-8">
               {side.map((p) => (
-                <PostCard key={p.slug} post={p} />
+                <BlogCard key={p.slug} post={p} />
               ))}
             </div>
           </div>
@@ -245,7 +246,7 @@ export function BlogListing({
           <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((p) => (
               <li key={p.slug}>
-                <PostCard post={p} />
+                <BlogCard post={p} />
               </li>
             ))}
           </ul>
@@ -262,7 +263,7 @@ export function BlogListing({
         {!filtering && !category && <Pagination page={page} />}
       </section>
 
-      <VisitStrip />
+      <BlogVisitStrip />
       <SiteFooter />
     </main>
   );

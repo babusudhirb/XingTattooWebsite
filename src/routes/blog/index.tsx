@@ -11,7 +11,7 @@ import {
 import { BlogListing } from "@/components/blog/BlogListing";
 import { cardImage } from "@/lib/blog";
 import { blogItemList, breadcrumbSchema, type Crumb } from "@/lib/blog";
-import { seoHead } from "@/lib/seo";
+import { seoHead } from "@/lib/seoHead";
 
 const TITLE = pageTitle("Tattoo Blog: Guides & Aftercare");
 const DESCRIPTION =

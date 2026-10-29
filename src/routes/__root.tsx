@@ -52,7 +52,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRoute({
   // Site-wide tags only. Each route adds its own title, description, canonical, Open Graph
-  // and JSON-LD @graph through seoHead() in src/lib/seo.ts.
+  // and JSON-LD @graph through seoHead() in src/lib/seoHead.ts.
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -63,7 +63,7 @@ export const Route = createRootRoute({
       { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
       ...GEO_META,
-      // Search Console / Bing ownership tags, only when the build sets them (see SEARCH-CONSOLE.md)
+      // Search Console / Bing ownership tags, only when the build sets them (see docs/SEARCH-CONSOLE.md)
       ...(GSC_VERIFICATION
         ? [{ name: "google-site-verification", content: GSC_VERIFICATION }]
         : []),

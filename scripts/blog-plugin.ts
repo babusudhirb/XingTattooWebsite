@@ -173,10 +173,10 @@ function publicMeta(p: SourcePost) {
   };
 }
 
-/** Every planned post slug (the image map in scripts/blog_images.py lists all of them),
+/** Every planned post slug (the image map in scripts/blog-images.py lists all of them),
  *  so links to posts not written yet are unwrapped instead of failing the build. */
 function plannedSlugs() {
-  const src = fs.readFileSync(path.join(ROOT, "scripts/blog_images.py"), "utf8");
+  const src = fs.readFileSync(path.join(ROOT, "scripts/blog-images.py"), "utf8");
   return [...src.matchAll(/^\s+"([a-z0-9-]+)": \(/gm)].map((m) => m[1]!);
 }
 

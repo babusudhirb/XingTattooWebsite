@@ -3,13 +3,13 @@ import { ChevronDown } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import { HOURS_OPEN_DAYS, MAPS_PLACE_URL, OPEN_LABEL, SHORT_ADDRESS } from "@/data/business";
-import { isActiveHref, navLinks, SERVICES_HREF } from "@/data/site";
-import { useOfferActive } from "@/lib/offer";
+import { isActiveHref, navLinks, SERVICES_HREF } from "@/data/navigation";
+import { useOfferActive } from "@/hooks/useOfferActive";
 import { SERVICE_SLUGS, services } from "@/data/services";
-import { BookCTA, CallCTA } from "@/components/cta";
-import { useTodayHours } from "@/lib/hours";
+import { BookingCta, CallCta } from "@/components/cta";
+import { useTodayHours } from "@/lib/openingHours";
 import { Logo } from "@/components/layout/Logo";
-import { MobileMenu } from "@/components/layout/MobileNav";
+import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer";
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement>(null);
@@ -63,7 +63,7 @@ export function SiteHeader() {
           >
             {SHORT_ADDRESS}
           </a>
-          <CallCTA
+          <CallCta
             location="header"
             variant="plain"
             className="min-h-11 px-0 text-xs font-semibold tracking-normal text-foreground normal-case md:min-h-11 [@media(hover:hover)]:hover:underline"
@@ -156,13 +156,13 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2 sm:gap-4">
           {/* Below 400px the sticky bottom bar carries the booking button */}
-          <BookCTA
+          <BookingCta
             location="header"
             shortBelow="sm"
             icon={false}
             className="hidden px-4 min-[400px]:inline-flex sm:px-5"
           />
-          <MobileMenu />
+          <MobileNavDrawer />
         </div>
       </div>
     </header>

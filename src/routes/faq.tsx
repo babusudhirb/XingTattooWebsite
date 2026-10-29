@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, Search, X } from "lucide-react";
 
-import { BookCTA, WhatsAppCTA } from "@/components/cta";
+import { BookingCta, WhatsAppCta } from "@/components/cta";
 import { pageTitle } from "@/data/business";
 import { faqById, faqCategories, faqs, type Faq } from "@/data/faqs";
 import {
@@ -14,8 +14,8 @@ import {
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { CreaseLines, SectionNav } from "@/components/sections/Origami";
-import { faqNode, seoHead } from "@/lib/seo";
+import { CreaseLines, SectionNav } from "@/components/decor/Origami";
+import { faqNode, seoHead } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
 
 const TITLE = pageTitle("Tattoo FAQs: Cost, Pain & Aftercare");
@@ -239,7 +239,7 @@ function FaqPage() {
             <p className="mt-2 text-sm text-muted-foreground">
               Ask us directly on WhatsApp — happy to help.
             </p>
-            <WhatsAppCTA location="faq_empty" className="mt-4" />
+            <WhatsAppCta location="faq_empty" className="mt-4" />
           </div>
         )}
       </div>
@@ -259,8 +259,8 @@ function FaqPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <BookCTA location="faq_end" className="bg-amber-700 text-white" />
-              <WhatsAppCTA
+              <BookingCta location="faq_end" className="bg-amber-700 text-white" />
+              <WhatsAppCta
                 location="faq_end"
                 className="border-primary-foreground/30 text-primary-foreground [@media(hover:hover)]:hover:bg-primary-foreground/10"
               />

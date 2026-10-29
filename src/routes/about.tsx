@@ -1,8 +1,9 @@
-import { FaqSection } from "@/components/faq/FaqSection";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { QuickAnswer } from "@/components/faq/QuickAnswer";
-import { aboutQuickAnswer } from "@/data/page-copy";
-import { BookCTA, DirectionsCTA, WhatsAppCTA } from "@/components/cta";
-import { AttributeChips, LazyMap } from "@/components/layout/StudioBits";
+import { aboutQuickAnswer } from "@/data/page-content";
+import { BookingCta, DirectionsCta, WhatsAppCta } from "@/components/cta";
+import { StudioMap } from "@/components/layout/StudioMap";
+import { StudioAttributes } from "@/components/layout/StudioAttributes";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronRight, Clock, MapPin, Phone } from "lucide-react";
 
@@ -10,14 +11,14 @@ import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield
 import { ADDRESS, BUSINESS_NAME, HOURS_TEXT, pageTitle, SHORT_ADDRESS } from "@/data/business";
 import { aboutFaqs, aboutValues, hygieneStandards, visitLandmarks } from "@/data/about";
 import { ARTIST, tattoosForClients } from "@/data/artist";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/data/navigation";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
-import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/sections/Origami";
-import { faqNode, seoHead } from "@/lib/seo";
+import { AccordionFold, CreaseLines, FoldCard, SectionNav } from "@/components/decor/Origami";
+import { faqNode, seoHead } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
-import { ReadMore } from "@/components/sections/ReadMore";
+import { ReadMore } from "@/components/ui/ReadMore";
 
 const TITLE = pageTitle("About Us: Tattoo Studio in AECS Layout");
 const DESCRIPTION = `Custom tattoo studio ${ADDRESS.landmark}: hygiene, process, opening hours and directions.`;
@@ -151,7 +152,7 @@ function AboutPage() {
               </p>
             </ReadMore>
             <div className="flex flex-wrap gap-3 pt-2">
-              <BookCTA location="about_story" />
+              <BookingCta location="about_story" />
             </div>
           </div>
         </div>
@@ -324,21 +325,21 @@ function AboutPage() {
               ))}
             </ul>
             <p className="eyebrow mt-6">At The Studio</p>
-            <AttributeChips className="mt-3" />
+            <StudioAttributes className="mt-3" />
             <div className="mt-6 grid grid-cols-2 gap-3">
-              <DirectionsCTA location="about_visit" variant="primary" className="px-3" />
-              <WhatsAppCTA location="about_visit" className="px-3" />
+              <DirectionsCta location="about_visit" variant="primary" className="px-3" />
+              <WhatsAppCta location="about_visit" className="px-3" />
             </div>
           </FoldCard>
-          <LazyMap className="min-h-[320px] h-full" />
+          <StudioMap className="min-h-[320px] h-full" />
         </div>
       </section>
 
       <QuickAnswer data={aboutQuickAnswer}>
-        <DirectionsCTA location="about_quick_answer" variant="primary" />
+        <DirectionsCta location="about_quick_answer" variant="primary" />
       </QuickAnswer>
 
-      <FaqSection items={aboutFaqs} />
+      <FaqAccordion items={aboutFaqs} />
 
       <section className="mx-auto max-w-7xl px-5 pb-16">
         <div className="relative overflow-hidden bg-primary px-8 py-10 text-primary-foreground [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,0_100%)]">
@@ -353,7 +354,7 @@ function AboutPage() {
                 Free consultation. Custom design. No pressure — just good ink.
               </p>
             </div>
-            <BookCTA location="about_end" className="bg-amber-700 text-white" />
+            <BookingCta location="about_end" className="bg-amber-700 text-white" />
           </div>
         </div>
       </section>

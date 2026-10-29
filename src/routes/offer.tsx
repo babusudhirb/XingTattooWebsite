@@ -8,11 +8,11 @@ import {
 } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { FaqSection } from "@/components/faq/FaqSection";
-import { offerFaqs } from "@/data/page-copy";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
+import { offerFaqs } from "@/data/page-content";
 import { isOfferActive } from "@/data/business";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { track } from "@/lib/track";
+import { track } from "@/lib/trackEvent";
 import offerCss from "@/styles/offer-page.css?url";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 import offerHeroSamurai from "@/assets/offers/page/offer-hero-samurai.webp";
@@ -33,15 +33,15 @@ import {
   SERVICE_AREAS,
   SITE_URL,
 } from "@/data/business";
-import { useOfferActive } from "@/lib/offer";
+import { useOfferActive } from "@/hooks/useOfferActive";
 import { ARTIST } from "@/data/artist";
 import { offerDaysLeft } from "@/data/offer";
 import { GOOGLE_RATING, reviews } from "@/data/reviews";
 import { services } from "@/data/services";
-import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/site";
+import { GOOGLE_REVIEWS_URL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/navigation";
 import { sendOfferClaim } from "@/lib/booking-request";
-import { Breadcrumbs } from "@/components/blog/BlogBits";
-import { faqNode, seoHead } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { faqNode, seoHead } from "@/lib/seoHead";
 import { breadcrumbSchema } from "@/lib/blog";
 
 /*
@@ -56,7 +56,7 @@ const DESCRIPTION = `Up to 50% off custom tattoos at Xing Premium Tattoo Studio,
 
 const wa = (text: string) => `${WHATSAPP_URL}?text=${encodeURIComponent(text)}`;
 
-/* Intent events only (see lib/track.ts). Never treat these clicks as confirmed
+/* Intent events only (see lib/trackEvent.ts). Never treat these clicks as confirmed
    bookings. No form text is tracked. */
 function trackIntent(event: string, placement?: string) {
   track(event, { location: placement || "offer_page", page_variant: "xing_offer_v2" });
@@ -1202,7 +1202,7 @@ function OfferPage() {
           </form>
         </dialog>
       </div>
-      {offerActive && <FaqSection items={offerFaqs} id="offer-faq" />}
+      {offerActive && <FaqAccordion items={offerFaqs} id="offer-faq" />}
       <SiteFooter />
     </>
   );

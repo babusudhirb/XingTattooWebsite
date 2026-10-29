@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { pageTitle } from "@/data/business";
 import { NotFoundPage } from "@/components/layout/NotFoundPage";
-import { seoHead } from "@/lib/seo";
+import { seoHead } from "@/lib/seoHead";
 
 // Prerendered as 404.html, which .htaccess serves for every unknown URL.
 export const Route = createFileRoute("/404")({

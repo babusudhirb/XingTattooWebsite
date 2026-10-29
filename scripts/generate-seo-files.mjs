@@ -6,7 +6,7 @@
  *   llms.txt · llms-full.txt · site.webmanifest · blog/rss.xml · <INDEXNOW_KEY>.txt (when set)
  *   favicon.ico (+ the PNG icons) from the logo, via scripts/logo-assets.mjs, when missing
  *
- * Inputs: SITE_ROUTES (src/lib/routes.ts), live posts in content/blog, business data
+ * Inputs: SITE_ROUTES (src/data/routes.ts), live posts in content/blog, business data
  * (src/data/business.ts) and the FAQs. Run by predev/prebuild, by the blog plugin when a post
  * changes, and by hand: npm run seo:files. scripts/postbuild.mjs then refreshes
  * sitemap-images.xml with the hashed image URLs of the built pages and checks every sitemap URL.
@@ -25,7 +25,7 @@ const PUBLIC = path.join(APP, "public");
 const CONTENT = path.join(APP, "content/blog");
 
 const biz = await import("../src/data/business.ts");
-const { SITE_ROUTES } = await import("../src/lib/routes.ts");
+const { SITE_ROUTES } = await import("../src/data/routes.ts");
 const { faqs, faqCategories } = await import("../src/data/faqs.ts");
 const { studioPhotos } = await import("../src/data/studio-photos.ts");
 const SITE = biz.SITE_URL;

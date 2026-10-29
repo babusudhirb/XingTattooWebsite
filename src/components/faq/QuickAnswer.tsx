@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import type { QuickAnswer as QuickAnswerData } from "@/data/page-copy";
-import { ReadMore } from "@/components/sections/ReadMore";
+import type { QuickAnswer as QuickAnswerData } from "@/data/page-content";
+import { ReadMore } from "@/components/ui/ReadMore";
 
 /**
  * A question-led H2 with a direct, snippet-ready first paragraph (#quick-answer,

@@ -1,4 +1,4 @@
-export { BookCTA } from "./BookCTA";
-export { CallCTA } from "./CallCTA";
-export { DirectionsCTA } from "./DirectionsCTA";
-export { WhatsAppCTA } from "./WhatsAppCTA";
+export { BookingCta } from "./BookingCta";
+export { CallCta } from "./CallCta";
+export { DirectionsCta } from "./DirectionsCta";
+export { WhatsAppCta } from "./WhatsAppCta";

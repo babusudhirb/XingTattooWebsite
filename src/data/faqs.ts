@@ -57,8 +57,7 @@ export const faqs: Faq[] = [
     id: "how-to-book",
     category: "booking",
     question: "How do I book a tattoo appointment at Xing Premium Tattoo Studio?",
-    answer:
-      `Tap Book Free Consultation on this site, message us on WhatsApp at ${PHONE_DISPLAY}, or visit the studio in AECS Layout, Brookefield. Share your idea, placement and rough size. We'll set up a free consultation first, then book your session once you're happy with the design and the date suits you.`,
+    answer: `Tap Book Free Consultation on this site, message us on WhatsApp at ${PHONE_DISPLAY}, or visit the studio in AECS Layout, Brookefield. Share your idea, placement and rough size. We'll set up a free consultation first, then book your session once you're happy with the design and the date suits you.`,
     related: ["free-consultation", "what-to-bring", "walk-ins"],
   },
   {
@@ -271,8 +270,7 @@ export const faqs: Faq[] = [
     id: "location",
     category: "studio",
     question: "Where is Xing Premium Tattoo Studio located?",
-    answer:
-      `${ADDRESS.full}. The studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield. Use Get Directions on this site for a Google Maps route.`,
+    answer: `${ADDRESS.full}. The studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield. Use Get Directions on this site for a Google Maps route.`,
     related: ["opening-hours", "how-to-book"],
     link: { label: "Map & directions", to: "/contact" },
   },
@@ -280,16 +278,14 @@ export const faqs: Faq[] = [
     id: "opening-hours",
     category: "studio",
     question: "What are Xing Premium Tattoo Studio's opening hours?",
-    answer:
-      `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day. Appointments are preferred, so message us on WhatsApp or use the booking form to pick a time that suits you. Walk-ins are welcome when the artist is free, and these hours match the studio's Google Business Profile.`,
+    answer: `${HOURS_LONG}. Tuesday is the studio's cleaning and rest day. Appointments are preferred, so message us on WhatsApp or use the booking form to pick a time that suits you. Walk-ins are welcome when the artist is free, and these hours match the studio's Google Business Profile.`,
     related: ["walk-ins", "location"],
   },
   {
     id: "who-is-artist",
     category: "studio",
     question: "Who will do my tattoo?",
-    answer:
-      `Every tattoo is designed and done by Peace (Chingri Awungshi), Xing Premium Tattoo Studio's lead artist, with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. The person you consult with is the person who tattoos you. Consultations, design and aftercare advice all come from the same person.`,
+    answer: `Every tattoo is designed and done by Peace (Chingri Awungshi), Xing Premium Tattoo Studio's lead artist, with ${COUNTS.years} years of experience and ${COUNTS.tattoos} tattoos completed. The person you consult with is the person who tattoos you. Consultations, design and aftercare advice all come from the same person.`,
     related: ["custom-design", "styles-offered"],
     link: { label: "View the artist profile", to: "/tattoo-artist" },
   },
