@@ -123,7 +123,7 @@ export function StudioHighlights() {
         <Stat {...RATING} className="border-t border-border lg:order-1 lg:border-t-0" />
         <li className="col-span-2 order-first lg:order-2 lg:border-x lg:border-border">
           <a
-            href="#gallery"
+            href="/gallery"
             className="group relative flex h-full flex-col items-center justify-center px-4 py-6 text-center transition-colors hover:bg-card sm:py-8"
           >
             <span

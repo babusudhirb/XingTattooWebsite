@@ -9,7 +9,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import zlib from "node:zlib";
 
-import { REDIRECTS } from "./redirects.mjs";
+import { redirectFor } from "./redirects.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.output/public");
 const PORT = Number(process.argv[2] ?? 4173);
@@ -80,8 +80,12 @@ http
     };
 
     const bare = p.replace(/(\.html|\/)$/, "") || "/";
-    const r = REDIRECTS.find((x) => x.from === bare);
-    if (r) return redirect(r.to);
+    const to = redirectFor(bare);
+    if (to) return redirect(to);
+    // Capitals in a page URL → the lowercase page (as the generated .htaccess rules do)
+    if (/[A-Z]/.test(bare) && isFile(path.join(ROOT, `${bare.toLowerCase()}.html`)))
+      return redirect(bare.toLowerCase());
+    if (bare === "/404") return send(req, res, 404, path.join(ROOT, "404.html"));
     if (p.endsWith(".html")) return redirect(p.slice(0, -5) || "/");
     if (p.length > 1 && p.endsWith("/") && !fs.existsSync(path.join(ROOT, p)))
       return redirect(p.slice(0, -1));

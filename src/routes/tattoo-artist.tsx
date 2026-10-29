@@ -295,7 +295,7 @@ function TattooArtistPage() {
         </ul>
         <div className="mt-8 text-center">
           <a
-            href="/#gallery"
+            href="/gallery"
             className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
           >
             View Full Gallery <ArrowRight className="h-4 w-4" />

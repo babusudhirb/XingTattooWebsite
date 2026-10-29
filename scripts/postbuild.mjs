@@ -104,12 +104,26 @@ fs.writeFileSync(path.join(APP, "public/sitemap-images.xml"), imagesXml);
 // ── .htaccess: generated 301s between the markers ──────────────────────────
 const htPath = path.join(OUT, ".htaccess");
 const ht = fs.readFileSync(htPath, "utf8");
-const rules = REDIRECTS.map(({ from, to }) => {
-  const pattern = from.slice(1).replace(/[.]/g, "\\.");
-  // Absolute target, so http://, the bare domain and an old URL all resolve in one 301
-  const target = to.startsWith("/") ? SITE + to : to;
-  return `  RewriteRule ^${pattern}(\\.html|/)?$ ${target} [R=301,L,NE]`;
-}).join("\n");
+// Absolute targets, so http://, the bare domain and an old URL all resolve in one 301
+const target = (to) => (to.startsWith("/") ? SITE + to : to);
+const esc = (p) => p.replace(/[.]/g, "\\.");
+const rules = [
+  ...REDIRECTS.map((r) =>
+    r.prefix
+      ? `  RewriteRule ^${esc(r.prefix.slice(1))}(.+?)(\\.html|/)?$ ${target(r.to)}$1 [R=301,L,NE]`
+      : `  RewriteRule ^${esc(r.from.slice(1))}(\\.html|/)?$ ${target(r.to)} [R=301,L,NE]`,
+  ),
+  // The 404 page itself answers with a 404 status (only when asked for directly)
+  "  RewriteCond %{ENV:REDIRECT_STATUS} ^$",
+  "  RewriteRule ^404(\\.html)?$ - [R=404,L]",
+  // Any capitals in a page URL → the lowercase page, in one hop (assets are left alone)
+  ...[...pages.values()]
+    .filter((p) => p.urlPath !== "/" && p.urlPath !== "/404")
+    .flatMap((p) => [
+      "  RewriteCond %{REQUEST_URI} [A-Z]",
+      `  RewriteRule ^${esc(p.urlPath.slice(1))}(\\.html|/)?$ ${SITE}${p.urlPath} [NC,R=301,L,NE]`,
+    ]),
+].join("\n");
 const MARKERS = /# BEGIN generated redirects\r?\n[\s\S]*?# END generated redirects/;
 if (!MARKERS.test(ht)) throw new Error("[postbuild] redirect markers missing in public/.htaccess");
 const marked = ht.replace(

@@ -274,7 +274,7 @@ export const faqs: Faq[] = [
     answer:
       `${ADDRESS.full}. The studio is ${ADDRESS.landmark}, on 60 Feet Road, about 3 km from Marathahalli and easy to reach from Whitefield. Use Get Directions on this site for a Google Maps route.`,
     related: ["opening-hours", "how-to-book"],
-    link: { label: "Map & directions", to: "/about#visit" },
+    link: { label: "Map & directions", to: "/contact" },
   },
   {
     id: "opening-hours",

@@ -1,7 +1,7 @@
 import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import { EMAIL, EMAIL_TO, navLinks } from "@/data/site";
+import { EMAIL, EMAIL_TO, studioLinks } from "@/data/site";
 import { SERVICE_SLUGS, services } from "@/data/services";
 import {
   ADDRESS,
@@ -52,30 +52,26 @@ export function SiteFooter({ showMap = false }: { showMap?: boolean }) {
           </a>
         </div>
         <div>
-          <p className="eyebrow">Quick Links</p>
+          <p className="eyebrow">Studio</p>
           <ul className="mt-3 text-xs text-muted-foreground lg:mt-4 lg:space-y-2">
-            {navLinks.map(({ label, href }) => (
+            {studioLinks.map(({ label, href }) => (
               <li key={label}>
-                <a
-                  href={href}
+                <Link
+                  to={href}
                   className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0"
                 >
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
-            <li>
-              <Link
-                to="/services"
-                className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0"
-              >
-                Services
-              </Link>
-            </li>
           </ul>
         </div>
         <div>
-          <p className="eyebrow">Our Services</p>
+          <p className="eyebrow">
+            <Link to="/services" className="hover:text-foreground">
+              Services
+            </Link>
+          </p>
           <ul className="mt-3 text-xs text-muted-foreground lg:mt-4 lg:space-y-2">
             {SERVICE_SLUGS.map((slug) => (
               <li key={slug}>

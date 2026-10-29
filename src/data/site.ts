@@ -27,19 +27,34 @@ export const EMAIL_TO = `mailto:${EMAIL}`;
 export const GOOGLE_REVIEWS_URL = MAPS_PLACE_URL;
 export const ADDRESS_LINE = ADDRESS.full;
 
-/** Header order: Home, Tattoo Designs (dropdown), the rest of these, then Offers. */
+/** The one site navigation, in order — header, drawer and footer. Services opens the six
+ *  style pages (dropdown on desktop, sub-list in the drawer); Offers follows while one runs. */
 export const navLinks = [
-  { label: "Home", href: "/#home" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Artist", href: "/tattoo-artist" },
-  { label: "Gallery", href: "/#gallery" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about" },
-];
+  { label: "Contact", href: "/contact" },
+] as const;
+export const SERVICES_HREF = "/services";
+
+/** Footer "Studio" column. */
+export const studioLinks = [
+  { label: "Gallery", href: "/gallery" },
+  { label: "Artist", href: "/tattoo-artist" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
+] as const;
 
 /** Page links (not #anchors) are active on their own URL and everything below it. */
 export function isActiveHref(pathname: string, href: string) {
   if (href.includes("#")) return false;
+  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

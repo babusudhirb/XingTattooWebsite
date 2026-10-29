@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as OfferRouteImport } from './routes/offer'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as TattooArtistRouteImport } from './routes/tattoo-artist'
@@ -39,9 +41,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OfferRoute = OfferRouteImport.update({
@@ -99,7 +111,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/offer': typeof OfferRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/tattoo-artist': typeof TattooArtistRoute
@@ -115,7 +129,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/offer': typeof OfferRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/tattoo-artist': typeof TattooArtistRoute
@@ -132,7 +148,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/offer': typeof OfferRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/tattoo-artist': typeof TattooArtistRoute
@@ -150,7 +168,9 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
+    | '/contact'
     | '/faq'
+    | '/gallery'
     | '/offer'
     | '/privacy-policy'
     | '/tattoo-artist'
@@ -166,7 +186,9 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
+    | '/contact'
     | '/faq'
+    | '/gallery'
     | '/offer'
     | '/privacy-policy'
     | '/tattoo-artist'
@@ -182,7 +204,9 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
+    | '/contact'
     | '/faq'
+    | '/gallery'
     | '/offer'
     | '/privacy-policy'
     | '/tattoo-artist'
@@ -199,7 +223,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
   OfferRoute: typeof OfferRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   TattooArtistRoute: typeof TattooArtistRoute
@@ -235,11 +261,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offer': {
@@ -319,7 +359,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
   OfferRoute: OfferRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   TattooArtistRoute: TattooArtistRoute,

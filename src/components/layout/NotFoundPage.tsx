@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, Home, Images } from "lucide-react";
+import { Home, Images, MapPin, Sparkles } from "lucide-react";
 
-import { BookCTA } from "@/components/cta";
+import { WhatsAppCTA } from "@/components/cta";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SocialDock } from "@/components/layout/SocialDock";
@@ -24,24 +24,21 @@ export function NotFoundPage() {
           The page you're looking for doesn't exist or has moved. These will get you back on track:
         </p>
         <nav aria-label="Helpful links" className="mt-8">
-          <ul className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-            <li>
-              <Link to="/" className={`${LINK} w-full sm:w-auto`}>
-                <Home className="h-4 w-4" aria-hidden="true" /> Home
-              </Link>
-            </li>
-            <li>
-              <a href="/#gallery" className={`${LINK} w-full sm:w-auto`}>
-                <Images className="h-4 w-4" aria-hidden="true" /> Gallery
-              </a>
-            </li>
-            <li>
-              <Link to="/blog" className={`${LINK} w-full sm:w-auto`}>
-                <BookOpen className="h-4 w-4" aria-hidden="true" /> Blog
-              </Link>
-            </li>
-            <li>
-              <BookCTA location="404" className="w-full sm:w-auto" />
+          <ul className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center">
+            {[
+              { to: "/", label: "Home", icon: Home },
+              { to: "/services", label: "Services", icon: Sparkles },
+              { to: "/gallery", label: "Gallery", icon: Images },
+              { to: "/contact", label: "Contact", icon: MapPin },
+            ].map(({ to, label, icon: Icon }) => (
+              <li key={to}>
+                <Link to={to} className={`${LINK} w-full sm:w-auto`}>
+                  <Icon className="h-4 w-4" aria-hidden="true" /> {label}
+                </Link>
+              </li>
+            ))}
+            <li className="col-span-2">
+              <WhatsAppCTA location="404" className="w-full sm:w-auto" />
             </li>
           </ul>
         </nav>

@@ -19,6 +19,19 @@
  * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
+/* Mobile size system: one fluid value per role, 360px phone → 1280px desktop.
+   h1 28px → ~55px · h2 22px → ~37px · h3 18px → ~23px · section padding 48px → ~97px.
+   Use text-h1 / text-h2 / text-h3 and py-section instead of ad-hoc sizes. */
+@theme {
+  --text-h1: clamp(1.75rem, 1.1rem + 2.9vw, 4rem);
+  --text-h1--line-height: 1.1;
+  --text-h2: clamp(1.375rem, 1rem + 1.6vw, 2.75rem);
+  --text-h2--line-height: 1.15;
+  --text-h3: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --spacing-section: clamp(3rem, 1.6rem + 5.6vw, 7.5rem);
+}
+
 @theme inline {
   --font-display: "Archivo", "Archivo Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Karla", "Karla Fallback", ui-sans-serif, system-ui, sans-serif;
@@ -200,6 +213,12 @@
     overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;
   }
+  @media (min-width: 1024px) {
+    body {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+    }
+  }
 
   h1,
   h2,
@@ -210,15 +229,18 @@
     overflow-wrap: break-word;
     text-wrap: balance;
   }
-  /* Fluid defaults (components may size headings themselves) */
+  /* Fluid defaults from the size system (components may size headings themselves) */
   h1 {
-    font-size: clamp(2.25rem, 9vw, 4.5rem);
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
   }
   h2 {
-    font-size: clamp(1.6rem, 6vw, 2.75rem);
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
   }
   h3 {
-    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
   }
   p,
   li,
@@ -328,9 +350,12 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
+  @media (min-width: 1024px) {
+    font-size: 0.8125rem;
+  }
 }
 
 /* Image blended into the page background (soft feathered edges) */

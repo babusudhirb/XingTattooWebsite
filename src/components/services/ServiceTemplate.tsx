@@ -467,7 +467,7 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
           </div>
           <div className="mt-8 text-center">
             <a
-              href="/#gallery"
+              href={`/gallery#${service.slug}`}
               className="inline-flex items-center gap-3 rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
             >
               View Full Gallery <ArrowRight className="h-4 w-4" />
@@ -535,6 +535,12 @@ export function ServiceTemplate({ service }: { service: ServiceContent }) {
               {service.ctaSubcopy ??
                 "Tell us your idea — we'll sketch it, size it and quote it, no pressure."}
             </p>
+            <Link
+              to="/contact"
+              className="mt-2 inline-flex min-h-11 items-center text-sm text-primary-foreground underline underline-offset-4"
+            >
+              Visit the studio: contact &amp; directions
+            </Link>
           </div>
           <div className="flex flex-wrap gap-3">
             <BookCTA

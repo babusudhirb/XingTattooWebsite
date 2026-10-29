@@ -106,7 +106,10 @@ export function seoHead(input: SeoInput) {
     meta: [
       { title: input.title },
       { name: "description", content: input.description },
-      ...(input.noindex ? [{ name: "robots", content: "noindex,follow" }] : []),
+      {
+        name: "robots",
+        content: input.noindex ? "noindex,follow" : "index,follow,max-image-preview:large",
+      },
       { property: "og:type", content: input.type ?? "website" },
       { property: "og:title", content: input.title },
       { property: "og:description", content: input.description },

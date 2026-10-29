@@ -2,7 +2,8 @@
  * Zero-mistake SEO gate against a running site, using the raw server HTML (no JavaScript).
  * Usage: node scripts/seo-audit.mjs [baseUrl=http://localhost:3000]
  * Production check: npm run build && npm run preview, then node scripts/seo-audit.mjs http://localhost:4173
- * Checks every sitemap URL plus every internal page reachable by links from /.
+ * Checks every sitemap URL plus every internal page reachable by links from /, fetched as
+ * Googlebot Smartphone (Google indexes the mobile version).
  * Prints failures only and a summary; exits 1 when anything fails.
  */
 import fs from "node:fs";
@@ -18,18 +19,27 @@ const norm = (s) => (s ?? "").replace(/\s+/g, " ").trim();
 /** Text a sighted user reads as the label: skips aria-hidden parts, spaces between elements. */
 function visibleText(node) {
   if (node.nodeType === 3) return node.text;
-  if (node.getAttribute?.("aria-hidden") === "true" || /sr-only/.test(node.getAttribute?.("class") ?? ""))
+  if (
+    node.getAttribute?.("aria-hidden") === "true" ||
+    /sr-only/.test(node.getAttribute?.("class") ?? "")
+  )
     return " ";
   return " " + node.childNodes.map(visibleText).join("") + " ";
 }
 
 const local = (u) => u.replace(SITE, BASE);
+const UA =
+  "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
 async function get(url, { redirect = "manual", method = "GET" } = {}) {
-  return fetch(url, { redirect, method });
+  return fetch(url, { redirect, method, headers: { "User-Agent": UA } });
 }
 const status = new Map();
 async function statusOf(url) {
-  if (!status.has(url)) status.set(url, get(url).then((r) => r.status));
+  if (!status.has(url))
+    status.set(
+      url,
+      get(url).then((r) => r.status),
+    );
   return status.get(url);
 }
 const htmlCache = new Map();
@@ -49,9 +59,9 @@ function envValue(name) {
   if (process.env[name]) return process.env[name];
   for (const f of [".env.production.local", ".env.production", ".env.local", ".env"]) {
     try {
-      const m = fs.readFileSync(new URL(`../${f}`, import.meta.url), "utf8").match(
-        new RegExp(`^${name}=(.*)$`, "m"),
-      );
+      const m = fs
+        .readFileSync(new URL(`../${f}`, import.meta.url), "utf8")
+        .match(new RegExp(`^${name}=(.*)$`, "m"));
       if (m && m[1].trim()) return m[1].trim().replace(/^["']|["']$/g, "");
     } catch {}
   }
@@ -85,6 +95,24 @@ const FORBIDDEN = [
   /(?<!\d)8 PM\b/,
   /Wednesday closed/i,
 ];
+/** schema.org type of each page's WebPage node. */
+const PAGE_TYPE = (p) =>
+  p === "/about"
+    ? "AboutPage"
+    : p === "/contact"
+      ? "ContactPage"
+      : p === "/gallery"
+        ? "ImageGallery"
+        : p === "/tattoo-artist"
+          ? "ProfilePage"
+          : p === "/services" || /^\/blog(\/category\/|\/page\/|$)/.test(p)
+            ? "CollectionPage"
+            : "WebPage";
+const INDEX_ROBOTS = "index,follow,max-image-preview:large";
+const MAX_HTML = 150 * 1024;
+const MAX_TTFB = 600;
+const assetStatus = new Map();
+
 const PHONE_LIKE = /(?:\+?91[\s-]?)?(?<!\d)[6-9]\d{4}[\s-]?\d{5}(?!\d)/g;
 const PHONE_OK = new Set(["+91 89700 07818", "+918970007818", "918970007818"]);
 
@@ -110,7 +138,8 @@ async function sitemapUrls(url) {
 const urls = await sitemapUrls(`${SITE}/sitemap.xml`);
 if (!urls.length) fail("/sitemap.xml", "no URLs");
 const inSitemap = new Set(urls.map((u) => u.replace(SITE, "") || "/"));
-if (!biz.isOfferActive() && inSitemap.has("/offer")) fail("/offer", "expired offer still in sitemap");
+if (!biz.isOfferActive() && inSitemap.has("/offer"))
+  fail("/offer", "expired offer still in sitemap");
 
 // ── Crawl: every internal page reachable from / ────────────────────────────
 const seen = new Set(["/"]);
@@ -201,6 +230,16 @@ for (const where of pages) {
   if (!/html/.test(res.headers.get("content-type") ?? "")) continue;
   if (/noindex/i.test(res.headers.get("x-robots-tag") ?? "")) fail(where, "X-Robots-Tag noindex");
   const html = await res.text();
+  // Crawl speed: time to first byte (fresh request) and raw HTML size
+  {
+    const t0 = performance.now();
+    const r2 = await get(BASE + where);
+    const ttfb = performance.now() - t0;
+    await r2.arrayBuffer();
+    if (ttfb > MAX_TTFB) fail(where, `TTFB ${Math.round(ttfb)} ms > ${MAX_TTFB} ms`);
+  }
+  const bytes = Buffer.byteLength(html);
+  if (bytes > MAX_HTML) fail(where, `HTML ${Math.round(bytes / 1024)} KB > 150 KB`);
   const doc = parse(html);
   const attr = (sel, a = "content") => doc.querySelector(sel)?.getAttribute(a) ?? "";
   const isDev = html.includes("/@vite/client");
@@ -209,8 +248,13 @@ for (const where of pages) {
   if (title.length < 30 || title.length > 60) fail(where, `title ${title.length} chars`);
   const desc = attr('meta[name="description"]');
   if (desc.length < 120 || desc.length > 158) fail(where, `description ${desc.length} chars`);
+  const robotsMeta = doc.querySelectorAll('meta[name="robots"]');
+  if (robotsMeta.length !== 1) fail(where, `${robotsMeta.length} robots meta tags`);
   const noindex = /noindex/i.test(attr('meta[name="robots"]'));
   if (noindex && !mayNoindex(where)) fail(where, "meta robots noindex");
+  if (!noindex && attr('meta[name="robots"]') !== INDEX_ROBOTS)
+    fail(where, `robots "${attr('meta[name="robots"]')}" ≠ "${INDEX_ROBOTS}"`);
+  if (noindex && inSitemap.has(where)) fail(where, "noindex page in the sitemap");
   if (inSitemap.has(where)) {
     titles.set(title, [...(titles.get(title) ?? []), where]);
     descs.set(desc, [...(descs.get(desc) ?? []), where]);
@@ -258,11 +302,29 @@ for (const where of pages) {
   } catch {
     fail(where, "JSON-LD does not parse");
   }
+  const page = graph.find((n) => n["@id"] === `${url}#webpage`);
+  const wantType = /^\/blog\/(?!category\/|page\/)[^/]+$/.test(where) ? null : PAGE_TYPE(where);
+  if (!page) fail(where, "no #webpage node");
+  else if (wantType && page["@type"] !== wantType)
+    fail(where, `page node ${page["@type"]} ≠ ${wantType}`);
+  if (
+    /^\/blog\/(?!category\/|page\/)[^/]+$/.test(where) &&
+    !graph.some((n) => n["@type"] === "BlogPosting")
+  )
+    fail(where, "no BlogPosting node");
+  if (/^\/services\/[^/]+$/.test(where) && !graph.some((n) => n["@type"] === "Service"))
+    fail(where, "no Service node");
+  if (!graph.some((n) => n["@type"] === "WebSite")) fail(where, "no WebSite node");
+  if (where !== "/" && !graph.some((n) => n["@type"] === "BreadcrumbList"))
+    fail(where, "no BreadcrumbList");
+  if (where !== "/" && !doc.querySelector('nav[aria-label="Breadcrumb"]'))
+    fail(where, "no visible breadcrumbs");
   const business = graph.find((n) => n["@id"] === biz.BUSINESS_ID);
   if (!business) fail(where, "no #business node");
   else checkBusiness(where, business);
   const offerNode = JSON.stringify(graph).includes('"@type":"Offer","name"');
-  if (where === "/offer" && !biz.isOfferActive() && offerNode) fail(where, "Offer schema after expiry");
+  if (where === "/offer" && !biz.isOfferActive() && offerNode)
+    fail(where, "Offer schema after expiry");
 
   // FAQ: JSON-LD text identical to the visible accordion
   const qs = doc.querySelectorAll("[data-faq-q]").map((e) => norm(e.text));
@@ -295,7 +357,9 @@ for (const where of pages) {
       for (const v of [biz.BUSINESS_NAME, biz.ADDRESS.full, biz.PHONE_DISPLAY])
         if (!ftext.includes(v)) fail(where, `footer lacks "${v}"`);
       const rows = footer.querySelectorAll("dl > div");
-      const lines = rows.map((r) => `${norm(r.querySelector("dt")?.text)} ${norm(r.querySelector("dd")?.text)}`);
+      const lines = rows.map(
+        (r) => `${norm(r.querySelector("dt")?.text)} ${norm(r.querySelector("dd")?.text)}`,
+      );
       const want = biz.HOURS.map((h) => `${h.long} ${h.closed ? "Closed" : biz.OPEN_LABEL}`);
       if (lines.join(" | ") !== want.join(" | "))
         fail(where, `footer hours "${lines.join(" | ")}" ≠ GBP 7 lines`);
@@ -315,7 +379,8 @@ for (const where of pages) {
       fail(where, "booking CTA is not a button");
   }
   for (const a of doc.querySelectorAll('a[href^="tel:"]'))
-    if (a.getAttribute("href") !== biz.PHONE_TEL) fail(where, `tel: link ${a.getAttribute("href")}`);
+    if (a.getAttribute("href") !== biz.PHONE_TEL)
+      fail(where, `tel: link ${a.getAttribute("href")}`);
   for (const a of doc.querySelectorAll('a[href*="wa.me/"]')) {
     const h = a.getAttribute("href");
     if (!h.startsWith("https://wa.me/?text=") && !ALLOWED_HREF.click_whatsapp(h))
@@ -336,10 +401,61 @@ for (const where of pages) {
   for (const m of text.matchAll(PHONE_LIKE))
     if (!PHONE_OK.has(m[0])) fail(where, `phone format "${m[0]}"`);
 
+  // Content in the server HTML (no JavaScript): enough main text, gallery first batch
+  const main = doc.querySelector("main");
+  const words = norm(main?.text).split(" ").filter(Boolean).length;
+  if (inSitemap.has(where) && words < 250)
+    fail(where, `only ${words} words of main content in the HTML`);
+  if (where === "/gallery" && (main?.querySelectorAll("img").length ?? 0) < 24)
+    fail(where, "gallery first batch (24 photos) not in the HTML");
+  for (const img of doc.querySelectorAll("main img")) {
+    if (!img.hasAttribute("alt")) fail(where, `img without alt: ${img.getAttribute("src")}`);
+    if (!img.getAttribute("width") || !img.getAttribute("height"))
+      fail(where, `img without width/height: ${img.getAttribute("src")}`);
+  }
+  // Duplicate paragraphs (e.g. carousel clones rendered on the server)
+  const paras = new Map();
+  for (const el of doc.querySelectorAll("main p, main blockquote")) {
+    const t = norm(el.text);
+    if (t.length > 120) paras.set(t, (paras.get(t) ?? 0) + 1);
+  }
+  for (const [t, n] of paras)
+    if (n > 1) fail(where, `paragraph repeated ${n}× in the HTML: "${t.slice(0, 50)}…"`);
+  // Mixed content and assets: every same-origin script, style, image and icon answers 200
+  for (const m of html.matchAll(/(?:src|href|srcset)="(http:\/\/[^"]+)"/g))
+    fail(where, `mixed content ${m[1]}`);
+  const assets = new Set();
+  for (const el of doc.querySelectorAll(
+    "script[src], link[href], img[src], source[srcset], img[srcset]",
+  )) {
+    const rel = el.getAttribute("rel") ?? "";
+    if (el.tagName === "LINK" && !/stylesheet|icon|preload|modulepreload|manifest/.test(rel))
+      continue;
+    for (const part of [
+      el.getAttribute("src"),
+      el.getAttribute("href"),
+      ...(el.getAttribute("srcset") ?? "").split(",").map((x) => x.trim().split(" ")[0]),
+    ])
+      if (part && part.startsWith("/") && !part.startsWith("//")) assets.add(part);
+  }
+  for (const a of assets) {
+    if (!assetStatus.has(a))
+      assetStatus.set(
+        a,
+        get(BASE + a, { method: "HEAD" }).then((r) => r.status),
+      );
+    const st = await assetStatus.get(a);
+    if (st !== 200) fail(where, `asset ${a} answers ${st}`);
+  }
+
   // Google tag: present only in a production build that set an ID
   const hasTag = /googletagmanager\.com/.test(html);
   const wantTag = Boolean(TAG_ID) && !isDev;
-  if (hasTag !== wantTag) fail(where, `Google tag ${hasTag ? "present" : "missing"} (expected ${wantTag ? "present" : "absent"})`);
+  if (hasTag !== wantTag)
+    fail(
+      where,
+      `Google tag ${hasTag ? "present" : "missing"} (expected ${wantTag ? "present" : "absent"})`,
+    );
 
   // Links and #anchors
   for (const a of doc.querySelectorAll("a[href]")) {
@@ -363,7 +479,16 @@ const idCache = new Map();
 for (const [from, target, id] of anchors) {
   if (!idCache.has(target)) {
     const html = await htmlOf(target);
-    idCache.set(target, new Set(html ? parse(html).querySelectorAll("[id]").map((e) => e.id) : []));
+    idCache.set(
+      target,
+      new Set(
+        html
+          ? parse(html)
+              .querySelectorAll("[id]")
+              .map((e) => e.id)
+          : [],
+      ),
+    );
   }
   if (!idCache.get(target).has(decodeURIComponent(id)))
     fail(from, `anchor ${target === from ? "" : target}#${id} has no target`);

@@ -85,6 +85,13 @@ export const SITE_ROUTES: SiteRoute[] = [
     sources: SERVICE,
   },
   {
+    path: "/gallery",
+    label: "Tattoo Gallery",
+    group: "pages",
+    indexable: true,
+    sources: ["src/routes/gallery.tsx", "src/data/gallery.ts", "src/data/studio-photos.ts"],
+  },
+  {
     path: "/tattoo-artist",
     label: "Lead Artist Peace",
     group: "pages",
@@ -104,6 +111,17 @@ export const SITE_ROUTES: SiteRoute[] = [
     group: "pages",
     indexable: true,
     sources: ["src/routes/about.tsx", "src/data/about.ts"],
+  },
+  {
+    path: "/contact",
+    label: "Contact & Directions",
+    group: "pages",
+    indexable: true,
+    sources: [
+      "src/routes/contact.tsx",
+      "src/components/layout/VisitStudio.tsx",
+      "src/data/business.ts",
+    ],
   },
   {
     path: "/offer",

@@ -1,13 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  ArrowRight,
-  CrownIcon,
-  PenTool,
-  ShieldCheck,
-  Shuffle,
-  X,
-} from "lucide-react";
+import { ArrowRight, CrownIcon, PenTool, ShieldCheck, X } from "lucide-react";
 
 import { QuickAnswer } from "@/components/faq/QuickAnswer";
 import { homeQuickAnswer } from "@/data/page-copy";
@@ -16,30 +9,14 @@ import heroArt from "@/assets/hero-fineline-art.webp";
 import heroArtSmall from "@/assets/hero-fineline-art-sm.webp";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 
-import {
-  ADDRESS,
-  COUNTS,
-  GOOGLE_RATING,
-  isOfferActive,
-  OFFER,
-  pageTitle,
-} from "@/data/business";
+import { ADDRESS, COUNTS, GOOGLE_RATING, isOfferActive, OFFER, pageTitle } from "@/data/business";
 import { OFFER_IDEAS, OFFER_IMAGE_SIZE, OFFER_LABEL, offerImages } from "@/data/offer";
 import { SERVICE_SLUGS, services } from "@/data/services";
-import {
-  gallery,
-  galleryFilters,
-  GALLERY_SIZES,
-  gallerySrcSet,
-  loadGallerySeen,
-  mixGallery,
-  saveGallerySeen,
-} from "@/data/gallery";
+import { GALLERY_SIZES, gallerySrcSet, studioGallery, styleGallery } from "@/data/gallery";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SocialDock } from "@/components/layout/SocialDock";
 import { SectionHeading } from "@/components/sections/SectionHeading";
-import { LazyGalleryLightbox } from "@/components/sections/LazyGalleryLightbox";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { BookingCTA } from "@/components/booking/BookingCTA";
 import { StudioHighlights } from "@/components/sections/StudioHighlights";
@@ -53,22 +30,20 @@ import {
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { TattooFlash, type FlashName } from "@/components/sections/TattooFlash";
 import { RelatedGuides } from "@/components/blog/RelatedGuides";
-import { HOME_GUIDES, sectionPosts } from "@/data/blog";
+import { HOME_GUIDES, posts, sectionPosts } from "@/data/blog";
 import { blogItemList } from "@/lib/blog";
 import { faqNode, seoHead, SPEAKABLE } from "@/lib/seo";
 
-const GALLERY_PAGE_SIZE = 24;
-const GALLERY_PAGE_SIZE_PHONE = 12;
-
-/** Client-only: how many photos to show per page on this screen. */
-function galleryPageSizeForScreen() {
-  return window.matchMedia("(max-width: 639px)").matches
-    ? GALLERY_PAGE_SIZE_PHONE
-    : GALLERY_PAGE_SIZE;
-}
+/** Gallery preview: each style's lead photo, then three studio photos — each opens its
+ *  section of /gallery. */
+const galleryPreview = [
+  ...SERVICE_SLUGS.map((slug) => ({ ...styleGallery(slug)[0]!, href: `/gallery#${slug}` })),
+  ...studioGallery.slice(0, 3).map((g) => ({ ...g, href: "/gallery#portfolio" })),
+];
 
 const homeFaqs = homeFaqIds.map((id) => faqById.get(id)!);
-const homeGuides = sectionPosts(HOME_GUIDES);
+/** The three newest posts first (so every new post gets a home-page link), then the picks. */
+const homeGuides = [...new Set([...posts.slice(0, 3), ...sectionPosts(HOME_GUIDES)])].slice(0, 6);
 
 const HOME_TITLE = pageTitle("Tattoo Studio in Brookefield, Bangalore");
 const HOME_DESCRIPTION = `Custom tattoos by Peace, ${ADDRESS.landmark}. Rated ${GOOGLE_RATING}★ on Google. Book a free consultation.`;
@@ -81,11 +56,26 @@ export const Route = createFileRoute("/")({
       description: HOME_DESCRIPTION,
       // The hero drawing is the largest thing on screen: fetch the right one first
       links: [
-        { rel: "preload", as: "image", href: heroArtSmall, media: "(max-width: 1023px)", fetchPriority: "high" },
-        { rel: "preload", as: "image", href: heroArt, media: "(min-width: 1024px)", fetchPriority: "high" },
+        {
+          rel: "preload",
+          as: "image",
+          href: heroArtSmall,
+          media: "(max-width: 1023px)",
+          fetchPriority: "high",
+        },
+        {
+          rel: "preload",
+          as: "image",
+          href: heroArt,
+          media: "(min-width: 1024px)",
+          fetchPriority: "high",
+        },
       ],
       page: { speakable: SPEAKABLE },
-      graph: [faqNode(homeFaqs), { ...blogItemList(homeGuides), name: "Tattoo guides from Xing Premium Tattoo Studio" }],
+      graph: [
+        faqNode(homeFaqs),
+        { ...blogItemList(homeGuides), name: "Tattoo guides from Xing Premium Tattoo Studio" },
+      ],
     }),
   component: Index,
 });
@@ -252,11 +242,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
                     className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </button>
-                <BookCTA
-                  location="offer_popup"
-                  onClick={requestClose}
-                  className="m-2.5 px-4"
-                />
+                <BookCTA location="offer_popup" onClick={requestClose} className="m-2.5 px-4" />
               </div>
             ))}
           </div>
@@ -312,13 +298,7 @@ function OfferModal({ onClose }: { onClose: () => void }) {
 }
 
 function Index() {
-  const [filter, setFilter] = useState("All");
   const [offerOpen, setOfferOpen] = useState(false);
-  const [galleryPageSize, setGalleryPageSize] = useState(GALLERY_PAGE_SIZE);
-  const [galleryVisibleCount, setGalleryVisibleCount] = useState(GALLERY_PAGE_SIZE);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [galleryAutoLoad, setGalleryAutoLoad] = useState(false);
-  const galleryEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // The popup only runs while the GBP offer is live (India time)
@@ -326,67 +306,6 @@ function Index() {
     const t = window.setTimeout(() => setOfferOpen(true), 10000);
     return () => window.clearTimeout(t);
   }, []);
-
-  // Jumping in via the "Gallery" nav link (or any direct #gallery link) means
-  // the visitor wants to browse the whole thing — switch to auto-load-on-scroll.
-  useEffect(() => {
-    const checkHash = () => {
-      if (window.location.hash === "#gallery") setGalleryAutoLoad(true);
-    };
-    checkHash();
-    window.addEventListener("hashchange", checkHash);
-    return () => window.removeEventListener("hashchange", checkHash);
-  }, []);
-
-  // Server renders the stored order; the browser reshuffles after mount so each
-  // visit shows a different, style-mixed set (shuffling during render would make
-  // the server and client HTML disagree). The gallery is below the fold, so the
-  // swap isn't visible. Photos this visitor saw on earlier visits go to the back,
-  // so each visit (and each Shuffle click) leads with photos they haven't seen.
-  const [mixedGallery, setMixedGallery] = useState(gallery);
-  const nextGalleryMix = useCallback(() => {
-    const pageSize = galleryPageSizeForScreen();
-    const { visit, seen } = loadGallerySeen();
-    const mixed = mixGallery(gallery, Math.random, seen);
-    // Only what's actually on screen counts as "seen"
-    saveGallerySeen(visit + 1, seen, mixed.slice(0, pageSize));
-    setMixedGallery(mixed);
-    setGalleryPageSize(pageSize);
-    setGalleryVisibleCount(pageSize);
-  }, []);
-  useEffect(nextGalleryMix, [nextGalleryMix]);
-  const reshuffleGallery = () => nextGalleryMix();
-
-  const visibleGallery =
-    filter === "All" ? mixedGallery : mixedGallery.filter((g) => g.tag === filter);
-  const shownGallery = visibleGallery.slice(0, galleryVisibleCount);
-  const hasMoreGallery = galleryVisibleCount < visibleGallery.length;
-
-  useEffect(() => {
-    setGalleryVisibleCount(galleryPageSize);
-  }, [filter, galleryPageSize]);
-
-  useEffect(() => {
-    if (!galleryAutoLoad || !hasMoreGallery) return;
-    const el = galleryEndRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setGalleryVisibleCount((c) => Math.min(c + galleryPageSize, visibleGallery.length));
-        }
-      },
-      { rootMargin: "600px" },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [
-    galleryAutoLoad,
-    hasMoreGallery,
-    galleryVisibleCount,
-    visibleGallery.length,
-    galleryPageSize,
-  ]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -438,12 +357,12 @@ function Index() {
           <div className="relative z-10 col-span-2 row-start-2 lg:col-span-1 lg:col-start-1 lg:self-start">
             <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-wrap">
               <BookCTA location="hero" className="col-span-2 sm:px-7" />
-              <a
-                href="#gallery"
+              <Link
+                to="/gallery"
                 className="col-span-2 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary bg-background px-4 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-7 md:min-h-13 [@media(hover:hover)]:hover:bg-accent"
               >
                 View Work
-              </a>
+              </Link>
             </div>
 
             <div className="mt-7 grid grid-cols-3 gap-3 border-t border-border pt-5 sm:mt-12 sm:gap-6 sm:border-0 sm:pt-0">
@@ -473,8 +392,8 @@ function Index() {
           We make forever look easy.
         </p>
         <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A premium tattoo studio in AECS Layout, Brookefield — {ADDRESS.landmark}. Every
-          design at Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri Awungshi),
+          A premium tattoo studio in AECS Layout, Brookefield — {ADDRESS.landmark}. Every design at
+          Xing Premium Tattoo Studio is drawn from scratch and inked by Peace (Chingri Awungshi),
           our Lead Artist, with single-use needles opened in front of you. Trusted by clients from
           Brookefield, Marathahalli, Whitefield and across East Bengaluru.
         </p>
@@ -596,9 +515,9 @@ function Index() {
               Peace — Lead Artist, Brookefield, Bengaluru
             </p>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {COUNTS.years} years, {COUNTS.tattoos} tattoos and a {GOOGLE_RATING}★ Google rating. Every consultation, stencil and
-              session at Xing is done by Peace personally — from realism and portraits to
-              fine-line and Indian traditional work.
+              {COUNTS.years} years, {COUNTS.tattoos} tattoos and a {GOOGLE_RATING}★ Google rating.
+              Every consultation, stencil and session at Xing is done by Peace personally — from
+              realism and portraits to fine-line and Indian traditional work.
             </p>
 
             <div className="mt-7 flex flex-col gap-6 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-8">
@@ -626,7 +545,11 @@ function Index() {
                 <p className="eyebrow mt-1">Chingri Awungshi · Lead Artist</p>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
-                <BookCTA location="home_artist" label="Book with Peace" className="col-span-2 sm:col-span-1" />
+                <BookCTA
+                  location="home_artist"
+                  label="Book with Peace"
+                  className="col-span-2 sm:col-span-1"
+                />
                 <Link
                   to="/tattoo-artist"
                   className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-primary px-4 py-4 sm:px-7 font-display text-xs font-bold tracking-[0.14em] uppercase transition-colors hover:bg-accent"
@@ -639,96 +562,46 @@ function Index() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section id="gallery" className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16">
-        <SectionHeading eyebrow="Our Work" title="Tattoo Gallery" />
+      {/* Gallery preview — the full gallery lives on /gallery */}
+      <section
+        id="gallery"
+        aria-labelledby="gallery-title"
+        className="cv-auto mx-auto max-w-7xl px-5 pb-12 sm:pb-16"
+      >
+        <SectionHeading id="gallery-title" eyebrow="Our Work" title="Tattoo Gallery" />
         <p className="mx-auto mt-4 max-w-xl text-center text-sm text-muted-foreground">
-          {gallery.length}+ photos from {COUNTS.tattoos} tattoos inked — no stock photos. Tap any style to filter,
-          tap any photo to see it up close.
+          Real tattoos by Peace, no stock photos. Tap a photo to see more of that style.
         </p>
-        {/* Phones: one swipeable row (bleeds to the screen edges); wraps and centres from sm */}
-        <div className="bleed-to-sm mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:mx-0 sm:mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0">
-          {galleryFilters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`min-h-11 shrink-0 snap-start rounded-sm px-4 py-2 text-xs font-medium whitespace-nowrap transition-all duration-300 ${
-                filter === f
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:-translate-y-0.5 hover:text-foreground"
-              }`}
-            >
-              {f}
-            </button>
+        <ul className="mt-6 grid grid-cols-3 gap-2 sm:gap-4">
+          {galleryPreview.map(({ img, alt, tag, href }) => (
+            <li key={img}>
+              <a href={href} className="group media-hover block rounded-sm">
+                <img
+                  src={img}
+                  srcSet={gallerySrcSet(img)}
+                  sizes={GALLERY_SIZES}
+                  alt={alt}
+                  width={800}
+                  height={1000}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+                <span className="sr-only">: see more {tag} tattoos</span>
+              </a>
+            </li>
           ))}
-          <button
-            onClick={reshuffleGallery}
-            aria-label="Shuffle gallery photos"
-            className="inline-flex min-h-11 shrink-0 snap-start items-center gap-1.5 rounded-sm border border-border px-4 py-2 text-xs font-medium whitespace-nowrap text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-700 hover:text-foreground"
+        </ul>
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <Link
+            to="/gallery"
+            className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-primary px-7 font-display text-xs font-bold tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-90 sm:w-auto"
           >
-            <Shuffle className="h-3.5 w-3.5" /> Shuffle
-          </button>
-        </div>
-        <div className="mt-5 columns-2 gap-3 sm:mt-6 sm:columns-3 sm:gap-4 lg:columns-4 xl:columns-5">
-          {shownGallery.map(({ img, alt, tag }, i) => (
-            <button
-              key={`${filter}-${tag}-${alt}-${i}`}
-              onClick={() => setLightboxIndex(i)}
-              aria-label={`View ${alt}`}
-              className="animate-fade-in group media-hover mb-3 block w-full sm:mb-4 appearance-none break-inside-avoid rounded-sm border-0 bg-transparent p-0 text-left focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:outline-none"
-              style={{
-                animationDelay: `${(i % galleryPageSize) * 0.05}s`,
-                animationFillMode: "backwards",
-              }}
-            >
-              <img
-                src={img}
-                srcSet={gallerySrcSet(img)}
-                sizes={GALLERY_SIZES}
-                alt={alt}
-                width={640}
-                height={768}
-                loading="lazy"
-                className="block h-auto w-full cursor-zoom-in"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/85 via-primary/20 to-transparent p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
-                <span className="font-display text-xs tracking-[0.16em] text-primary-foreground uppercase">
-                  {tag}
-                </span>
-                <span className="mt-1 text-xs text-primary-foreground/80">{alt}</span>
-              </span>
-            </button>
-          ))}
-        </div>
-        <div className="mt-8 flex flex-col items-center gap-4">
-          {hasMoreGallery && galleryAutoLoad && (
-            <p
-              ref={galleryEndRef}
-              className="animate-pulse text-xs tracking-wide text-muted-foreground uppercase"
-            >
-              Loading more tattoos…
-            </p>
-          )}
-          {hasMoreGallery && !galleryAutoLoad && (
-            <button
-              onClick={() => setGalleryVisibleCount((c) => c + galleryPageSize)}
-              className="inline-flex min-h-12 w-full items-center justify-center gap-3 sm:w-auto rounded-full border border-primary px-7 py-3.5 font-display text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent"
-            >
-              Load More Tattoos ({visibleGallery.length - galleryVisibleCount} more)
-            </button>
-          )}
-          <BookCTA location="home_gallery" className="w-full px-7 sm:w-auto" />
+            See the Full Gallery <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+          <BookCTA location="home_gallery" variant="secondary" className="w-full px-7 sm:w-auto" />
         </div>
       </section>
-
-      <LazyGalleryLightbox
-        items={visibleGallery}
-        index={lightboxIndex}
-        onClose={() => setLightboxIndex(null)}
-        onNavigate={setLightboxIndex}
-      />
 
       <ReviewsSection />
 
@@ -756,7 +629,9 @@ function Index() {
               className="mt-4 font-display text-[1.75rem] leading-[1.1] font-medium tracking-tight sm:mt-5 sm:text-4xl"
             >
               Frequently asked{" "}
-              <span className="font-script text-[2.2rem] text-amber-700 sm:text-5xl">questions</span>
+              <span className="font-script text-[2.2rem] text-amber-700 sm:text-5xl">
+                questions
+              </span>
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               The five things people ask us most before a session. Cost, pain, hygiene, first

@@ -1,4 +1,4 @@
-import { SERVICE_SLUGS, services } from "./services";
+import { SERVICE_SLUGS, services, type ServiceSlug } from "./services";
 import { studioPhotos } from "./studio-photos";
 
 export interface GalleryItem {
@@ -20,18 +20,25 @@ export const GALLERY_SIZES =
 
 export const galleryFilters = ["All", ...SERVICE_SLUGS.map((slug) => services[slug].shortName)];
 
-const styledGallery: GalleryItem[] = SERVICE_SLUGS.flatMap((slug) => {
+/** One style's photos: its hero, then its gallery. */
+export const styleGallery = (slug: ServiceSlug): GalleryItem[] => {
   const service = services[slug];
   return [
     { img: service.heroImage, tag: service.shortName, alt: service.heroImageAlt },
     ...service.galleryImages.map((g) => ({ img: g.src, tag: service.shortName, alt: g.alt })),
   ];
-});
+};
+const styledGallery: GalleryItem[] = SERVICE_SLUGS.flatMap(styleGallery);
 
-const studioGallery: GalleryItem[] = studioPhotos.map((p) => ({
+/** The studio photos aren't sorted by style or captioned yet, so their alt says what we know:
+ *  whose work it is and where (studio-photos.ts holds "… portfolio photo N"). */
+export const studioGallery: GalleryItem[] = studioPhotos.map((p) => ({
   img: p.src,
   tag: STUDIO_TAG,
-  alt: p.alt,
+  alt: p.alt.replace(
+    /^Xing Premium Tattoo Studio portfolio photo (\d+)$/,
+    "Tattoo by Peace at Xing Premium Tattoo Studio, Brookefield, Bangalore (portfolio photo $1)",
+  ),
 }));
 
 export const gallery: GalleryItem[] = [...styledGallery, ...studioGallery];
