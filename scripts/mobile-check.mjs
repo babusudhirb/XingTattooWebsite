@@ -178,7 +178,13 @@ function inspect({ phone, landscape, heroCta }) {
 }
 
 /** After scrolling to the bottom: nothing tappable sits under the sticky bar. */
-function stickyOverlap() {
+async function stickyOverlap() {
+  // Scroll to the very bottom after the last lazy section has laid out (two frames each)
+  const frames = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  for (let i = 0; i < 3; i++) {
+    window.scrollTo(0, document.documentElement.scrollHeight);
+    await frames();
+  }
   const bar = document.querySelector(".mobile-action-bar");
   if (!bar || getComputedStyle(bar).display === "none") return [];
   const b = bar.getBoundingClientRect();
@@ -238,10 +244,16 @@ async function run({ p, size }) {
         heroCta: HERO_CTA(p),
       })),
     );
-    // Twice: content-visibility sections take their real height once they render
-    for (let i = 0; i < 2; i++) {
-      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    // Until the height settles: content-visibility sections and lazy images change it
+    let last = -1;
+    for (let i = 0; i < 8; i++) {
+      const h = await page.evaluate(() => {
+        window.scrollTo(0, document.documentElement.scrollHeight);
+        return document.documentElement.scrollHeight;
+      });
       await page.waitForTimeout(400);
+      if (h === last) break;
+      last = h;
     }
     problems.push(...(await page.evaluate(stickyOverlap)));
     if (SHOTS) {
