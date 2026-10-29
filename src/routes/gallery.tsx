@@ -47,7 +47,7 @@ export const Route = createFileRoute("/gallery")({
     seoHead({
       path: "/gallery",
       title: pageTitle("Tattoo Gallery: Real Work, Brookefield"),
-      description: `Real tattoos by ${LEAD_ARTIST.name} at ${BRAND_NAME}, Brookefield, Bangalore: realism, portraits, Black & Grey, geometric, Indian traditional and fine-line work.`,
+      description: `Real tattoos by ${LEAD_ARTIST.name} at ${BRAND_NAME}, Brookefield, Bangalore: realism, portrait, Black & Grey, geometric, Indian traditional and fine-line.`,
       pageType: "ImageGallery",
       page: {
         associatedMedia: serverImages.map((g) => ({

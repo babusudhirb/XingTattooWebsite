@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { Clock } from "lucide-react";
 
 import { categoryLabel, formatPostDate } from "@/data/blog";
 import { cardImage } from "@/lib/blog";
@@ -60,7 +59,8 @@ export function PostCard({
         )}
         <p className="mt-auto flex items-center gap-3 pt-3 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" aria-hidden="true" /> {post.readingTime} min read
+            <span className="icon-clock h-3.5 w-3.5" aria-hidden="true" /> {post.readingTime} min
+            read
           </span>
           <span aria-hidden="true">·</span>
           <time dateTime={post.datePublished}>{formatPostDate(post.datePublished)}</time>

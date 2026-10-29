@@ -8,7 +8,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { blogPlugin } from "./scripts/blog-plugin";
 
 export default defineConfig({
-  build: { target: "es2020" },
+  // No base64 images in the HTML: the six 96px menu thumbnails alone added 14 KB to every page.
+  // As files they're fetched once and cached.
+  build: { target: "es2020", assetsInlineLimit: 0 },
   // Builds write .output/ while dev runs; watching it crashes the dev server (EBUSY)
   server: { watch: { ignored: ["**/.output/**"] } },
   plugins: [

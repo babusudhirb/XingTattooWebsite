@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronRight, CornerDownRight, Search, X } from "lucide-react";
+import { ArrowRight, ChevronRight, Search, X } from "lucide-react";
 
 import { BookCTA, WhatsAppCTA } from "@/components/cta";
 import { pageTitle } from "@/data/business";
@@ -173,7 +173,10 @@ function FaqPage() {
                     id={faq.id}
                     className="scroll-mt-36 border-border"
                   >
-                    <AccordionTrigger data-faq-q className="py-5 font-display text-sm font-semibold hover:no-underline sm:text-base [&[data-state=open]]:text-amber-800">
+                    <AccordionTrigger
+                      data-faq-q
+                      className="py-5 font-display text-sm font-semibold hover:no-underline sm:text-base [&[data-state=open]]:text-amber-800"
+                    >
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent
@@ -208,7 +211,10 @@ function FaqPage() {
                                     }}
                                     className="group inline-flex items-start gap-2 text-sm text-foreground transition-colors hover:text-amber-700"
                                   >
-                                    <CornerDownRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-700" />
+                                    <span
+                                      className="icon-corner-down-right mt-0.5 h-3.5 w-3.5 text-amber-700"
+                                      aria-hidden="true"
+                                    />
                                     <span className="underline decoration-border underline-offset-4 group-hover:decoration-amber-700">
                                       {related.question}
                                     </span>

@@ -52,8 +52,7 @@ import { breadcrumbSchema } from "@/lib/blog";
  */
 
 const TITLE = pageTitle("Tattoo Offer in Brookefield, Bangalore");
-const DESCRIPTION =
-  `Up to 50% off custom tattoos at Xing Premium Tattoo Studio, Brookefield. ${OFFER.validLabel}. Book a free consultation on WhatsApp or in AECS Layout.`;
+const DESCRIPTION = `Up to 50% off custom tattoos at Xing Premium Tattoo Studio, Brookefield. ${OFFER.validLabel}. Book a free consultation on WhatsApp or in AECS Layout.`;
 
 const wa = (text: string) => `${WHATSAPP_URL}?text=${encodeURIComponent(text)}`;
 
@@ -368,7 +367,12 @@ function ClaimButton({
 /** Studio mark — links back to the home page. */
 const Brand = () => (
   <Link to="/" className="brand">
-    <img src={LOGO_SRC} alt="Xing Premium Tattoo Studio — home" width={LOGO_WIDTH} height={LOGO_HEIGHT} />
+    <img
+      src={LOGO_SRC}
+      alt="Xing Premium Tattoo Studio — home"
+      width={LOGO_WIDTH}
+      height={LOGO_HEIGHT}
+    />
   </Link>
 );
 
@@ -379,8 +383,12 @@ function OfferPage() {
   const claimRef = useRef<HTMLDialogElement>(null);
   const [daysLeft, setDaysLeft] = useState<number | undefined>(undefined);
   const offerActive = useOfferActive();
+  // The reviews' second (loop) copy is added in the browser only: in the server HTML every
+  // review appears once.
+  const [reviewLoop, setReviewLoop] = useState(false);
   useEffect(() => {
     setDaysLeft(offerDaysLeft());
+    setReviewLoop(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
 
   const urgency =
@@ -474,723 +482,728 @@ function OfferPage() {
 
   return (
     <>
-    <div className="olp">
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
+      <div className="olp">
+        <a className="skip" href="#main">
+          Skip to content
+        </a>
 
-      {offerActive ? (
-        <button type="button" className="top-offer" onClick={() => openClaim(undefined, "top_bar")}>
-          <span className="top-offer-tag">{urgency}</span>
-          <span>
-            Up to <strong>50% off</strong> custom tattoos
-            <span className="top-offer-extra"> · {OFFER.validLabel}</span>
-          </span>
-          <span className="top-offer-cta">Claim now →</span>
-        </button>
-      ) : (
-        <p className="top-offer top-offer-ended" role="status">
-          Offer ended — book a free consultation. (It ran until {OFFER.endsLabel}.)
-        </p>
-      )}
+        {offerActive ? (
+          <button
+            type="button"
+            className="top-offer"
+            onClick={() => openClaim(undefined, "top_bar")}
+          >
+            <span className="top-offer-tag">{urgency}</span>
+            <span>
+              Up to <strong>50% off</strong> custom tattoos
+              <span className="top-offer-extra"> · {OFFER.validLabel}</span>
+            </span>
+            <span className="top-offer-cta">Claim now →</span>
+          </button>
+        ) : (
+          <p className="top-offer top-offer-ended" role="status">
+            Offer ended — book a free consultation. (It ran until {OFFER.endsLabel}.)
+          </p>
+        )}
 
-      <header className="site-header">
-        <div className="wrap header-inner">
-          <Brand />
-          <nav className="nav" aria-label="On this page">
-            <a href="#offers">Offers</a>
-            <a href="#work">Our work</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#studio">Visit us</a>
-            <a href={PHONE_TEL} data-track="click_call" data-location="offer_header">
-              Call {PHONE_DISPLAY}
-            </a>
-            <ClaimButton onOpen={openClaim} placement="header">
-              Claim offer
-            </ClaimButton>
-          </nav>
-        </div>
-      </header>
-
-      <main id="main">
-        <div className="wrap pt-3">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tattoo Offer" }]} />
-        </div>
-        {/* Hero */}
-        <section className="wrap hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <span className="eyebrow">Tattoo offer · Brookefield, Bangalore</span>
-            <h1 id="hero-title">
-              <span className="h1-line">Tattoo Offer in Brookefield, Bangalore:</span>{" "}
-              <span className="h1-accent">Up to 50% Off</span>
-            </h1>
-            <p className="intro">
-              A tattoo on your skin is your bold story — crafted with precision, hygiene and care at
-              Xing Premium Tattoo Studio.
-            </p>
-            {/* Desktop only: pick an offer straight from the hero (hidden on phones) */}
-            <div className="hero-picks" role="group" aria-label="Choose your offer">
-              {HERO_PICKS.map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  className={`hero-pick${p.popular ? " popular" : ""}`}
-                  onClick={() => openClaim(p.id, `hero_pick_${p.id}`)}
-                >
-                  {p.popular && <span className="hero-pick-tag">Most popular</span>}
-                  <strong>{p.value}</strong>
-                  <span>{p.label}</span>
-                </button>
-              ))}
-            </div>
-            <div className="hero-actions">
-              <ClaimButton onOpen={openClaim} offer="10-sq-inch" placement="hero" />
-              <a className="text-link" href="#offers">
-                See all 4 offers <span aria-hidden="true">↓</span>
+        <header className="site-header">
+          <div className="wrap header-inner">
+            <Brand />
+            <nav className="nav" aria-label="On this page">
+              <a href="#offers">Offers</a>
+              <a href="#work">Our work</a>
+              <a href="#reviews">Reviews</a>
+              <a href="#studio">Visit us</a>
+              <a href={PHONE_TEL} data-track="click_call" data-location="offer_header">
+                Call {PHONE_DISPLAY}
               </a>
-            </div>
-            <ul className="hero-assure">
-              <li>Free consultation</li>
-              <li>No advance to claim</li>
-              <li>Exact quote at your free consultation</li>
-            </ul>
-            <ul className="hero-proof" aria-label="Why clients trust Xing">
-              <li>
-                <Stars /> <strong>{GOOGLE_RATING}</strong> Google rating
-              </li>
-              <li>
-                <strong>{ARTIST.tattoosCompleted}</strong> tattoos
-              </li>
-              <li>
-                <strong>{ARTIST.yearsExperience}</strong> yrs experience
-              </li>
-            </ul>
+              <ClaimButton onOpen={openClaim} placement="header">
+                Claim offer
+              </ClaimButton>
+            </nav>
           </div>
-          <div className="hero-visual">
-            <img
-              src={HERO_IMAGE.src}
-              alt={HERO_IMAGE.alt}
-              width={800}
-              height={1000}
-              fetchPriority="high"
-            />
-            <div className="hero-badge" aria-hidden="true">
-              <span>Up to</span>
-              <strong>50%</strong>
-              <span>off</span>
-            </div>
-            <div className="hero-card">
-              <span>{OFFER.validLabel}</span>
-              <strong>Free consultation</strong>
-              <em>{urgency}</em>
-            </div>
-          </div>
-        </section>
+        </header>
 
-        {/* Offers */}
-        <section className="section offers-section" id="offers" aria-labelledby="offers-title">
-          <div className="wrap">
-            <div className="section-heading center">
-              <span className="eyebrow">Limited-time tattoo offers in Brookefield</span>
-              <h2 id="offers-title">
-                Premium ink. <em>Smaller price.</em>
-              </h2>
-              <p>
-                Same artist, same sterile care, same imported ink — just a better price. Pick your
-                offer and we confirm the final quote before you book.
+        <main id="main">
+          <div className="wrap pt-3">
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tattoo Offer" }]} />
+          </div>
+          {/* Hero */}
+          <section className="wrap hero" aria-labelledby="hero-title">
+            <div className="hero-copy">
+              <span className="eyebrow">Tattoo offer · Brookefield, Bangalore</span>
+              <h1 id="hero-title">
+                <span className="h1-line">Tattoo Offer in Brookefield, Bangalore:</span>{" "}
+                <span className="h1-accent">Up to 50% Off</span>
+              </h1>
+              <p className="intro">
+                A tattoo on your skin is your bold story — crafted with precision, hygiene and care
+                at Xing Premium Tattoo Studio.
               </p>
-            </div>
-            <div className="offers">
-              {OFFERS.map((o) => (
-                <article
-                  key={o.id}
-                  className={`offer-card${o.featured ? " featured" : ""}`}
-                  aria-labelledby={`offer-${o.id}`}
-                >
+              {/* Desktop only: pick an offer straight from the hero (hidden on phones) */}
+              <div className="hero-picks" role="group" aria-label="Choose your offer">
+                {HERO_PICKS.map((p) => (
                   <button
+                    key={p.id}
                     type="button"
-                    className="offer-photo"
-                    onClick={() => openClaim(o.id, `photo_${o.id}`)}
-                    aria-label={`Claim: ${o.name}`}
+                    className={`hero-pick${p.popular ? " popular" : ""}`}
+                    onClick={() => openClaim(p.id, `hero_pick_${p.id}`)}
                   >
-                    <img src={o.img} alt={o.alt} width={1120} height={1400} loading="lazy" />
-                    <span className="offer-badge" aria-hidden="true">
-                      {o.badge}
-                    </span>
-                    <span className="offer-overlay" aria-hidden="true">
-                      <span className="offer-kicker">{o.kicker}</span>
-                      <span className="offer-price">
-                        {o.pricePrefix && <small>{o.pricePrefix} </small>}
-                        {o.price}
-                      </span>
-                    </span>
+                    {p.popular && <span className="hero-pick-tag">Most popular</span>}
+                    <strong>{p.value}</strong>
+                    <span>{p.label}</span>
                   </button>
-                  <div className="offer-body">
-                    <h3 id={`offer-${o.id}`}>{o.title}</h3>
-                    <p>{o.text}</p>
-                    <ClaimButton
-                      onOpen={openClaim}
-                      offer={o.id}
-                      placement={`card_${o.id}`}
-                      className={`btn${o.featured ? " gold" : " outline"}`}
-                    >
-                      Claim offer <span aria-hidden="true">→</span>
-                    </ClaimButton>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <p className="price-note">
-              {OFFER.validLabel}. Exact quote at your free consultation — final price and
-              eligibility are confirmed after reviewing your design, size and placement.
-            </p>
-          </div>
-        </section>
-
-        {/* Why Xing */}
-        <section className="why-section" aria-labelledby="why-title">
-          <div className="wrap">
-            <div className="section-heading center">
-              <span className="eyebrow">Tattoo studio in Brookefield you can trust</span>
-              <h2 id="why-title">
-                Why choose <em>Xing?</em>
-              </h2>
-            </div>
-            <ul className="why-grid">
-              {WHY_XING.map((w) => (
-                <li key={w.label}>
-                  <svg
-                    className="why-icon"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    {w.icon}
-                  </svg>
-                  <strong className="why-value">{w.value}</strong>
-                  <h3>{w.label}</h3>
-                  <p>{w.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Our work */}
-        <section className="section wrap" id="work" aria-labelledby="work-title">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">Real tattoos from our studio</span>
-              <h2 id="work-title">
-                Less explaining.
-                <br />
-                More <em>showing.</em>
-              </h2>
-            </div>
-            <p>Every piece below was inked by Peace at Xing, Brookefield.</p>
-          </div>
-          <div className="work-grid">
-            {WORK.map((img) => (
-              <figure key={img.src}>
-                <img src={img.src} alt={img.alt} width={1120} height={1400} loading="lazy" />
-              </figure>
-            ))}
-          </div>
-          <div className="work-cta">
-            <p>Love a style? Your version could be next.</p>
-            <ClaimButton onOpen={openClaim} placement="work" />
-          </div>
-        </section>
-
-        {/* Artist */}
-        <section className="artist-section section" id="artist" aria-labelledby="artist-title">
-          <div className="wrap artist-grid">
-            <div className="artist-photo">
-              <img
-                src={artistPortrait}
-                alt="Peace (Chingri Awungshi), lead tattoo artist at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
-                width={1200}
-                height={1350}
-                loading="lazy"
-              />
-              <div className="artist-tag">
-                <strong>{ARTIST.name}</strong>
-                {ARTIST.role} at Xing
-              </div>
-            </div>
-            <div className="artist-copy">
-              <span className="eyebrow">The artist behind the ink</span>
-              <h2 id="artist-title">
-                Meet <em>{ARTIST.name}.</em>
-              </h2>
-              <p className="artist-role">
-                {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio
-              </p>
-              <p>
-                With {ARTIST.yearsExperience} years behind the machine and {ARTIST.tattoosCompleted}{" "}
-                tattoos completed, Peace is the one hand behind every piece at Xing Premium Tattoo
-                Studio in AECS Layout, Brookefield. Clients come from Whitefield, Marathahalli and
-                across Bengaluru for custom realism, portraits, fine-line work and Indian
-                traditional designs — each one drawn from scratch and inked in a studio run to
-                clinic-level hygiene.
-              </p>
-              <ul className="artist-facts">
-                {ARTIST_FACTS.map((fact) => (
-                  <li key={fact}>{fact}</li>
                 ))}
+              </div>
+              <div className="hero-actions">
+                <ClaimButton onOpen={openClaim} offer="10-sq-inch" placement="hero" />
+                <a className="text-link" href="#offers">
+                  See all 4 offers <span aria-hidden="true">↓</span>
+                </a>
+              </div>
+              <ul className="hero-assure">
+                <li>Free consultation</li>
+                <li>No advance to claim</li>
+                <li>Exact quote at your free consultation</li>
+              </ul>
+              <ul className="hero-proof" aria-label="Why clients trust Xing">
+                <li>
+                  <Stars /> <strong>{GOOGLE_RATING}</strong> Google rating
+                </li>
+                <li>
+                  <strong>{ARTIST.tattoosCompleted}</strong> tattoos
+                </li>
+                <li>
+                  <strong>{ARTIST.yearsExperience}</strong> yrs experience
+                </li>
               </ul>
             </div>
-          </div>
-        </section>
-
-        {/* Path to ink */}
-        <section className="section wrap path-section" aria-labelledby="path-title">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">Path to ink</span>
-              <h2 id="path-title">
-                Your story. <em>Our care.</em>
-              </h2>
+            <div className="hero-visual">
+              <img
+                src={HERO_IMAGE.src}
+                alt={HERO_IMAGE.alt}
+                width={800}
+                height={1000}
+                fetchPriority="high"
+              />
+              <div className="hero-badge" aria-hidden="true">
+                <span>Up to</span>
+                <strong>50%</strong>
+                <span>off</span>
+              </div>
+              <div className="hero-card">
+                <span>{OFFER.validLabel}</span>
+                <strong>Free consultation</strong>
+                <em>{urgency}</em>
+              </div>
             </div>
-            <p>Four stages. Nothing rushed, nothing skipped.</p>
-          </div>
-          <ol className="stages">
-            {STAGES.map((s, i) => (
-              <li key={s.title}>
-                <span className="stage-num">{String(i + 1).padStart(2, "0")}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-                {s.guide && (
-                  <details className="guide">
-                    <summary>
-                      {s.guide.label} <span aria-hidden="true">→</span>
-                    </summary>
-                    <ul>
-                      {s.guide.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </details>
-                )}
-              </li>
-            ))}
-          </ol>
-        </section>
+          </section>
 
-        {/* First tattoo */}
-        <section className="first-section" aria-labelledby="first-title">
-          <div className="wrap first-grid">
-            <div>
-              <span className="eyebrow">Nervous? That’s normal</span>
-              <h2 id="first-title">
-                First tattoo?
-                <br />
-                <em>Welcome here.</em>
-              </h2>
-              <p>
-                Most of our clients walk in for their very first tattoo. You don’t need every detail
-                figured out — just the idea. We handle the rest, gently.
-              </p>
-              <figure className="first-quote">
-                <blockquote>
-                  “Got my first tattoo here and I was a bit nervous, but the artist made the whole
-                  process smooth and comfortable.”
-                </blockquote>
-                <figcaption>
-                  <Stars /> J P Rai · Google review
-                </figcaption>
-              </figure>
-            </div>
-            <div>
-              <ul className="first-points">
-                {FIRST_TATTOO_POINTS.map((p) => (
-                  <li key={p.title}>
-                    <span className="check" aria-hidden="true">
-                      ✓
-                    </span>
-                    <div>
-                      <strong>{p.title}</strong>
-                      <p>{p.text}</p>
+          {/* Offers */}
+          <section className="section offers-section" id="offers" aria-labelledby="offers-title">
+            <div className="wrap">
+              <div className="section-heading center">
+                <span className="eyebrow">Limited-time tattoo offers in Brookefield</span>
+                <h2 id="offers-title">
+                  Premium ink. <em>Smaller price.</em>
+                </h2>
+                <p>
+                  Same artist, same sterile care, same imported ink — just a better price. Pick your
+                  offer and we confirm the final quote before you book.
+                </p>
+              </div>
+              <div className="offers">
+                {OFFERS.map((o) => (
+                  <article
+                    key={o.id}
+                    className={`offer-card${o.featured ? " featured" : ""}`}
+                    aria-labelledby={`offer-${o.id}`}
+                  >
+                    <button
+                      type="button"
+                      className="offer-photo"
+                      onClick={() => openClaim(o.id, `photo_${o.id}`)}
+                      aria-label={`Claim: ${o.name}`}
+                    >
+                      <img src={o.img} alt={o.alt} width={1120} height={1400} loading="lazy" />
+                      <span className="offer-badge" aria-hidden="true">
+                        {o.badge}
+                      </span>
+                      <span className="offer-overlay" aria-hidden="true">
+                        <span className="offer-kicker">{o.kicker}</span>
+                        <span className="offer-price">
+                          {o.pricePrefix && <small>{o.pricePrefix} </small>}
+                          {o.price}
+                        </span>
+                      </span>
+                    </button>
+                    <div className="offer-body">
+                      <h3 id={`offer-${o.id}`}>{o.title}</h3>
+                      <p>{o.text}</p>
+                      <ClaimButton
+                        onOpen={openClaim}
+                        offer={o.id}
+                        placement={`card_${o.id}`}
+                        className={`btn${o.featured ? " gold" : " outline"}`}
+                      >
+                        Claim offer <span aria-hidden="true">→</span>
+                      </ClaimButton>
                     </div>
+                  </article>
+                ))}
+              </div>
+              <p className="price-note">
+                {OFFER.validLabel}. Exact quote at your free consultation — final price and
+                eligibility are confirmed after reviewing your design, size and placement.
+              </p>
+            </div>
+          </section>
+
+          {/* Why Xing */}
+          <section className="why-section" aria-labelledby="why-title">
+            <div className="wrap">
+              <div className="section-heading center">
+                <span className="eyebrow">Tattoo studio in Brookefield you can trust</span>
+                <h2 id="why-title">
+                  Why choose <em>Xing?</em>
+                </h2>
+              </div>
+              <ul className="why-grid">
+                {WHY_XING.map((w) => (
+                  <li key={w.label}>
+                    <svg
+                      className="why-icon"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      {w.icon}
+                    </svg>
+                    <strong className="why-value">{w.value}</strong>
+                    <h3>{w.label}</h3>
+                    <p>{w.text}</p>
                   </li>
                 ))}
               </ul>
-              <ClaimButton
-                onOpen={openClaim}
-                offer="small"
-                placement="first_tattoo"
-                className="btn gold"
-              >
-                Claim my first tattoo offer
-              </ClaimButton>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Reviews */}
-        <section className="reviews-section section" id="reviews" aria-labelledby="reviews-title">
-          <div className="wrap">
-            <div className="reviews-head">
+          {/* Our work */}
+          <section className="section wrap" id="work" aria-labelledby="work-title">
+            <div className="section-heading">
               <div>
-                <span className="eyebrow">Real clients. Real ink.</span>
-                <h2 id="reviews-title">
-                  Voice of <em>trust.</em>
+                <span className="eyebrow">Real tattoos from our studio</span>
+                <h2 id="work-title">
+                  Less explaining.
+                  <br />
+                  More <em>showing.</em>
                 </h2>
               </div>
-              <div className="rating-box">
-                <strong>{GOOGLE_RATING}</strong>
-                <div>
-                  <Stars />
-                  <span>Google rating · {ARTIST.happyClients} happy clients</span>
+              <p>Every piece below was inked by Peace at Xing, Brookefield.</p>
+            </div>
+            <div className="work-grid">
+              {WORK.map((img) => (
+                <figure key={img.src}>
+                  <img src={img.src} alt={img.alt} width={1120} height={1400} loading="lazy" />
+                </figure>
+              ))}
+            </div>
+            <div className="work-cta">
+              <p>Love a style? Your version could be next.</p>
+              <ClaimButton onOpen={openClaim} placement="work" />
+            </div>
+          </section>
+
+          {/* Artist */}
+          <section className="artist-section section" id="artist" aria-labelledby="artist-title">
+            <div className="wrap artist-grid">
+              <div className="artist-photo">
+                <img
+                  src={artistPortrait}
+                  alt="Peace (Chingri Awungshi), lead tattoo artist at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
+                  width={1200}
+                  height={1350}
+                  loading="lazy"
+                />
+                <div className="artist-tag">
+                  <strong>{ARTIST.name}</strong>
+                  {ARTIST.role} at Xing
                 </div>
               </div>
-            </div>
-            {/* Auto-sliding row: the list is rendered twice so the loop is seamless */}
-            <div className="reviews">
-              <div className="reviews-track">
-                {[...REVIEWS, ...REVIEWS].map((r, i) => (
-                  <figure
-                    key={`${r.name}-${i}`}
-                    className="review"
-                    aria-hidden={i >= REVIEWS.length || undefined}
-                  >
-                    <div className="review-top">
-                      <Stars n={r.rating} />
-                      <span className="review-tag">{r.highlight}</span>
-                    </div>
-                    <blockquote>“{r.quote}”</blockquote>
-                    <figcaption>
-                      <span className="avatar" aria-hidden="true">
-                        {r.name.charAt(0)}
-                      </span>
-                      <span>
-                        <strong>{r.name}</strong>
-                        Google review
-                      </span>
-                    </figcaption>
-                  </figure>
-                ))}
+              <div className="artist-copy">
+                <span className="eyebrow">The artist behind the ink</span>
+                <h2 id="artist-title">
+                  Meet <em>{ARTIST.name}.</em>
+                </h2>
+                <p className="artist-role">
+                  {ARTIST.fullName} — {ARTIST.role} at Xing Premium Tattoo Studio
+                </p>
+                <p>
+                  With {ARTIST.yearsExperience} years behind the machine and{" "}
+                  {ARTIST.tattoosCompleted} tattoos completed, Peace is the one hand behind every
+                  piece at Xing Premium Tattoo Studio in AECS Layout, Brookefield. Clients come from
+                  Whitefield, Marathahalli and across Bengaluru for custom realism, portraits,
+                  fine-line work and Indian traditional designs — each one drawn from scratch and
+                  inked in a studio run to clinic-level hygiene.
+                </p>
+                <ul className="artist-facts">
+                  {ARTIST_FACTS.map((fact) => (
+                    <li key={fact}>{fact}</li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <div className="reviews-cta">
-              <ClaimButton onOpen={openClaim} placement="reviews" />
-              <T
-                className="text-link"
-                href={GOOGLE_REVIEWS_URL}
-                track="click_reviews"
-                placement="reviews"
-              >
-                Read all reviews on Google <span aria-hidden="true">↗</span>
-              </T>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Design your tattoos */}
-        <section className="quote-section" id="ideas" aria-labelledby="ideas-title">
-          <div className="wrap quote-grid">
-            <div>
-              <span className="eyebrow">Your next chapter starts here</span>
-              <h2 id="ideas-title">
-                Design your
-                <br />
-                <i>tattoos.</i>
-              </h2>
-              <p>
-                A word, a sketch, a screenshot — tell us a little and we’ll take it from there. No
-                finished design needed. No pressure to book.
-              </p>
-              <p className="contact-note">
-                Prefer a call?{" "}
-                <T href={PHONE_TEL} track="click_call" placement="ideas">
-                  {PHONE_DISPLAY}
+          {/* Path to ink */}
+          <section className="section wrap path-section" aria-labelledby="path-title">
+            <div className="section-heading">
+              <div>
+                <span className="eyebrow">Path to ink</span>
+                <h2 id="path-title">
+                  Your story. <em>Our care.</em>
+                </h2>
+              </div>
+              <p>Four stages. Nothing rushed, nothing skipped.</p>
+            </div>
+            <ol className="stages">
+              {STAGES.map((s, i) => (
+                <li key={s.title}>
+                  <span className="stage-num">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                  {s.guide && (
+                    <details className="guide">
+                      <summary>
+                        {s.guide.label} <span aria-hidden="true">→</span>
+                      </summary>
+                      <ul>
+                        {s.guide.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {/* First tattoo */}
+          <section className="first-section" aria-labelledby="first-title">
+            <div className="wrap first-grid">
+              <div>
+                <span className="eyebrow">Nervous? That’s normal</span>
+                <h2 id="first-title">
+                  First tattoo?
+                  <br />
+                  <em>Welcome here.</em>
+                </h2>
+                <p>
+                  Most of our clients walk in for their very first tattoo. You don’t need every
+                  detail figured out — just the idea. We handle the rest, gently.
+                </p>
+                <figure className="first-quote">
+                  <blockquote>
+                    “Got my first tattoo here and I was a bit nervous, but the artist made the whole
+                    process smooth and comfortable.”
+                  </blockquote>
+                  <figcaption>
+                    <Stars /> J P Rai · Google review
+                  </figcaption>
+                </figure>
+              </div>
+              <div>
+                <ul className="first-points">
+                  {FIRST_TATTOO_POINTS.map((p) => (
+                    <li key={p.title}>
+                      <span className="check" aria-hidden="true">
+                        ✓
+                      </span>
+                      <div>
+                        <strong>{p.title}</strong>
+                        <p>{p.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <ClaimButton
+                  onOpen={openClaim}
+                  offer="small"
+                  placement="first_tattoo"
+                  className="btn gold"
+                >
+                  Claim my first tattoo offer
+                </ClaimButton>
+              </div>
+            </div>
+          </section>
+
+          {/* Reviews */}
+          <section className="reviews-section section" id="reviews" aria-labelledby="reviews-title">
+            <div className="wrap">
+              <div className="reviews-head">
+                <div>
+                  <span className="eyebrow">Real clients. Real ink.</span>
+                  <h2 id="reviews-title">
+                    Voice of <em>trust.</em>
+                  </h2>
+                </div>
+                <div className="rating-box">
+                  <strong>{GOOGLE_RATING}</strong>
+                  <div>
+                    <Stars />
+                    <span>Google rating · {ARTIST.happyClients} happy clients</span>
+                  </div>
+                </div>
+              </div>
+              {/* Auto-sliding row: the browser adds a second copy so the loop is seamless */}
+              <div className="reviews">
+                <div className="reviews-track">
+                  {(reviewLoop ? [...REVIEWS, ...REVIEWS] : REVIEWS).map((r, i) => (
+                    <figure
+                      key={`${r.name}-${i}`}
+                      className="review"
+                      aria-hidden={i >= REVIEWS.length || undefined}
+                      inert={i >= REVIEWS.length || undefined}
+                    >
+                      <div className="review-top">
+                        <Stars n={r.rating} />
+                        <span className="review-tag">{r.highlight}</span>
+                      </div>
+                      <blockquote>“{r.quote}”</blockquote>
+                      <figcaption>
+                        <span className="avatar" aria-hidden="true">
+                          {r.name.charAt(0)}
+                        </span>
+                        <span>
+                          <strong>{r.name}</strong>
+                          Google review
+                        </span>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+              <div className="reviews-cta">
+                <ClaimButton onOpen={openClaim} placement="reviews" />
+                <T
+                  className="text-link"
+                  href={GOOGLE_REVIEWS_URL}
+                  track="click_reviews"
+                  placement="reviews"
+                >
+                  Read all reviews on Google <span aria-hidden="true">↗</span>
                 </T>
-              </p>
+              </div>
             </div>
-            <form className="quote-form" onSubmit={onQuote}>
-              <div className="form-row">
-                <div>
-                  <label htmlFor="tattoo-type">I’m thinking of</label>
-                  <select id="tattoo-type" value={type} onChange={(e) => setType(e.target.value)}>
-                    <option>A new tattoo</option>
-                    <option>A cover-up</option>
-                    <option>An extension</option>
-                    <option>A touch-up</option>
-                    <option>I’d like some guidance</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="tattoo-size">Rough size</label>
-                  <select id="tattoo-size" value={size} onChange={(e) => setSize(e.target.value)}>
-                    <option>Not sure yet</option>
-                    <option>Small / minimal</option>
-                    <option>Up to 10 square inches</option>
-                    <option>Medium / detailed</option>
-                    <option>Large / sleeve</option>
-                  </select>
-                </div>
-              </div>
-              <label htmlFor="tattoo-idea">
-                Your idea <span>(optional)</span>
-              </label>
-              <textarea
-                id="tattoo-idea"
-                maxLength={600}
-                placeholder="A name, a symbol, a story…"
-                value={idea}
-                onChange={(e) => setIdea(e.target.value)}
-              />
-              <button type="submit" className="btn">
-                <WhatsAppIcon /> Send my idea on WhatsApp
-              </button>
-              <p className="micro">
-                Opens WhatsApp with your idea ready to send — attach your reference photos there.
-              </p>
-            </form>
-          </div>
-        </section>
+          </section>
 
-        {/* Location */}
-        <section className="wrap location" id="studio" aria-labelledby="studio-title">
-          <div className="location-copy">
-            <span className="eyebrow">Come find your ink</span>
-            <h2 id="studio-title">
-              In the heart of <em>Brookefield.</em>
-            </h2>
-            <address>
-              <strong>{BUSINESS_NAME}</strong>
-              {ADDRESS.full}
-            </address>
-            <dl className="location-info">
+          {/* Design your tattoos */}
+          <section className="quote-section" id="ideas" aria-labelledby="ideas-title">
+            <div className="wrap quote-grid">
               <div>
-                <dt>Studio hours</dt>
-                <dd>
-                  {HOURS_TEXT}
-                </dd>
-              </div>
-              <div>
-                <dt>Call or WhatsApp</dt>
-                <dd>
-                  <T href={PHONE_TEL} track="click_call" placement="location">
+                <span className="eyebrow">Your next chapter starts here</span>
+                <h2 id="ideas-title">
+                  Design your
+                  <br />
+                  <i>tattoos.</i>
+                </h2>
+                <p>
+                  A word, a sketch, a screenshot — tell us a little and we’ll take it from there. No
+                  finished design needed. No pressure to book.
+                </p>
+                <p className="contact-note">
+                  Prefer a call?{" "}
+                  <T href={PHONE_TEL} track="click_call" placement="ideas">
                     {PHONE_DISPLAY}
                   </T>
-                </dd>
+                </p>
               </div>
-              <div>
-                <dt>Serving</dt>
-                <dd>{SERVICE_AREAS.join(" · ")}</dd>
+              <form className="quote-form" onSubmit={onQuote}>
+                <div className="form-row">
+                  <div>
+                    <label htmlFor="tattoo-type">I’m thinking of</label>
+                    <select id="tattoo-type" value={type} onChange={(e) => setType(e.target.value)}>
+                      <option>A new tattoo</option>
+                      <option>A cover-up</option>
+                      <option>An extension</option>
+                      <option>A touch-up</option>
+                      <option>I’d like some guidance</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="tattoo-size">Rough size</label>
+                    <select id="tattoo-size" value={size} onChange={(e) => setSize(e.target.value)}>
+                      <option>Not sure yet</option>
+                      <option>Small / minimal</option>
+                      <option>Up to 10 square inches</option>
+                      <option>Medium / detailed</option>
+                      <option>Large / sleeve</option>
+                    </select>
+                  </div>
+                </div>
+                <label htmlFor="tattoo-idea">
+                  Your idea <span>(optional)</span>
+                </label>
+                <textarea
+                  id="tattoo-idea"
+                  maxLength={600}
+                  placeholder="A name, a symbol, a story…"
+                  value={idea}
+                  onChange={(e) => setIdea(e.target.value)}
+                />
+                <button type="submit" className="btn">
+                  <WhatsAppIcon /> Send my idea on WhatsApp
+                </button>
+                <p className="micro">
+                  Opens WhatsApp with your idea ready to send — attach your reference photos there.
+                </p>
+              </form>
+            </div>
+          </section>
+
+          {/* Location */}
+          <section className="wrap location" id="studio" aria-labelledby="studio-title">
+            <div className="location-copy">
+              <span className="eyebrow">Come find your ink</span>
+              <h2 id="studio-title">
+                In the heart of <em>Brookefield.</em>
+              </h2>
+              <address>
+                <strong>{BUSINESS_NAME}</strong>
+                {ADDRESS.full}
+              </address>
+              <dl className="location-info">
+                <div>
+                  <dt>Studio hours</dt>
+                  <dd>{HOURS_TEXT}</dd>
+                </div>
+                <div>
+                  <dt>Call or WhatsApp</dt>
+                  <dd>
+                    <T href={PHONE_TEL} track="click_call" placement="location">
+                      {PHONE_DISPLAY}
+                    </T>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Serving</dt>
+                  <dd>{SERVICE_AREAS.join(" · ")}</dd>
+                </div>
+              </dl>
+              <div className="location-actions">
+                <ClaimButton onOpen={openClaim} placement="location" />
+                <T
+                  className="btn outline"
+                  href={DIRECTIONS_URL}
+                  track="click_directions"
+                  placement="location"
+                >
+                  Get Directions
+                </T>
               </div>
-            </dl>
-            <div className="location-actions">
-              <ClaimButton onOpen={openClaim} placement="location" />
+            </div>
+            <div className="map">
+              <iframe
+                src={MAP_EMBED_URL}
+                title={`Map: ${BUSINESS_NAME}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </section>
+        </main>
+
+        <footer className="footer">
+          <div className="wrap footer-inner">
+            <p>Made personal. Made permanent.</p>
+            <button type="button" onClick={() => privacyRef.current?.showModal()}>
+              Privacy &amp; enquiries
+            </button>
+          </div>
+        </footer>
+
+        <div className="mobile-cta" aria-label="Claim your tattoo offer">
+          <ClaimButton onOpen={openClaim} placement="mobile_sticky" className="btn gold" />
+          <T
+            className="btn outline icon-only"
+            href={wa("Hi Xing! I'd like to know more about the tattoo offer.")}
+            track="click_whatsapp"
+            placement="mobile_sticky"
+            label={`WhatsApp ${BRAND_NAME}`}
+          >
+            <WhatsAppIcon />
+          </T>
+          <T
+            className="btn outline icon-only call"
+            href={PHONE_TEL}
+            track="click_call"
+            placement="mobile_sticky"
+            label={`Call ${BRAND_NAME}`}
+          >
+            <PhoneIcon />
+          </T>
+        </div>
+
+        {/* Claim popup */}
+        <dialog
+          className="claim-dialog"
+          ref={claimRef}
+          aria-labelledby="claim-title"
+          onClick={closeOnBackdrop}
+        >
+          <form method="dialog" className="dialog-close">
+            <button aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </form>
+          {claimStatus === "sent" || claimStatus === "whatsapp" ? (
+            <div className="claim-done">
+              <span className="claim-tick" aria-hidden="true">
+                ✓
+              </span>
+              <h2 id="claim-title">
+                {claimStatus === "sent" ? "Offer claimed!" : "One last step"}
+              </h2>
+              <p>
+                {claimStatus === "sent"
+                  ? `Thanks, ${claimName.trim().split(" ")[0]}! The studio will call you shortly to lock in “${chosenOffer.name}”. Want it faster? Send it on WhatsApp too.`
+                  : `Thanks, ${claimName.trim().split(" ")[0]}! Send your claim on WhatsApp to lock in “${chosenOffer.name}” — the studio replies within the day.`}
+              </p>
               <T
-                className="btn outline"
-                href={DIRECTIONS_URL}
-                track="click_directions"
-                placement="location"
+                className="btn whatsapp"
+                href={claimWhatsApp}
+                track="click_whatsapp"
+                placement="claim_done"
               >
-                Get Directions
+                <WhatsAppIcon /> Send on WhatsApp
               </T>
             </div>
-          </div>
-          <div className="map">
-            <iframe
-              src={MAP_EMBED_URL}
-              title={`Map: ${BUSINESS_NAME}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
-        </section>
-      </main>
+          ) : (
+            <form className="claim-form" onSubmit={onClaim} noValidate>
+              <span className="eyebrow">{urgency}</span>
+              <h2 id="claim-title">Claim your tattoo offer</h2>
+              <p className="claim-sub">Takes 20 seconds. We call you back with your price.</p>
 
-      <footer className="footer">
-        <div className="wrap footer-inner">
-          <p>Made personal. Made permanent.</p>
-          <button type="button" onClick={() => privacyRef.current?.showModal()}>
-            Privacy &amp; enquiries
-          </button>
-        </div>
-      </footer>
+              <fieldset>
+                <legend>Choose your offer</legend>
+                <div className="claim-offers">
+                  {OFFERS.map((o) => (
+                    <label key={o.id} className={claimOffer === o.id ? "active" : undefined}>
+                      <input
+                        type="radio"
+                        name="offer"
+                        value={o.id}
+                        checked={claimOffer === o.id}
+                        onChange={() => setClaimOffer(o.id)}
+                      />
+                      <strong>{[o.pricePrefix, o.price].filter(Boolean).join(" ")}</strong>
+                      <span>{o.kicker}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
 
-      <div className="mobile-cta" aria-label="Claim your tattoo offer">
-        <ClaimButton onOpen={openClaim} placement="mobile_sticky" className="btn gold" />
-        <T
-          className="btn outline icon-only"
-          href={wa("Hi Xing! I'd like to know more about the tattoo offer.")}
-          track="click_whatsapp"
-          placement="mobile_sticky"
-          label={`WhatsApp ${BRAND_NAME}`}
-        >
-          <WhatsAppIcon />
-        </T>
-        <T
-          className="btn outline icon-only call"
-          href={PHONE_TEL}
-          track="click_call"
-          placement="mobile_sticky"
-          label={`Call ${BRAND_NAME}`}
-        >
-          <PhoneIcon />
-        </T>
-      </div>
+              <label htmlFor="claim-name">Your name</label>
+              <input
+                id="claim-name"
+                autoComplete="name"
+                value={claimName}
+                onChange={(e) => setClaimName(e.target.value)}
+                aria-invalid={!!claimErrors.name}
+                aria-describedby={claimErrors.name ? "claim-name-err" : undefined}
+              />
+              {claimErrors.name && (
+                <p className="field-error" id="claim-name-err">
+                  {claimErrors.name}
+                </p>
+              )}
 
-      {/* Claim popup */}
-      <dialog
-        className="claim-dialog"
-        ref={claimRef}
-        aria-labelledby="claim-title"
-        onClick={closeOnBackdrop}
-      >
-        <form method="dialog" className="dialog-close">
-          <button aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </form>
-        {claimStatus === "sent" || claimStatus === "whatsapp" ? (
-          <div className="claim-done">
-            <span className="claim-tick" aria-hidden="true">
-              ✓
-            </span>
-            <h2 id="claim-title">{claimStatus === "sent" ? "Offer claimed!" : "One last step"}</h2>
-            <p>
-              {claimStatus === "sent"
-                ? `Thanks, ${claimName.trim().split(" ")[0]}! The studio will call you shortly to lock in “${chosenOffer.name}”. Want it faster? Send it on WhatsApp too.`
-                : `Thanks, ${claimName.trim().split(" ")[0]}! Send your claim on WhatsApp to lock in “${chosenOffer.name}” — the studio replies within the day.`}
-            </p>
-            <T
-              className="btn whatsapp"
-              href={claimWhatsApp}
-              track="click_whatsapp"
-              placement="claim_done"
-            >
-              <WhatsAppIcon /> Send on WhatsApp
-            </T>
-          </div>
-        ) : (
-          <form className="claim-form" onSubmit={onClaim} noValidate>
-            <span className="eyebrow">{urgency}</span>
-            <h2 id="claim-title">Claim your tattoo offer</h2>
-            <p className="claim-sub">Takes 20 seconds. We call you back with your price.</p>
+              <label htmlFor="claim-phone">Phone / WhatsApp</label>
+              <input
+                id="claim-phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                placeholder="+91"
+                value={claimPhone}
+                onChange={(e) => setClaimPhone(e.target.value)}
+                aria-invalid={!!claimErrors.phone}
+                aria-describedby={claimErrors.phone ? "claim-phone-err" : undefined}
+              />
+              {claimErrors.phone && (
+                <p className="field-error" id="claim-phone-err">
+                  {claimErrors.phone}
+                </p>
+              )}
 
-            <fieldset>
-              <legend>Choose your offer</legend>
-              <div className="claim-offers">
-                {OFFERS.map((o) => (
-                  <label key={o.id} className={claimOffer === o.id ? "active" : undefined}>
-                    <input
-                      type="radio"
-                      name="offer"
-                      value={o.id}
-                      checked={claimOffer === o.id}
-                      onChange={() => setClaimOffer(o.id)}
-                    />
-                    <strong>{[o.pricePrefix, o.price].filter(Boolean).join(" ")}</strong>
-                    <span>{o.kicker}</span>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
+              <label htmlFor="claim-idea">
+                Your tattoo idea <span>(optional)</span>
+              </label>
+              <textarea
+                id="claim-idea"
+                maxLength={600}
+                placeholder="e.g. small name tattoo on wrist"
+                value={claimIdea}
+                onChange={(e) => setClaimIdea(e.target.value)}
+              />
 
-            <label htmlFor="claim-name">Your name</label>
-            <input
-              id="claim-name"
-              autoComplete="name"
-              value={claimName}
-              onChange={(e) => setClaimName(e.target.value)}
-              aria-invalid={!!claimErrors.name}
-              aria-describedby={claimErrors.name ? "claim-name-err" : undefined}
-            />
-            {claimErrors.name && (
-              <p className="field-error" id="claim-name-err">
-                {claimErrors.name}
-              </p>
-            )}
+              {/* Honeypot — hidden from people, tempting to bots */}
+              <input
+                className="hp"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                name="company"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
 
-            <label htmlFor="claim-phone">Phone / WhatsApp</label>
-            <input
-              id="claim-phone"
-              type="tel"
-              inputMode="tel"
-              autoComplete="tel"
-              placeholder="+91"
-              value={claimPhone}
-              onChange={(e) => setClaimPhone(e.target.value)}
-              aria-invalid={!!claimErrors.phone}
-              aria-describedby={claimErrors.phone ? "claim-phone-err" : undefined}
-            />
-            {claimErrors.phone && (
-              <p className="field-error" id="claim-phone-err">
-                {claimErrors.phone}
-              </p>
-            )}
-
-            <label htmlFor="claim-idea">
-              Your tattoo idea <span>(optional)</span>
-            </label>
-            <textarea
-              id="claim-idea"
-              maxLength={600}
-              placeholder="e.g. small name tattoo on wrist"
-              value={claimIdea}
-              onChange={(e) => setClaimIdea(e.target.value)}
-            />
-
-            {/* Honeypot — hidden from people, tempting to bots */}
-            <input
-              className="hp"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              name="company"
-              value={honeypot}
-              onChange={(e) => setHoneypot(e.target.value)}
-            />
-
-            <button type="submit" className="btn gold" disabled={claimStatus === "sending"}>
-              {claimStatus === "sending" ? "Claiming…" : "Claim my offer →"}
-            </button>
-            <p className="micro">
-              Free consultation · No advance to claim · 18+ only.{" "}
-              <button
-                type="button"
-                className="link-btn"
-                onClick={() => privacyRef.current?.showModal()}
-              >
-                Privacy
+              <button type="submit" className="btn gold" disabled={claimStatus === "sending"}>
+                {claimStatus === "sending" ? "Claiming…" : "Claim my offer →"}
               </button>
-            </p>
-          </form>
-        )}
-      </dialog>
+              <p className="micro">
+                Free consultation · No advance to claim · 18+ only.{" "}
+                <button
+                  type="button"
+                  className="link-btn"
+                  onClick={() => privacyRef.current?.showModal()}
+                >
+                  Privacy
+                </button>
+              </p>
+            </form>
+          )}
+        </dialog>
 
-      <dialog className="privacy-dialog" ref={privacyRef} onClick={closeOnBackdrop}>
-        <h2>Privacy &amp; enquiries</h2>
-        <p>
-          When you claim an offer, your name, phone number, chosen offer and idea are emailed to
-          Xing Premium Tattoo Studio so we can call you back with a quote. They are used only for
-          your enquiry and never sold or shared.
-        </p>
-        <p>
-          The “Design your tattoos” form only prepares a WhatsApp message — you decide whether to
-          send it. WhatsApp and Google Maps apply their own privacy policies when you use them.
-        </p>
-        <p>
-          For questions about your enquiry, contact Xing Premium Tattoo Studio at{" "}
-          <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
-        </p>
-        <form method="dialog">
-          <button className="btn">Close</button>
-        </form>
-      </dialog>
-    </div>
-    {offerActive && <FaqSection items={offerFaqs} id="offer-faq" />}
-    <SiteFooter />
+        <dialog className="privacy-dialog" ref={privacyRef} onClick={closeOnBackdrop}>
+          <h2>Privacy &amp; enquiries</h2>
+          <p>
+            When you claim an offer, your name, phone number, chosen offer and idea are emailed to
+            Xing Premium Tattoo Studio so we can call you back with a quote. They are used only for
+            your enquiry and never sold or shared.
+          </p>
+          <p>
+            The “Design your tattoos” form only prepares a WhatsApp message — you decide whether to
+            send it. WhatsApp and Google Maps apply their own privacy policies when you use them.
+          </p>
+          <p>
+            For questions about your enquiry, contact Xing Premium Tattoo Studio at{" "}
+            <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
+          </p>
+          <form method="dialog">
+            <button className="btn">Close</button>
+          </form>
+        </dialog>
+      </div>
+      {offerActive && <FaqSection items={offerFaqs} id="offer-faq" />}
+      <SiteFooter />
     </>
   );
 }

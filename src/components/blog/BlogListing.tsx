@@ -60,7 +60,8 @@ function CategoryChips({ current }: { current?: string | undefined }) {
   const chip =
     "inline-flex min-h-11 shrink-0 items-center rounded-full border px-4 text-xs font-semibold whitespace-nowrap transition-colors";
   const on = "border-primary bg-primary text-primary-foreground";
-  const off = "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground";
+  const off =
+    "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground";
   return (
     <nav aria-label="Blog topics" className="mx-auto max-w-7xl px-5 pb-8">
       <ul className="bleed-to-lg flex gap-2 overflow-x-auto pb-1 lg:mx-0 lg:flex-wrap lg:px-0">
@@ -124,7 +125,8 @@ function TopicSection({ section }: { section: (typeof BLOG_SECTIONS)[number] }) 
       <ul className="mt-6 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((p) => (
           <li key={p.slug}>
-            <PostCard post={p} />
+            {/* Compact (no excerpt): the same posts' excerpts already show in the list above */}
+            <PostCard post={p} size="compact" />
           </li>
         ))}
       </ul>
@@ -166,8 +168,7 @@ export function BlogListing({
     return posts.filter(
       (p) =>
         (!category || p.category === category) &&
-        (p.title.toLowerCase().includes(q) ||
-          p.tags.some((t) => t.toLowerCase().includes(q))),
+        (p.title.toLowerCase().includes(q) || p.tags.some((t) => t.toLowerCase().includes(q))),
     );
   }, [filtering, list, category, query]);
 

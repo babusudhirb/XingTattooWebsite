@@ -410,15 +410,6 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
   animation: float-pop 2.6s ease-in-out infinite;
 }
 
-@keyframes marquee-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* Below-the-fold sections: the browser skips their layout and paint until they near the
    screen, which keeps the first render of long pages fast. The size is a placeholder
    estimate; `auto` remembers the real size once a section has been shown. */
@@ -427,16 +418,73 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
   contain-intrinsic-size: auto 900px;
 }
 
-@utility marquee-track {
+/* Reviews: a snap-scrolling row, one card per view on phones with the next one peeking.
+   Card styles live here (not in class strings) because the home page repeats them 8×. */
+@utility review-row {
   display: flex;
-  width: max-content;
-  animation: marquee-left 34s linear infinite;
-  &:hover,
-  &:focus-within {
-    animation-play-state: paused;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  padding-block: 0.25rem;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
+}
+@utility review-card {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-card);
+  padding: 1rem;
+  box-shadow: var(--shadow-card);
+  @media (min-width: 640px) {
+    flex-basis: 340px;
+    padding: 1.5rem;
+  }
+}
+@utility review-chip {
+  border: 1px solid color-mix(in oklab, var(--color-amber-700) 20%, transparent);
+  border-radius: 999px;
+  background: var(--color-amber-50);
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-amber-800);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@utility review-avatar {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #000, var(--color-stone-800));
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-amber-200);
+}
+@utility review-arrow {
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-card);
+  &:hover {
+    background: var(--color-accent);
   }
 }
 
@@ -616,4 +664,28 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
     border-color: var(--color-border);
     margin-block: 2em;
   }
+}
+
+/* Decorative icons repeated many times per page (FAQ rows, post cards): one CSS mask each
+   instead of an inline <svg> per use, which keeps the page HTML small. Lucide artwork. */
+@utility icon-chevron-down {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") center / contain no-repeat;
+}
+@utility icon-clock {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2'/></svg>") center / contain no-repeat;
+}
+@utility icon-corner-down-right {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m15 10 5 5-5 5'/><path d='M4 4v7a4 4 0 0 0 4 4h12'/></svg>") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m15 10 5 5-5 5'/><path d='M4 4v7a4 4 0 0 0 4 4h12'/></svg>") center / contain no-repeat;
 }

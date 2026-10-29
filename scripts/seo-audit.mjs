@@ -416,6 +416,7 @@ for (const where of pages) {
   // Duplicate paragraphs (e.g. carousel clones rendered on the server)
   const paras = new Map();
   for (const el of doc.querySelectorAll("main p, main blockquote")) {
+    if (el.tagName === "BLOCKQUOTE" && el.querySelector("p")) continue; // its <p> is counted
     const t = norm(el.text);
     if (t.length > 120) paras.set(t, (paras.get(t) ?? 0) + 1);
   }
