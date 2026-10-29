@@ -343,12 +343,13 @@ for (const where of pages) {
     });
   }
 
-  // NAP: header tel link; footer name, address, phone and the 7 hour lines
+  // NAP: a call link outside the page content (sticky contact bar / footer — the header holds
+  // only the navigation); footer name, address, phone and the 7 hour lines
   {
-    const headerTel = doc
-      .querySelectorAll("header")
+    const chromeTel = doc
+      .querySelectorAll(".mobile-action-bar, footer")
       .some((h) => h.querySelector(`a[href="${biz.PHONE_TEL}"]`));
-    if (!headerTel) fail(where, "header has no tel: link");
+    if (!chromeTel) fail(where, "no tel: link in the sticky bar or footer");
     const footers = doc.querySelectorAll("footer");
     const footer = footers.find((f) => f.text.includes(biz.BUSINESS_NAME) && f.querySelector("dl"));
     if (!footer) fail(where, "no site footer with NAP");

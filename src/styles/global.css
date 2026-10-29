@@ -22,7 +22,7 @@
 /* Mobile size system: one fluid value per role, 360px phone → 1280px desktop.
    h1 28px → ~55px · h2 22px → ~37px · h3 18px → ~23px · section padding 48px → ~97px.
    Use text-h1 / text-h2 / text-h3 and py-section instead of ad-hoc sizes. */
-@custom-variant landscape-phone (@media (orientation: landscape) and (max-height: 500px));
+@custom-variant landscape-phone (@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse));
 
 @theme {
   --text-h1: clamp(1.75rem, 1.1rem + 2.9vw, 4rem);
@@ -259,7 +259,7 @@
 
   /* Phones (portrait, and landscape up to 500px tall): room for the fixed bottom action bar
      so it never covers content */
-  @media (max-width: 767px), (orientation: landscape) and (max-height: 500px) {
+  @media (max-width: 767px), (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
     body {
       padding-bottom: calc(var(--action-bar-h) + 16px);
     }
@@ -332,7 +332,7 @@ body:has(input:focus, textarea:focus, select:focus) .mobile-action-bar {
 }
 
 /* Landscape phones: compact header */
-@media (orientation: landscape) and (max-height: 500px) {
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
   .site-header-inner {
     min-height: 56px;
   }

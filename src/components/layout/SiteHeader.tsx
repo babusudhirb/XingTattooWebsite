@@ -2,12 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
-import { HOURS_OPEN_DAYS, MAPS_PLACE_URL, OPEN_LABEL, SHORT_ADDRESS } from "@/data/business";
 import { isActiveHref, navLinks, SERVICES_HREF } from "@/data/navigation";
 import { useOfferActive } from "@/hooks/useOfferActive";
 import { SERVICE_SLUGS, services } from "@/data/services";
-import { BookingCta, CallCta } from "@/components/cta";
-import { useTodayHours } from "@/lib/openingHours";
+import { BookingCta } from "@/components/cta";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer";
 
@@ -15,7 +13,6 @@ export function SiteHeader() {
   const headerRef = useRef<HTMLElement>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const offerActive = useOfferActive();
-  const hours = useTodayHours();
 
   // Publish the real header height (it changes with breakpoint, wrapping and the
   // iPhone notch inset) so sticky elements below it can sit flush: --header-h.
@@ -52,28 +49,6 @@ export function SiteHeader() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      {/* Desktop NAP bar: call · today's hours · address (phones get it in the drawer + sticky bar) */}
-      <div className="hidden border-b border-border/60 lg:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-end gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] text-xs text-muted-foreground">
-          <a
-            href={MAPS_PLACE_URL}
-            target="_blank"
-            rel="noopener"
-            className="mr-auto inline-flex min-h-11 items-center hover:text-foreground"
-          >
-            {SHORT_ADDRESS}
-          </a>
-          <CallCta
-            location="header"
-            variant="plain"
-            className="min-h-11 px-0 text-xs font-semibold tracking-normal text-foreground normal-case md:min-h-11 [@media(hover:hover)]:hover:underline"
-          />
-          <span aria-hidden="true">·</span>
-          <span className="min-w-36">
-            {hours?.today ?? `Open ${HOURS_OPEN_DAYS} ${OPEN_LABEL}`}
-          </span>
-        </div>
-      </div>
       <div className="site-header-inner mx-auto flex min-h-14 max-w-7xl lg:min-h-16 items-center justify-between gap-3 pr-[var(--gutter-r)] pl-[var(--gutter-l)] sm:gap-4">
         <Logo />
         <nav
