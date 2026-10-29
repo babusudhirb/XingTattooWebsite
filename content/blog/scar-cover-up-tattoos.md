@@ -8,7 +8,7 @@ category: "cover-ups-touch-ups"
 tags: ["scar", "cover-up", "stretch marks", "skin"]
 primaryKeyword: "scar cover up tattoo"
 secondaryKeywords: ["tattoo over scar"]
-heroImage: "/blog/scar-cover-up-tattoos-hero.webp"
+heroImage: "/images/blog/scar-cover-up-tattoos-hero.webp"
 heroAlt: "Typographic cover: scar cover up tattoo guide — Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

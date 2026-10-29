@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["indian traditional", "spiritual", "Shiva", "Om", "Hanuman"]
 primaryKeyword: "Indian tattoo designs"
 secondaryKeywords: ["spiritual tattoos India", "Hindu god tattoo"]
-heroImage: "/blog/indian-traditional-tattoos-hero.webp"
+heroImage: "/images/blog/indian-traditional-tattoos-hero.webp"
 heroAlt: "Lord Shiva realism tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — Indian tattoo designs"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -73,7 +73,7 @@ Hanuman is revered for devotion, loyalty, strength and courage. Many people choo
 - A mace (gada) as a simpler symbol.
 - "Jai Shri Ram" or "Jai Hanuman" in Devanagari script.
 
-![Realistic statue-style Hanuman idol tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/indian-traditional-tattoos-1.webp "Statue-style realism gives deity tattoos a sculpted, devotional feel.")
+![Realistic statue-style Hanuman idol tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/indian-traditional-tattoos-1.webp "Statue-style realism gives deity tattoos a sculpted, devotional feel.")
 
 ## Om and Trishul
 
@@ -83,7 +83,7 @@ Hanuman is revered for devotion, loyalty, strength and courage. Many people choo
 
 Our guide to [Om, Trishul and spiritual tattoos](/blog/om-trishul-spiritual-tattoos) covers design styles and script accuracy in more detail.
 
-![Fine-line Om symbol tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/indian-traditional-tattoos-2.webp "Om works at almost any size, from minimal to detailed.")
+![Fine-line Om symbol tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/indian-traditional-tattoos-2.webp "Om works at almost any size, from minimal to detailed.")
 
 ## Ganesha and other deities
 

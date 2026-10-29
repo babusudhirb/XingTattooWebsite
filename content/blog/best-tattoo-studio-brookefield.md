@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["choosing a studio", "hygiene", "Brookefield", "reviews"]
 primaryKeyword: "tattoo studio in Brookefield"
 secondaryKeywords: ["tattoo shop AECS Layout", "tattoo studio near me"]
-heroImage: "/blog/best-tattoo-studio-brookefield-hero.webp"
+heroImage: "/images/blog/best-tattoo-studio-brookefield-hero.webp"
 heroAlt: "Peace, lead artist at Xing Premium Tattoo Studio, a tattoo studio in Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -63,7 +63,7 @@ The portfolio is the single best predictor of what your tattoo will look like.
 - Heavy filters that hide blurry lines or patchy shading.
 - A portfolio that is all one style when you want something completely different.
 
-![Black and grey realism tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/best-tattoo-studio-brookefield-1.webp "Look for consistent, real work in the style you want.")
+![Black and grey realism tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/best-tattoo-studio-brookefield-1.webp "Look for consistent, real work in the style you want.")
 
 You can browse our own [tattoo gallery](/#gallery) — every photo there was tattooed in the studio.
 

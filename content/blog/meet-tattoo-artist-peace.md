@@ -8,7 +8,7 @@ category: "studio-stories"
 tags: ["artist", "studio", "Peace", "Brookefield"]
 primaryKeyword: "tattoo artist in Brookefield"
 secondaryKeywords: ["tattoo artist Bangalore"]
-heroImage: "/blog/meet-tattoo-artist-peace-hero.webp"
+heroImage: "/images/blog/meet-tattoo-artist-peace-hero.webp"
 heroAlt: "Peace (Chingri Awungshi), tattoo artist in Brookefield, Bengaluru, at Xing Premium Tattoo Studio"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -65,7 +65,7 @@ Peace works across a wide range of styles, each linked to a service page:
 
 Our [realism tattoo guide](/blog/realism-tattoos-guide) explains what goes into photo-real work.
 
-![Lord Shiva realism tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/meet-tattoo-artist-peace-1.webp "Realism and spiritual designs are among the styles Peace works in.")
+![Lord Shiva realism tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/meet-tattoo-artist-peace-1.webp "Realism and spiritual designs are among the styles Peace works in.")
 
 ## His approach to consultation
 

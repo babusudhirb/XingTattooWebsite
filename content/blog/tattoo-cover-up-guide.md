@@ -8,7 +8,7 @@ category: "cover-ups-touch-ups"
 tags: ["cover-up", "rework", "old tattoo"]
 primaryKeyword: "tattoo cover up"
 secondaryKeywords: ["cover up tattoo Bangalore"]
-heroImage: "/blog/tattoo-cover-up-guide-hero.webp"
+heroImage: "/images/blog/tattoo-cover-up-guide-hero.webp"
 heroAlt: "Before and after tattoo cover up of an infinity name tattoo with tiger eyes armband on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -49,7 +49,7 @@ A successful cover-up doesn't just sit on top of the old tattoo. It's designed a
 
 The goal is that people see only the new tattoo, with no hint of what's underneath.
 
-![Before and after cover-up of an infinity name tattoo with a tiger eyes armband on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-cover-up-guide-hero.webp "A darker, textured armband completely hides the old infinity name tattoo.")
+![Before and after cover-up of an infinity name tattoo with a tiger eyes armband on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-cover-up-guide-hero.webp "A darker, textured armband completely hides the old infinity name tattoo.")
 
 ## Size, darkness and age of old ink
 

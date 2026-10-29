@@ -8,7 +8,7 @@ category: "studio-stories"
 tags: ["custom design", "process", "consultation", "studio"]
 primaryKeyword: "custom tattoo design process"
 secondaryKeywords: ["tattoo consultation"]
-heroImage: "/blog/custom-tattoo-process-hero.webp"
+heroImage: "/images/blog/custom-tattoo-process-hero.webp"
 heroAlt: "Tattoo machine ready at Xing Premium Tattoo Studio, Brookefield, Bengaluru — the custom tattoo design process"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -99,7 +99,7 @@ Hygiene is non-negotiable. Before your session:
 
 You're welcome to watch every step. Our [hygienic tattoo studio checklist](/blog/hygienic-tattoo-studio-checklist) explains why each one matters.
 
-![Peace, lead tattoo artist at Xing, Brookefield, Bengaluru](/blog/custom-tattoo-process-1.webp "Peace handles every consultation, stencil and session personally.")
+![Peace, lead tattoo artist at Xing, Brookefield, Bengaluru](/images/blog/custom-tattoo-process-1.webp "Peace handles every consultation, stencil and session personally.")
 
 ## Step 6: the session
 

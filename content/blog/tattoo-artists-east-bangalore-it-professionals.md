@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["it professionals", "whitefield", "work", "local"]
 primaryKeyword: "tattoo artists in East Bangalore"
 secondaryKeywords: ["tattoo for IT professionals", "tattoo artist Whitefield", "tattoo and office dress code"]
-heroImage: "/blog/tattoo-artists-east-bangalore-it-professionals-hero.webp"
+heroImage: "/images/blog/tattoo-artists-east-bangalore-it-professionals-hero.webp"
 heroAlt: "Realistic lion and Om forearm tattoo by Peace, one of the tattoo artists in East Bengaluru, at Xing Premium Tattoo Studio, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -85,7 +85,7 @@ Most Bengaluru tech companies are relaxed about tattoos, but client-facing roles
 - **Travel** — some countries and clients are more conservative.
 - **Your comfort** — do you want the option to show it, or hide it?
 
-![Small fine-line 11:11 tattoo on inner wrist by Peace at Xing Premium Tattoo Studio, Brookefield, East Bengaluru](/blog/tattoo-artists-east-bangalore-it-professionals-1.webp "A small inner-wrist piece — easy to show or cover with a watch or cuff.")
+![Small fine-line 11:11 tattoo on inner wrist by Peace at Xing Premium Tattoo Studio, Brookefield, East Bengaluru](/images/blog/tattoo-artists-east-bangalore-it-professionals-1.webp "A small inner-wrist piece — easy to show or cover with a watch or cuff.")
 
 Our [tattoo pain chart](/blog/tattoo-pain-chart) also shows how placement affects comfort, which is worth knowing before you choose.
 

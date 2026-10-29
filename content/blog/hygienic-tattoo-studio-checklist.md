@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["hygiene", "safety", "choosing a studio", "needles"]
 primaryKeyword: "safe tattoo studio"
 secondaryKeywords: ["tattoo hygiene", "single-use needles"]
-heroImage: "/blog/hygienic-tattoo-studio-checklist-hero.webp"
+heroImage: "/images/blog/hygienic-tattoo-studio-checklist-hero.webp"
 heroAlt: "Tattoo machine at Xing Premium Tattoo Studio, Brookefield, Bengaluru — how to choose a safe tattoo studio"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26

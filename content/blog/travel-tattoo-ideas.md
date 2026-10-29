@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["travel", "compass", "map", "wanderlust"]
 primaryKeyword: "travel tattoo ideas"
 secondaryKeywords: ["compass tattoo", "world map tattoo", "coordinates tattoo"]
-heroImage: "/blog/travel-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/travel-tattoo-ideas-hero.webp"
 heroAlt: "World map tattoo with an aeroplane path and the word explore on forearm by Peace at Xing, Brookefield — travel tattoo ideas"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -67,7 +67,7 @@ Ways to personalise a compass:
 - Combine it with a map, mountains or a rose.
 - Add a short phrase like "not all who wander are lost".
 
-![Fine-line compass tattoo with script and an aeroplane running down the forearm by Peace at Xing Premium Tattoo Studio, Brookefield](/blog/travel-tattoo-ideas-1.webp "A compass and a line of script make a classic travel combination.")
+![Fine-line compass tattoo with script and an aeroplane running down the forearm by Peace at Xing Premium Tattoo Studio, Brookefield](/images/blog/travel-tattoo-ideas-1.webp "A compass and a line of script make a classic travel combination.")
 
 Our [geometric and mandala guide](/blog/geometric-mandala-tattoos) explains how compass roses are mapped to stay symmetrical.
 
@@ -109,7 +109,7 @@ Places people choose:
 - [ ] Choose a clean font with open numbers.
 - [ ] Size it so the digits don't crowd together.
 
-![Coordinates tattoo with a small sunrise and wave line on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/travel-tattoo-ideas-2.webp "Coordinates with a tiny sunrise: one place, one memory.")
+![Coordinates tattoo with a small sunrise and wave line on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/travel-tattoo-ideas-2.webp "Coordinates with a tiny sunrise: one place, one memory.")
 
 ## What are topographic and landscape travel tattoos?
 
@@ -121,7 +121,7 @@ Topographic tattoos use contour lines from a map to show a mountain, valley or c
 - **A circle framing mountains and sea** — a popular forearm design.
 - **A single line** that traces a skyline or mountain ridge.
 
-![Circular fine-line travel tattoo with mountains, sea waves, sun and an aeroplane on forearm by Peace at Xing, Brookefield](/blog/travel-tattoo-ideas-3.webp "Mountains, sea and a plane inside one circle — a whole trip in a palm-sized design.")
+![Circular fine-line travel tattoo with mountains, sea waves, sun and an aeroplane on forearm by Peace at Xing, Brookefield](/images/blog/travel-tattoo-ideas-3.webp "Mountains, sea and a plane inside one circle — a whole trip in a palm-sized design.")
 
 Keep contour lines spaced well apart; very tight lines can merge as the tattoo ages. Our [fine line tattoo guide](/blog/fine-line-tattoos) explains spacing for delicate work.
 

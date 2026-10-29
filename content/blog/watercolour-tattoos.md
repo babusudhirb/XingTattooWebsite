@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["watercolour", "colour", "fading", "style guide"]
 primaryKeyword: "watercolour tattoo"
 secondaryKeywords: ["watercolor tattoo", "watercolour tattoo fading"]
-heroImage: "/blog/watercolour-tattoos-hero.webp"
+heroImage: "/images/blog/watercolour-tattoos-hero.webp"
 heroAlt: "Red frangipani colour tattoo on arm in a soft painterly style — watercolour tattoo guide by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -61,7 +61,7 @@ All tattoos soften with time. Watercolour can soften faster for a few reasons:
 
 That doesn't mean watercolour is a bad choice. It means it needs thoughtful design and care.
 
-![Colourful geometric compass tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/watercolour-tattoos-1.webp "Colour with strong black structure keeps its shape as it ages.")
+![Colourful geometric compass tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/watercolour-tattoos-1.webp "Colour with strong black structure keeps its shape as it ages.")
 
 ## Black outline vs no outline
 

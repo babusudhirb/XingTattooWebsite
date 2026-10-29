@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["age", "ID", "first tattoo", "policy"]
 primaryKeyword: "tattoo age limit in India"
 secondaryKeywords: ["minimum age for tattoo"]
-heroImage: "/blog/tattoo-age-rules-india-hero.webp"
+heroImage: "/images/blog/tattoo-age-rules-india-hero.webp"
 heroAlt: "Typographic cover: tattoo age limit in India, minimum age and ID — Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

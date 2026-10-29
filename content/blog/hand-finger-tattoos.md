@@ -8,7 +8,7 @@ category: "placement"
 tags: ["hand", "finger", "fading", "placement"]
 primaryKeyword: "finger tattoo"
 secondaryKeywords: ["hand tattoo fading"]
-heroImage: "/blog/hand-finger-tattoos-hero.webp"
+heroImage: "/images/blog/hand-finger-tattoos-hero.webp"
 heroAlt: "Geometric mandala tattoo on the back of the hand — hand and finger tattoo guide by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -57,7 +57,7 @@ All of this means hand tattoo fading happens sooner than on the arm, back or leg
 | Palms | Very fast | Often heals unevenly |
 | Inner fingers (between) | Very fast | Rubbing and moisture |
 
-![Rose tattoo on the hand with crown and script on fingers by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/hand-finger-tattoos-1.webp "The back of the hand holds ink better than the sides of the fingers.")
+![Rose tattoo on the hand with crown and script on fingers by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/hand-finger-tattoos-1.webp "The back of the hand holds ink better than the sides of the fingers.")
 
 ## Design rules: bold and simple
 
@@ -120,7 +120,7 @@ Hand tattoos are one of the most visible placements. Unlike arm or back tattoos,
 
 Our guide to [visible tattoos at work in India](/blog/tattoos-at-work-india) explains more, and our [wrist tattoo ideas](/blog/wrist-tattoo-ideas) offer a less visible alternative.
 
-![Bold linework all-seeing eye tattoo with red accents on hand by Peace at Xing, Brookefield, Bengaluru](/blog/hand-finger-tattoos-2.webp "Bold linework holds up better on hands than delicate detail.")
+![Bold linework all-seeing eye tattoo with red accents on hand by Peace at Xing, Brookefield, Bengaluru](/images/blog/hand-finger-tattoos-2.webp "Bold linework holds up better on hands than delicate detail.")
 
 ## Hand tattoos and mehendi
 

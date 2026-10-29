@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["minimalist", "small tattoos", "first tattoo", "ideas"]
 primaryKeyword: "minimalist tattoo ideas"
 secondaryKeywords: ["small tattoo ideas", "simple tattoos"]
-heroImage: "/blog/minimalist-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/minimalist-tattoo-ideas-hero.webp"
 heroAlt: "Fine-line moon and star tattoo on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — minimalist tattoo ideas"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -49,7 +49,7 @@ Small symbols are the heart of minimalist tattooing. Each carries meaning in a t
 
 **Placement tip:** Wrist, behind the ear, inner forearm or ankle.
 
-![Minimalist sun and rune symbols tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/minimalist-tattoo-ideas-1.webp "Tiny symbols look clean on the wrist.")
+![Minimalist sun and rune symbols tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/minimalist-tattoo-ideas-1.webp "Tiny symbols look clean on the wrist.")
 
 ## Lines and shapes
 
@@ -119,7 +119,7 @@ The sky is full of small, beautiful designs.
 | Ribs | Low | High | Vertical script, florals |
 | Finger | High | High | Tiny symbols (fade faster) |
 
-![Minimalist finger-heart line tattoo on wrist by Peace at Xing, Brookefield, Bengaluru](/blog/minimalist-tattoo-ideas-2.webp "Simple line art can be playful and personal.")
+![Minimalist finger-heart line tattoo on wrist by Peace at Xing, Brookefield, Bengaluru](/images/blog/minimalist-tattoo-ideas-2.webp "Simple line art can be playful and personal.")
 
 ## Making minimal personal
 

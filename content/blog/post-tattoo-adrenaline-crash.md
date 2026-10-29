@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["first tattoo", "aftercare", "wellbeing", "healing"]
 primaryKeyword: "post-tattoo crash"
 secondaryKeywords: ["tired after tattoo", "shivering after tattoo", "tattoo regret anxiety"]
-heroImage: "/blog/post-tattoo-adrenaline-crash-hero.webp"
+heroImage: "/images/blog/post-tattoo-adrenaline-crash-hero.webp"
 heroAlt: "Smiling client showing a fresh cloud and rain tattoo on the upper arm after a session at Xing, Brookefield — the post-tattoo crash explained"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -120,7 +120,7 @@ Eat, drink, rest and keep warm. Most people feel back to normal after a good mea
 
 Our [day-by-day aftercare guide](/blog/tattoo-aftercare-guide) covers the tattoo itself. If you train regularly, read [can I work out after getting a tattoo](/blog/workout-after-tattoo) before returning to the gym.
 
-![Happy client showing a fresh fine-line infinity tattoo on the forearm after a session at Xing Premium Tattoo Studio, Brookefield](/blog/post-tattoo-adrenaline-crash-1.webp "The excitement after a session is real — and so is the tiredness later.")
+![Happy client showing a fresh fine-line infinity tattoo on the forearm after a session at Xing Premium Tattoo Studio, Brookefield](/images/blog/post-tattoo-adrenaline-crash-1.webp "The excitement after a session is real — and so is the tiredness later.")
 
 ## Is it normal to feel regret or anxiety after a tattoo?
 

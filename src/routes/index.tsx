@@ -6,8 +6,8 @@ import { ArrowRight, PenTool, ShieldCheck, Star, X } from "lucide-react";
 import { QuickAnswer } from "@/components/faq/QuickAnswer";
 import { homeQuickAnswer } from "@/data/page-content";
 import { BookingCta, WhatsAppCta } from "@/components/cta";
-import heroArt from "@/assets/hero-fineline-art.webp";
-import heroArtSmall from "@/assets/hero-fineline-art-sm.webp";
+import heroArt from "@/assets/home/fine-line-floral-face-tattoo-design.webp";
+import heroArtSmall from "@/assets/home/fine-line-floral-face-tattoo-design-mobile.webp";
 import artistPortrait from "@/assets/artist/peace-tattoo-artist-xing-brookefield.webp";
 
 import { ADDRESS, COUNTS, GOOGLE_RATING, isOfferActive, OFFER, pageTitle } from "@/data/business";

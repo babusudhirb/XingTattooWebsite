@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["matching tattoos", "family", "siblings", "group"]
 primaryKeyword: "family tattoos"
 secondaryKeywords: ["sibling tattoos", "family matching tattoos", "matching tattoos for siblings", "group tattoo ideas"]
-heroImage: "/blog/sibling-family-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/sibling-family-tattoo-ideas-hero.webp"
 heroAlt: "Four friends showing matching small symbol wrist tattoos together, an idea for sibling and family tattoos, at Xing Premium Tattoo Studio, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -66,7 +66,7 @@ Ideas that refer to something specific — a place, a person, a memory — age b
 | Birth order symbols | Playful but subtle | Same shape, different count |
 | A family pet or plant | A shared memory | Same subject, simple line art |
 
-![Matching fine-line infinity tattoos with the word hope on two forearms by Peace at Xing, Brookefield](/blog/sibling-family-tattoo-ideas-1.webp "One design, two people — the same word and symbol, sized for each arm.")
+![Matching fine-line infinity tattoos with the word hope on two forearms by Peace at Xing, Brookefield](/images/blog/sibling-family-tattoo-ideas-1.webp "One design, two people — the same word and symbol, sized for each arm.")
 
 ## How do birth flower tattoos work for siblings?
 
@@ -127,7 +127,7 @@ Plan ahead and tell us how many people are coming. At Xing, Peace personally doe
 
 Small designs take about 30 minutes to 1.5 hours each, so a group of three or four small tattoos can fill a good part of a day. Bring snacks and water, and take turns supporting whoever is in the chair.
 
-![Matching small panda and cat wrist tattoos on two people by Peace at Xing, Brookefield, Bengaluru](/blog/sibling-family-tattoo-ideas-2.webp "Matching doesn't have to mean identical — two animals, one shared idea.")
+![Matching small panda and cat wrist tattoos on two people by Peace at Xing, Brookefield, Bengaluru](/images/blog/sibling-family-tattoo-ideas-2.webp "Matching doesn't have to mean identical — two animals, one shared idea.")
 
 ## How do we agree on a design without arguing?
 

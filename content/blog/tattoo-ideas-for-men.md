@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["men", "realism", "sleeve", "black and grey"]
 primaryKeyword: "tattoos for men"
 secondaryKeywords: ["male tattoo designs"]
-heroImage: "/blog/tattoo-ideas-for-men-hero.webp"
+heroImage: "/images/blog/tattoo-ideas-for-men-hero.webp"
 heroAlt: "Realistic greyscale elephant head chest tattoo — bold tattoos for men by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -49,7 +49,7 @@ Realism is one of the most requested styles among men.
 
 **Portrait tattoos** of parents, children, partners or pets are powerful tributes. Our guide to [portrait tattoo reference photos](/blog/portrait-tattoo-reference-photo) explains how to choose the right photo.
 
-![Black and grey samurai tattoo with red accents on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-ideas-for-men-1.webp "Warrior and samurai designs suit bold black and grey work.")
+![Black and grey samurai tattoo with red accents on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-ideas-for-men-1.webp "Warrior and samurai designs suit bold black and grey work.")
 
 ## Sleeves and chest pieces
 

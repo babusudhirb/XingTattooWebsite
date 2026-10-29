@@ -185,7 +185,7 @@ export const SIGNATURE_SERVICES: {
     title: "Realism & 3D Tattoos in Brookefield",
     blurb:
       "Photo-real depth, shadow and texture — drawn from scratch and inked by Peace in AECS Layout, for clients across Whitefield and Marathahalli.",
-    image: "/blog/signature-realism.webp",
+    image: "/images/blog/signature-realism.webp",
     imageAlt:
       "Realistic angel wings tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services/realism",
@@ -195,7 +195,7 @@ export const SIGNATURE_SERVICES: {
     title: "Portrait & Memorial Tattoos, Bangalore",
     blurb:
       "Faces, pets and tributes captured with fine shading. Bring a clear reference photo — we'll guide the size and placement.",
-    image: "/blog/signature-portrait.webp",
+    image: "/images/blog/signature-portrait.webp",
     imageAlt:
       "Memorial portrait tattoo of a grandmother with a date by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services/portrait",
@@ -205,7 +205,7 @@ export const SIGNATURE_SERVICES: {
     title: "Fine Line & Minimalist Tattoos, AECS Layout",
     blurb:
       "Delicate linework, tiny symbols and scripts with precise needle depth so they heal crisp — ideal first tattoos.",
-    image: "/blog/signature-fine-line.webp",
+    image: "/images/blog/signature-fine-line.webp",
     imageAlt:
       "Fine-line floral face line-art tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services/minimalist",
@@ -215,7 +215,7 @@ export const SIGNATURE_SERVICES: {
     title: "Black & Grey Tattoos near Whitefield",
     blurb:
       "Smooth charcoal shading and contrast that ages beautifully on Indian skin tones — from forearm pieces to full back panels.",
-    image: "/blog/signature-black-grey.webp",
+    image: "/images/blog/signature-black-grey.webp",
     imageAlt:
       "Black and grey samurai tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services/black-grey",
@@ -225,7 +225,7 @@ export const SIGNATURE_SERVICES: {
     title: "Indian Traditional & Spiritual Tattoos",
     blurb:
       "Shiva, Hanuman, Om and Trishul designs drawn respectfully with meaning, detail and balance, with every symbol and script checked before ink.",
-    image: "/blog/signature-traditional.webp",
+    image: "/images/blog/signature-traditional.webp",
     imageAlt:
       "Lord Shiva realism tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services/traditional",
@@ -235,7 +235,7 @@ export const SIGNATURE_SERVICES: {
     title: "Geometric & Mandala Tattoos near Marathahalli",
     blurb:
       "Sacred geometry, dotwork and symmetry mapped to your body's shape, so every line sits straight and the pattern flows with you.",
-    image: "/blog/signature-geometric.webp",
+    image: "/images/blog/signature-geometric.webp",
     imageAlt:
       "Geometric mandala tattoo on the back of the hand by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services/geometric",
@@ -245,7 +245,7 @@ export const SIGNATURE_SERVICES: {
     title: "Sleeve & Large-Scale Tattoos",
     blurb:
       "Half and full sleeves, chest and back pieces planned in sessions for seamless flow — one story, mapped across your arm or back.",
-    image: "/blog/signature-sleeve.webp",
+    image: "/images/blog/signature-sleeve.webp",
     imageAlt:
       "Geometric arm sleeve tattoo with rhino and tree by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services#sleeve",
@@ -255,7 +255,7 @@ export const SIGNATURE_SERVICES: {
     title: "Cover-Ups, Rework & Touch-Ups",
     blurb:
       "Old or faded tattoo? Peace assesses your ink and designs a fresh piece or restores what you have — honest advice on what will work.",
-    image: "/blog/signature-cover-up.webp",
+    image: "/images/blog/signature-cover-up.webp",
     imageAlt:
       "Before and after cover-up tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru",
     serviceHref: "/services#cover-ups-reworks",

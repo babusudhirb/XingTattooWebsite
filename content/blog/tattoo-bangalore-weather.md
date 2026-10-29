@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["weather", "monsoon", "summer", "aftercare", "Bangalore"]
 primaryKeyword: "tattoo in monsoon"
 secondaryKeywords: ["tattoo in summer healing"]
-heroImage: "/blog/tattoo-bangalore-weather-hero.webp"
+heroImage: "/images/blog/tattoo-bangalore-weather-hero.webp"
 heroAlt: "Fine-line lotus tattoo on forearm healing well after a tattoo in monsoon season, by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

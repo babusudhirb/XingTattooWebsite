@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["Bangalore", "city tattoo", "line art", "Kannada"]
 primaryKeyword: "Bangalore tattoo ideas"
 secondaryKeywords: ["city tattoo"]
-heroImage: "/blog/bangalore-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/bangalore-tattoo-ideas-hero.webp"
 heroAlt: "Minimalist line-art panda tattoo on arm — line art style for Bengaluru tattoo ideas, by Peace at Xing Premium Tattoo Studio, Brookefield"
 author: "Peace (Chingri Awungshi)"
 draft: true

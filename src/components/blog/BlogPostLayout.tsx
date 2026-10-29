@@ -185,7 +185,7 @@ export function BlogPostLayout({ post }: { post: BlogPostData }) {
                   className="inline-flex min-h-11 items-center gap-2 font-semibold text-foreground hover:underline"
                 >
                   <img
-                    src="/blog/peace-avatar.webp"
+                    src="/images/blog/peace-avatar.webp"
                     alt=""
                     aria-hidden="true"
                     width={40}
@@ -310,7 +310,7 @@ export function BlogPostLayout({ post }: { post: BlogPostData }) {
                 className="mt-12 flex gap-4 rounded-2xl border border-border bg-card p-5 sm:p-6"
               >
                 <img
-                  src="/blog/peace-avatar.webp"
+                  src="/images/blog/peace-avatar.webp"
                   alt="Peace, Lead Artist at Xing"
                   width={80}
                   height={80}

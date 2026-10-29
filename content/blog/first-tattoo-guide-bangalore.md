@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["first tattoo", "beginners", "consultation", "aftercare"]
 primaryKeyword: "first tattoo guide"
 secondaryKeywords: ["first tattoo tips", "getting a tattoo in Bangalore"]
-heroImage: "/blog/first-tattoo-guide-bangalore-hero.webp"
+heroImage: "/images/blog/first-tattoo-guide-bangalore-hero.webp"
 heroAlt: "Fine-line sun, moon and script tattoo along the spine by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — first tattoo guide"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -81,7 +81,7 @@ For a first tattoo, choose a size and placement that are comfortable to sit thro
 
 Size matters too. Very small tattoos with lots of detail can blur over time as ink spreads slightly under the skin. Your artist may suggest making the design a little bigger to keep it crisp.
 
-![Minimalist lightning bolt tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/first-tattoo-guide-bangalore-1.webp "Small, simple designs make comfortable first tattoos.")
+![Minimalist lightning bolt tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/first-tattoo-guide-bangalore-1.webp "Small, simple designs make comfortable first tattoos.")
 
 Our [tattoo pain chart](/blog/tattoo-pain-chart) compares every major placement.
 

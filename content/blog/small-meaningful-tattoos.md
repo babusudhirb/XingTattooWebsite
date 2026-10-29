@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["small tattoos", "symbols", "meaning", "minimalist"]
 primaryKeyword: "small meaningful tattoos"
 secondaryKeywords: ["tattoo symbols meaning"]
-heroImage: "/blog/small-meaningful-tattoos-hero.webp"
+heroImage: "/images/blog/small-meaningful-tattoos-hero.webp"
 heroAlt: "Minimalist sun and rune symbols tattoo on wrist — small meaningful tattoos by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -60,7 +60,7 @@ Small symbols are among the most requested tattoos at our studio in Brookefield,
 
 These are common interpretations. Meanings can vary between cultures and people.
 
-![Yin yang tattoo with the word balance on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/small-meaningful-tattoos-1.webp "A yin yang with a single word makes a simple, meaningful design.")
+![Yin yang tattoo with the word balance on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/small-meaningful-tattoos-1.webp "A yin yang with a single word makes a simple, meaningful design.")
 
 ## Symbols of strength
 
@@ -116,7 +116,7 @@ A common symbol becomes uniquely yours with a small personal touch.
 - **Choose something you'll still relate to** years from now.
 - **Don't choose purely for a trend.**
 
-![Patience gothic lettering tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/small-meaningful-tattoos-2.webp "A single word can be just as meaningful as a symbol.")
+![Patience gothic lettering tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/small-meaningful-tattoos-2.webp "A single word can be just as meaningful as a symbol.")
 
 ## Placement for small tattoos
 

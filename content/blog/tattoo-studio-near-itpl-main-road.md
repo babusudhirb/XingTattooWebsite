@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["itpl", "whitefield", "geometric", "techies"]
 primaryKeyword: "tattoo studio near ITPL"
 secondaryKeywords: ["tattoo near ITPL Main Road", "geometric tattoo Whitefield", "tattoo ideas for techies"]
-heroImage: "/blog/tattoo-studio-near-itpl-main-road-hero.webp"
+heroImage: "/images/blog/tattoo-studio-near-itpl-main-road-hero.webp"
 heroAlt: "Dotwork golden ratio spiral tattoo on forearm by Peace at Xing, a tattoo studio near ITPL in AECS Layout, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -83,7 +83,7 @@ Geometric, sacred geometry, minimalist symbols and small code-inspired pieces su
 | Sci-fi symbols | Fandom, personal story | Upper arm, calf |
 | Brackets or a short keyword | Minimal and clever | Wrist or ankle, simple font |
 
-![Tesseract cube and golden ratio geometric tattoos on forearm by Peace at Xing near ITPL, Brookefield](/blog/tattoo-studio-near-itpl-main-road-1.webp "Geometric line tattoos stay crisp when lines have room to breathe.")
+![Tesseract cube and golden ratio geometric tattoos on forearm by Peace at Xing near ITPL, Brookefield](/images/blog/tattoo-studio-near-itpl-main-road-1.webp "Geometric line tattoos stay crisp when lines have room to breathe.")
 
 Our [geometric and mandala tattoo guide](/blog/geometric-mandala-tattoos) explains how symmetry is mapped to the body, and our new post on [cyberpunk and neo-tribal tattoos](/blog/cyberpunk-neo-tribal-tattoos-bangalore) explores bolder, digital-inspired styles.
 

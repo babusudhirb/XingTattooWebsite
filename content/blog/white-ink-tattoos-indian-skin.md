@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["white ink", "indian skin", "brown skin", "contrast"]
 primaryKeyword: "white ink tattoos"
 secondaryKeywords: ["white ink tattoo on brown skin", "white tattoo Indian skin", "white highlights tattoo"]
-heroImage: "/blog/white-ink-tattoos-indian-skin-hero.webp"
+heroImage: "/images/blog/white-ink-tattoos-indian-skin-hero.webp"
 heroAlt: "Blackwork endless knot armband using negative space, an alternative to white ink tattoos on Indian skin, by Peace at Xing, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -124,7 +124,7 @@ Negative space and fine blackwork give a light, delicate look with contrast that
 
 Instead of tattooing a light design, the area around it is tattooed dark, leaving the shape in bare skin. Knots, patterns, flowers and lettering all work well this way. Bands and armbands are especially striking.
 
-![Black geometric triangle armband tattoo using negative space by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/white-ink-tattoos-indian-skin-1.webp "Negative space lets your skin form the light shapes — with lasting contrast.")
+![Black geometric triangle armband tattoo using negative space by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/white-ink-tattoos-indian-skin-1.webp "Negative space lets your skin form the light shapes — with lasting contrast.")
 
 **Fine blackwork and single-line designs**
 

@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["couple tattoos", "matching tattoos", "anniversary", "minimalist"]
 primaryKeyword: "couple tattoo ideas"
 secondaryKeywords: ["matching tattoos", "anniversary tattoo"]
-heroImage: "/blog/couple-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/couple-tattoo-ideas-hero.webp"
 heroAlt: "Matching always script tattoos on two forearms — couple tattoo ideas by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -67,7 +67,7 @@ Symbols carry meaning in a small space and are easy to personalise.
 - **Arrows** — moving forward together.
 - **Lotus** — growth and rising together through challenges.
 
-![Minimalist finger-heart line tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/couple-tattoo-ideas-1.webp "Playful line art makes a simple matching tattoo.")
+![Minimalist finger-heart line tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/couple-tattoo-ideas-1.webp "Playful line art makes a simple matching tattoo.")
 
 ## Dates, coordinates and words
 

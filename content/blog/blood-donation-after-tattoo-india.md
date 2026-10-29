@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["blood donation", "health", "safety"]
 primaryKeyword: "donate blood after a tattoo"
 secondaryKeywords: ["tattoo blood donation rules"]
-heroImage: "/blog/blood-donation-after-tattoo-india-hero.webp"
+heroImage: "/images/blog/blood-donation-after-tattoo-india-hero.webp"
 heroAlt: "Typographic cover: can you donate blood after a tattoo in India — Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

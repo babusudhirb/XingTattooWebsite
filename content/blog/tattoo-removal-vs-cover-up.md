@@ -8,7 +8,7 @@ category: "cover-ups-touch-ups"
 tags: ["removal", "laser", "cover-up", "rework"]
 primaryKeyword: "tattoo removal"
 secondaryKeywords: ["laser vs cover up"]
-heroImage: "/blog/tattoo-removal-vs-cover-up-hero.webp"
+heroImage: "/images/blog/tattoo-removal-vs-cover-up-hero.webp"
 heroAlt: "Typographic cover: tattoo removal vs cover-up, which is better — Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -60,7 +60,7 @@ A cover-up hides an old tattoo under a new design.
 
 Our [tattoo cover-up guide](/blog/tattoo-cover-up-guide) explains what makes a cover-up work.
 
-![Before and after cover-up of an infinity name tattoo with a tiger eyes armband on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-removal-vs-cover-up-1.webp "A cover-up replaces an old tattoo with a new, darker design.")
+![Before and after cover-up of an infinity name tattoo with a tiger eyes armband on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-removal-vs-cover-up-1.webp "A cover-up replaces an old tattoo with a new, darker design.")
 
 ## Cover-up pros and cons
 

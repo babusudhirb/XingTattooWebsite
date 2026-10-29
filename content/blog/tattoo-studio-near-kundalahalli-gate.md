@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["kundalahalli", "itpl", "marathahalli", "local"]
 primaryKeyword: "tattoo studio near Kundalahalli Gate"
 secondaryKeywords: ["tattoo shop Kundalahalli", "tattoo near Marathahalli ITPL road", "tattoo studio Brookefield"]
-heroImage: "/blog/tattoo-studio-near-kundalahalli-gate-hero.webp"
+heroImage: "/images/blog/tattoo-studio-near-kundalahalli-gate-hero.webp"
 heroAlt: "Black and grey lion tattoo with sun rays on forearm by Peace at Xing, a tattoo studio near Kundalahalli Gate in AECS Layout, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -69,7 +69,7 @@ When you scroll through a portfolio, look for:
 
 At Xing, Peace works across realism, portraits, black and grey, fine-line, geometric and Indian traditional designs. You can see examples of each on our [tattoo services page](/services).
 
-![Black and grey butterfly tattoo with sunburst on forearm by Peace at Xing, Brookefield, near Kundalahalli Gate](/blog/tattoo-studio-near-kundalahalli-gate-1.webp "Mixed fine-line and shading work, drawn for the forearm.")
+![Black and grey butterfly tattoo with sunburst on forearm by Peace at Xing, Brookefield, near Kundalahalli Gate](/images/blog/tattoo-studio-near-kundalahalli-gate-1.webp "Mixed fine-line and shading work, drawn for the forearm.")
 
 ## How can I tell if a tattoo studio is hygienic?
 

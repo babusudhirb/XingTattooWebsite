@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["script", "lettering", "fonts", "calligraphy"]
 primaryKeyword: "calligraphy tattoo"
 secondaryKeywords: ["script tattoo fonts", "tattoo font that lasts", "handwriting tattoo"]
-heroImage: "/blog/script-calligraphy-tattoo-fonts-hero.webp"
+heroImage: "/images/blog/script-calligraphy-tattoo-fonts-hero.webp"
 heroAlt: "Sanskrit and English script calligraphy tattoo on forearm reading everything happens for a reason, by Peace at Xing, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -90,7 +90,7 @@ Choose cursive for warmth and personality, typewriter for clean minimalism, and 
 - The placement is large, like the chest or back.
 - You want a classic tattoo feel.
 
-![Fine-line cursive script tattoo reading sonder with a small moon on forearm by Peace at Xing Premium Tattoo Studio, Brookefield](/blog/script-calligraphy-tattoo-fonts-1.webp "One short word in an open cursive leaves room for the letters to breathe.")
+![Fine-line cursive script tattoo reading sonder with a small moon on forearm by Peace at Xing Premium Tattoo Studio, Brookefield](/images/blog/script-calligraphy-tattoo-fonts-1.webp "One short word in an open cursive leaves room for the letters to breathe.")
 
 ## How does placement change the font choice?
 
@@ -142,7 +142,7 @@ Yes. Custom lettering and real handwriting are some of the most meaningful scrip
 
 Handwriting tattoos are often memorial pieces. Our guide to [memorial tattoo ideas](/blog/memorial-tattoo-ideas) shares other ways to honour someone.
 
-![Long flowing cursive quote tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/script-calligraphy-tattoo-fonts-2.webp "Longer quotes need a long placement — the forearm gives each line room.")
+![Long flowing cursive quote tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/script-calligraphy-tattoo-fonts-2.webp "Longer quotes need a long placement — the forearm gives each line room.")
 
 ## How do I make sure the spelling and script are right?
 

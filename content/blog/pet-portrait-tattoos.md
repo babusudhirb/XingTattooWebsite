@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["pet portrait", "portrait", "dog tattoo", "cat tattoo"]
 primaryKeyword: "pet portrait tattoo"
 secondaryKeywords: ["dog tattoo", "cat tattoo ideas"]
-heroImage: "/blog/pet-portrait-tattoos-hero.webp"
+heroImage: "/images/blog/pet-portrait-tattoos-hero.webp"
 heroAlt: "Pet portrait tattoo of a dog named Charlie on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26

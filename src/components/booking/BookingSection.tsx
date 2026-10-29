@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { format, isToday, isTomorrow } from "date-fns";
 import { ArrowRight, CalendarClock } from "lucide-react";
 
-import ctaMachine from "@/assets/cta-machine.webp";
+import ctaMachine from "@/assets/booking/tattoo-machine-xing-premium-tattoo-studio.webp";
 import { firstOpenDate, getSlotsForDate } from "@/lib/booking-slots";
 import { openBookingModal } from "@/components/booking/BookingContext";
 import { BookingCta, CallCta, WhatsAppCta } from "@/components/cta";

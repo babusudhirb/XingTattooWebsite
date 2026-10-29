@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["zodiac", "constellation", "astrology", "fine line"]
 primaryKeyword: "zodiac tattoo"
 secondaryKeywords: ["zodiac sign tattoo"]
-heroImage: "/blog/zodiac-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/zodiac-tattoo-ideas-hero.webp"
 heroAlt: "Geometric zodiac tattoo of a face on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -50,7 +50,7 @@ Zodiac tattoos are popular at our studio in Brookefield, Bengaluru — as first 
 | Aquarius | Jan 20 – Feb 18 | Water bearer | Waves, a water jug, flowing lines |
 | Pisces | Feb 19 – Mar 20 | Fish | Two fish in a circle, waves, a koi pair |
 
-![Scorpion and Lord Krishna black and grey tattoos on arms by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/zodiac-tattoo-ideas-1.webp "A scorpion is a bold illustrative choice for Scorpio.")
+![Scorpion and Lord Krishna black and grey tattoos on arms by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/zodiac-tattoo-ideas-1.webp "A scorpion is a bold illustrative choice for Scorpio.")
 
 ## Constellations
 

@@ -255,21 +255,21 @@ export const BLOG_TOKENS: Record<string, string> = {
 };
 
 /** Default social image (1200×630, made by scripts/blog-images.py). Services and the artist page have their own. */
-export const OG_IMAGE = `${SITE_URL}/og/og-default.jpg`;
+export const OG_IMAGE = `${SITE_URL}/og/og-xing-premium-tattoo-studio.jpg`;
 export const OG_IMAGE_ALT =
   "Tattoo work by Peace at Xing Premium Tattoo Studio, Brookefield, Bangalore";
 /** Photos of the studio's work for the business schema (absolute URLs). */
 export const BUSINESS_PHOTOS = [
   OG_IMAGE,
-  `${SITE_URL}/blog/signature-realism.webp`,
-  `${SITE_URL}/blog/signature-portrait.webp`,
+  `${SITE_URL}/images/blog/signature-realism.webp`,
+  `${SITE_URL}/images/blog/signature-portrait.webp`,
 ];
 /** Logo artwork from the brand design (tagline outlined, so no extra font loads). */
-export const LOGO_SRC = "/xing-logo.svg";
+export const LOGO_SRC = "/xing-premium-tattoo-studio-logo.svg";
 export const LOGO_WIDTH = 666;
 export const LOGO_HEIGHT = 366;
 /** Raster copy for the schema `logo` (white background). */
-export const LOGO_URL = `${SITE_URL}/xing-logo.png`;
+export const LOGO_URL = `${SITE_URL}/xing-premium-tattoo-studio-logo.png`;
 
 /** Geo meta tags for the site <head>. */
 export const GEO_META = [

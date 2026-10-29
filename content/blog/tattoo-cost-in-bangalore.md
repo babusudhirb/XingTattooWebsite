@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["tattoo cost", "pricing", "consultation", "first tattoo"]
 primaryKeyword: "tattoo cost in Bangalore"
 secondaryKeywords: ["tattoo price factors", "tattoo price Brookefield"]
-heroImage: "/blog/tattoo-cost-in-bangalore-hero.webp"
+heroImage: "/images/blog/tattoo-cost-in-bangalore-hero.webp"
 heroAlt: "Tattoo machine at Xing Premium Tattoo Studio, Brookefield — what decides tattoo cost in Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -64,7 +64,7 @@ Here is a simple way to think about it:
 | Half sleeve or back panel | Several sessions | Design planning, healing between sittings |
 | Full sleeve or large realism | Many sessions over months | Detail, consistency across the whole area |
 
-![Small fine-line heart of flowers tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-cost-in-bangalore-1.webp "A small fine-line piece usually fits into one short session.")
+![Small fine-line heart of flowers tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-cost-in-bangalore-1.webp "A small fine-line piece usually fits into one short session.")
 
 When you message a studio, give the size in inches, not "small" or "medium". Your "small" may be someone else's "medium".
 

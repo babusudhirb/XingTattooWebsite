@@ -8,7 +8,7 @@ category: "placement"
 tags: ["wrist", "small tattoos", "fine line", "placement"]
 primaryKeyword: "wrist tattoo ideas"
 secondaryKeywords: ["small wrist tattoo"]
-heroImage: "/blog/wrist-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/wrist-tattoo-ideas-hero.webp"
 heroAlt: "Fine-line heart of flowers tattoo on wrist — wrist tattoo ideas by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -69,7 +69,7 @@ Wrist tattoos work best when they're small and clear. Some of the most popular i
 - Sun.
 - Constellation.
 
-![Fine-line open book and stars tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/wrist-tattoo-ideas-1.webp "Small, open designs heal crisp on the wrist.")
+![Fine-line open book and stars tattoo on wrist by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/wrist-tattoo-ideas-1.webp "Small, open designs heal crisp on the wrist.")
 
 ## Inner vs outer wrist
 
@@ -131,7 +131,7 @@ Line weight — how thick the lines are — affects how long a wrist tattoo stay
 
 A skilled fine-line artist can balance elegance with longevity. Our guide to [fine line tattoos](/blog/fine-line-tattoos) explains this in detail.
 
-![Minimalist lightning bolt tattoo on wrist by Peace at Xing, Brookefield, Bengaluru](/blog/wrist-tattoo-ideas-2.webp "Simple, bold shapes stay sharp longest on the wrist.")
+![Minimalist lightning bolt tattoo on wrist by Peace at Xing, Brookefield, Bengaluru](/images/blog/wrist-tattoo-ideas-2.webp "Simple, bold shapes stay sharp longest on the wrist.")
 
 ## Wrist tattoos and work
 

@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["realism", "black and grey", "portrait", "style guide"]
 primaryKeyword: "realism tattoo"
 secondaryKeywords: ["3D realistic tattoo", "realistic tattoo Bangalore"]
-heroImage: "/blog/realism-tattoos-guide-hero.webp"
+heroImage: "/images/blog/realism-tattoos-guide-hero.webp"
 heroAlt: "Hyper-realistic barber tools realism tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -60,7 +60,7 @@ A long-lasting realism tattoo has:
 - **Bare skin or white** in the brightest highlights.
 - **A clear range of tones** in between.
 
-![Realistic greyscale elephant head tattoo on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/realism-tattoos-guide-1.webp "Deep blacks and open highlights keep realism readable.")
+![Realistic greyscale elephant head tattoo on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/realism-tattoos-guide-1.webp "Deep blacks and open highlights keep realism readable.")
 
 > **Peace's tip:** If your reference photo looks flat on your phone, it will look flat on your skin. I often adjust the contrast in the design before the stencil, so the tattoo still reads clearly in ten years.
 
@@ -176,7 +176,7 @@ Every design is prepared from your references and sized to your body, and you ap
 
 You can see more of this work on our [realism tattoo service page](/services/realism).
 
-![Black and grey realism tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/realism-tattoos-guide-2.webp "Larger realism pieces are planned across sessions.")
+![Black and grey realism tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/realism-tattoos-guide-2.webp "Larger realism pieces are planned across sessions.")
 
 ## Conclusion
 

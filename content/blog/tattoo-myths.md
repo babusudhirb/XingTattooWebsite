@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["myths", "facts", "first tattoo", "health"]
 primaryKeyword: "tattoo myths"
 secondaryKeywords: ["tattoo facts"]
-heroImage: "/blog/tattoo-myths-hero.webp"
+heroImage: "/images/blog/tattoo-myths-hero.webp"
 heroAlt: "Name script and flower tattoos on forearms — tattoo myths busted by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

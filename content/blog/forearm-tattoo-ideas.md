@@ -8,7 +8,7 @@ category: "placement"
 tags: ["forearm", "placement", "realism", "lettering", "geometric"]
 primaryKeyword: "forearm tattoo"
 secondaryKeywords: ["forearm tattoo designs"]
-heroImage: "/blog/forearm-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/forearm-tattoo-ideas-hero.webp"
 heroAlt: "Colourful geometric compass forearm tattoo by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -83,7 +83,7 @@ The forearm is a natural place for words.
 
 Choose a font that's readable at the size you want. Our guide to [name and lettering tattoos](/blog/name-lettering-tattoos) has font and spelling tips.
 
-![Fine-line open book with moon and stars tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/forearm-tattoo-ideas-1.webp "Fine-line designs follow the length of the forearm beautifully.")
+![Fine-line open book with moon and stars tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/forearm-tattoo-ideas-1.webp "Fine-line designs follow the length of the forearm beautifully.")
 
 ## Geometric and spiritual ideas
 

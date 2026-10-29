@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["geometric", "mandala", "dotwork", "sacred geometry"]
 primaryKeyword: "geometric tattoo"
 secondaryKeywords: ["mandala tattoo meaning", "dotwork"]
-heroImage: "/blog/geometric-mandala-tattoos-hero.webp"
+heroImage: "/images/blog/geometric-mandala-tattoos-hero.webp"
 heroAlt: "Geometric tattoo of a compass and wave on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -63,7 +63,7 @@ For many people, a mandala tattoo represents:
 
 Mandalas can be combined with lotuses, Om, chakras or other symbols to add personal meaning. If your design includes spiritual symbols, choose and place them respectfully.
 
-![Geometric mandala tattoo on the back of the hand by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/geometric-mandala-tattoos-1.webp "Mandalas radiate from a centre point, so placement on curved areas needs care.")
+![Geometric mandala tattoo on the back of the hand by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/geometric-mandala-tattoos-1.webp "Mandalas radiate from a centre point, so placement on curved areas needs care.")
 
 ## Dotwork vs linework
 
@@ -116,7 +116,7 @@ Geometric elements pair well with other styles:
 
 Our guide to [realism tattoos](/blog/realism-tattoos-guide) shows how realistic elements can be built into larger compositions.
 
-![Geometric arm sleeve tattoo with rhino and tree by Peace at Xing, Brookefield, Bengaluru](/blog/geometric-mandala-tattoos-2.webp "Geometric shapes can frame realistic elements across a sleeve.")
+![Geometric arm sleeve tattoo with rhino and tree by Peace at Xing, Brookefield, Bengaluru](/images/blog/geometric-mandala-tattoos-2.webp "Geometric shapes can frame realistic elements across a sleeve.")
 
 ## Ageing and care
 

@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["portrait", "realism", "reference photo", "memorial"]
 primaryKeyword: "portrait tattoo"
 secondaryKeywords: ["face tattoo realistic", "portrait tattoo Bangalore"]
-heroImage: "/blog/portrait-tattoo-reference-photo-hero.webp"
+heroImage: "/images/blog/portrait-tattoo-reference-photo-hero.webp"
 heroAlt: "Eyes portrait tattoo with the word Queen on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -60,7 +60,7 @@ The clearer these are in the photo, the more recognisable the portrait.
 
 **Expression.** A natural expression often looks better on skin than a forced smile. Choose a photo that feels like the person.
 
-![Portrait tattoo of a smiling woman with wings on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/portrait-tattoo-reference-photo-1.webp "Clear light and shadow give a portrait its depth.")
+![Portrait tattoo of a smiling woman with wings on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/portrait-tattoo-reference-photo-1.webp "Clear light and shadow give a portrait its depth.")
 
 > **Peace's tip:** Bring three or four photos, not just one. I'll pick the one with the best detail, and sometimes borrow the eyes from one and the smile from another to capture the person you remember.
 
@@ -134,7 +134,7 @@ Portrait tattoos have a lot of fine shading, so careful aftercare is essential.
 
 After healing, a small touch-up can sharpen highlights or deepen shadows if needed.
 
-![Realistic portrait tattoo of a woman in a dupatta on chest by Peace at Xing, Brookefield, Bengaluru](/blog/portrait-tattoo-reference-photo-2.webp "Healed portraits settle and soften slightly — contrast keeps them clear.")
+![Realistic portrait tattoo of a woman in a dupatta on chest by Peace at Xing, Brookefield, Bengaluru](/images/blog/portrait-tattoo-reference-photo-2.webp "Healed portraits settle and soften slightly — contrast keeps them clear.")
 
 ## Photos that don't work well — and what to do
 

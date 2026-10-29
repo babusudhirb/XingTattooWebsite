@@ -10,8 +10,14 @@ import fs from "node:fs";
 import { parse } from "node-html-parser";
 
 if (process.argv[2] === "--diff") {
+  // Image files may be renamed or moved (they must still answer 200 — seo-audit checks that)
+  const normImages = (text) =>
+    text.replace(
+      /(https:\/\/www\.xingtattoo\.in)?\/[\w/.*-]+?\.(webp|avif|png|jpe?g|svg)/g,
+      "<image>",
+    );
   const [a, b] = [process.argv[3], process.argv[4]].map((f) =>
-    JSON.parse(fs.readFileSync(f, "utf8")),
+    JSON.parse(normImages(fs.readFileSync(f, "utf8"))),
   );
   const keys = [...new Set([...Object.keys(a), ...Object.keys(b)])].sort();
   let diffs = 0;

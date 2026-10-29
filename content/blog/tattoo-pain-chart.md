@@ -8,7 +8,7 @@ category: "placement"
 tags: ["pain", "placement", "first tattoo"]
 primaryKeyword: "tattoo pain chart"
 secondaryKeywords: ["least painful tattoo spots", "does tattoo hurt"]
-heroImage: "/blog/tattoo-pain-chart-hero.webp"
+heroImage: "/images/blog/tattoo-pain-chart-hero.webp"
 heroAlt: "Realistic angel wings tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — tattoo pain chart guide"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -69,7 +69,7 @@ Use this tattoo pain chart as a general guide. Your own experience may be a litt
 | Feet and ankles | High | Very little padding |
 | Elbow and knee | High | Bony and stretchy skin |
 
-![Fine-line orchid tattoo on ribs by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-pain-chart-1.webp "The ribs are one of the more painful placements.")
+![Fine-line orchid tattoo on ribs by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-pain-chart-1.webp "The ribs are one of the more painful placements.")
 
 ## Factors that change how much it hurts
 

@@ -88,3 +88,21 @@ See the "Assets" section appended by the asset pass.
 - `docs/inventory.md`
 - `bun.lock`
 - `bunfig.toml`
+
+## Assets (1279 files)
+
+Patterns (every file listed in git history):
+
+| Old | New |
+|---|---|
+| `src/assets/services/<style>/hero(-480|-720).webp` | `src/assets/services/<style>/<style>-tattoo-brookefield-bangalore(-480|-720).webp` |
+| `src/assets/services/<style>/gallery-N(-480).webp` | `src/assets/services/<style>/<style>-tattoo-brookefield-N(-480).webp` |
+| `src/assets/services/<style>/card(-320).webp` | `src/assets/services/<style>/<style>-tattoo-card(-320).webp` |
+| `src/assets/services/<style>/thumb.webp` | `src/assets/services/<style>/<style>-tattoo-thumb.webp` |
+| `src/assets/style-blackgrey(-480|-720).webp` | `src/assets/services/black-grey/black-grey-tattoo-brookefield-bangalore(…).webp` |
+| `src/assets/hero-fineline-art(-sm).webp` | `src/assets/home/fine-line-floral-face-tattoo-design(-mobile).webp` |
+| `src/assets/booking/tattoo-machine-xing-premium-tattoo-studio.webp` | `src/assets/booking/tattoo-machine-xing-premium-tattoo-studio.webp` |
+| `public/xing-logo.{svg,png,webp}` | `public/xing-premium-tattoo-studio-logo.{svg,png,webp}` |
+| `public/og/og-xing-premium-tattoo-studio.jpg` | `public/og/og-xing-premium-tattoo-studio.jpg` |
+| `public/gallery/N/NNN(-480).webp` | `public/images/gallery/tattoo-brookefield-portfolio-N-NNN(-480).webp` |
+| `public/blog/*.webp` | `public/images/blog/*.webp` |

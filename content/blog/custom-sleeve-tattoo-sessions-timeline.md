@@ -8,7 +8,7 @@ category: "placement"
 tags: ["sleeve", "large scale", "sessions", "planning"]
 primaryKeyword: "custom sleeve tattoo"
 secondaryKeywords: ["how long does a sleeve tattoo take", "sleeve tattoo sessions", "full sleeve timeline"]
-heroImage: "/blog/custom-sleeve-tattoo-sessions-timeline-hero.webp"
+heroImage: "/images/blog/custom-sleeve-tattoo-sessions-timeline-hero.webp"
 heroAlt: "Polynesian-style full arm custom sleeve tattoo by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -101,7 +101,7 @@ Detailed sessions for realism and large-scale work commonly run about 3–7 hour
 - Wear clothes that give easy access to the whole arm.
 - Bring headphones or something to watch.
 
-![Realistic warrior forearm sleeve tattoo in progress by Peace at Xing, Brookefield, Bengaluru](/blog/custom-sleeve-tattoo-sessions-timeline-1.webp "Realism sleeves build depth over several shading sessions.")
+![Realistic warrior forearm sleeve tattoo in progress by Peace at Xing, Brookefield, Bengaluru](/images/blog/custom-sleeve-tattoo-sessions-timeline-1.webp "Realism sleeves build depth over several shading sessions.")
 
 ## How long should I heal between sleeve sessions?
 

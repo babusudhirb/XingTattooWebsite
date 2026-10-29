@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["aftercare", "gym", "workout", "healing"]
 primaryKeyword: "work out after getting a tattoo"
 secondaryKeywords: ["gym after tattoo", "exercise after tattoo", "sweating after tattoo"]
-heroImage: "/blog/workout-after-tattoo-hero.webp"
+heroImage: "/images/blog/workout-after-tattoo-hero.webp"
 heroAlt: "Tribal armband tattoo on upper arm by Peace at Xing Premium Tattoo Studio, Brookefield — when can you work out after getting a tattoo"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -90,7 +90,7 @@ Each one interferes with healing in a different way. Sweat irritates, friction r
 - Big movements over a joint pull the healing skin.
 - Cracked scabs can bleed and leave light patches.
 
-![Realistic badminton player tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/workout-after-tattoo-1.webp "Sports-inspired pieces heal best when you ease back into training.")
+![Realistic badminton player tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/workout-after-tattoo-1.webp "Sports-inspired pieces heal best when you ease back into training.")
 
 ## Should I train upper body or lower body first?
 

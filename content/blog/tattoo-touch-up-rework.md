@@ -8,7 +8,7 @@ category: "cover-ups-touch-ups"
 tags: ["touch-up", "rework", "fading", "restoration"]
 primaryKeyword: "tattoo touch up"
 secondaryKeywords: ["tattoo rework", "faded tattoo"]
-heroImage: "/blog/tattoo-touch-up-rework-hero.webp"
+heroImage: "/images/blog/tattoo-touch-up-rework-hero.webp"
 heroAlt: "Tribal armband tattoo on forearm, a design that may need a tattoo touch up over time, by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -65,7 +65,7 @@ These three words are often used interchangeably, but they mean different things
 
 **A restoration** brings back the original look of a faded tattoo — darkening lines, refreshing colour and rebuilding contrast.
 
-![Tribal armband tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-touch-up-rework-hero.webp "Bold designs like armbands can be refreshed by deepening the blacks.")
+![Tribal armband tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-touch-up-rework-hero.webp "Bold designs like armbands can be refreshed by deepening the blacks.")
 
 ## Timing after healing
 

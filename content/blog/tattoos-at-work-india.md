@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["work", "placement", "IT", "Bangalore"]
 primaryKeyword: "tattoos at work"
 secondaryKeywords: ["visible tattoos jobs India"]
-heroImage: "/blog/tattoos-at-work-india-hero.webp"
+heroImage: "/images/blog/tattoos-at-work-india-hero.webp"
 heroAlt: "Trishul and Om tattoo on forearm — visible tattoos at work guide by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -96,7 +96,7 @@ The smartest way to balance tattoos and work is placement.
 - Forearms — visible in short sleeves, hidden in full sleeves.
 - Calves — visible in shorts or skirts.
 
-![Trishul and Om tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoos-at-work-india-hero.webp "Forearm tattoos can be shown or covered with a full-sleeve shirt.")
+![Trishul and Om tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoos-at-work-india-hero.webp "Forearm tattoos can be shown or covered with a full-sleeve shirt.")
 
 Our [tattoo placement guide](/blog/tattoo-placement-guide) compares every spot for visibility, pain and ageing.
 

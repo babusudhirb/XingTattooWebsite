@@ -1,9 +1,9 @@
 /**
- * Everything derived from the logo, from one source: public/xing-logo.svg.
+ * Everything derived from the logo, from one source: public/xing-premium-tattoo-studio-logo.svg.
  * Run from clonecraft-hero/ after replacing the SVG:  node scripts/logo-assets.mjs
  *
- *   public/xing-logo.png   1200px, white background — the schema `logo`
- *   public/xing-logo.webp  800px, transparent — the mark on social images (scripts/blog-images.py)
+ *   public/xing-premium-tattoo-studio-logo.png   1200px, white background — the schema `logo`
+ *   public/xing-premium-tattoo-studio-logo.webp  800px, transparent — the mark on social images (scripts/blog-images.py)
  *   favicon.ico (16 + 32), favicon-16/32, apple-touch-icon, icon-192/512 — just the lettering (the tagline is
  *   unreadable at icon sizes), centred on white
  */
@@ -14,18 +14,18 @@ import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
 const PUBLIC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
-const svg = fs.readFileSync(path.join(PUBLIC, "xing-logo.svg"), "utf8");
+const svg = fs.readFileSync(path.join(PUBLIC, "xing-premium-tattoo-studio-logo.svg"), "utf8");
 // The tagline is the one filled <path> (the lettering is stroked); drop it for icons
 const lettering = svg.replace(/<path fill="[^"]+" d="[^"]*"\/>/, "");
-if (lettering === svg) throw new Error("tagline path not found in xing-logo.svg");
+if (lettering === svg) throw new Error("tagline path not found in xing-premium-tattoo-studio-logo.svg");
 
 const render = (source, width) => sharp(Buffer.from(source), { density: 300 }).resize({ width });
 
 await render(svg, 1200)
   .flatten({ background: "#ffffff" })
   .png()
-  .toFile(path.join(PUBLIC, "xing-logo.png"));
-await render(svg, 800).webp({ quality: 90 }).toFile(path.join(PUBLIC, "xing-logo.webp"));
+  .toFile(path.join(PUBLIC, "xing-premium-tattoo-studio-logo.png"));
+await render(svg, 800).webp({ quality: 90 }).toFile(path.join(PUBLIC, "xing-premium-tattoo-studio-logo.webp"));
 
 async function icon(size, file, pad = 0.12) {
   const art = await render(lettering, Math.round(size * (1 - pad * 2)))
@@ -62,4 +62,4 @@ pngs.forEach((png, i) => {
   offset += png.length;
 });
 fs.writeFileSync(path.join(PUBLIC, "favicon.ico"), Buffer.concat([ico, ...pngs]));
-console.log("logo-assets: png, webp, favicon.ico and 5 icons written from public/xing-logo.svg");
+console.log("logo-assets: png, webp, favicon.ico and 5 icons written from public/xing-premium-tattoo-studio-logo.svg");

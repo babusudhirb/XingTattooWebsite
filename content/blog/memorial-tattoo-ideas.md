@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["memorial", "portrait", "tribute", "meaning"]
 primaryKeyword: "memorial tattoo ideas"
 secondaryKeywords: ["remembrance tattoo", "tribute tattoo"]
-heroImage: "/blog/memorial-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/memorial-tattoo-ideas-hero.webp"
 heroAlt: "Memorial portrait tattoo of a grandmother with a date by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — memorial tattoo ideas"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -48,7 +48,7 @@ Portraits work well for:
 
 The most important step is choosing a clear photo. Our guide to [choosing a portrait tattoo reference photo](/blog/portrait-tattoo-reference-photo) explains what to look for.
 
-![Memorial portrait tattoo reading Miss You on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/memorial-tattoo-ideas-1.webp "Words like 'Miss You' can be woven into a portrait.")
+![Memorial portrait tattoo reading Miss You on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/memorial-tattoo-ideas-1.webp "Words like 'Miss You' can be woven into a portrait.")
 
 ## Handwriting and signatures
 
@@ -111,7 +111,7 @@ Where you place a memorial tattoo can add to its meaning.
 
 Think about whether you want to see it daily or keep it private.
 
-![Mother and child memorial portrait tattoo with the word Mom on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/memorial-tattoo-ideas-2.webp "A tribute on the forearm is one you'll see every day.")
+![Mother and child memorial portrait tattoo with the word Mom on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/memorial-tattoo-ideas-2.webp "A tribute on the forearm is one you'll see every day.")
 
 ## Planning gently, at your pace
 

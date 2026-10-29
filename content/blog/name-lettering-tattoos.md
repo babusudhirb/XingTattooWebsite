@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["lettering", "script", "name tattoo", "fonts"]
 primaryKeyword: "name tattoo"
 secondaryKeywords: ["lettering tattoo", "script tattoo font"]
-heroImage: "/blog/name-lettering-tattoos-hero.webp"
+heroImage: "/images/blog/name-lettering-tattoos-hero.webp"
 heroAlt: "Gothic lettering tattoo reading veni vidi vici on upper back, a name tattoo style by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -49,7 +49,7 @@ The font changes the whole feeling of a tattoo. The same word can look delicate,
 | Typewriter | Vintage, minimal | Quotes, dates | Thin strokes may soften |
 | Handwriting | Personal, emotional | Tributes, signatures | Needs cleaning up for skin |
 
-![Patience gothic lettering tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/name-lettering-tattoos-1.webp "Bold gothic lettering stays readable on the forearm.")
+![Patience gothic lettering tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/name-lettering-tattoos-1.webp "Bold gothic lettering stays readable on the forearm.")
 
 Look at the word written in two or three different fonts before deciding. Your artist can sketch options for you.
 
@@ -97,7 +97,7 @@ Some popular ways to make a name tattoo special:
 - **Your own surname** in bold lettering.
 - **A name in your mother tongue** to honour your roots.
 
-![Name script tattoo with a date on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/name-lettering-tattoos-2.webp "A name and date together make a timeless tribute.")
+![Name script tattoo with a date on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/name-lettering-tattoos-2.webp "A name and date together make a timeless tribute.")
 
 ## Placement for lettering
 

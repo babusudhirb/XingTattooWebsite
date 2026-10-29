@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["skin tone", "colour", "black and grey", "healing"]
 primaryKeyword: "tattoo on brown skin"
 secondaryKeywords: ["tattoo colours dark skin"]
-heroImage: "/blog/tattoos-on-indian-skin-hero.webp"
+heroImage: "/images/blog/tattoos-on-indian-skin-hero.webp"
 heroAlt: "Black and grey eagle wings and sun tattoo on brown skin on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -67,7 +67,7 @@ Here is a general guide to tattoo colours on dark skin and medium Indian skin to
 | Pastel pink / light blue | Often subtle |
 | White | Very subtle; best as small highlights |
 
-![Scorpion and Lord Krishna black and grey tattoos on arms by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoos-on-indian-skin-1.webp "Black and grey shading shows clearly on every skin tone.")
+![Scorpion and Lord Krishna black and grey tattoos on arms by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoos-on-indian-skin-1.webp "Black and grey shading shows clearly on every skin tone.")
 
 ## Contrast and line weight
 

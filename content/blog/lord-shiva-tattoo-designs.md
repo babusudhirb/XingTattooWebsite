@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["Shiva", "Mahadev", "spiritual", "indian traditional"]
 primaryKeyword: "Shiva tattoo"
 secondaryKeywords: ["Mahadev tattoo design"]
-heroImage: "/blog/lord-shiva-tattoo-designs-hero.webp"
+heroImage: "/images/blog/lord-shiva-tattoo-designs-hero.webp"
 heroAlt: "Lord Shiva tattoo portrait in black and grey on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -65,7 +65,7 @@ Realistic Shiva tattoos are detailed, dramatic and deeply devotional.
 - **Shiva with trishul and damru** — a full composition.
 - **Statue-style Shiva** — inspired by temple sculptures.
 
-![Lord Shiva realism tattoo with trishul on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/lord-shiva-tattoo-designs-1.webp "Realistic Shiva pieces need room for ornaments and expression.")
+![Lord Shiva realism tattoo with trishul on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/lord-shiva-tattoo-designs-1.webp "Realistic Shiva pieces need room for ornaments and expression.")
 
 Realistic portraits need size. The eyes, ornaments and hair need room to stay clear as the tattoo ages. Our [realism tattoo guide](/blog/realism-tattoos-guide) explains why contrast and size matter so much.
 
@@ -106,7 +106,7 @@ Respectful placement is important for any deity tattoo.
 
 **Often avoided:** feet, ankles, lower legs and areas below the waist.
 
-![Lord Shiva face tattoo with cobra on chest by Peace at Xing, Brookefield, Bengaluru](/blog/lord-shiva-tattoo-designs-2.webp "The chest is a popular devotional placement for a Shiva face.")
+![Lord Shiva face tattoo with cobra on chest by Peace at Xing, Brookefield, Bengaluru](/images/blog/lord-shiva-tattoo-designs-2.webp "The chest is a popular devotional placement for a Shiva face.")
 
 > **Peace's tip:** For a forearm Shiva, think about which way the face should look. Most clients prefer the deity facing up the arm or towards them when their hand rests naturally — it keeps the composition calm and upright.
 

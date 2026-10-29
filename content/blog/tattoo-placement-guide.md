@@ -8,7 +8,7 @@ category: "placement"
 tags: ["placement", "pain", "ageing", "work"]
 primaryKeyword: "tattoo placement"
 secondaryKeywords: ["best place for tattoo"]
-heroImage: "/blog/tattoo-placement-guide-hero.webp"
+heroImage: "/images/blog/tattoo-placement-guide-hero.webp"
 heroAlt: "Trishul with Om tattoo on upper back — a tattoo placement guide example by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -87,7 +87,7 @@ Some placements keep tattoos sharp for decades. Others fade quickly.
 | Hands | Poor–fair | Constant washing and friction |
 | Fingers | Poor | Fades fastest; frequent touch-ups |
 
-![Fine-line sword and circle emblem tattoo on ankle by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-placement-guide-1.webp "Ankle tattoos look delicate but can fade faster from shoes and socks.")
+![Fine-line sword and circle emblem tattoo on ankle by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-placement-guide-1.webp "Ankle tattoos look delicate but can fade faster from shoes and socks.")
 
 ## Work-friendly spots
 
@@ -149,7 +149,7 @@ The shape of the design should match the shape of the body part. This is one of 
 | Small, delicate | Wrist, collarbone, behind the ear, ankle |
 | Statement piece | Forearm, chest, back, full sleeve |
 
-![Fine-line heart and birds tattoo on collarbone by Peace at Xing, Brookefield, Bengaluru](/blog/tattoo-placement-guide-2.webp "The collarbone suits small, delicate designs that follow its line.")
+![Fine-line heart and birds tattoo on collarbone by Peace at Xing, Brookefield, Bengaluru](/images/blog/tattoo-placement-guide-2.webp "The collarbone suits small, delicate designs that follow its line.")
 
 ## Placement and spiritual tattoos
 

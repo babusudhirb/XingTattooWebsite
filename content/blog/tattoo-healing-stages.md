@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["healing", "aftercare", "peeling", "itching"]
 primaryKeyword: "tattoo healing stages"
 secondaryKeywords: ["tattoo peeling", "itchy tattoo"]
-heroImage: "/blog/tattoo-healing-stages-hero.webp"
+heroImage: "/images/blog/tattoo-healing-stages-hero.webp"
 heroAlt: "Fine-line butterfly and heart tattoo on arm showing tattoo healing stages, by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -104,7 +104,7 @@ Once the peeling is mostly over, the tattoo may look dull, shiny or slightly fad
 
 This is not the time to judge your tattoo. Wait until after a month to see its true look.
 
-![Fine-line butterfly and heart tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-healing-stages-hero.webp "Once fully healed, lines look crisp again after the cloudy stage.")
+![Fine-line butterfly and heart tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-healing-stages-hero.webp "Once fully healed, lines look crisp again after the cloudy stage.")
 
 ## Tattoo healing stages: full timeline
 

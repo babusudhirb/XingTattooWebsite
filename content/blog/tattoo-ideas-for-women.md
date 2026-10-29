@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["women", "fine line", "florals", "placement"]
 primaryKeyword: "tattoos for women"
 secondaryKeywords: ["female tattoo ideas"]
-heroImage: "/blog/tattoo-ideas-for-women-hero.webp"
+heroImage: "/images/blog/tattoo-ideas-for-women-hero.webp"
 heroAlt: "Fine-line lily flower tattoo on ribs — elegant tattoos for women by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -58,7 +58,7 @@ Flowers are one of the most loved tattoo themes, and each one carries its own me
 - Vines climbing the spine.
 - Leaves and sprigs behind the ear.
 
-![Fine-line crescent moon and lotus tattoo on shoulder by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-ideas-for-women-1.webp "Fine-line botanicals and celestial details pair beautifully.")
+![Fine-line crescent moon and lotus tattoo on shoulder by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-ideas-for-women-1.webp "Fine-line botanicals and celestial details pair beautifully.")
 
 ## Fine line and minimal tattoos
 
@@ -103,7 +103,7 @@ Many women choose tattoos that mark a milestone, a belief or a person.
 - **A feather** — freedom and lightness.
 - **A butterfly** — transformation.
 
-![Fine-line phoenix with florals tattoo on upper arm by Peace at Xing, Brookefield, Bengaluru](/blog/tattoo-ideas-for-women-2.webp "A phoenix is a popular symbol of rebirth and strength.")
+![Fine-line phoenix with florals tattoo on upper arm by Peace at Xing, Brookefield, Bengaluru](/images/blog/tattoo-ideas-for-women-2.webp "A phoenix is a popular symbol of rebirth and strength.")
 
 Our list of [small tattoos with big meanings](/blog/small-meaningful-tattoos) explains more symbols.
 

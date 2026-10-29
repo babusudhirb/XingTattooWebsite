@@ -14,85 +14,86 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "public" / "blog"
+OUT = ROOT / "public" / "images" / "blog"
+OG_OUT = ROOT / "public" / "og" / "blog"
 A = "src/assets/"
 S = A + "services/"
-G = "public/gallery/"
+G = "public/images/gallery/tattoo-brookefield-portfolio-"
 TYPE = "TYPE"
 
 # slug: (hero source, [body sources])
 IMAGES = {
-    "tattoo-cost-in-bangalore": (A + "cta-machine.webp", [S + "minimalist/gallery-7.webp", S + "realism/gallery-2.webp"]),
-    "best-tattoo-studio-brookefield": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", [G + "4/012.webp"]),
-    "first-tattoo-guide-bangalore": (S + "minimalist/hero.webp", [S + "minimalist/gallery-3.webp", S + "minimalist/gallery-6.webp"]),
-    "tattoo-pain-chart": (S + "realism/hero.webp", [S + "minimalist/gallery-11.webp"]),
-    "tattoo-aftercare-guide": (S + "minimalist/gallery-13.webp", [S + "minimalist/gallery-8.webp"]),
-    "hygienic-tattoo-studio-checklist": (A + "cta-machine.webp", []),
-    "realism-tattoos-guide": (S + "realism/gallery-1.webp", [S + "realism/gallery-3.webp", G + "4/012.webp"]),
-    "portrait-tattoo-reference-photo": (S + "portrait/hero.webp", [S + "portrait/gallery-1.webp", S + "portrait/gallery-5.webp"]),
-    "memorial-tattoo-ideas": (S + "portrait/gallery-4.webp", [S + "portrait/gallery-3.webp", G + "4/071.webp"]),
-    "pet-portrait-tattoos": (S + "portrait/gallery-2.webp", []),
-    "black-grey-vs-colour-tattoos": (A + "offers/page/offer-hero-samurai.webp", [G + "4/034.webp"]),
-    "tattoos-on-indian-skin": (G + "4/023.webp", [G + "4/059.webp"]),
-    "fine-line-tattoos": (S + "minimalist/gallery-2.webp", [S + "minimalist/gallery-11.webp", S + "minimalist/gallery-16.webp"]),
-    "minimalist-tattoo-ideas": (S + "minimalist/gallery-5.webp", [S + "minimalist/gallery-21.webp", S + "minimalist/gallery-12.webp"]),
-    "geometric-mandala-tattoos": (S + "geometric/hero.webp", [S + "geometric/gallery-3.webp", S + "geometric/gallery-2.webp"]),
-    "indian-traditional-tattoos": (S + "realism/gallery-5.webp", [S + "realism/gallery-4.webp", S + "minimalist/gallery-9.webp"]),
-    "lord-shiva-tattoo-designs": (G + "4/048.webp", [G + "4/069.webp", G + "2/001.webp"]),
-    "om-trishul-spiritual-tattoos": (G + "4/074.webp", [G + "4/009.webp", S + "minimalist/gallery-19.webp"]),
-    "sleeve-tattoo-planning": (S + "geometric/gallery-2.webp", [S + "realism/gallery-2.webp"]),
-    "tattoo-cover-up-guide": (G + "4/066.webp", []),
-    "tattoo-touch-up-rework": (G + "4/019.webp", []),
-    "name-lettering-tattoos": (G + "4/040.webp", [G + "4/060.webp", G + "4/033.webp"]),
-    "couple-tattoo-ideas": (G + "4/024.webp", [S + "minimalist/gallery-12.webp"]),
-    "tattoo-placement-guide": (G + "4/027.webp", [S + "minimalist/gallery-15.webp", S + "minimalist/gallery-6.webp"]),
-    "wrist-tattoo-ideas": (S + "minimalist/gallery-7.webp", [S + "minimalist/gallery-18.webp", S + "minimalist/gallery-3.webp"]),
-    "forearm-tattoo-ideas": (S + "geometric/gallery-6.webp", [S + "minimalist/gallery-14.webp"]),
-    "chest-back-tattoo-ideas": (G + "4/058.webp", [S + "portrait/gallery-1.webp", S + "realism/gallery-3.webp"]),
-    "tattoo-ideas-for-women": (S + "minimalist/gallery-17.webp", [S + "minimalist/gallery-10.webp", G + "4/057.webp"]),
-    "tattoo-ideas-for-men": (S + "realism/gallery-3.webp", [A + "offers/page/offer-hero-samurai.webp"]),
-    "tattoo-appointment-prep": (G + "4/036.webp", []),
-    "tattoo-bangalore-weather": (G + "4/022.webp", []),
-    "tattoo-healing-stages": (S + "minimalist/gallery-1.webp", []),
+    "tattoo-cost-in-bangalore": (A + "booking/tattoo-machine-xing-premium-tattoo-studio.webp", [S + "minimalist/minimalist-tattoo-brookefield-7.webp", S + "realism/realism-tattoo-brookefield-2.webp"]),
+    "best-tattoo-studio-brookefield": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", [G + "4-012.webp"]),
+    "first-tattoo-guide-bangalore": (S + "minimalist/minimalist-tattoo-brookefield-bangalore.webp", [S + "minimalist/minimalist-tattoo-brookefield-3.webp", S + "minimalist/minimalist-tattoo-brookefield-6.webp"]),
+    "tattoo-pain-chart": (S + "realism/realism-tattoo-brookefield-bangalore.webp", [S + "minimalist/minimalist-tattoo-brookefield-11.webp"]),
+    "tattoo-aftercare-guide": (S + "minimalist/minimalist-tattoo-brookefield-13.webp", [S + "minimalist/minimalist-tattoo-brookefield-8.webp"]),
+    "hygienic-tattoo-studio-checklist": (A + "booking/tattoo-machine-xing-premium-tattoo-studio.webp", []),
+    "realism-tattoos-guide": (S + "realism/realism-tattoo-brookefield-1.webp", [S + "realism/realism-tattoo-brookefield-3.webp", G + "4-012.webp"]),
+    "portrait-tattoo-reference-photo": (S + "portrait/portrait-tattoo-brookefield-bangalore.webp", [S + "portrait/portrait-tattoo-brookefield-1.webp", S + "portrait/portrait-tattoo-brookefield-5.webp"]),
+    "memorial-tattoo-ideas": (S + "portrait/portrait-tattoo-brookefield-4.webp", [S + "portrait/portrait-tattoo-brookefield-3.webp", G + "4-071.webp"]),
+    "pet-portrait-tattoos": (S + "portrait/portrait-tattoo-brookefield-2.webp", []),
+    "black-grey-vs-colour-tattoos": (A + "offers/page/offer-hero-samurai.webp", [G + "4-034.webp"]),
+    "tattoos-on-indian-skin": (G + "4-023.webp", [G + "4-059.webp"]),
+    "fine-line-tattoos": (S + "minimalist/minimalist-tattoo-brookefield-2.webp", [S + "minimalist/minimalist-tattoo-brookefield-11.webp", S + "minimalist/minimalist-tattoo-brookefield-16.webp"]),
+    "minimalist-tattoo-ideas": (S + "minimalist/minimalist-tattoo-brookefield-5.webp", [S + "minimalist/minimalist-tattoo-brookefield-21.webp", S + "minimalist/minimalist-tattoo-brookefield-12.webp"]),
+    "geometric-mandala-tattoos": (S + "geometric/geometric-tattoo-brookefield-bangalore.webp", [S + "geometric/geometric-tattoo-brookefield-3.webp", S + "geometric/geometric-tattoo-brookefield-2.webp"]),
+    "indian-traditional-tattoos": (S + "realism/realism-tattoo-brookefield-5.webp", [S + "realism/realism-tattoo-brookefield-4.webp", S + "minimalist/minimalist-tattoo-brookefield-9.webp"]),
+    "lord-shiva-tattoo-designs": (G + "4-048.webp", [G + "4-069.webp", G + "2-001.webp"]),
+    "om-trishul-spiritual-tattoos": (G + "4-074.webp", [G + "4-009.webp", S + "minimalist/minimalist-tattoo-brookefield-19.webp"]),
+    "sleeve-tattoo-planning": (S + "geometric/geometric-tattoo-brookefield-2.webp", [S + "realism/realism-tattoo-brookefield-2.webp"]),
+    "tattoo-cover-up-guide": (G + "4-066.webp", []),
+    "tattoo-touch-up-rework": (G + "4-019.webp", []),
+    "name-lettering-tattoos": (G + "4-040.webp", [G + "4-060.webp", G + "4-033.webp"]),
+    "couple-tattoo-ideas": (G + "4-024.webp", [S + "minimalist/minimalist-tattoo-brookefield-12.webp"]),
+    "tattoo-placement-guide": (G + "4-027.webp", [S + "minimalist/minimalist-tattoo-brookefield-15.webp", S + "minimalist/minimalist-tattoo-brookefield-6.webp"]),
+    "wrist-tattoo-ideas": (S + "minimalist/minimalist-tattoo-brookefield-7.webp", [S + "minimalist/minimalist-tattoo-brookefield-18.webp", S + "minimalist/minimalist-tattoo-brookefield-3.webp"]),
+    "forearm-tattoo-ideas": (S + "geometric/geometric-tattoo-brookefield-6.webp", [S + "minimalist/minimalist-tattoo-brookefield-14.webp"]),
+    "chest-back-tattoo-ideas": (G + "4-058.webp", [S + "portrait/portrait-tattoo-brookefield-1.webp", S + "realism/realism-tattoo-brookefield-3.webp"]),
+    "tattoo-ideas-for-women": (S + "minimalist/minimalist-tattoo-brookefield-17.webp", [S + "minimalist/minimalist-tattoo-brookefield-10.webp", G + "4-057.webp"]),
+    "tattoo-ideas-for-men": (S + "realism/realism-tattoo-brookefield-3.webp", [A + "offers/page/offer-hero-samurai.webp"]),
+    "tattoo-appointment-prep": (G + "4-036.webp", []),
+    "tattoo-bangalore-weather": (G + "4-022.webp", []),
+    "tattoo-healing-stages": (S + "minimalist/minimalist-tattoo-brookefield-1.webp", []),
     "infected-tattoo-signs": (TYPE, []),
-    "gym-swimming-sun-after-tattoo": (G + "4/005.webp", []),
-    "tattoos-at-work-india": (G + "4/043.webp", []),
+    "gym-swimming-sun-after-tattoo": (G + "4-005.webp", []),
+    "tattoos-at-work-india": (G + "4-043.webp", []),
     "blood-donation-after-tattoo-india": (TYPE, []),
-    "tattoo-myths": (G + "4/041.webp", []),
-    "custom-vs-flash-tattoo": (G + "4/049.webp", [S + "minimalist/gallery-20.webp"]),
-    "custom-tattoo-process": (A + "cta-machine.webp", [A + "artist/peace-tattoo-artist-xing-brookefield.webp"]),
-    "meet-tattoo-artist-peace": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", [S + "realism/gallery-5.webp"]),
-    "tattoo-studio-near-whitefield": (G + "4/012.webp", []),
-    "tattoo-studio-near-marathahalli": (G + "4/072.webp", []),
-    "bangalore-tattoo-ideas": (S + "minimalist/gallery-4.webp", []),
-    "zodiac-tattoo-ideas": (S + "geometric/gallery-4.webp", [G + "4/059.webp"]),
-    "small-meaningful-tattoos": (S + "minimalist/gallery-21.webp", [G + "4/075.webp", G + "4/060.webp"]),
-    "watercolour-tattoos": (G + "4/034.webp", [S + "geometric/gallery-6.webp"]),
+    "tattoo-myths": (G + "4-041.webp", []),
+    "custom-vs-flash-tattoo": (G + "4-049.webp", [S + "minimalist/minimalist-tattoo-brookefield-20.webp"]),
+    "custom-tattoo-process": (A + "booking/tattoo-machine-xing-premium-tattoo-studio.webp", [A + "artist/peace-tattoo-artist-xing-brookefield.webp"]),
+    "meet-tattoo-artist-peace": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", [S + "realism/realism-tattoo-brookefield-5.webp"]),
+    "tattoo-studio-near-whitefield": (G + "4-012.webp", []),
+    "tattoo-studio-near-marathahalli": (G + "4-072.webp", []),
+    "bangalore-tattoo-ideas": (S + "minimalist/minimalist-tattoo-brookefield-4.webp", []),
+    "zodiac-tattoo-ideas": (S + "geometric/geometric-tattoo-brookefield-4.webp", [G + "4-059.webp"]),
+    "small-meaningful-tattoos": (S + "minimalist/minimalist-tattoo-brookefield-21.webp", [G + "4-075.webp", G + "4-060.webp"]),
+    "watercolour-tattoos": (G + "4-034.webp", [S + "geometric/geometric-tattoo-brookefield-6.webp"]),
     "scar-cover-up-tattoos": (TYPE, []),
     "tattoo-age-rules-india": (TYPE, []),
-    "tattoo-removal-vs-cover-up": (TYPE, [G + "4/066.webp"]),
-    "hand-finger-tattoos": (S + "geometric/gallery-3.webp", [G + "4/038.webp", S + "traditional/gallery-3.webp"]),
+    "tattoo-removal-vs-cover-up": (TYPE, [G + "4-066.webp"]),
+    "hand-finger-tattoos": (S + "geometric/geometric-tattoo-brookefield-3.webp", [G + "4-038.webp", S + "traditional/traditional-tattoo-brookefield-3.webp"]),
     # Answer-first batch (#51–#70)
-    "tattoo-studio-aecs-layout-brookefield": (G + "3/147.webp", [G + "3/049.webp", G + "4/021.webp"]),
-    "tattoo-studio-near-kundalahalli-gate": (G + "5/062.webp", [G + "3/027.webp"]),
-    "tattoo-artists-east-bangalore-it-professionals": (G + "1/036.webp", [G + "4/018.webp"]),
-    "tattoo-studio-near-itpl-main-road": (G + "4/049.webp", [G + "4/070.webp"]),
-    "small-fine-line-tattoo-cost-bangalore": (G + "3/070.webp", [G + "4/022.webp"]),
-    "workout-after-tattoo": (G + "3/113.webp", [G + "3/120.webp"]),
-    "custom-sleeve-tattoo-sessions-timeline": (G + "5/056.webp", [G + "5/066.webp"]),
-    "white-ink-tattoos-indian-skin": (G + "4/010.webp", [G + "3/098.webp"]),
-    "cyberpunk-neo-tribal-tattoos-bangalore": (G + "3/144.webp", [G + "4/030.webp", G + "3/133.webp"]),
-    "japanese-irezumi-vs-realism-sleeve": (G + "3/006.webp", [G + "1/056.webp", G + "3/058.webp"]),
-    "script-calligraphy-tattoo-fonts": (G + "3/045.webp", [G + "3/167.webp", G + "1/026.webp"]),
-    "micro-realism-tattoos": (G + "5/004.webp", [G + "3/017.webp"]),
-    "post-tattoo-adrenaline-crash": (G + "3/084.webp", [G + "3/154.webp"]),
-    "sibling-family-tattoo-ideas": (G + "5/001.webp", [G + "5/075.webp", G + "1/072.webp"]),
-    "birthday-milestone-tattoos": (G + "5/092.webp", [G + "3/127.webp"]),
-    "travel-tattoo-ideas": (G + "1/060.webp", [G + "3/155.webp", G + "5/051.webp", G + "3/171.webp"]),
-    "vegan-vs-traditional-tattoo-inks": (G + "6/001.webp", [G + "3/119.webp"]),
-    "tattoo-consultation-what-happens": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", [S + "minimalist/gallery-20.webp"]),
-    "approve-tattoo-sketch-stencil": (G + "1/002.webp", [G + "3/013.webp"]),
-    "safe-tattoo-needle-cartridges-sterilisation": (A + "cta-machine.webp", []),
+    "tattoo-studio-aecs-layout-brookefield": (G + "3-147.webp", [G + "3-049.webp", G + "4-021.webp"]),
+    "tattoo-studio-near-kundalahalli-gate": (G + "5-062.webp", [G + "3-027.webp"]),
+    "tattoo-artists-east-bangalore-it-professionals": (G + "1-036.webp", [G + "4-018.webp"]),
+    "tattoo-studio-near-itpl-main-road": (G + "4-049.webp", [G + "4-070.webp"]),
+    "small-fine-line-tattoo-cost-bangalore": (G + "3-070.webp", [G + "4-022.webp"]),
+    "workout-after-tattoo": (G + "3-113.webp", [G + "3-120.webp"]),
+    "custom-sleeve-tattoo-sessions-timeline": (G + "5-056.webp", [G + "5-066.webp"]),
+    "white-ink-tattoos-indian-skin": (G + "4-010.webp", [G + "3-098.webp"]),
+    "cyberpunk-neo-tribal-tattoos-bangalore": (G + "3-144.webp", [G + "4-030.webp", G + "3-133.webp"]),
+    "japanese-irezumi-vs-realism-sleeve": (G + "3-006.webp", [G + "1-056.webp", G + "3-058.webp"]),
+    "script-calligraphy-tattoo-fonts": (G + "3-045.webp", [G + "3-167.webp", G + "1-026.webp"]),
+    "micro-realism-tattoos": (G + "5-004.webp", [G + "3-017.webp"]),
+    "post-tattoo-adrenaline-crash": (G + "3-084.webp", [G + "3-154.webp"]),
+    "sibling-family-tattoo-ideas": (G + "5-001.webp", [G + "5-075.webp", G + "1-072.webp"]),
+    "birthday-milestone-tattoos": (G + "5-092.webp", [G + "3-127.webp"]),
+    "travel-tattoo-ideas": (G + "1-060.webp", [G + "3-155.webp", G + "5-051.webp", G + "3-171.webp"]),
+    "vegan-vs-traditional-tattoo-inks": (G + "6-001.webp", [G + "3-119.webp"]),
+    "tattoo-consultation-what-happens": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", [S + "minimalist/minimalist-tattoo-brookefield-20.webp"]),
+    "approve-tattoo-sketch-stencil": (G + "1-002.webp", [G + "3-013.webp"]),
+    "safe-tattoo-needle-cartridges-sterilisation": (A + "booking/tattoo-machine-xing-premium-tattoo-studio.webp", []),
 }
 
 FONT_DIR = Path("C:/Windows/Fonts")
@@ -139,7 +140,7 @@ def wrap(draw, text, font, max_w):
 
 
 def logo_mark(size):
-    logo = Image.open(ROOT / "public" / "xing-logo.webp").convert("RGBA")
+    logo = Image.open(ROOT / "public" / "xing-premium-tattoo-studio-logo.webp").convert("RGBA")
     logo.thumbnail((size * 2, size), Image.LANCZOS)  # the logo is wide: allow up to 2:1
     # The mark is dark on transparent: invert to white for dark backgrounds.
     r, g, b, a = logo.split()
@@ -226,8 +227,8 @@ def build(slug):
         og = og_image(hero, title)
     save_webp(hero, OUT / f"{slug}-hero.webp", 160)
     save_webp(ImageOps.fit(hero, (800, 500), Image.LANCZOS), OUT / f"{slug}-card.webp", 70)
-    (OUT / "og").mkdir(parents=True, exist_ok=True)
-    og.save(OUT / "og" / f"{slug}.jpg", "JPEG", quality=82, optimize=True, progressive=True)
+    OG_OUT.mkdir(parents=True, exist_ok=True)
+    og.save(OG_OUT / f"{slug}.jpg", "JPEG", quality=82, optimize=True, progressive=True)
     for i, b in enumerate(body, 1):
         im = Image.open(ROOT / b).convert("RGB")
         im.thumbnail((800, 1000), Image.LANCZOS)
@@ -236,14 +237,14 @@ def build(slug):
 
 # Signature Services cards (4:3, 640x480) — small copies so /blog doesn't load full-size photos
 SIGNATURE = {
-    "realism": S + "realism/hero.webp",
-    "portrait": S + "portrait/gallery-4.webp",
-    "fine-line": S + "minimalist/gallery-2.webp",
+    "realism": S + "realism/realism-tattoo-brookefield-bangalore.webp",
+    "portrait": S + "portrait/portrait-tattoo-brookefield-4.webp",
+    "fine-line": S + "minimalist/minimalist-tattoo-brookefield-2.webp",
     "black-grey": A + "offers/page/offer-hero-samurai.webp",
-    "traditional": S + "realism/gallery-5.webp",
-    "geometric": S + "geometric/gallery-3.webp",
-    "sleeve": S + "geometric/gallery-2.webp",
-    "cover-up": G + "4/066.webp",
+    "traditional": S + "realism/realism-tattoo-brookefield-5.webp",
+    "geometric": S + "geometric/geometric-tattoo-brookefield-3.webp",
+    "sleeve": S + "geometric/geometric-tattoo-brookefield-2.webp",
+    "cover-up": G + "4-066.webp",
 }
 
 
@@ -260,13 +261,13 @@ def signature_cards():
 
 # Site pages' social images (1200x630): source photo and the headline drawn on it
 SITE_OG = {
-    "og-default": (S + "realism/hero.webp", "Xing Premium Tattoo Studio"),
-    "services-realism": (S + "realism/hero.webp", "Realism Tattoos in Bangalore"),
-    "services-portrait": (S + "portrait/hero.webp", "Portrait Tattoos in Bangalore"),
-    "services-black-grey": (A + "style-blackgrey.webp", "Black & Grey Tattoos in Bangalore"),
-    "services-geometric": (S + "geometric/hero.webp", "Geometric & Mandala Tattoos in Bangalore"),
-    "services-traditional": (S + "traditional/hero.webp", "Indian Traditional Tattoos in Bangalore"),
-    "services-minimalist": (S + "minimalist/hero.webp", "Fine Line & Minimalist Tattoos in Bangalore"),
+    "og-xing-premium-tattoo-studio": (S + "realism/realism-tattoo-brookefield-bangalore.webp", "Xing Premium Tattoo Studio"),
+    "services-realism": (S + "realism/realism-tattoo-brookefield-bangalore.webp", "Realism Tattoos in Bangalore"),
+    "services-portrait": (S + "portrait/portrait-tattoo-brookefield-bangalore.webp", "Portrait Tattoos in Bangalore"),
+    "services-black-grey": (S + "black-grey/black-grey-tattoo-brookefield-bangalore.webp", "Black & Grey Tattoos in Bangalore"),
+    "services-geometric": (S + "geometric/geometric-tattoo-brookefield-bangalore.webp", "Geometric & Mandala Tattoos in Bangalore"),
+    "services-traditional": (S + "traditional/traditional-tattoo-brookefield-bangalore.webp", "Indian Traditional Tattoos in Bangalore"),
+    "services-minimalist": (S + "minimalist/minimalist-tattoo-brookefield-bangalore.webp", "Fine Line & Minimalist Tattoos in Bangalore"),
     "tattoo-artist": (A + "artist/peace-tattoo-artist-xing-brookefield.webp", "Peace, Tattoo Artist in Brookefield"),
 }
 SYMBOL = str(FONT_DIR / "seguisym.ttf")  # the only stock font here with a real ★
@@ -291,8 +292,8 @@ def site_images():
     rating = f"Brookefield, Bangalore  ·  {tokens()['stars']} on Google"
     for name, (src, title) in SITE_OG.items():
         im = Image.open(ROOT / src).convert("RGB")
-        img = og_image(fill_frame(im, (1200, 630)), title, bottom=125 if name == "og-default" else 70)
-        if name == "og-default":
+        img = og_image(fill_frame(im, (1200, 630)), title, bottom=125 if name == "og-xing-premium-tattoo-studio" else 70)
+        if name == "og-xing-premium-tattoo-studio":
             d = ImageDraw.Draw(img)
             draw_with_stars(d, (60, 530), rating, ImageFont.truetype(SANS_BOLD, 30), 30, (232, 229, 224))
         quality = 82

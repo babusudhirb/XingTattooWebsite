@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["sleeve", "japanese", "realism", "comparison"]
 primaryKeyword: "Irezumi"
 secondaryKeywords: ["Japanese sleeve tattoo", "realism sleeve tattoo", "Japanese vs realism tattoo"]
-heroImage: "/blog/japanese-irezumi-vs-realism-sleeve-hero.webp"
+heroImage: "/images/blog/japanese-irezumi-vs-realism-sleeve-hero.webp"
 heroAlt: "Japanese Irezumi-inspired Hannya mask with snake and cherry blossoms on forearm by Peace at Xing Premium Tattoo Studio, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -103,7 +103,7 @@ Sun-smart habits for any sleeve:
 
 On Indian skin tones, strong contrast matters even more. Our guide to [tattoos on Indian skin](/blog/tattoos-on-indian-skin) explains how to plan for it.
 
-![Red spider lily tattoo on chest in Japanese style by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/japanese-irezumi-vs-realism-sleeve-1.webp "The spider lily is a classic Japanese motif with bold, graphic petals.")
+![Red spider lily tattoo on chest in Japanese style by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/japanese-irezumi-vs-realism-sleeve-1.webp "The spider lily is a classic Japanese motif with bold, graphic petals.")
 
 ## Which style suits my story?
 
@@ -150,7 +150,7 @@ What makes a mixed sleeve work:
 - A background that unifies everything.
 - Consistent light direction.
 
-![Realistic Spartan warrior forearm sleeve tattoo with red accents by Peace at Xing, Brookefield, Bengaluru](/blog/japanese-irezumi-vs-realism-sleeve-2.webp "Realism sleeves build depth with layered shading and a single accent colour.")
+![Realistic Spartan warrior forearm sleeve tattoo with red accents by Peace at Xing, Brookefield, Bengaluru](/images/blog/japanese-irezumi-vs-realism-sleeve-2.webp "Realism sleeves build depth with layered shading and a single accent colour.")
 
 > **Peace's tip:** Before choosing a style, picture your arm from across the room. If you want people to recognise the image instantly from a distance, bold lines help. If you want people to come closer and discover details, realism rewards that.
 

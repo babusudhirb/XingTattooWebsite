@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["Whitefield", "ITPL", "Brookefield", "studio"]
 primaryKeyword: "tattoo studio near Whitefield"
 secondaryKeywords: ["tattoo shop Whitefield"]
-heroImage: "/blog/tattoo-studio-near-whitefield-hero.webp"
+heroImage: "/images/blog/tattoo-studio-near-whitefield-hero.webp"
 heroAlt: "Lord Shiva realism tattoo on forearm at a tattoo studio near Whitefield — by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

@@ -10,10 +10,11 @@ export interface GalleryItem {
 export const STUDIO_TAG = "Studio";
 
 /** Style photos and their smaller copies (scripts/optimize-images.mjs), as built URLs. */
-const STYLE_FILES = import.meta.glob<string>(
-  ["/src/assets/services/*/*.webp", "/src/assets/style-blackgrey.webp"],
-  { eager: true, query: "?url", import: "default" },
-);
+const STYLE_FILES = import.meta.glob<string>("/src/assets/services/*/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 /** Built URL of a style photo → its `-480` / `-720` copies. */
 const STYLE_COPIES = new Map(
   Object.entries(STYLE_FILES)
@@ -30,7 +31,7 @@ const STYLE_COPIES = new Map(
 
 /** srcset for gallery photos: studio photos and style photos both have a 480px copy. */
 export const gallerySrcSet = (src: string) => {
-  if (src.startsWith("/gallery/"))
+  if (src.startsWith("/images/gallery/"))
     return `${src.replace(/\.webp$/, "-480.webp")} 480w, ${src} 800w`;
   const small = STYLE_COPIES.get(src)?.w480;
   return small ? `${small} 480w, ${src} 1120w` : undefined;

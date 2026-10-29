@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["Marathahalli", "AECS Layout", "directions", "studio"]
 primaryKeyword: "tattoo studio near Marathahalli"
 secondaryKeywords: ["tattoo shop near me"]
-heroImage: "/blog/tattoo-studio-near-marathahalli-hero.webp"
+heroImage: "/images/blog/tattoo-studio-near-marathahalli-hero.webp"
 heroAlt: "Fine-line ornamental tattoo on forearm at a tattoo studio near Marathahalli — by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["neo-tribal", "cyberpunk", "blackwork", "trends"]
 primaryKeyword: "neo-tribal tattoos"
 secondaryKeywords: ["cyberpunk tattoo Bangalore", "blackwork tattoo Brookefield", "modern tribal tattoo"]
-heroImage: "/blog/cyberpunk-neo-tribal-tattoos-bangalore-hero.webp"
+heroImage: "/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-hero.webp"
 heroAlt: "Blackwork neo-tribal tattoos style face-mask design on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -94,7 +94,7 @@ What good execution looks like:
 
 Strong contrast also helps on Indian skin tones, where solid black stays readable for years. Our guide to [tattoos on Indian skin](/blog/tattoos-on-indian-skin) explains why.
 
-![Red and black neo-tribal style tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/cyberpunk-neo-tribal-tattoos-bangalore-1.webp "Sharp points and a single accent colour keep neo-tribal designs bold.")
+![Red and black neo-tribal style tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-1.webp "Sharp points and a single accent colour keep neo-tribal designs bold.")
 
 ## How does a digital concept become a custom tattoo?
 
@@ -127,7 +127,7 @@ Long, flowing areas suit these styles best: the forearm, calf, upper arm and sle
 
 **Bands** — armbands and leg bands in tribal, geometric or circuit patterns are clean and striking.
 
-![Black tribal-style armband tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/cyberpunk-neo-tribal-tattoos-bangalore-2.webp "Bands are a simple way to try bold blackwork.")
+![Black tribal-style armband tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-2.webp "Bands are a simple way to try bold blackwork.")
 
 ## Can I mix neo-tribal with other styles?
 

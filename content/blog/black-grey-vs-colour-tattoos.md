@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["black and grey", "colour", "ageing", "skin tone"]
 primaryKeyword: "black and grey tattoo"
 secondaryKeywords: ["colour tattoo", "tattoo fading"]
-heroImage: "/blog/black-grey-vs-colour-tattoos-hero.webp"
+heroImage: "/images/blog/black-grey-vs-colour-tattoos-hero.webp"
 heroAlt: "Black and grey tattoo of a samurai with red accents on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -56,7 +56,7 @@ Colour tattoos use pigments across the spectrum — reds, blues, greens, yellows
 - **Realistic**, with colour used to recreate life-like tones.
 - **Accent-based**, with mostly black work and a single colour highlight.
 
-![Red frangipani flower colour tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/black-grey-vs-colour-tattoos-1.webp "Bright reds and greens can look stunning when they're planned for your skin tone.")
+![Red frangipani flower colour tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/black-grey-vs-colour-tattoos-1.webp "Bright reds and greens can look stunning when they're planned for your skin tone.")
 
 ## How each style ages
 

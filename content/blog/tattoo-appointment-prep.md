@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["preparation", "first tattoo", "appointment", "checklist"]
 primaryKeyword: "how to prepare for a tattoo"
 secondaryKeywords: ["before tattoo tips"]
-heroImage: "/blog/tattoo-appointment-prep-hero.webp"
+heroImage: "/images/blog/tattoo-appointment-prep-hero.webp"
 heroAlt: "Ornamental letter tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — how to prepare for a tattoo"
 author: "Peace (Chingri Awungshi)"
 draft: true

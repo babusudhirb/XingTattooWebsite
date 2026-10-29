@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["infection", "safety", "healing", "aftercare"]
 primaryKeyword: "infected tattoo signs"
 secondaryKeywords: ["tattoo infection"]
-heroImage: "/blog/infected-tattoo-signs-hero.webp"
+heroImage: "/images/blog/infected-tattoo-signs-hero.webp"
 heroAlt: "Typographic cover: infected tattoo signs vs normal healing — Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

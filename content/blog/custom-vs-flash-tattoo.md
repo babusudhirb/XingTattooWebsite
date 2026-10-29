@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["custom design", "flash", "process"]
 primaryKeyword: "custom tattoo"
 secondaryKeywords: ["flash tattoo meaning"]
-heroImage: "/blog/custom-vs-flash-tattoo-hero.webp"
+heroImage: "/images/blog/custom-vs-flash-tattoo-hero.webp"
 heroAlt: "Custom tattoo of a golden ratio geometric dotwork design on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -75,7 +75,7 @@ The biggest advantage of a custom tattoo is that it's yours alone.
 
 For memorial tattoos, spiritual designs, portraits and anything with deep meaning, custom is usually the better choice. Our guide to [memorial tattoo ideas](/blog/memorial-tattoo-ideas) shows how personal details make a difference.
 
-![Fine-line dreamcatcher mandala tattoo on ankle by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/custom-vs-flash-tattoo-1.webp "Custom designs are shaped to fit placements like the ankle.")
+![Fine-line dreamcatcher mandala tattoo on ankle by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/custom-vs-flash-tattoo-1.webp "Custom designs are shaped to fit placements like the ankle.")
 
 ## Time and cost factors
 

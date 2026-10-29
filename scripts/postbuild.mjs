@@ -49,9 +49,7 @@ const pages = new Map(
         doc
           .querySelectorAll("main img[src]")
           .map((img) => img.getAttribute("src"))
-          .filter(
-            (src) => /^\/(assets|blog|gallery|og)\//.test(src) && !/avatar|logo|favicon/.test(src),
-          ),
+          .filter((src) => /^\/(assets|images|og)\//.test(src) && !/avatar|logo|favicon/.test(src)),
       ),
     ].slice(0, 1000);
     return [

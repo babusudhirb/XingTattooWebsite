@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["hygiene", "needles", "safety", "sterilisation"]
 primaryKeyword: "safe tattoo needle"
 secondaryKeywords: ["tattoo needle cartridges", "single-use tattoo needles", "tattoo sterilisation"]
-heroImage: "/blog/safe-tattoo-needle-cartridges-sterilisation-hero.webp"
+heroImage: "/images/blog/safe-tattoo-needle-cartridges-sterilisation-hero.webp"
 heroAlt: "Gloved hand holding a tattoo machine — what makes a safe tattoo needle, from Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28

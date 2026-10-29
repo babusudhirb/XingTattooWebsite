@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["consultation", "first tattoo", "planning", "custom tattoo"]
 primaryKeyword: "tattoo consultation"
 secondaryKeywords: ["free tattoo consultation Bangalore", "what to bring to tattoo consultation", "tattoo consultation Brookefield"]
-heroImage: "/blog/tattoo-consultation-what-happens-hero.webp"
+heroImage: "/images/blog/tattoo-consultation-what-happens-hero.webp"
 heroAlt: "Peace, lead artist at Xing Premium Tattoo Studio in Brookefield, Bengaluru, who runs every free tattoo consultation"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -119,7 +119,7 @@ Your references and story become a custom sketch, the sketch is refined with you
 6. **Placement check** — the stencil goes on your skin; you check it in the mirror, standing and moving naturally.
 7. **Adjust if needed** — the stencil can be moved or resized before tattooing.
 
-![Fine-line dreamcatcher mandala tattoo on ankle by Peace at Xing, Brookefield, Bengaluru](/blog/tattoo-consultation-what-happens-1.webp "Circular designs like this are sized and angled to the placement at the consultation.")
+![Fine-line dreamcatcher mandala tattoo on ankle by Peace at Xing, Brookefield, Bengaluru](/images/blog/tattoo-consultation-what-happens-1.webp "Circular designs like this are sized and angled to the placement at the consultation.")
 
 Our guide on [how to approve your tattoo sketch](/blog/approve-tattoo-sketch-stencil) explains how to review the design properly.
 

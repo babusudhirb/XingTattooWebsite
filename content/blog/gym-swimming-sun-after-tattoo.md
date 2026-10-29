@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["gym", "swimming", "sun", "aftercare"]
 primaryKeyword: "workout after tattoo"
 secondaryKeywords: ["swimming after tattoo", "sun after tattoo"]
-heroImage: "/blog/gym-swimming-sun-after-tattoo-hero.webp"
+heroImage: "/images/blog/gym-swimming-sun-after-tattoo-hero.webp"
 heroAlt: "Fine-line infinity and birds tattoo on forearm — workout after tattoo guide by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true

@@ -1,7 +1,7 @@
 /**
  * Image budget pass (sharp). Run from clonecraft-hero/:  node scripts/optimize-images.mjs
  *
- * - Studio gallery photos (public/gallery): adds a 480px copy next to each (name-480.webp) for srcset.
+ * - Studio gallery photos (public/images/gallery): adds a 480px copy next to each (name-480.webp) for srcset.
  * - Style photos (src/assets/services): a 480px copy each, plus a 720px copy of each hero, for srcset.
  * - Recompresses WebP over budget: heroes ≤ 180 KB, thumbnails ≤ 60 KB, anything else ≤ 250 KB,
  *   gallery photos ≤ 1200px wide, heroes ≤ 1600px. Per-file width overrides below.
@@ -21,15 +21,16 @@ const KB = 1024;
 /** Displayed far smaller than stored: cap the width. */
 const WIDTH_OVERRIDES = {
   // Shown at most ~200 CSS px wide (40rem tall, 1260×4156 drawing); 640px covers 3× screens
-  "src/assets/hero-fineline-art.webp": 640,
+  "src/assets/home/fine-line-floral-face-tattoo-design.webp": 640,
   // Phone version: ~90 CSS px wide at 38vh tall; 240px covers 2.5× screens
-  "src/assets/hero-fineline-art-sm.webp": 240,
+  "src/assets/home/fine-line-floral-face-tattoo-design-mobile.webp": 240,
 };
 
 function budget(rel) {
-  if (/\/thumb\.webp$/.test(rel)) return { kb: 60, width: 600 };
-  if (/hero[^/]*\.webp$/.test(rel)) return { kb: 180, width: 1600 };
-  if (rel.startsWith("public/gallery/") || /\/gallery-\d+\.webp$/.test(rel))
+  if (/-thumb\.webp$/.test(rel)) return { kb: 60, width: 600 };
+  if (/(-bangalore|fine-line-floral-face-tattoo-design[^/]*)\.webp$/.test(rel))
+    return { kb: 180, width: 1600 };
+  if (rel.startsWith("public/images/gallery/") || /-brookefield-\d+\.webp$/.test(rel))
     return { kb: 250, width: 1200 };
   return { kb: 250, width: 1600 };
 }
@@ -89,11 +90,11 @@ for (const rel of files) {
     }
   }
   // Style photos: a 480px copy for gallery grids, and a 720px copy of each hero for phones
+  // (<style>-tattoo-brookefield-bangalore.webp is the hero, …-brookefield-N.webp the gallery)
   const stylePhoto =
-    /^src\/assets\/services\/[^/]+\/(hero|gallery-\d+)\.webp$/.test(rel) ||
-    rel === "src/assets/style-blackgrey.webp";
+    /^src\/assets\/services\/[^/]+\/[a-z-]+-tattoo-brookefield-(bangalore|\d+)\.webp$/.test(rel);
   if (stylePhoto) {
-    for (const [w, kb] of [[480, 45], ...(/hero|style-/.test(rel) ? [[720, 80]] : [])]) {
+    for (const [w, kb] of [[480, 45], ...(/-bangalore\.webp$/.test(rel) ? [[720, 80]] : [])]) {
       const small = abs.replace(/\.webp$/, `-${w}.webp`);
       if (!fs.existsSync(small)) {
         fs.writeFileSync(small, await encode(fs.readFileSync(abs), w, kb, 74));
@@ -101,7 +102,7 @@ for (const rel of files) {
       }
     }
   }
-  if (rel.startsWith("public/gallery/")) {
+  if (rel.startsWith("public/images/gallery/")) {
     const small = abs.replace(/\.webp$/, "-480.webp");
     if (!fs.existsSync(small)) {
       fs.writeFileSync(small, await encode(fs.readFileSync(abs), 480, 60, 74));
@@ -111,16 +112,16 @@ for (const rel of files) {
 }
 // Card-size copies of each style's hero photo (cards are ~280px wide; 560px covers 2× screens)
 const CARD_SOURCES = {
-  realism: "src/assets/services/realism/hero.webp",
-  portrait: "src/assets/services/portrait/hero.webp",
-  "black-grey": "src/assets/style-blackgrey.webp",
-  geometric: "src/assets/services/geometric/hero.webp",
-  traditional: "src/assets/services/traditional/hero.webp",
-  minimalist: "src/assets/services/minimalist/hero.webp",
+  realism: "src/assets/services/realism/realism-tattoo-brookefield-bangalore.webp",
+  portrait: "src/assets/services/portrait/portrait-tattoo-brookefield-bangalore.webp",
+  "black-grey": "src/assets/services/black-grey/black-grey-tattoo-brookefield-bangalore.webp",
+  geometric: "src/assets/services/geometric/geometric-tattoo-brookefield-bangalore.webp",
+  traditional: "src/assets/services/traditional/traditional-tattoo-brookefield-bangalore.webp",
+  minimalist: "src/assets/services/minimalist/minimalist-tattoo-brookefield-bangalore.webp",
 };
 let cards = 0;
 for (const [slug, src] of Object.entries(CARD_SOURCES)) {
-  const dest = path.join(ROOT, `src/assets/services/${slug}/card.webp`);
+  const dest = path.join(ROOT, `src/assets/services/${slug}/${slug}-tattoo-card.webp`);
   if (!fs.existsSync(dest)) {
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.writeFileSync(dest, await encode(fs.readFileSync(path.join(ROOT, src)), 560, 60, 76));

@@ -8,7 +8,7 @@ category: "placement"
 tags: ["chest", "back", "large scale", "placement"]
 primaryKeyword: "chest tattoo"
 secondaryKeywords: ["back tattoo ideas"]
-heroImage: "/blog/chest-back-tattoo-ideas-hero.webp"
+heroImage: "/images/blog/chest-back-tattoo-ideas-hero.webp"
 heroAlt: "Fine-line phoenix tattoo on upper back, a chest tattoo and back piece idea by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 draft: true
@@ -61,7 +61,7 @@ Large areas offer things smaller spots can't:
 - Script along the collarbone.
 - Florals spreading from the shoulder.
 
-![Portrait tattoo of a smiling woman with wings on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/chest-back-tattoo-ideas-1.webp "Chest portraits over the heart are popular tributes.")
+![Portrait tattoo of a smiling woman with wings on chest by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/chest-back-tattoo-ideas-1.webp "Chest portraits over the heart are popular tributes.")
 
 ## Back tattoo ideas
 
@@ -129,7 +129,7 @@ Large tattoos need extra care while healing.
 
 Our [tattoo aftercare guide](/blog/tattoo-aftercare-guide) covers every stage.
 
-![Realistic greyscale elephant head tattoo on chest by Peace at Xing, Brookefield, Bengaluru](/blog/chest-back-tattoo-ideas-2.webp "Large realism needs a large canvas like the chest.")
+![Realistic greyscale elephant head tattoo on chest by Peace at Xing, Brookefield, Bengaluru](/images/blog/chest-back-tattoo-ideas-2.webp "Large realism needs a large canvas like the chest.")
 
 ## Planning your large piece
 

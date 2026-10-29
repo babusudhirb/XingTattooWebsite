@@ -8,7 +8,7 @@ category: "local-bangalore"
 tags: ["brookefield", "aecs layout", "local", "custom tattoo"]
 primaryKeyword: "tattoo studio in AECS Layout"
 secondaryKeywords: ["tattoo studio Brookefield", "tattoo shop near DMART Ready AECS Layout", "custom tattoo Bengaluru 560037"]
-heroImage: "/blog/tattoo-studio-aecs-layout-brookefield-hero.webp"
+heroImage: "/images/blog/tattoo-studio-aecs-layout-brookefield-hero.webp"
 heroAlt: "Black and grey warrior angel shoulder tattoo by Peace at Xing, a tattoo studio in AECS Layout, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -77,7 +77,7 @@ Peace takes those pieces and turns them into a design sized for your body. A lot
 
 If you're torn between the two, our guide to [custom vs flash tattoos](/blog/custom-vs-flash-tattoo) goes deeper.
 
-![Realistic lion sleeve tattoo on forearm by Peace at Xing, AECS Layout, Brookefield](/blog/tattoo-studio-aecs-layout-brookefield-1.webp "A forearm lion piece, drawn from scratch to wrap the arm.")
+![Realistic lion sleeve tattoo on forearm by Peace at Xing, AECS Layout, Brookefield](/images/blog/tattoo-studio-aecs-layout-brookefield-1.webp "A forearm lion piece, drawn from scratch to wrap the arm.")
 
 ## Who will tattoo me at Xing?
 
@@ -131,7 +131,7 @@ That range is one of the reasons locals keep coming back. Someone might start wi
 
 You can browse every style on our [tattoo services page](/services).
 
-![Fine-line lotus tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/tattoo-studio-aecs-layout-brookefield-2.webp "Fine-line work is a popular first tattoo for AECS Layout locals.")
+![Fine-line lotus tattoo on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/tattoo-studio-aecs-layout-brookefield-2.webp "Fine-line work is a popular first tattoo for AECS Layout locals.")
 
 ## What happens at a walk-in consultation?
 

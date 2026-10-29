@@ -162,7 +162,7 @@ function publicMeta(p: SourcePost) {
     heroAlt: fm.heroAlt,
     heroWidth: hero.width,
     heroHeight: hero.height,
-    ogImage: `/blog/og/${fm.slug}.jpg`,
+    ogImage: `/og/blog/${fm.slug}.jpg`,
     author: fm.author,
     datePublished: p.date,
     dateModified: fm.dateModified && fm.dateModified > p.date ? fm.dateModified : p.date,

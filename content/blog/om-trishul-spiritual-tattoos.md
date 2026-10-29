@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["Om", "Trishul", "spiritual", "script"]
 primaryKeyword: "Om tattoo"
 secondaryKeywords: ["trishul tattoo", "spiritual tattoo meaning"]
-heroImage: "/blog/om-trishul-spiritual-tattoos-hero.webp"
+heroImage: "/images/blog/om-trishul-spiritual-tattoos-hero.webp"
 heroAlt: "Om tattoo with trishul and Devanagari script on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -67,7 +67,7 @@ The Trishul is the trident of Lord Shiva. Its three prongs are often linked to c
 - **Trishul with a snake** — fearlessness.
 - **Vertical trishul along the spine or forearm** — bold and elegant.
 
-![Trishul with Om and damru tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/om-trishul-spiritual-tattoos-1.webp "A trishul with damru and Om is one of the most popular spiritual designs.")
+![Trishul with Om and damru tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/om-trishul-spiritual-tattoos-1.webp "A trishul with damru and Om is one of the most popular spiritual designs.")
 
 ## Rudraksha, lotus and mantras
 
@@ -77,7 +77,7 @@ The Trishul is the trident of Lord Shiva. Its three prongs are often linked to c
 
 **Mantras** — such as "Om Namah Shivaya", "Har Har Mahadev" or a line from a prayer — add personal meaning and suit the forearm, ribs or back.
 
-![Lotus and unalome spiritual tattoo running down the forearm by Peace at Xing, Brookefield, Bengaluru](/blog/om-trishul-spiritual-tattoos-2.webp "Lotus and unalome designs follow the length of the forearm.")
+![Lotus and unalome spiritual tattoo running down the forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/om-trishul-spiritual-tattoos-2.webp "Lotus and unalome designs follow the length of the forearm.")
 
 ## Spiritual tattoo meaning at a glance
 

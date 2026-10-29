@@ -8,7 +8,7 @@ category: "placement"
 tags: ["sleeve", "large scale", "planning", "sessions"]
 primaryKeyword: "sleeve tattoo"
 secondaryKeywords: ["half sleeve tattoo", "full sleeve tattoo Bangalore"]
-heroImage: "/blog/sleeve-tattoo-planning-hero.webp"
+heroImage: "/images/blog/sleeve-tattoo-planning-hero.webp"
 heroAlt: "Geometric arm sleeve tattoo with rhino, tree and sacred geometry by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -77,7 +77,7 @@ Your arm isn't flat. It tapers, twists and changes shape as you move. A sleeve h
 
 Good flow makes a sleeve look like one artwork from every angle, not separate stickers.
 
-![Realistic eagle wing sleeve tattoo with sunburst crown on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/sleeve-tattoo-planning-1.webp "The main subject sits where it's most visible; background wraps around it.")
+![Realistic eagle wing sleeve tattoo with sunburst crown on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/sleeve-tattoo-planning-1.webp "The main subject sits where it's most visible; background wraps around it.")
 
 ## Sessions and healing between
 

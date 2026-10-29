@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["aftercare", "healing", "new tattoo"]
 primaryKeyword: "tattoo aftercare"
 secondaryKeywords: ["tattoo healing", "new tattoo care"]
-heroImage: "/blog/tattoo-aftercare-guide-hero.webp"
+heroImage: "/images/blog/tattoo-aftercare-guide-hero.webp"
 heroAlt: "Healed single-line daisy tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru — tattoo aftercare guide"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -97,7 +97,7 @@ During the first week, your tattoo will start to dry and may form a thin layer o
 - Letting pets lick or sleep on the area.
 - Shaving over the tattoo.
 
-![Single-line rose tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/tattoo-aftercare-guide-1.webp "Thin layers of aftercare product are better than thick ones.")
+![Single-line rose tattoo on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/tattoo-aftercare-guide-1.webp "Thin layers of aftercare product are better than thick ones.")
 
 ## Days 7–14: peeling and itching
 

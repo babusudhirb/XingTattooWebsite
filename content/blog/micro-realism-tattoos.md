@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["micro realism", "small tattoos", "realism", "detail"]
 primaryKeyword: "micro-realism tattoos"
 secondaryKeywords: ["micro realism tattoo Bangalore", "small realistic tattoo", "tiny portrait tattoo"]
-heroImage: "/blog/micro-realism-tattoos-hero.webp"
+heroImage: "/images/blog/micro-realism-tattoos-hero.webp"
 heroAlt: "Tiny black cat peeking over a line, one of the micro-realism tattoos by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -96,7 +96,7 @@ Because detail needs room. Ink settles and softens a little over the years, and 
 
 Sizing up isn't about making a big tattoo — often it's just a little more. Peace will suggest the smallest size that keeps your subject readable.
 
-![Tiny panda tattoo sitting on a fine line on upper arm by Peace at Xing, Brookefield, Bengaluru](/blog/micro-realism-tattoos-1.webp "A simple subject with clear black and white areas reads well even when small.")
+![Tiny panda tattoo sitting on a fine line on upper arm by Peace at Xing, Brookefield, Bengaluru](/images/blog/micro-realism-tattoos-1.webp "A simple subject with clear black and white areas reads well even when small.")
 
 ## What makes a good reference photo for micro-realism?
 

@@ -8,7 +8,7 @@ category: "styles-ideas"
 tags: ["fine line", "minimalist", "first tattoo", "placement"]
 primaryKeyword: "fine line tattoo"
 secondaryKeywords: ["fine line tattoo Bangalore", "delicate tattoo"]
-heroImage: "/blog/fine-line-tattoos-hero.webp"
+heroImage: "/images/blog/fine-line-tattoos-hero.webp"
 heroAlt: "Fine line tattoo of a floral face line-art on arm by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-26
@@ -67,7 +67,7 @@ It's a modern, minimal style that suits people who want something subtle and ref
 - High-friction spots fade faster.
 - Requires a skilled artist — there's no room to hide uneven lines.
 
-![Fine-line orchid flowers tattoo on ribs by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/blog/fine-line-tattoos-1.webp "Flowing botanicals are a classic fine-line design.")
+![Fine-line orchid flowers tattoo on ribs by Peace at Xing Premium Tattoo Studio, Brookefield, Bengaluru](/images/blog/fine-line-tattoos-1.webp "Flowing botanicals are a classic fine-line design.")
 
 ## Will fine line tattoos blur?
 
@@ -137,7 +137,7 @@ If you're looking for a delicate tattoo, here are some ideas that suit fine line
 
 Our list of [minimalist tattoo ideas for first-timers](/blog/minimalist-tattoo-ideas) has many more.
 
-![Fine-line sparkling butterfly tattoo on arm by Peace at Xing, Brookefield, Bengaluru](/blog/fine-line-tattoos-2.webp "Small symbols with open space between lines heal crisp.")
+![Fine-line sparkling butterfly tattoo on arm by Peace at Xing, Brookefield, Bengaluru](/images/blog/fine-line-tattoos-2.webp "Small symbols with open space between lines heal crisp.")
 
 ## Aftercare for fine line tattoos
 

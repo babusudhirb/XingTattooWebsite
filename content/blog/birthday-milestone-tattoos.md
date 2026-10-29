@@ -8,7 +8,7 @@ category: "meanings-culture"
 tags: ["birthday", "milestones", "dates", "meaningful"]
 primaryKeyword: "milestone tattoos"
 secondaryKeywords: ["birthday tattoo ideas", "date tattoo ideas", "tattoo to celebrate achievement"]
-heroImage: "/blog/birthday-milestone-tattoos-hero.webp"
+heroImage: "/images/blog/birthday-milestone-tattoos-hero.webp"
 heroAlt: "Realistic baby footprints tattoo with the name Siara on forearm, one of the milestone tattoos by Peace at Xing Premium Tattoo Studio, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -86,7 +86,7 @@ Ways to style dates:
 
 Double-check the format — day-month-year or month-day-year — before the stencil goes on. Our guide to [script and calligraphy tattoo fonts](/blog/script-calligraphy-tattoo-fonts) explains how to keep numbers readable.
 
-![Hands reaching towards each other with a handwritten date, a milestone tattoo by Peace at Xing Premium Tattoo Studio, Brookefield](/blog/birthday-milestone-tattoos-1.webp "A date woven into an image feels more personal than numbers alone.")
+![Hands reaching towards each other with a handwritten date, a milestone tattoo by Peace at Xing Premium Tattoo Studio, Brookefield](/images/blog/birthday-milestone-tattoos-1.webp "A date woven into an image feels more personal than numbers alone.")
 
 ## How can cultural motifs be added to a milestone design?
 

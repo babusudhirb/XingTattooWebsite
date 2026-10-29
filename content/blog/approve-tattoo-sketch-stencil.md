@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["custom tattoo", "sketch", "stencil", "design process"]
 primaryKeyword: "tattoo sketch"
 secondaryKeywords: ["tattoo stencil", "custom tattoo design process", "tattoo design revisions"]
-heroImage: "/blog/approve-tattoo-sketch-stencil-hero.webp"
+heroImage: "/images/blog/approve-tattoo-sketch-stencil-hero.webp"
 heroAlt: "Owl and silhouette tattoo flowing from hand to forearm, shaped from an approved tattoo sketch by Peace at Xing, Brookefield"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -89,7 +89,7 @@ Common adjustments:
 - **Wrapping** details around joints rather than across them.
 - **Leaving space** for future tattoos nearby.
 
-![Black snake tattoo wrapping over the shoulder and collarbone by Peace at Xing, Brookefield](/blog/approve-tattoo-sketch-stencil-1.webp "A design that wraps a joint is shaped to the body at the sketch and stencil stage.")
+![Black snake tattoo wrapping over the shoulder and collarbone by Peace at Xing, Brookefield](/images/blog/approve-tattoo-sketch-stencil-1.webp "A design that wraps a joint is shaped to the body at the sketch and stencil stage.")
 
 For larger pieces, flow matters even more. Our post on [how long a custom sleeve takes](/blog/custom-sleeve-tattoo-sessions-timeline) explains how sleeves are mapped.
 

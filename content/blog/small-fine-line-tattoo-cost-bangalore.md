@@ -8,7 +8,7 @@ category: "tattoo-guides"
 tags: ["cost", "fine line", "small tattoos", "pricing"]
 primaryKeyword: "fine line tattoo cost"
 secondaryKeywords: ["small tattoo price Bangalore", "minimalist tattoo cost", "fine line tattoo price Brookefield"]
-heroImage: "/blog/small-fine-line-tattoo-cost-bangalore-hero.webp"
+heroImage: "/images/blog/small-fine-line-tattoo-cost-bangalore-hero.webp"
 heroAlt: "Fine-line dandelion tattoo on forearm by Peace at Xing Premium Tattoo Studio, Brookefield — small fine line tattoo cost in Bengaluru"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -85,7 +85,7 @@ More elements, more shading and more dots mean more time. A single-line outline 
 - Micro-portraits or tiny animals with fur detail.
 - Several small symbols placed together.
 
-![Fine-line lotus tattoo with dot details on forearm by Peace at Xing, Brookefield, Bengaluru](/blog/small-fine-line-tattoo-cost-bangalore-1.webp "Extra dot and ornament details add time, even on a small piece.")
+![Fine-line lotus tattoo with dot details on forearm by Peace at Xing, Brookefield, Bengaluru](/images/blog/small-fine-line-tattoo-cost-bangalore-1.webp "Extra dot and ornament details add time, even on a small piece.")
 
 ## Why does placement change the price?
 

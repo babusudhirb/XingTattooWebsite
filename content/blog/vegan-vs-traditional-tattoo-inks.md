@@ -8,7 +8,7 @@ category: "aftercare-safety"
 tags: ["ink", "vegan", "allergies", "safety"]
 primaryKeyword: "tattoo ink"
 secondaryKeywords: ["vegan tattoo ink", "tattoo ink allergy", "is tattoo ink safe", "tattoo ink ingredients"]
-heroImage: "/blog/vegan-vs-traditional-tattoo-inks-hero.webp"
+heroImage: "/images/blog/vegan-vs-traditional-tattoo-inks-hero.webp"
 heroAlt: "Colour flower tattoo on shoulder by Peace at Xing Premium Tattoo Studio, Brookefield — vegan tattoo ink vs traditional pigments"
 author: "Peace (Chingri Awungshi)"
 datePublished: 2026-10-28
@@ -103,7 +103,7 @@ Possible signs of an ink reaction:
 
 Ink reactions are different from infections. If you have spreading redness, pus, fever or worsening pain, see a doctor promptly. Our guide to [infected tattoo signs](/blog/infected-tattoo-signs) explains the difference.
 
-![Colour fish tattoo with red, orange and blue on hand by Peace at Xing, Brookefield, Bengaluru](/blog/vegan-vs-traditional-tattoo-inks-1.webp "Colour pieces use several pigments — mention any known allergies before your session.")
+![Colour fish tattoo with red, orange and blue on hand by Peace at Xing, Brookefield, Bengaluru](/images/blog/vegan-vs-traditional-tattoo-inks-1.webp "Colour pieces use several pigments — mention any known allergies before your session.")
 
 ## What about metals in tattoo ink?
 
