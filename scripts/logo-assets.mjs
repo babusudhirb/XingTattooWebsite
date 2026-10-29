@@ -4,7 +4,7 @@
  *
  *   public/xing-logo.png   1200px, white background — the schema `logo`
  *   public/xing-logo.webp  800px, transparent — the mark on social images (scripts/blog_images.py)
- *   favicon-16/32, apple-touch-icon, icon-192/512 — just the lettering (the tagline is
+ *   favicon.ico (16 + 32), favicon-16/32, apple-touch-icon, icon-192/512 — just the lettering (the tagline is
  *   unreadable at icon sizes), centred on white
  */
 import fs from "node:fs";
@@ -44,4 +44,22 @@ await icon(32, "favicon-32.png", 0.06);
 await icon(180, "apple-touch-icon.png");
 await icon(192, "icon-192.png");
 await icon(512, "icon-512.png");
-console.log("logo-assets: png, webp and 5 icons written from public/xing-logo.svg");
+// favicon.ico: an ICO directory holding the two PNGs as they are (supported by every browser)
+const pngs = ["favicon-16.png", "favicon-32.png"].map((f) => fs.readFileSync(path.join(PUBLIC, f)));
+const ico = Buffer.alloc(6 + 16 * pngs.length);
+ico.writeUInt16LE(1, 2);
+ico.writeUInt16LE(pngs.length, 4);
+let offset = ico.length;
+pngs.forEach((png, i) => {
+  const size = [16, 32][i];
+  const e = 6 + 16 * i;
+  ico.writeUInt8(size, e);
+  ico.writeUInt8(size, e + 1);
+  ico.writeUInt16LE(1, e + 4);
+  ico.writeUInt16LE(32, e + 6);
+  ico.writeUInt32LE(png.length, e + 8);
+  ico.writeUInt32LE(offset, e + 12);
+  offset += png.length;
+});
+fs.writeFileSync(path.join(PUBLIC, "favicon.ico"), Buffer.concat([ico, ...pngs]));
+console.log("logo-assets: png, webp, favicon.ico and 5 icons written from public/xing-logo.svg");

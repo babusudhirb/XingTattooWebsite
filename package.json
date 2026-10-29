@@ -4,14 +4,17 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/generate-seo-files.mjs",
     "dev": "vite dev",
+    "prebuild": "node scripts/generate-seo-files.mjs",
     "build": "vite build && node scripts/postbuild.mjs",
     "build:dev": "vite build --mode development",
     "preview": "node scripts/serve-static.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "seo:audit": "node scripts/seo-audit.mjs http://localhost:4173",
-    "check:nap": "node scripts/nap-check.mjs http://localhost:4173"
+    "check:nap": "node scripts/nap-check.mjs http://localhost:4173",
+    "seo:files": "node scripts/generate-seo-files.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1"

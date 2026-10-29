@@ -52,6 +52,12 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.xml$">
     Header set Content-Type "application/xml; charset=utf-8"
   </FilesMatch>
+  <FilesMatch "\.txt$">
+    Header set Content-Type "text/plain; charset=utf-8"
+  </FilesMatch>
+  <FilesMatch "\.webmanifest$">
+    Header set Content-Type "application/manifest+json"
+  </FilesMatch>
   # HTTPS only from now on (no "preload" until every subdomain is confirmed to serve HTTPS)
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   Header set X-Content-Type-Options "nosniff"
@@ -65,4 +71,6 @@ ErrorDocument 404 /404.html
   AddType image/webp .webp
   AddType image/avif .avif
   AddType application/manifest+json .webmanifest
+  AddType text/plain .txt
+  AddCharset utf-8 .txt .xml
 </IfModule>

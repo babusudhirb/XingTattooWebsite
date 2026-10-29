@@ -1,9 +1,12 @@
 /**
- * Runs after `vite build` (see package.json). Reads the prerendered pages in .output/public and writes:
- *   sitemap.xml (index) → sitemap-pages.xml + sitemap-blog.xml   indexable canonical pages only, with images
- *   robots.txt, llms.txt
- *   the 301 rules from scripts/redirects.mjs into .output/public/.htaccess
- * Business values come from src/data/business.ts — never copied here.
+ * Runs after `vite build` (see package.json). The crawl files themselves (sitemaps, robots.txt,
+ * llms.txt, rss.xml…) are written into public/ by scripts/generate-seo-files.mjs before the build
+ * and copied over by Vite. This script, reading the prerendered pages in .output/public:
+ *   - fails the build on a truncated page, or on a sitemap URL that isn't a built, indexable,
+ *     self-canonical page (and on an indexable page missing from the sitemaps)
+ *   - rewrites sitemap-images.xml with every <main> image of each sitemap page (the hashed
+ *     /assets/ URLs only exist now), into .output/public and public/ (committed)
+ *   - writes the 301 rules from scripts/redirects.mjs into .output/public/.htaccess
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -11,58 +14,13 @@ import { fileURLToPath } from "node:url";
 
 import { parse } from "node-html-parser";
 
+import { urlset } from "./generate-seo-files.mjs";
 import { REDIRECTS } from "./redirects.mjs";
 
 const APP = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(APP, ".output/public");
 const biz = await import(new URL("../src/data/business.ts", import.meta.url).href);
 const SITE = biz.SITE_URL;
-
-/** Source files whose edits change each page — their newest mtime is the page's <lastmod>. */
-const SHARED = [
-  "src/data/business.ts",
-  "src/components/layout/SiteFooter.tsx",
-  "src/components/layout/SiteHeader.tsx",
-];
-const SOURCES = [
-  [
-    /^\/$/,
-    [
-      "src/routes/index.tsx",
-      "src/data/services.ts",
-      "src/data/faqs.ts",
-      "src/data/reviews.ts",
-      "src/data/gallery.ts",
-    ],
-  ],
-  [/^\/about$/, ["src/routes/about.tsx", "src/data/about.ts"]],
-  [/^\/faq$/, ["src/routes/faq.tsx", "src/data/faqs.ts"]],
-  [/^\/offer$/, ["src/routes/offer.tsx", "src/data/offer.ts"]],
-  [/^\/tattoo-artist$/, ["src/routes/tattoo-artist.tsx", "src/data/artist.ts"]],
-  [/^\/services$/, ["src/routes/services/index.tsx", "src/data/services.ts"]],
-  [
-    /^\/services\/[^/]+$/,
-    [
-      "src/routes/services/$slug.tsx",
-      "src/data/services.ts",
-      "src/components/services/ServiceTemplate.tsx",
-    ],
-  ],
-  [/^\/privacy-policy$/, ["src/routes/privacy-policy.tsx", "src/components/layout/LegalPage.tsx"]],
-  [
-    /^\/terms-and-conditions$/,
-    ["src/routes/terms-and-conditions.tsx", "src/components/layout/LegalPage.tsx"],
-  ],
-];
-
-/** YYYY-MM-DD in the studio's time zone. */
-const day = (d) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
-const mtime = (files) =>
-  day(
-    new Date(Math.max(...[...files, ...SHARED].map((f) => fs.statSync(path.join(APP, f)).mtimeMs))),
-  );
-const xml = (s) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 function htmlFiles(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
@@ -78,156 +36,70 @@ const truncated = htmlFiles(OUT).filter(
 );
 if (truncated.length) throw new Error(`[postbuild] truncated pages: ${truncated.join(", ")}`);
 
-const pages = htmlFiles(OUT).map((file) => {
-  const rel = path
-    .relative(OUT, file)
-    .replace(/\\/g, "/")
-    .replace(/\.html$/, "");
-  const urlPath = rel === "index" ? "/" : `/${rel}`;
-  const doc = parse(fs.readFileSync(file, "utf8"));
-  const meta = (sel) => doc.querySelector(sel)?.getAttribute("content") ?? "";
-  const images = [
-    ...new Set(
-      doc
-        .querySelectorAll("main img[src]")
-        .map((img) => img.getAttribute("src"))
-        .filter(
-          (src) => /^\/(assets|blog|gallery)\//.test(src) && !/avatar|logo|favicon/.test(src),
+const pages = new Map(
+  htmlFiles(OUT).map((file) => {
+    const rel = path
+      .relative(OUT, file)
+      .replace(/\\/g, "/")
+      .replace(/\.html$/, "");
+    const urlPath = rel === "index" ? "/" : `/${rel}`;
+    const doc = parse(fs.readFileSync(file, "utf8"));
+    const images = [
+      ...new Set(
+        doc
+          .querySelectorAll("main img[src]")
+          .map((img) => img.getAttribute("src"))
+          .filter(
+            (src) => /^\/(assets|blog|gallery|og)\//.test(src) && !/avatar|logo|favicon/.test(src),
+          ),
+      ),
+    ].slice(0, 1000);
+    return [
+      SITE + urlPath,
+      {
+        urlPath,
+        canonical: doc.querySelector('link[rel="canonical"]')?.getAttribute("href") ?? "",
+        noindex: /noindex/i.test(
+          doc.querySelector('meta[name="robots"]')?.getAttribute("content") ?? "",
         ),
-    ),
-  ].slice(0, 50);
-  return {
-    urlPath,
-    canonical: doc.querySelector('link[rel="canonical"]')?.getAttribute("href") ?? "",
-    noindex: /noindex/i.test(meta('meta[name="robots"]')),
-    modified: meta('meta[property="article:modified_time"]'),
-    links: doc.querySelectorAll("a[href]").map((a) => a.getAttribute("href")),
-    images,
-  };
-});
-
-const byPath = new Map(pages.map((p) => [p.urlPath, p]));
-const postDate = (href) => byPath.get(href)?.modified || "";
-
-/** Indexable = canonical points at itself, no noindex, not pagination, not an expired offer. */
-const indexable = pages.filter(
-  (p) =>
-    p.canonical === SITE + (p.urlPath === "/" ? "/" : p.urlPath) &&
-    !p.noindex &&
-    !/^\/blog\/page\//.test(p.urlPath) &&
-    !(p.urlPath === "/offer" && !biz.isOfferActive()),
+        images,
+      },
+    ];
+  }),
 );
 
-function lastmod(p) {
-  if (p.modified) return p.modified;
-  if (p.urlPath.startsWith("/blog")) {
-    // Listing pages change when a post they list changes
-    const dates = p.links
-      .filter((h) => /^\/blog\/[^/]+$/.test(h))
-      .map(postDate)
-      .filter(Boolean);
-    return dates.sort().at(-1) ?? day(new Date());
-  }
-  const src = SOURCES.find(([re]) => re.test(p.urlPath));
-  return src ? mtime(src[1]) : day(new Date());
+// ── Sitemaps must list exactly the indexable, self-canonical pages ─────────
+const sitemapUrls = (name) =>
+  [
+    ...fs
+      .readFileSync(path.join(OUT, name), "utf8")
+      .matchAll(/<url>\s*<loc>([^<]+)<\/loc>(?:\s*<lastmod>([^<]+)<\/lastmod>)?/g),
+  ].map((m) => ({ loc: m[1].replace(/&amp;/g, "&"), lastmod: m[2] }));
+const listed = [...sitemapUrls("sitemap-pages.xml"), ...sitemapUrls("sitemap-blog.xml")];
+const problems = [];
+for (const { loc } of listed) {
+  const page = pages.get(loc);
+  if (!page) problems.push(`${loc}: no built page`);
+  else if (page.noindex) problems.push(`${loc}: noindex`);
+  else if (page.canonical !== loc)
+    problems.push(`${loc}: canonical is ${page.canonical || "missing"}`);
 }
-
-function urlset(list) {
-  const body = list
-    .sort((a, b) => a.urlPath.localeCompare(b.urlPath))
-    .map((p) => {
-      const imgs = p.images
-        .map((src) => `\n    <image:image><image:loc>${xml(SITE + src)}</image:loc></image:image>`)
-        .join("");
-      return `  <url>\n    <loc>${xml(p.canonical)}</loc>\n    <lastmod>${lastmod(p)}</lastmod>${imgs}\n  </url>`;
-    })
-    .join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${body}
-</urlset>
-`;
+const listedSet = new Set(listed.map((u) => u.loc));
+for (const [url, page] of pages) {
+  const indexable = page.canonical === url && !page.noindex && page.urlPath !== "/404";
+  if (indexable && !listedSet.has(url)) problems.push(`${url}: indexable but not in a sitemap`);
 }
+if (problems.length) throw new Error(`[postbuild] sitemap mismatch:\n  ${problems.join("\n  ")}`);
 
-const blogPages = indexable.filter((p) => p.urlPath === "/blog" || p.urlPath.startsWith("/blog/"));
-const otherPages = indexable.filter((p) => !blogPages.includes(p));
-const children = [
-  ["sitemap-pages.xml", otherPages],
-  ["sitemap-blog.xml", blogPages],
-];
-for (const [name, list] of children) fs.writeFileSync(path.join(OUT, name), urlset(list));
-fs.writeFileSync(
-  path.join(OUT, "sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${children
-  .map(
-    ([name, list]) =>
-      `  <sitemap>\n    <loc>${SITE}/${name}</loc>\n    <lastmod>${list.map(lastmod).sort().at(-1)}</lastmod>\n  </sitemap>`,
-  )
-  .join("\n")}
-</sitemapindex>
-`,
+// ── sitemap-images.xml from the built pages ────────────────────────────────
+const imagesXml = urlset(
+  listed
+    .map(({ loc, lastmod }) => ({ loc, lastmod, images: pages.get(loc).images }))
+    .filter((e) => e.images.length),
+  true,
 );
-
-// ── robots.txt ─────────────────────────────────────────────────────────────
-fs.writeFileSync(
-  path.join(OUT, "robots.txt"),
-  `User-agent: *
-Allow: /
-Disallow: /api/
-
-User-agent: GPTBot
-Allow: /
-User-agent: OAI-SearchBot
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: PerplexityBot
-Allow: /
-
-Sitemap: ${SITE}/sitemap.xml
-`,
-);
-
-// ── llms.txt: a plain-text summary for AI crawlers ─────────────────────────
-const pageTitle = (p) => {
-  const html = fs.readFileSync(
-    path.join(OUT, p === "/" ? "index.html" : `${p.slice(1)}.html`),
-    "utf8",
-  );
-  return (
-    parse(html)
-      .querySelector("title")
-      ?.text.replace(/\s*\|.*$/, "") ?? p
-  );
-};
-fs.writeFileSync(
-  path.join(OUT, "llms.txt"),
-  `# ${biz.BUSINESS_NAME}
-
-> ${biz.businessSchema.description}
-
-- Address: ${biz.ADDRESS.full}
-- Phone / WhatsApp: ${biz.PHONE_DISPLAY}
-- Email: ${biz.EMAIL}
-- Hours: ${biz.HOURS_TEXT}
-- Google Maps: ${biz.MAPS_PLACE_URL}
-- Google rating: ${biz.RATING_LABEL}
-- Lead Artist: ${biz.LEAD_ARTIST.fullName}
-- Areas served: ${biz.SERVICE_AREAS.join(", ")}
-- Services: ${biz.SERVICE_PAGES.map((s) => s.name).join(", ")}; custom designs drawn from scratch; free consultation
-
-## Pages
-${otherPages.map((p) => `- [${pageTitle(p.urlPath)}](${p.canonical})`).join("\n")}
-
-## Guides
-${blogPages
-  .filter((p) => /^\/blog\/[^/]+$/.test(p.urlPath))
-  .map((p) => `- [${pageTitle(p.urlPath)}](${p.canonical})`)
-  .join("\n")}
-`,
-);
+fs.writeFileSync(path.join(OUT, "sitemap-images.xml"), imagesXml);
+fs.writeFileSync(path.join(APP, "public/sitemap-images.xml"), imagesXml);
 
 // ── .htaccess: generated 301s between the markers ──────────────────────────
 const htPath = path.join(OUT, ".htaccess");
@@ -247,5 +119,5 @@ const marked = ht.replace(
 fs.writeFileSync(htPath, marked);
 
 console.log(
-  `[postbuild] sitemap: ${otherPages.length} pages + ${blogPages.length} blog URLs; robots.txt, llms.txt, ${REDIRECTS.length} redirects`,
+  `[postbuild] ${listed.length} sitemap URLs verified, images sitemap rewritten, ${REDIRECTS.length} redirects`,
 );

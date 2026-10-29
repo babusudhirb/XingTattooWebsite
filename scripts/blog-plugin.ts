@@ -9,10 +9,11 @@
  * - Each `.md` import becomes { ...meta, introHtml, sections, headings }.
  * - Every internal link is checked at build time; links to posts that are not
  *   live yet are unwrapped to plain text so the site never links to a 404.
- * - Writes public/blog/rss.xml with live posts only (sitemaps: scripts/postbuild.mjs).
+ * - Runs scripts/generate-seo-files.mjs (sitemaps, rss.xml, llms.txt) at build start and when a post changes.
  * - {{token}}s (phone, address, hours, stats…) are filled from src/data/business.ts,
  *   so posts never carry their own copy of the studio's details.
  */
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -29,7 +30,7 @@ import { toString as hastToString } from "hast-util-to-string";
 import type { Plugin, ViteDevServer } from "vite";
 import type { Element, ElementContent, Root, RootContent } from "hast";
 
-import { BLOG_TOKENS, BUSINESS_NAME, pageTitle, SITE_URL } from "../src/data/business";
+import { BLOG_TOKENS, pageTitle } from "../src/data/business";
 
 const ROOT = path.resolve(__dirname, "..");
 const CONTENT_DIR = path.join(ROOT, "content/blog");
@@ -350,53 +351,13 @@ function renderPost(p: SourcePost, live: Set<string>, known: Set<string>) {
   };
 }
 
-function xmlEscape(s: string) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-function writeIfChanged(file: string, content: string) {
-  fs.mkdirSync(path.dirname(file), { recursive: true });
-  if (fs.existsSync(file) && fs.readFileSync(file, "utf8") === content) return;
-  fs.writeFileSync(file, content);
-}
-
-/** Writes public/blog/rss.xml (live posts only). Sitemaps and robots.txt are written after the
- *  build by scripts/postbuild.mjs, from the prerendered pages. */
-function writeFeeds(posts: SourcePost[]) {
-  const live = posts.filter((p) => p.live);
-  const metas = live.map(publicMeta);
-
-  const items = metas
-    .map(
-      (m) => `    <item>
-      <title>${xmlEscape(m.title)}</title>
-      <link>${SITE_URL}/blog/${m.slug}</link>
-      <guid isPermaLink="true">${SITE_URL}/blog/${m.slug}</guid>
-      <pubDate>${new Date(`${m.datePublished}T10:00:00+05:30`).toUTCString()}</pubDate>
-      <category>${xmlEscape(m.category)}</category>
-      <description>${xmlEscape(m.description)}</description>
-    </item>`,
-    )
-    .join("\n");
-  writeIfChanged(
-    path.join(PUBLIC_DIR, "blog/rss.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>${xmlEscape(`Tattoo Blog | ${BUSINESS_NAME}`)}</title>
-    <link>${SITE_URL}/blog</link>
-    <atom:link href="${SITE_URL}/blog/rss.xml" rel="self" type="application/rss+xml"/>
-    <description>Tattoo guides, aftercare and ideas from Peace (Chingri Awungshi) at Xing Premium Tattoo Studio, Brookefield, Bengaluru.</description>
-    <language>en-IN</language>
-${items}
-  </channel>
-</rss>
-`,
-  );
+/** Rewrites the crawl files in public/ (sitemaps, rss.xml, llms.txt…) — one writer for all of
+ *  them: scripts/generate-seo-files.mjs. Run as a child process: it imports the app's .ts data. */
+function writeFeeds() {
+  execFileSync(process.execPath, [path.join(ROOT, "scripts/generate-seo-files.mjs")], {
+    cwd: ROOT,
+    stdio: ["ignore", "ignore", "inherit"],
+  });
 }
 
 export function blogPlugin(): Plugin {
@@ -408,7 +369,7 @@ export function blogPlugin(): Plugin {
     enforce: "pre",
     buildStart() {
       cache = null;
-      writeFeeds(posts());
+      writeFeeds();
     },
     resolveId(id) {
       if (id === VIRTUAL_ID) return RESOLVED_VIRTUAL_ID;
@@ -443,7 +404,7 @@ export const postLoaders = {\n${loaders}\n};\n`;
         if (!file.replace(/\\/g, "/").includes("/content/blog/")) return;
         cache = null;
         try {
-          writeFeeds(posts());
+          writeFeeds();
         } catch (err) {
           // Dev only: report (e.g. a post saved before its images exist) and keep serving.
           server.config.logger.error(String(err));

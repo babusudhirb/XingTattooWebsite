@@ -12,7 +12,7 @@ export const BUSINESS_NAME = "Xing Premium Tattoo Studio - Brookefield, Bangalor
 export const BRAND_NAME = "Xing Premium Tattoo Studio";
 export const SHORT_NAME = BRAND_NAME;
 /** Home-screen / app name. */
-export const APP_NAME = "Xing Premium";
+export const APP_NAME = "Xing Tattoo";
 export const GBP_CATEGORY = "Tattoo Shop";
 
 export const SITE_URL = "https://www.xingtattoo.in";
