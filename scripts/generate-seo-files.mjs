@@ -207,8 +207,11 @@ export function generateSeoFiles() {
   const files = {
     "sitemap-pages.xml": urlset(pageEntries),
     "sitemap-blog.xml": urlset(blogEntries),
-    "sitemap-images.xml": urlset(imageEntries, true),
   };
+  // A build's postbuild.mjs writes the complete images sitemap (with the hashed /assets/ URLs);
+  // this pre-build version only fills in when there is none yet.
+  if (!fs.existsSync(path.join(PUBLIC, "sitemap-images.xml")))
+    files["sitemap-images.xml"] = urlset(imageEntries, true);
   files["sitemap.xml"] = sitemapIndex([
     [
       "sitemap-pages.xml",
