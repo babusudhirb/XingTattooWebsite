@@ -30,7 +30,6 @@ const bookingSchema = z.object({
   company: z.string().max(0).optional(),
 });
 
-export type BookingRequest = z.input<typeof bookingSchema>;
 
 export const sendBookingRequest = createServerFn({ method: "POST" })
   .validator(bookingSchema)
@@ -64,7 +63,6 @@ const offerClaimSchema = z.object({
   company: z.string().max(0).optional(),
 });
 
-export type OfferClaimRequest = z.input<typeof offerClaimSchema>;
 
 /** Lead from the /offer page's "Claim your tattoo offer" popup. */
 export const sendOfferClaim = createServerFn({ method: "POST" })

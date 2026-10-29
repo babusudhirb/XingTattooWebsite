@@ -1,0 +1,20 @@
+# Scheduled blog posts go live on the first build on/after their publishAt date (India time).
+# This triggers a fresh deploy on publish days. Set the repository secret DEPLOY_HOOK_URL to the
+# host's deploy hook (Cloudflare Pages: Settings → Builds → Deploy hooks; Netlify: Build hooks).
+name: Scheduled rebuild
+
+on:
+  schedule:
+    - cron: "45 0 * * 1,4" # Mondays and Thursdays, 06:15 India time
+  workflow_dispatch:
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the deploy hook
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$DEPLOY_HOOK_URL" ]; then echo "DEPLOY_HOOK_URL not set — nothing to do"; exit 0; fi
+          curl -fsS -X POST "$DEPLOY_HOOK_URL"

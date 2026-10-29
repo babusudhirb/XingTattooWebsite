@@ -17,4 +17,26 @@ function hydrate() {
   });
 }
 
+// After a new deploy (or a dev-server dependency re-optimise), a tab that was already open asks
+// for script files that no longer exist and the page fails to load. Reload once to pick up the
+// new build; the session flag stops a reload loop if the files really are missing.
+window.addEventListener("vite:preloadError", (event) => {
+  try {
+    if (sessionStorage.getItem("xing:reloaded-for-new-build")) return;
+    sessionStorage.setItem("xing:reloaded-for-new-build", "1");
+  } catch {
+    // storage blocked: still reload once (no flag means no loop guard, but the page is broken anyway)
+  }
+  event.preventDefault();
+  window.location.reload();
+});
+
 requestAnimationFrame(() => setTimeout(hydrate, 0));
+// Loaded fine: allow the one-time reload again for the next deploy
+window.setTimeout(() => {
+  try {
+    sessionStorage.removeItem("xing:reloaded-for-new-build");
+  } catch {
+    // storage blocked
+  }
+}, 10_000);

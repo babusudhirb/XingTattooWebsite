@@ -1,0 +1,8 @@
+# One line ending everywhere (CI runs on Linux; the generated sitemaps must not churn)
+* text=auto eol=lf
+*.webp binary
+*.avif binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary

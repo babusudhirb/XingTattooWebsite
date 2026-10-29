@@ -1,5 +1,11 @@
 {
-  "name": "xing-tattoo-studio",
+  "name": "xing-premium-tattoo-studio",
+  "description": "Website of Xing Premium Tattoo Studio, Brookefield, Bangalore — TanStack Start, prerendered to static HTML",
+  "homepage": "https://www.xingtattoo.in",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altafs45/XING-TATTOO-STUDIO.git"
+  },
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -78,5 +84,8 @@
     "unified": "^11.0.5",
     "unist-util-visit": "^5.2.0",
     "vite": "8.1.5"
+  },
+  "engines": {
+    "node": ">=22.18"
   }
 }

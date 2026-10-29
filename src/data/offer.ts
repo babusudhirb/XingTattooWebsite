@@ -7,7 +7,6 @@ import { OFFER, studioDate } from "@/data/business";
 
 /** Current offer — shared by the home page popup and the /offer page. */
 export const OFFER_LABEL = "Limited Time Offer";
-export const OFFER_ENDS_LABEL = OFFER.endsLabel;
 
 /** Offer posters (800×800, from the studio's "offer photos"), in the studio's own order. */
 export const OFFER_IMAGE_SIZE = 800;

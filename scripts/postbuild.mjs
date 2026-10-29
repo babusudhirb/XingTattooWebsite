@@ -60,6 +60,8 @@ const pages = new Map(
         noindex: /noindex/i.test(
           doc.querySelector('meta[name="robots"]')?.getAttribute("content") ?? "",
         ),
+        h1: (doc.querySelector("h1")?.text.trim() ?? "") !== "",
+        jsonLd: !!doc.querySelector('script[type="application/ld+json"]'),
         images,
       },
     ];
@@ -81,7 +83,10 @@ for (const { loc } of listed) {
   else if (page.noindex) problems.push(`${loc}: noindex`);
   else if (page.canonical !== loc)
     problems.push(`${loc}: canonical is ${page.canonical || "missing"}`);
+  else if (!page.h1) problems.push(`${loc}: no H1 in the HTML`);
+  else if (!page.jsonLd) problems.push(`${loc}: no JSON-LD in the HTML`);
 }
+if (!fs.existsSync(path.join(OUT, "404.html"))) problems.push("404.html was not emitted");
 const listedSet = new Set(listed.map((u) => u.loc));
 for (const [url, page] of pages) {
   const indexable = page.canonical === url && !page.noindex && page.urlPath !== "/404";

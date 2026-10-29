@@ -1,41 +1,56 @@
-# Deploying to Hostinger
+# Deploying
 
-The site is plain files: every page is prerendered to `.html`, and `public/.htaccess` (LiteSpeed/Apache) does the rest.
+The site is plain files: `npm run build` prerenders every page into `.output/public/`. Any static
+host works. Recommended: **Cloudflare Pages connected to the GitHub repo** — it rebuilds and
+deploys on every push to `main`, makes preview links for pull requests, serves the 301s and
+headers from `public/_redirects` and `public/_headers`, has edge servers in India and is free.
 
-## Build and check
+## A. Cloudflare Pages (recommended)
 
-```sh
-npm install
-npm run build        # seo:files (sitemaps, robots.txt, llms.txt, rss → public/) + vite build + postbuild (checks, redirects)
-npm run preview      # serves .output/public like Hostinger, on http://localhost:4173
-npm run qa           # (with the preview running) SEO audit, NAP, links, mobile — each must report 0 failures
-```
+1. https://dash.cloudflare.com → **Workers & Pages → Create → Pages → Connect to Git** →
+   pick `altafs45/XING-TATTOO-STUDIO`.
+2. Build settings:
+   - Framework preset: **None**
+   - Build command: `npm run build`
+   - Build output directory: `.output/public`
+   - Environment variable: `NODE_VERSION` = `24` (matches `.nvmrc`)
+   - Optional variables (Production): `VITE_GTM_ID` or `VITE_GA_ID`, `INDEXNOW_KEY` (see `.env.example`)
+3. **Save and Deploy.** Every push to `main` deploys; every pull request gets a preview URL.
+4. **Custom domains** → add `www.xingtattoo.in` (and `xingtattoo.in`).
+5. **DNS** (easiest with the domain on Cloudflare DNS):
+   - `www` → CNAME → `<project>.pages.dev` (proxied)
+   - `@` (apex) → CNAME → `<project>.pages.dev` (proxied; Cloudflare flattens it)
+6. **Rules → Redirect Rules** → one rule: when hostname equals `xingtattoo.in`, dynamic redirect to
+   `concat("https://www.xingtattoo.in", http.request.uri.path)`, status 301, preserve query string.
+   (Pages ignores domain lines in `_redirects`; the path redirects there work as they are.)
+7. **SSL/TLS** → "Always Use HTTPS" on.
+8. Scheduled posts: **Settings → Builds → Deploy hooks** → create one → add its URL as the GitHub
+   repository secret `DEPLOY_HOOK_URL` (GitHub → Settings → Secrets and variables → Actions).
 
-Optional, before `npm run build`: set `VITE_GSC_VERIFICATION` and/or `VITE_BING_VERIFICATION` to add the
-Search Console / Bing ownership meta tags (not needed if you verify the domain by DNS).
+**Netlify instead:** same build command and output directory; Node from `.nvmrc`. Netlify reads
+the domain lines in `_redirects` too, so no extra redirect rule is needed.
 
-## Upload
+**Roll back:** Cloudflare Pages → the project → **Deployments** → pick an earlier deployment →
+**Rollback to this deployment**. Or `git revert` the bad commit and push.
 
-1. hPanel → **File Manager → public_html** → delete the old site files.
-2. Upload everything **inside** `.output/public/`, including the hidden `.htaccess`.
-3. Check in a browser:
-   - `http://xingtattoo.in/about` → one redirect to `https://www.xingtattoo.in/about`
-   - `https://www.xingtattoo.in/sitemap.xml` and `/robots.txt` load
-   - `https://www.xingtattoo.in/artist` → `/tattoo-artist`, `/contact-us` → `/contact`, `/About` → `/about`
-   - a made-up URL shows the branded 404 page
+## B. Hostinger (upload by hand)
 
-## What `.htaccess` does
+1. `npm run build`
+2. hPanel → **File Manager → public_html** → delete the old site files.
+3. Upload everything **inside** `.output/public/`, including the hidden `.htaccess`.
 
-- HTTP and the bare domain → `https://www.xingtattoo.in` in a single 301.
-- Old URLs → new ones (list in `scripts/redirects.mjs`, written in at build time).
-- `/page.html` and `/page/` → `/page`; `/page` serves `page.html`; unknown URLs get `404.html` with a 404 status.
-- HSTS (2 years, subdomains; no `preload` until every subdomain is confirmed on HTTPS), `nosniff`,
-  `strict-origin-when-cross-origin`, caching (hashed JS/CSS/fonts 1 year, images 30 days, pages and XML no-cache), compression.
+`.htaccess` does the clean URLs, the one-hop 301s (http → https, bare domain → www, old URLs,
+`.html`, trailing slash, capitals), the 404 status, compression, caching and security headers.
 
-## Owner checks on the hosting side
+## Check after any deploy
 
-- hPanel → **SSL**: certificate active for both `xingtattoo.in` and `www.xingtattoo.in`.
-- No password protection or "maintenance mode" on the site.
-- If a CDN or firewall (e.g. Cloudflare, Hostinger CDN) sits in front, make sure it doesn't block Googlebot.
-- A leftover Cloudflare Workers build config exists locally (`.wrangler/`); if a `*.workers.dev` copy of the site
-  was ever published, take it down or it can compete with the real domain.
+- `https://www.xingtattoo.in/sitemap.xml` and `/robots.txt` open as XML/text, not the site
+- `http://xingtattoo.in/about` → one 301 to `https://www.xingtattoo.in/about`
+- `/artist` → `/tattoo-artist`, `/contact-us` → `/contact`
+- a made-up URL shows the branded 404 page
+
+## Before every deploy
+
+`npm run build`, `npm run preview`, then `npm run qa` — all checks must report 0 failures. On
+GitHub the CI workflow (`.github/workflows/ci.yml`) runs the type check, build, SEO audit, NAP
+check and link check on every push and pull request.
