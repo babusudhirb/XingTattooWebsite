@@ -1,0 +1,81 @@
+name: Build for Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "45 0 * * 1,4"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hostinger-deploy-branch
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - name: Check the built website
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s .output/public/index.html
+          test -s .output/public/.htaccess
+          node scripts/serve-static.mjs 4173 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://localhost:4173/; then break; fi
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://localhost:4173/
+          node scripts/qa/seo-audit.mjs http://localhost:4173
+          node scripts/qa/nap-check.mjs http://localhost:4173
+          node scripts/qa/link-check.mjs http://localhost:4173 --no-external
+
+      # Hostinger must deploy this branch to public_html, not the main source branch.
+      # Use a separate Git index so only built files enter the deploy branch.
+      - name: Publish built files to deploy branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          output="$GITHUB_WORKSPACE/.output/public"
+          test -s "$output/index.html"
+          test -s "$output/.htaccess"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          export GIT_INDEX_FILE="$RUNNER_TEMP/hostinger-publish-index"
+          git read-tree --empty
+          (
+            cd "$output"
+            git --git-dir="$GITHUB_WORKSPACE/.git" --work-tree="$output" add --all --force
+          )
+          tree=$(git write-tree)
+          parents=()
+          remote_head=$(git ls-remote --heads origin refs/heads/deploy)
+          if [ -n "$remote_head" ]; then
+            git fetch origin refs/heads/deploy
+            previous=$(git rev-parse FETCH_HEAD)
+            if [ "$tree" = "$(git rev-parse "$previous^{tree}")" ]; then
+              echo "Built website is unchanged."
+              exit 0
+            fi
+            parents=(-p "$previous")
+          fi
+          commit=$(git commit-tree "$tree" "${parents[@]}" -m "Build website from $GITHUB_SHA")
+          git push origin "$commit:refs/heads/deploy"
