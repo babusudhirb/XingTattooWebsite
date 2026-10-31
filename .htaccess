@@ -1,0 +1,215 @@
+# Xing Premium Tattoo Studio — Hostinger (LiteSpeed / Apache) rules.
+# Uploaded with the site into public_html. scripts/postbuild.mjs fills in the generated redirects.
+
+Options -Indexes -MultiViews
+DirectorySlash Off
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Every redirect targets https://www.xingtattoo.in directly, so any mix of http://,
+  # bare domain, old URL, .html or trailing slash resolves in ONE 301.
+
+  # Old or alternative URLs (from scripts/redirects.mjs)
+  # BEGIN generated redirects
+  RewriteRule ^index(\.html|/)?$ https://www.xingtattoo.in/ [R=301,L,NE]
+  RewriteRule ^artist(\.html|/)?$ https://www.xingtattoo.in/tattoo-artist [R=301,L,NE]
+  RewriteRule ^contact-us(\.html|/)?$ https://www.xingtattoo.in/contact [R=301,L,NE]
+  RewriteRule ^service(\.html|/)?$ https://www.xingtattoo.in/services [R=301,L,NE]
+  RewriteRule ^service/(.+?)(\.html|/)?$ https://www.xingtattoo.in/services/$1 [R=301,L,NE]
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteRule ^404(\.html)?$ - [R=404,L]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^about(\.html|/)?$ https://www.xingtattoo.in/about [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/approve-tattoo-sketch-stencil(\.html|/)?$ https://www.xingtattoo.in/blog/approve-tattoo-sketch-stencil [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/best-tattoo-studio-brookefield(\.html|/)?$ https://www.xingtattoo.in/blog/best-tattoo-studio-brookefield [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/birthday-milestone-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/birthday-milestone-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/black-grey-vs-colour-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/black-grey-vs-colour-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/aftercare-safety(\.html|/)?$ https://www.xingtattoo.in/blog/category/aftercare-safety [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/cover-ups-touch-ups(\.html|/)?$ https://www.xingtattoo.in/blog/category/cover-ups-touch-ups [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/local-bangalore(\.html|/)?$ https://www.xingtattoo.in/blog/category/local-bangalore [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/meanings-culture(\.html|/)?$ https://www.xingtattoo.in/blog/category/meanings-culture [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/placement(\.html|/)?$ https://www.xingtattoo.in/blog/category/placement [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/styles-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/category/styles-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/category/tattoo-guides(\.html|/)?$ https://www.xingtattoo.in/blog/category/tattoo-guides [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/custom-sleeve-tattoo-sessions-timeline(\.html|/)?$ https://www.xingtattoo.in/blog/custom-sleeve-tattoo-sessions-timeline [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/cyberpunk-neo-tribal-tattoos-bangalore(\.html|/)?$ https://www.xingtattoo.in/blog/cyberpunk-neo-tribal-tattoos-bangalore [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/fine-line-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/fine-line-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/first-tattoo-guide-bangalore(\.html|/)?$ https://www.xingtattoo.in/blog/first-tattoo-guide-bangalore [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/geometric-mandala-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/geometric-mandala-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/hygienic-tattoo-studio-checklist(\.html|/)?$ https://www.xingtattoo.in/blog/hygienic-tattoo-studio-checklist [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/indian-traditional-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/indian-traditional-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/japanese-irezumi-vs-realism-sleeve(\.html|/)?$ https://www.xingtattoo.in/blog/japanese-irezumi-vs-realism-sleeve [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/lord-shiva-tattoo-designs(\.html|/)?$ https://www.xingtattoo.in/blog/lord-shiva-tattoo-designs [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/memorial-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/memorial-tattoo-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/micro-realism-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/micro-realism-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/minimalist-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/minimalist-tattoo-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/om-trishul-spiritual-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/om-trishul-spiritual-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/page/2(\.html|/)?$ https://www.xingtattoo.in/blog/page/2 [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/page/3(\.html|/)?$ https://www.xingtattoo.in/blog/page/3 [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/page/4(\.html|/)?$ https://www.xingtattoo.in/blog/page/4 [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/pet-portrait-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/pet-portrait-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/portrait-tattoo-reference-photo(\.html|/)?$ https://www.xingtattoo.in/blog/portrait-tattoo-reference-photo [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/post-tattoo-adrenaline-crash(\.html|/)?$ https://www.xingtattoo.in/blog/post-tattoo-adrenaline-crash [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/realism-tattoos-guide(\.html|/)?$ https://www.xingtattoo.in/blog/realism-tattoos-guide [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/safe-tattoo-needle-cartridges-sterilisation(\.html|/)?$ https://www.xingtattoo.in/blog/safe-tattoo-needle-cartridges-sterilisation [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/script-calligraphy-tattoo-fonts(\.html|/)?$ https://www.xingtattoo.in/blog/script-calligraphy-tattoo-fonts [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/sibling-family-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/sibling-family-tattoo-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/sleeve-tattoo-planning(\.html|/)?$ https://www.xingtattoo.in/blog/sleeve-tattoo-planning [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/small-fine-line-tattoo-cost-bangalore(\.html|/)?$ https://www.xingtattoo.in/blog/small-fine-line-tattoo-cost-bangalore [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-aftercare-guide(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-aftercare-guide [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-artists-east-bangalore-it-professionals(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-artists-east-bangalore-it-professionals [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-consultation-what-happens(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-consultation-what-happens [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-cost-in-bangalore(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-cost-in-bangalore [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-cover-up-guide(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-cover-up-guide [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-pain-chart(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-pain-chart [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-studio-aecs-layout-brookefield(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-studio-aecs-layout-brookefield [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-studio-near-itpl-main-road(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-studio-near-itpl-main-road [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-studio-near-kundalahalli-gate(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-studio-near-kundalahalli-gate [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoos-on-indian-skin(\.html|/)?$ https://www.xingtattoo.in/blog/tattoos-on-indian-skin [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/travel-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/travel-tattoo-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/vegan-vs-traditional-tattoo-inks(\.html|/)?$ https://www.xingtattoo.in/blog/vegan-vs-traditional-tattoo-inks [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/white-ink-tattoos-indian-skin(\.html|/)?$ https://www.xingtattoo.in/blog/white-ink-tattoos-indian-skin [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/workout-after-tattoo(\.html|/)?$ https://www.xingtattoo.in/blog/workout-after-tattoo [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog(\.html|/)?$ https://www.xingtattoo.in/blog [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^contact(\.html|/)?$ https://www.xingtattoo.in/contact [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^faq(\.html|/)?$ https://www.xingtattoo.in/faq [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^gallery(\.html|/)?$ https://www.xingtattoo.in/gallery [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^offer(\.html|/)?$ https://www.xingtattoo.in/offer [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^privacy-policy(\.html|/)?$ https://www.xingtattoo.in/privacy-policy [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services/black-grey(\.html|/)?$ https://www.xingtattoo.in/services/black-grey [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services/geometric(\.html|/)?$ https://www.xingtattoo.in/services/geometric [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services/minimalist(\.html|/)?$ https://www.xingtattoo.in/services/minimalist [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services/portrait(\.html|/)?$ https://www.xingtattoo.in/services/portrait [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services/realism(\.html|/)?$ https://www.xingtattoo.in/services/realism [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services/traditional(\.html|/)?$ https://www.xingtattoo.in/services/traditional [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^services(\.html|/)?$ https://www.xingtattoo.in/services [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^tattoo-artist(\.html|/)?$ https://www.xingtattoo.in/tattoo-artist [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^terms-and-conditions(\.html|/)?$ https://www.xingtattoo.in/terms-and-conditions [NC,R=301,L,NE]
+  # END generated redirects
+
+  # /about.html -> /about, /about/ -> /about (one clean URL per page)
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteRule ^ https://www.xingtattoo.in/%1 [R=301,L,NE]
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+?)/+$ https://www.xingtattoo.in/$1 [R=301,L,NE]
+
+  # One host, HTTPS only: http:// and the bare domain go to https://www.xingtattoo.in
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\.xingtattoo\.in$ [NC]
+  RewriteRule ^ https://www.xingtattoo.in%{REQUEST_URI} [L,R=301,NE]
+
+  # Clean URLs: /about serves about.html, /services/realism serves services/realism.html
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+# Compression (LiteSpeed also applies Brotli automatically)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Hashed build files never change: cache for a year
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Photos and icons: cache for a month
+  <FilesMatch "\.(webp|avif|png|jpg|jpeg|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # Pages, sitemaps, robots.txt and feeds: always revalidate so edits show up immediately
+  <FilesMatch "\.(html|xml|txt|webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.xml$">
+    Header set Content-Type "application/xml; charset=utf-8"
+  </FilesMatch>
+  <FilesMatch "\.txt$">
+    Header set Content-Type "text/plain; charset=utf-8"
+  </FilesMatch>
+  <FilesMatch "\.webmanifest$">
+    Header set Content-Type "application/manifest+json"
+  </FilesMatch>
+  # HTTPS only from now on (no "preload" until every subdomain is confirmed to serve HTTPS)
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType application/manifest+json .webmanifest
+  AddType text/plain .txt
+  AddCharset utf-8 .txt .xml
+</IfModule>
