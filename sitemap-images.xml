@@ -73,13 +73,13 @@
       <image:loc>https://www.xingtattoo.in/images/gallery/tattoo-brookefield-portfolio-1-003.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-near-kundalahalli-gate-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-artists-east-bangalore-it-professionals-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cost-in-bangalore-card.webp</image:loc>
@@ -870,7 +870,7 @@
   </url>
   <url>
     <loc>https://www.xingtattoo.in/blog</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
     </image:image>
@@ -981,6 +981,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-cover-up.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -1197,7 +1200,7 @@
   </url>
   <url>
     <loc>https://www.xingtattoo.in/blog/category/cover-ups-touch-ups</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
     </image:image>
@@ -1215,6 +1218,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/minimalist-tattoo-thumb-DX6lmtBr.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cover-up-guide-card.webp</image:loc>
@@ -1255,6 +1261,52 @@
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/best-tattoo-studio-brookefield-card.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.xingtattoo.in/blog/tattoo-touch-up-rework</loc>
+    <lastmod>2026-11-02</lastmod>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/portrait-tattoo-thumb-BVoJLUkU.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/black-grey-tattoo-thumb-CL3QwJCV.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/geometric-tattoo-thumb-CCX4SYK_.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/traditional-tattoo-thumb-BxOKYn9g.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/minimalist-tattoo-thumb-DX6lmtBr.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-hero.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cover-up-guide-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-near-kundalahalli-gate-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-portrait.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-black-grey.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -3134,13 +3186,13 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cover-up-guide-hero.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-near-kundalahalli-gate-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-artists-east-bangalore-it-professionals-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>

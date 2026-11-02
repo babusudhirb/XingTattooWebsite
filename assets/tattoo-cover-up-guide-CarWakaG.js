@@ -112,7 +112,7 @@ var e={number:20,slug:`tattoo-cover-up-guide`,title:`Tattoo Cover Up Guide: Can 
 <li>Would laser lightening first give me a better result?</li>
 <li>What happens if a small part of the old tattoo shows through after healing?</li>
 </ol>
-<p>Our guide to tattoo touch-ups and rework explains the difference between covering and refreshing a tattoo.</p>
+<p>Our guide to <a href="/blog/tattoo-touch-up-rework">tattoo touch-ups and rework</a> explains the difference between covering and refreshing a tattoo.</p>
 `},{id:`aftercare-for-cover-ups`,title:`Aftercare for cover-ups`,html:`<h2 id="aftercare-for-cover-ups">Aftercare for cover-ups<a href="#aftercare-for-cover-ups" class="heading-anchor" aria-label="Link to section: Aftercare for cover-ups"><span aria-hidden="true">#</span></a></h2>
 <p>Cover-ups often involve dense shading over previously tattooed skin, so careful aftercare is especially important. Wash gently, moisturise lightly, don't pick, avoid soaking and keep it out of the sun.</p>
 <p>Our <a href="/blog/tattoo-aftercare-guide">tattoo aftercare guide</a> has the full routine.</p>

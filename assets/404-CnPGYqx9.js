@@ -1,1 +1,0 @@
-import{ft as e}from"./index-CNiqYPUv.js";var t=e;export{t as component};

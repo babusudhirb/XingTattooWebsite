@@ -114,7 +114,7 @@ var e={number:11,slug:`black-grey-vs-colour-tattoos`,title:`Black and Grey Tatto
 <li><strong>Black and grey:</strong> a refresh of highlights or deepening of blacks after many years, if needed.</li>
 <li><strong>Colour:</strong> brightening lighter shades every few years, especially on sun-exposed areas.</li>
 </ul>
-<p>Our guide to tattoo touch-ups and rework explains when and why a tattoo needs a refresh.</p>
+<p>Our guide to <a href="/blog/tattoo-touch-up-rework">tattoo touch-ups and rework</a> explains when and why a tattoo needs a refresh.</p>
 `},{id:`combining-both-black-and-grey-with-colour-accents`,title:`Combining both: black and grey with colour accents`,html:`<h2 id="combining-both-black-and-grey-with-colour-accents">Combining both: black and grey with colour accents<a href="#combining-both-black-and-grey-with-colour-accents" class="heading-anchor" aria-label="Link to section: Combining both: black and grey with colour accents"><span aria-hidden="true">#</span></a></h2>
 <p>You don't have to pick only one. Many of the most striking tattoos mix both.</p>
 <p><strong>Popular combinations:</strong></p>

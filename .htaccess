@@ -113,6 +113,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-studio-near-kundalahalli-gate(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-studio-near-kundalahalli-gate [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-touch-up-rework(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-touch-up-rework [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoos-on-indian-skin(\.html|/)?$ https://www.xingtattoo.in/blog/tattoos-on-indian-skin [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/travel-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/travel-tattoo-ideas [NC,R=301,L,NE]
