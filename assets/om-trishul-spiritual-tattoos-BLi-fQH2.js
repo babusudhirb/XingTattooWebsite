@@ -92,7 +92,7 @@ var e={number:18,slug:`om-trishul-spiritual-tattoos`,title:`Om Tattoo, Trishul a
 <li><strong>Compare the stencil</strong> with your source before the session begins.</li>
 <li><strong>Ask someone fluent to check</strong> the stencil photo if you're unsure.</li>
 </ol>
-<p>Font matters too. Some decorative fonts change the shape of characters. Choose a style that keeps letters readable. Our guide to name and lettering tattoos has more tips on scripts and spacing.</p>
+<p>Font matters too. Some decorative fonts change the shape of characters. Choose a style that keeps letters readable. Our guide to <a href="/blog/name-lettering-tattoos">name and lettering tattoos</a> has more tips on scripts and spacing.</p>
 <blockquote class="callout-tip">
 <p><strong>Peace's tip:</strong> Send me your mantra as a photo of handwriting from someone who reads it fluently. I'll build the lettering from that, so every curve and matra is exactly where it should be.</p>
 </blockquote>

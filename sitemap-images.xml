@@ -73,13 +73,13 @@
       <image:loc>https://www.xingtattoo.in/images/gallery/tattoo-brookefield-portfolio-1-003.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-near-kundalahalli-gate-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cost-in-bangalore-card.webp</image:loc>
@@ -870,7 +870,7 @@
   </url>
   <url>
     <loc>https://www.xingtattoo.in/blog</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
     </image:image>
@@ -983,6 +983,9 @@
       <image:loc>https://www.xingtattoo.in/images/blog/signature-cover-up.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
     </image:image>
   </url>
@@ -1068,7 +1071,7 @@
   </url>
   <url>
     <loc>https://www.xingtattoo.in/blog/category/styles-ideas</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
     </image:image>
@@ -1086,6 +1089,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/minimalist-tattoo-thumb-DX6lmtBr.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
@@ -1264,6 +1270,58 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.xingtattoo.in/blog/name-lettering-tattoos</loc>
+    <lastmod>2026-11-05</lastmod>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/portrait-tattoo-thumb-BVoJLUkU.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/black-grey-tattoo-thumb-CL3QwJCV.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/geometric-tattoo-thumb-CCX4SYK_.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/traditional-tattoo-thumb-BxOKYn9g.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/minimalist-tattoo-thumb-DX6lmtBr.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-hero.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/script-calligraphy-tattoo-fonts-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-portrait.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-black-grey.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.xingtattoo.in/blog/tattoo-touch-up-rework</loc>
     <lastmod>2026-11-02</lastmod>
     <image:image>
@@ -1291,10 +1349,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cover-up-guide-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-near-kundalahalli-gate-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
@@ -1487,13 +1545,13 @@
       <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-2.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/japanese-irezumi-vs-realism-sleeve-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/script-calligraphy-tattoo-fonts-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-geometric.webp</image:loc>
@@ -1735,13 +1793,13 @@
       <image:loc>https://www.xingtattoo.in/images/blog/script-calligraphy-tattoo-fonts-2.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/japanese-irezumi-vs-realism-sleeve-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
@@ -2139,13 +2197,13 @@
       <image:loc>https://www.xingtattoo.in/images/blog/travel-tattoo-ideas-3.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/japanese-irezumi-vs-realism-sleeve-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-geometric.webp</image:loc>
@@ -2237,13 +2295,13 @@
       <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-1.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/japanese-irezumi-vs-realism-sleeve-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/script-calligraphy-tattoo-fonts-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
@@ -2387,10 +2445,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/realism-tattoos-guide-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-black-grey.webp</image:loc>
@@ -2439,10 +2497,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/minimalist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
@@ -2537,13 +2595,13 @@
       <image:loc>https://www.xingtattoo.in/images/blog/geometric-mandala-tattoos-2.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/cyberpunk-neo-tribal-tattoos-bangalore-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/japanese-irezumi-vs-realism-sleeve-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-geometric.webp</image:loc>
@@ -2797,7 +2855,7 @@
       <image:loc>https://www.xingtattoo.in/images/blog/micro-realism-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
@@ -2895,7 +2953,7 @@
       <image:loc>https://www.xingtattoo.in/images/blog/portrait-tattoo-reference-photo-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/white-ink-tattoos-indian-skin-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-portrait.webp</image:loc>
@@ -3189,10 +3247,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-near-kundalahalli-gate-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>

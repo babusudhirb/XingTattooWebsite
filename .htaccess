@@ -69,6 +69,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/minimalist-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/minimalist-tattoo-ideas [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/name-lettering-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/name-lettering-tattoos [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/om-trishul-spiritual-tattoos(\.html|/)?$ https://www.xingtattoo.in/blog/om-trishul-spiritual-tattoos [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/page/2(\.html|/)?$ https://www.xingtattoo.in/blog/page/2 [NC,R=301,L,NE]

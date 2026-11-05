@@ -39,7 +39,7 @@ var e={number:9,slug:`memorial-tattoo-ideas`,title:`Memorial Tattoo Ideas: Meani
 <li>Combine birth and passing years, or just one significant date.</li>
 <li>Pair the name with a small symbol.</li>
 </ul>
-<p>Our guide to name and lettering tattoos covers fonts, sizes and common mistakes.</p>
+<p>Our guide to <a href="/blog/name-lettering-tattoos">name and lettering tattoos</a> covers fonts, sizes and common mistakes.</p>
 `},{id:`meaningful-symbols`,title:`Meaningful symbols`,html:`<h2 id="meaningful-symbols">Meaningful symbols<a href="#meaningful-symbols" class="heading-anchor" aria-label="Link to section: Meaningful symbols"><span aria-hidden="true">#</span></a></h2>
 <p>Sometimes a symbol says more than a face or name. Common memorial symbols include:</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Table (scrolls sideways)"><table>

@@ -49,7 +49,7 @@ var e={number:14,slug:`minimalist-tattoo-ideas`,title:`30 Minimalist Tattoo Idea
 <li><strong>Coordinates</strong> — of a home, city or meaningful place.</li>
 </ol>
 <p><strong>Placement tip:</strong> Inner wrist, collarbone, ribs, along the forearm or behind the ear.</p>
-<p>Our guide to name and lettering tattoos has font and size tips.</p>
+<p>Our guide to <a href="/blog/name-lettering-tattoos">name and lettering tattoos</a> has font and size tips.</p>
 `},{id:`celestial`,title:`Celestial`,html:`<h2 id="celestial">Celestial<a href="#celestial" class="heading-anchor" aria-label="Link to section: Celestial"><span aria-hidden="true">#</span></a></h2>
 <p>The sky is full of small, beautiful designs.</p>
 <ol start="25">
