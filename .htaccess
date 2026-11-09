@@ -45,6 +45,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/category/tattoo-guides(\.html|/)?$ https://www.xingtattoo.in/blog/category/tattoo-guides [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/couple-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/couple-tattoo-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/custom-sleeve-tattoo-sessions-timeline(\.html|/)?$ https://www.xingtattoo.in/blog/custom-sleeve-tattoo-sessions-timeline [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/cyberpunk-neo-tribal-tattoos-bangalore(\.html|/)?$ https://www.xingtattoo.in/blog/cyberpunk-neo-tribal-tattoos-bangalore [NC,R=301,L,NE]

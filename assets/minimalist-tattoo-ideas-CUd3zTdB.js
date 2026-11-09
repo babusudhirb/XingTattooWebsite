@@ -158,7 +158,7 @@ var e={number:14,slug:`minimalist-tattoo-ideas`,title:`30 Minimalist Tattoo Idea
 <li>Coordinates of a place you shared.</li>
 <li>A small date that marks a moment together.</li>
 </ul>
-<p>Book the session together so the designs are sized and placed consistently. Our guide to couple tattoo ideas has more matching options.</p>
+<p>Book the session together so the designs are sized and placed consistently. Our guide to <a href="/blog/couple-tattoo-ideas">couple tattoo ideas</a> has more matching options.</p>
 `},{id:`small-tattoos-and-work`,title:`Small tattoos and work`,html:`<h2 id="small-tattoos-and-work">Small tattoos and work<a href="#small-tattoos-and-work" class="heading-anchor" aria-label="Link to section: Small tattoos and work"><span aria-hidden="true">#</span></a></h2>
 <p>Minimalist tattoos are easy to keep discreet. If you work in a client-facing role, consider spots that are easy to cover with a sleeve, collar or watch — the upper arm, shoulder blade, inner wrist, ankle or ribs. A tiny tattoo behind the ear can be hidden by hair. If your workplace has dress-code rules, check them before you choose a visible spot.</p>
 `},{id:`colour-in-minimalist-tattoos`,title:`Colour in minimalist tattoos`,html:`<h2 id="colour-in-minimalist-tattoos">Colour in minimalist tattoos<a href="#colour-in-minimalist-tattoos" class="heading-anchor" aria-label="Link to section: Colour in minimalist tattoos"><span aria-hidden="true">#</span></a></h2>
