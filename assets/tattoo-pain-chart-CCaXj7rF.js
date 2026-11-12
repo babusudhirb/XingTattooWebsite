@@ -120,7 +120,7 @@ var e={number:4,slug:`tattoo-pain-chart`,title:`Does Getting a Tattoo Hurt? Tatt
 <li><strong>Calf</strong> — ideal for slightly larger pieces.</li>
 <li><strong>Outer thigh</strong> — plenty of space for bigger designs.</li>
 </ol>
-<p>Our <a href="/blog/first-tattoo-guide-bangalore">first tattoo guide for Bengaluru</a> has more advice on choosing your first placement, and our placement guide compares how each spot ages.</p>
+<p>Our <a href="/blog/first-tattoo-guide-bangalore">first tattoo guide for Bengaluru</a> has more advice on choosing your first placement, and our <a href="/blog/tattoo-placement-guide">placement guide</a> compares how each spot ages.</p>
 `},{id:`tips-to-manage-tattoo-pain`,title:`Tips to manage tattoo pain`,html:`<h2 id="tips-to-manage-tattoo-pain">Tips to manage tattoo pain<a href="#tips-to-manage-tattoo-pain" class="heading-anchor" aria-label="Link to section: Tips to manage tattoo pain"><span aria-hidden="true">#</span></a></h2>
 <p>Small habits make a real difference:</p>
 <ul>

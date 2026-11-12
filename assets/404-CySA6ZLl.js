@@ -1,0 +1,1 @@
+import{ft as e}from"./index-BQLnvq26.js";var t=e;export{t as component};

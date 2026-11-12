@@ -111,6 +111,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-pain-chart(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-pain-chart [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-placement-guide(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-placement-guide [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-studio-aecs-layout-brookefield(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-studio-aecs-layout-brookefield [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-studio-near-itpl-main-road(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-studio-near-itpl-main-road [NC,R=301,L,NE]
