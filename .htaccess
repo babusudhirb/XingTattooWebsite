@@ -131,6 +131,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/workout-after-tattoo(\.html|/)?$ https://www.xingtattoo.in/blog/workout-after-tattoo [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/wrist-tattoo-ideas(\.html|/)?$ https://www.xingtattoo.in/blog/wrist-tattoo-ideas [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog(\.html|/)?$ https://www.xingtattoo.in/blog [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^contact(\.html|/)?$ https://www.xingtattoo.in/contact [NC,R=301,L,NE]

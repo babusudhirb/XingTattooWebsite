@@ -73,13 +73,13 @@
       <image:loc>https://www.xingtattoo.in/images/gallery/tattoo-brookefield-portfolio-1-003.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/couple-tattoo-ideas-card.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/name-lettering-tattoos-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-studio-aecs-layout-brookefield-card.webp</image:loc>
@@ -870,7 +870,7 @@
   </url>
   <url>
     <loc>https://www.xingtattoo.in/blog</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
     </image:image>
@@ -981,6 +981,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-cover-up.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
@@ -1184,7 +1187,7 @@
   </url>
   <url>
     <loc>https://www.xingtattoo.in/blog/category/placement</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
     </image:image>
@@ -1202,6 +1205,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/assets/minimalist-tattoo-thumb-DX6lmtBr.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
@@ -1282,6 +1288,58 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.xingtattoo.in/blog/wrist-tattoo-ideas</loc>
+    <lastmod>2026-11-16</lastmod>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/realism-tattoo-thumb-Buo8oTLn.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/portrait-tattoo-thumb-BVoJLUkU.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/black-grey-tattoo-thumb-CL3QwJCV.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/geometric-tattoo-thumb-CCX4SYK_.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/traditional-tattoo-thumb-BxOKYn9g.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/assets/minimalist-tattoo-thumb-DX6lmtBr.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-hero.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-pain-chart-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/custom-sleeve-tattoo-sessions-timeline-card.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-fine-line.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-portrait.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.xingtattoo.in/images/blog/signature-black-grey.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.xingtattoo.in/blog/tattoo-placement-guide</loc>
     <lastmod>2026-11-12</lastmod>
     <image:image>
@@ -1315,10 +1373,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-pain-chart-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/custom-sleeve-tattoo-sessions-timeline-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/sleeve-tattoo-planning-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/custom-sleeve-tattoo-sessions-timeline-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
@@ -1462,10 +1520,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-cover-up-guide-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/couple-tattoo-ideas-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
@@ -1609,10 +1667,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/sleeve-tattoo-planning-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-pain-chart-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-black-grey.webp</image:loc>
@@ -3216,10 +3274,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/custom-sleeve-tattoo-sessions-timeline-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-pain-chart-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-black-grey.webp</image:loc>
@@ -3360,10 +3418,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-touch-up-rework-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/couple-tattoo-ideas-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
@@ -3409,10 +3467,10 @@
       <image:loc>https://www.xingtattoo.in/images/blog/tattoo-placement-guide-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/custom-sleeve-tattoo-sessions-timeline-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/wrist-tattoo-ideas-card.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.xingtattoo.in/images/blog/sleeve-tattoo-planning-card.webp</image:loc>
+      <image:loc>https://www.xingtattoo.in/images/blog/custom-sleeve-tattoo-sessions-timeline-card.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.xingtattoo.in/images/blog/signature-realism.webp</image:loc>
