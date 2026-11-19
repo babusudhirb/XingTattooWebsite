@@ -1,0 +1,1 @@
+import{ft as e}from"./index-CAZIUHXN.js";var t=e;export{t as component};
