@@ -113,6 +113,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-cover-up-guide(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-cover-up-guide [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
+  RewriteRule ^blog/tattoo-ideas-for-women(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-ideas-for-women [NC,R=301,L,NE]
+  RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-pain-chart(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-pain-chart [NC,R=301,L,NE]
   RewriteCond %{REQUEST_URI} [A-Z]
   RewriteRule ^blog/tattoo-placement-guide(\.html|/)?$ https://www.xingtattoo.in/blog/tattoo-placement-guide [NC,R=301,L,NE]
